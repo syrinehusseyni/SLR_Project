@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4367368990",
+ "fingerprint": "011fe1bc0e9bddb9",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Il s'agit d'un commentaire et d'une exploration via un webinaire.",
+   "chunk_id": "W4367368990_p1_c3",
+   "page": 1,
+   "quote": "In this commentary, we discuss ChatGPT and our perspectives on its utility to systematic reviews through the appropriateness and applicability of its responses to systematic review tasks and prompts.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Le modèle évalué est GPT‑4.0 (ChatGPT)",
+   "chunk_id": "W4367368990_p2_c5",
+   "page": 2,
+   "quote": "On March 15, 2023, GPT-4.0 was released for testing among OpenAI’s paid subscribers [18].",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les auteurs signalent que ChatGPT ne fournit pas de références vérifiables et nécessite une expertise méthodologique pour corriger ses erreurs.",
+   "chunk_id": "W4367368990_p2_c4",
+   "page": 2,
+   "quote": "A particularly strong limitation of the system is the lack of referencing appropriate and verifiable sources when asked for factual information.",
+   "note": ""
+  }
+ ]
+}

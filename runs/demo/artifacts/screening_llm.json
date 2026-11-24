@@ -1,0 +1,490 @@
+{
+  "fingerprint": "55007b2785269e80",
+  "results": {
+    "W4388718056": {
+      "paper_id": "W4388718056",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W4388718056",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "reasons": [
+          "Article uses GPT-4 LLM for automated title/abstract screening, compares performance to human reviewers, reports sensitivity/specificity, discusses limitations, and offers a software framework for integration."
+        ],
+        "evidence": "uses the GPT-4 Large Language Model (LLM) to automatically screen sources"
+      },
+      "note": ""
+    },
+    "W7141008388": {
+      "paper_id": "W7141008388",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W7141008388",
+        "decision": "include",
+        "confidence": 0.85,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "uses LLM for title/abstract screening"
+        ],
+        "evidence": "Fine-tune a small 1.2 billion parameter open-weight LLM specifically for study screening"
+      },
+      "note": ""
+    },
+    "W4408354914": {
+      "paper_id": "W4408354914",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W4408354914",
+        "decision": "include",
+        "confidence": 0.85,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "Article uses GPT-3.5 Turbo and GPT-4 Turbo for title and abstract screening in systematic reviews."
+        ],
+        "evidence": "GPT-3.5 Turbo and GPT-4 Turbo in Title and Abstract Screening for Systematic Reviews"
+      },
+      "note": ""
+    },
+    "W4367368990": {
+      "paper_id": "W4367368990",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W4367368990",
+        "decision": "exclude",
+        "confidence": 0.9,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article does not focus on title/abstract screening"
+        ],
+        "evidence": "utility to systematic reviews (SRs) through the appropriateness and applicability of its responses to SR related prompts"
+      },
+      "note": ""
+    },
+    "W4410983776": {
+      "paper_id": "W4410983776",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W4410983776",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "uses LLM for title/abstract screening"
+        ],
+        "evidence": "generative AI models (Claude Sonnet 3.5, Gemini Flash 1.5, and GPT-4) in the title and abstract screening phase of SLRs"
+      },
+      "note": ""
+    },
+    "W7131100690": {
+      "paper_id": "W7131100690",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W7131100690",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "reasons": [
+          "Article describes use of LLMs for title/abstract screening, compares workflows, evaluates sensitivity, discusses limits, and proposes best practices."
+        ],
+        "evidence": "Large Language Model-Assisted Title and Abstract Screening"
+      },
+      "note": ""
+    },
+    "W4411506008": {
+      "paper_id": "W4411506008",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W4411506008",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "reasons": [
+          "Article uses ChatGPT for title/abstract screening, compares performance with humans, reports precision and sensitivity, discusses hallucination limits, and proposes a hybrid framework."
+        ],
+        "evidence": "title and abstract screening sensitivity ranged from 80.6% to 96.2%"
+      },
+      "note": ""
+    },
+    "W7165180260": {
+      "paper_id": "W7165180260",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "W7165180260",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "reasons": [
+          "Article describes use of LLMs for automated title/abstract screening, evaluates performance metrics, discusses limitations and cost, and proposes a prompt optimization framework."
+        ],
+        "evidence": "Large language models (LLMs) can automate this process"
+      },
+      "note": ""
+    },
+    "arxiv-2512-11261": {
+      "paper_id": "arxiv-2512-11261",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2512-11261",
+        "decision": "include",
+        "confidence": 0.85,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "Article uses LLMs for title and abstract screening"
+        ],
+        "evidence": "Leveraging LLMs for Title and Abstract Screening for Systematic Review"
+      },
+      "note": ""
+    },
+    "arxiv-2501-05468": {
+      "paper_id": "arxiv-2501-05468",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2501-05468",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "uses LLMs for title/abstract screening"
+        ],
+        "evidence": "title and abstract screening"
+      },
+      "note": ""
+    },
+    "doi-10-1093-jamia-ocaf063": {
+      "paper_id": "doi-10-1093-jamia-ocaf063",
+      "status": "grounding_failed",
+      "verdict": {
+        "paper_id": "doi-10-1093-jamia-ocaf063",
+        "decision": "uncertain",
+        "confidence": 0.0,
+        "criteria": [
+          "I1",
+          "I3"
+        ],
+        "reasons": [
+          "Article uses LLM for screening and extraction, and reports precision/recall metrics",
+          "Contrôle local : preuve LLM absente du titre et du résumé (décision proposée : include)"
+        ],
+        "evidence": ""
+      },
+      "note": "Contrôle local : preuve LLM absente du titre et du résumé (décision proposée : include)"
+    },
+    "arxiv-2308-06610": {
+      "paper_id": "arxiv-2308-06610",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2308-06610",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "uses LLMs for abstract screening"
+        ],
+        "evidence": "instruction tune LLaMA and Guanaco models to perform abstract screening"
+      },
+      "note": ""
+    },
+    "arxiv-2405-14445": {
+      "paper_id": "arxiv-2405-14445",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2405-14445",
+        "decision": "exclude",
+        "confidence": 0.9,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "article focuses on data extraction, not title/abstract screening"
+        ],
+        "evidence": "data extraction in systematic reviews"
+      },
+      "note": ""
+    },
+    "arxiv-2608-14551": {
+      "paper_id": "arxiv-2608-14551",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2608-14551",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "reasons": [
+          "L'article décrit l'utilisation de LLM pour le screening titre/abstract, évalue la précision et discute des limites et propose des pratiques"
+        ],
+        "evidence": "Large language models (LLMs) are increasingly used for title-abstract screening in systematic reviews"
+      },
+      "note": ""
+    },
+    "arxiv-2605-06937": {
+      "paper_id": "arxiv-2605-06937",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2605-06937",
+        "decision": "include",
+        "confidence": 0.85,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "article uses LLMs for title/abstract screening"
+        ],
+        "evidence": "Title and abstract screening is the worked validation case"
+      },
+      "note": ""
+    },
+    "arxiv-2401-06320": {
+      "paper_id": "arxiv-2401-06320",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "arxiv-2401-06320",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I2",
+          "I3",
+          "I5"
+        ],
+        "reasons": [
+          "Article uses zero-shot LLMs for screening, compares with state-of-the-art, evaluates effectiveness, and proposes calibration and ensemble best practices"
+        ],
+        "evidence": "using zero-shot large language models (LLMs) for automatic screening"
+      },
+      "note": ""
+    },
+    "doi-10-2196-preprints-112353": {
+      "paper_id": "doi-10-2196-preprints-112353",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-2196-preprints-112353",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1",
+          "I2",
+          "I3"
+        ],
+        "reasons": [
+          "uses LLM for automated screening and compares with human decisions"
+        ],
+        "evidence": "Large Language Model–Based Decision Algorithm for Automated Title–Abstract and Full-Text Screening"
+      },
+      "note": ""
+    },
+    "doi-10-64898-2026-09-25-26364021": {
+      "paper_id": "doi-10-64898-2026-09-25-26364021",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-64898-2026-09-25-26364021",
+        "decision": "include",
+        "confidence": 0.9,
+        "criteria": [
+          "I1"
+        ],
+        "reasons": [
+          "Article uses LLMs for title/abstract screening in systematic reviews"
+        ],
+        "evidence": "Large language models (LLMs) screen titles and abstracts without review-specific training"
+      },
+      "note": ""
+    },
+    "doi-10-2139-ssrn-6135489": {
+      "paper_id": "doi-10-2139-ssrn-6135489",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-2139-ssrn-6135489",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article not about screening title/abstract"
+        ],
+        "evidence": "Peer Review Ethics"
+      },
+      "note": ""
+    },
+    "doi-10-2196-preprints-104400": {
+      "paper_id": "doi-10-2196-preprints-104400",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-2196-preprints-104400",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article does not address title/abstract screening in systematic reviews"
+        ],
+        "evidence": "evaluate a public-data audit framework for citation-grounded optical coherence tomography (OCT) report generation"
+      },
+      "note": ""
+    },
+    "doi-10-21203-rs-3-rs-8640955-v1": {
+      "paper_id": "doi-10-21203-rs-3-rs-8640955-v1",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-21203-rs-3-rs-8640955-v1",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "Article does not address title/abstract screening in systematic reviews"
+        ],
+        "evidence": "Citation Context Extraction (CCE) is a foundational task for transforming raw citations into meaningful, semantically rich links"
+      },
+      "note": ""
+    },
+    "doi-10-1101-2023-06-11-23291252": {
+      "paper_id": "doi-10-1101-2023-06-11-23291252",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-1101-2023-06-11-23291252",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "Article does not address screening title/abstract using LLM"
+        ],
+        "evidence": "The eligibility criteria focused on studies examining the use of ChatGPT in dermatology-related areas."
+      },
+      "note": ""
+    },
+    "doi-10-2196-preprints-48979": {
+      "paper_id": "doi-10-2196-preprints-48979",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-2196-preprints-48979",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2",
+          "E3"
+        ],
+        "reasons": [
+          "Article does not address title/abstract screening using LLMs; it reviews ChatGPT applications in dermatology instead."
+        ],
+        "evidence": "To comprehensively evaluate the literature on the various applications of ChatGPT in dermatology."
+      },
+      "note": ""
+    },
+    "doi-10-5539-jel-v15n5p564": {
+      "paper_id": "doi-10-5539-jel-v15n5p564",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-5539-jel-v15n5p564",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article not about title/abstract screening"
+        ],
+        "evidence": "systematic review on ChatGPT in education"
+      },
+      "note": ""
+    },
+    "doi-10-20944-preprints202507-0567-v1": {
+      "paper_id": "doi-10-20944-preprints202507-0567-v1",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-20944-preprints202507-0567-v1",
+        "decision": "exclude",
+        "confidence": 0.9,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article not about screening title/abstract"
+        ],
+        "evidence": "opportunities, perceptions, and challenges of using ChatGPT among professors and students at higher education levels"
+      },
+      "note": ""
+    },
+    "doi-10-47344-sdubnts-v62i1-912": {
+      "paper_id": "doi-10-47344-sdubnts-v62i1-912",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-47344-sdubnts-v62i1-912",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article does not discuss screening title/abstract"
+        ],
+        "evidence": "software testing"
+      },
+      "note": ""
+    },
+    "doi-10-1101-2023-03-30-23287899": {
+      "paper_id": "doi-10-1101-2023-03-30-23287899",
+      "status": "ok",
+      "verdict": {
+        "paper_id": "doi-10-1101-2023-03-30-23287899",
+        "decision": "exclude",
+        "confidence": 0.95,
+        "criteria": [
+          "E2"
+        ],
+        "reasons": [
+          "article not about screening title/abstract"
+        ],
+        "evidence": "This work provides a systematic review of existing publications on the use of ChatGPT in healthcare"
+      },
+      "note": ""
+    }
+  }
+}

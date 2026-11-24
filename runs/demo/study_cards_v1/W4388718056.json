@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4388718056",
+ "fingerprint": "66edc6dc8959d15d",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "expérience comparative, randomised control trial",
+   "chunk_id": "W4388718056_p8_c3",
+   "page": 8,
+   "quote": "We conducted a randomised control trial involving 8,124 residents across 17 nursing homes in urban and rural Australia in which residents were randomised to either a weekly 2-hour therapy camel visit or equivalent time in a television viewing lounge.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "six scoping reviews",
+   "chunk_id": "W4388718056_p3_c5",
+   "page": 3,
+   "quote": "To validate GPTscreenR’s approach, six scoping reviews were identified from the Open Science Framework (OSF; https://osf.io) where the review inclusion criteria and the results of title and abstract screening were publicly available.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "rejected",
+   "value": "Le modèle utilisé est GPT‑4, évalué avec des stratégies de chain‑of‑thought et tree‑of‑thought, comparé à la revue humaine.",
+   "chunk_id": "W4388718056_p2_c3",
+   "page": null,
+   "quote": "Recent work has identified a number of methods which can be superior to zero-shot prompting when using LLMs for tasks that require complex or multistep reasoning. These methods include ‘chain-ofthought prompting’ [21], in which a complex task is broken down into a series of intermediate steps, and the ‘tree of thoughts’ strategy [23], in which multiple parallel chains of thought are generated, compared, and integrated.",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "GPTscreenR a une sensibilité de 71 %, une spécificité de 89 % et une précision globale de 84 %.",
+   "chunk_id": "W4388718056_p1_c1",
+   "page": 1,
+   "quote": "GPTscreenR performed similarly to an alternative zero-shot technique, with a sensitivity of 71%, specificity of 89%, and overall accuracy of 84%.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Temps plus long et coût plus élevé, risque de surapprentissage.",
+   "chunk_id": "W4388718056_p10_c3",
+   "page": 10,
+   "quote": "This results in both a longer time to screen a single source (typically 20–30 seconds) and a higher dollar cost, as the OpenAI API currently charges on a per-token basis.",
+   "note": ""
+  }
+ ]
+}

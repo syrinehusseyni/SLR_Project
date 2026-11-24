@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4388718056",
+ "fingerprint": "87c1400c8d153139",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Étude comparative évaluant GPTscreenR par rapport à une approche zéro-shot de tri des sources.",
+   "chunk_id": "W4388718056_p10_c4",
+   "page": 10,
+   "quote": "The GPTscreenR package performs comparably to a zero-shot based approach to source screening.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "six scoping reviews from OSF",
+   "chunk_id": "W4388718056_p3_c5",
+   "page": 3,
+   "quote": "To validate GPTscreenR’s approach, six scoping reviews were identified from the Open Science Framework (OSF; https://osf.io) where the review inclusion criteria and the results of title and abstract screening were publicly available.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "invalid_format",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": "réponse vide"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "sensibilité 71 %, spécificité 89 %, exactitude 84 %",
+   "chunk_id": "W4388718056_p1_c1",
+   "page": 1,
+   "quote": "GPTscreenR performed similarly to an alternative zero-shot technique, with a sensitivity of 71%, specificity of 89%, and overall accuracy of 84%.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Limitation due to petit nombre d'études de portée disponibles.",
+   "chunk_id": "W4388718056_p10_c3",
+   "page": 10,
+   "quote": "Validation of GPTscreenR was limited by a small number of scoping reviews with publicly available, high-quality data on human title and abstract screening decisions.",
+   "note": ""
+  }
+ ]
+}

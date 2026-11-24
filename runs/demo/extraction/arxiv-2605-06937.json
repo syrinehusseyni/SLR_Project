@@ -1,0 +1,611 @@
+{
+ "paper_id": "arxiv-2605-06937",
+ "source_sha256": "0f8481b4e759c62b8877c69f8ba6e40f5175173f57a6c3d01d448d33ab1fac1b",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 29,
+ "pages_read": 29,
+ "page_chars": [
+  2044,
+  1733,
+  3830,
+  2845,
+  3855,
+  4053,
+  2604,
+  3250,
+  2257,
+  3357,
+  2824,
+  2625,
+  3209,
+  3053,
+  3859,
+  1365,
+  2828,
+  2907,
+  3121,
+  2509,
+  2384,
+  2279,
+  1492,
+  3432,
+  2800,
+  4438,
+  3794,
+  2726,
+  2249
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p1_c1",
+   "page": 1,
+   "text": "Methods Article\nMethod title\nA Reproducible Optimisation Protocol for Calibrating Prompt-Based Large Language\nModel Workflows in Evidence Synthesis\nAuthor\nTeo Susnjak\nSchool of Mathematical and Computational Sciences\nMassey University,\nAuckland, New Zealand\nEmail: T.Susnjak@massey.ac.nz\nKeywords\nEvidence synthesis automation; Language model calibration; Prompt optimisation; Declarative programming; Systematic reviews; Reproducible workflows\nAbstract\nThis methods article presents a reproducible calibration workflow for prompt-based large language\nmodels (LLMs) in structured evidence-synthesis tasks. The method separates the rules that define\nthe scientific task from the mutable prompt harness that frames and applies them. It optimises\nthat harness against labelled or reference examples and an explicit task metric, then preserves the\ncalibrated workflow as an inspectable artefact with its specification, metric, settings, and evaluation\ntraces. The example code instantiates the protocol with DSPy and GEPA tools, but the underlying\nlogic can transfer to other prompt-optimisation frameworks that support structured task definitions,\nmetric-guided search, and artefact reuse. Title and"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p1_c2",
+   "page": 1,
+   "text": "with DSPy and GEPA tools, but the underlying\nlogic can transfer to other prompt-optimisation frameworks that support structured task definitions,\nmetric-guided search, and artefact reuse. Title and abstract screening is the worked validation case\nbecause it provides labelled benchmark data and clear evaluation metrics. The demonstrated workflow uses a smaller student LLM for performing the scientific task execution and a larger reflection\nLLM to steer the prompt optimisation process during calibration. This work shows compilation,\nartefact round-tripping, and how optimisation budget affects a smaller student model.\nKey points:\n• Separate what the model must decide, the fixed rules, from how it is prompted to decide,\nthe mutable prompt instructions.\n• Optimise the prompt automatically against labelled examples and a declared scoring function, rather than iterating manually.\n• Package the calibrated prompt with its rules, metric, settings, traces, and evaluation logs\nfor inspection and reuse.\n1\narXiv:2605.06937v1 [cs.LG] 7 May 2026"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p2_c1",
+   "page": 2,
+   "text": "Graphical abstract\nSpecifications table\nItem\nDescription\nSubject area\nComputer Science; Information Science\nMore specific subject area\nEvidence synthesis automation; research workflow automation;\nsystematic review methods; language-model prompt optimisation;\nreproducible LLM workflows\nName of your method\nReproducible prompt calibration for structured evidence-synthesis LLM\nworkflows\nName and reference of original\nmethod\nDSPy declarative language-model programming [1, 2]; GEPA reflective\nprompt evolution [3]\nResource availability\nCompanion Colab notebook, local test script, saved artefact, and\nvalidation summaries are provided with the manuscript materials.\nBackground\nLarge language models (LLMs) now offer a promising path for automating systematic literature\nreviews (SLRs) and meta analyses [4].\nRecent studies show that models can support screening\n[5], data extraction [6], quality assessment [7], and synthesis tasks [8].\nCurrently, this promise\nhas a practical limit. Performance depends not only on the task and model, but also on prompt\nwording, model family, output-generation settings (e.g., temperature and top-p parameters), and\nthe manual prompt-tweaking choices made during"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p2_c2",
+   "page": 2,
+   "text": "not only on the task and model, but also on prompt\nwording, model family, output-generation settings (e.g., temperature and top-p parameters), and\nthe manual prompt-tweaking choices made during iterative development. Studies show that prompt\nsensitivity varies across datasets and models. Larger models are often more robust, but pockets\nof variability persist even in stronger instruction-tuned systems [9, 10, 11]. Repeated prompting is\nmethodologically important because LLM outputs are probabilistic and stability should be measured\nrather than assumed [12]. These sensitivities matter most when researchers use smaller or locally\nhosted models because these LLMs tend to be cheaper and more privacy-preserving for sensitive\n2"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p3_c1",
+   "page": 3,
+   "text": "domains. The consequence is that these models often need more calibration before they behave as\nreliable scientific instruments. In these cases, principled calibration can make LLM-based evidencesynthesis workflows more reliable, repeatable, and auditable.\nPrompt variability and the need for calibration\nNatural language has been framed as a new programming interface for LLMs [13], but this\nanalogy understates its ambiguity relative to the rigid syntax of conventional programming languages.\nGiven that prompt performance is often contingent on numerous factors [9, 10], prompt engineering\nfrequently turns into ad hoc manual refinement. While studies report prompt-dependent variability\non models of all sizes [9, 11] and brittleness in SLR automation [14, 4], they generally do not provide\nreusable calibration protocols for structured evidence-synthesis tasks that preserve repeatability and\nreproducibility. To that end, this article treats prompt optimisation as calibration of a scientific\nmeasurement instrument. The instrument is a workflow that maps a structured research object,\nsuch as a title, abstract, full text, table, rubric, or tool request, to a structured output or decision."
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p3_c2",
+   "page": 3,
+   "text": "measurement instrument. The instrument is a workflow that maps a structured research object,\nsuch as a title, abstract, full text, table, rubric, or tool request, to a structured output or decision.\nEven though larger and frontier commercial models may need less calibration, they nonetheless\nrequire an auditable task definition and demonstrable validation metric that support confidence in\nprompt stability and accuracy.\nThis methodological study makes three contributions. First, it formalises prompt optimisation\nas calibration of a mutable prompt harness around a fixed scientific task contract. Second, it shows\nhow an executable metric can encode task requirements, output validity, and workflow trade-offs,\nusing title and abstract screening as the worked validation case. Third, it defines a transparency\npattern in which the compiled artefact, fixed task specification, metric, optimisation configuration,\nenvironment record, traces, and prediction logs are retained as inspectable artefacts. These contributions are demonstrated with DSPy, a declarative language model programming framework [1, 2],\nand GEPA, a reflective prompt optimiser [3], but the protocol is intended to generalise"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p3_c3",
+   "page": 3,
+   "text": "These contributions are demonstrated with DSPy, a declarative language model programming framework [1, 2],\nand GEPA, a reflective prompt optimiser [3], but the protocol is intended to generalise to other\nprompt-optimisation frameworks with structured task definitions, executable metrics, and reusable\ncompiled outputs. Thus, the same protocol can be implemented in other optimisation toolchains that\nsupport structured task definitions, executable metrics, metric-guided search, and reusable outputs\n[15].\nMethod details\nOverview\nThe method requires four ingredients: a fixed task contract, which defines the scientific requirements; a mutable prompt harness, which defines how those requirements are framed and operationalised for the model; labelled or reference examples, which provide calibration and held-out\nevaluation cases; and an executable metric, which scores outputs against the task policy and provides feedback for optimisation. Together, these components define the calibration setting. The\nprotocol performs bounded optimisation of the prompt harness against the metric and preserves the\ncalibrated workflow as a reusable artefact.\nIn DSPy, the calibrated workflow is represented as"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p3_c4",
+   "page": 3,
+   "text": "The\nprotocol performs bounded optimisation of the prompt harness against the metric and preserves the\ncalibrated workflow as a reusable artefact.\nIn DSPy, the calibrated workflow is represented as a language model (LM) program. This does\nnot mean a conventional software program in the usual sense. It means a structured object that\ncombines input fields, output fields, task instructions, model calls, and evaluation logic. In this\narticle, program refers to this DSPy-style prompt-based workflow, namely, the object that GEPA\ncalibrates and that can later be saved, reloaded, inspected, and reused. This work also does not\nintroduce a new prompt-optimisation algorithm. Instead, it contributes a reproducible methodological\npattern for applying existing prompt-optimisation frameworks to structured evidence-synthesis and\n3"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p4_c1",
+   "page": 4,
+   "text": "scientific LLM workflows. The protocol demonstrates how to (1) fix the scientific task contract, (2)\ncalibrate the prompt harness around that contract, (3) make the optimisation metric explicit, and\n(4) preserve the compiled program with enough provenance for inspection and reuse.\nTitle and abstract screening is a helpful use case because it is a common and well-defined evidencesynthesis task with labelled benchmark data and clear evaluation metrics. The same calibration\npattern can, in principle, be adapted to other repeatable and structured evidence-synthesis tasks,\nincluding data extraction, study-characteristic coding, risk-of-bias support, evidence-domain mapping, and search-query generation, provided that the task has well-defined inputs, outputs, reference\nexamples, and an executable metric. The protocol is less directly applicable to open-ended synthesis,\nexploratory hypothesis generation, or interpretive judgement tasks where no stable reference output\nor scoring policy can be defined. In those cases, the same packaging principles remain useful, but\nmetric-guided prompt optimisation becomes harder to validate. Again, the critical requirement is\nthat inputs, outputs,"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p4_c2",
+   "page": 4,
+   "text": "can be defined. In those cases, the same packaging principles remain useful, but\nmetric-guided prompt optimisation becomes harder to validate. Again, the critical requirement is\nthat inputs, outputs, reference examples, and task metrics can be clearly expressed. As a way of\nexample, Appendix E gives an alternative schematic for a data-extraction adaptation. The accompanying Colab notebook1, contains the complete runnable Python source code. Meanwhile, the article\nbody here includes the key method-defining code snippets only while small example records and\nnotebook-specific execution cells are confined to the Colab notebook to preserve readability. The\npresented protocol has four steps:\n1. define the task contract as a structured LM-program signature;\n2. codify the task standard using labelled or reference examples and an executable metric;\n3. compile the prompt harness with an optimisation framework under a fixed budget;\n4. save, reload, evaluate, and package the compiled artefact.\nStep 1: Define scientific task contract\nStep 2: Codify standard (examples + metric)\nStep 3: Optimise prompt harness\nStep 4: Package compiled artefact\nReflection model\nproposes revised\ninstructions"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p4_c3",
+   "page": 4,
+   "text": "Step 1: Define scientific task contract\nStep 2: Codify standard (examples + metric)\nStep 3: Optimise prompt harness\nStep 4: Package compiled artefact\nReflection model\nproposes revised\ninstructions\nFigure 1: Generic calibration workflow for structured prompt-based LLM programs. The title-and-abstract screening\nexperiment is one instantiation of this workflow. Dashed arrows show the reflective optimisation loop inside GEPA.\nFigure 1 summarises the four-step calibration workflow. Step 1 defines the scientific task contract,\nStep 2 turns that contract into labelled or reference examples and an executable metric, Step 3\noptimises the prompt harness, and Step 4 packages the compiled artefact for inspection, reuse, and\n1MethodsX_GEPA_Tutorial.ipynb accessible at https://colab.research.google.com/drive/1gY_\nXzQ1h1EsK18bU136t2euiNWlo7sQC?usp=sharing\n4"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p5_c1",
+   "page": 5,
+   "text": "Layer\nFixed or mutable?\nExamples\nScientific task contract\nFixed\nEligibility criteria, extraction schema, coding manual, reference labels, review policy\nMachine-readable interface\nFixed within a calibration\nrun\nInput fields, output fields, label set, JSON or DSPy\nmarkers, parser, output-validity rules\nPrompt harness\nMutable\nTask wording, decision guidance, near-miss guidance, examples of checks, edge-case instructions\nTable 1: Three-layer architecture separating the scientific task rules, the machine-readable interface, and the mutable\nprompt harness. During calibration, GEPA may revise the prompt harness but not the scientific task contract or the\ninterface. Abstract screening is one instantiation of this pattern.\nevaluation. Table 1 clarifies what is meant by “fixed” and “mutable” in this workflow, while Table 2\nshows how the same calibration pattern can be adapted and is generalisable beyond title-and-abstract\nscreening. The fixed/mutable distinction is best understood as a three-layer structure. The first\nlayer is the scientific task contract: the substantive rules that define the task, such as eligibility\ncriteria, an extraction schema, a coding manual, a risk-of-bias rubric,"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p5_c2",
+   "page": 5,
+   "text": "structure. The first\nlayer is the scientific task contract: the substantive rules that define the task, such as eligibility\ncriteria, an extraction schema, a coding manual, a risk-of-bias rubric, reference labels, or a review\npolicy. The second layer is the machine-readable interface: the input fields, output fields, label set,\nparsing rules, and validity constraints that define what the program must receive and return during\na calibration run. These first two layers remain fixed. The third layer is the mutable prompt harness.\nThis is the instructional wrapper around the fixed task contract and interface. It may include task\nframing, domain context, decision guidance, near-miss explanations, uncertainty handling, examples\nof acceptable checks, and trace-format guidance. This layer is where context engineering occurs, and\nit is the only layer GEPA is permitted to revise and attempt to optimally frame for a target LLM.\nIn this article, the phrase “fixed task contract” thus refers to the scientific task contract and the\nmachine-readable interface together, unless otherwise specified.\nTask type\nFixed task contract\nMutable prompt harness\nPossible metric\nTitle/abstract\nscreening"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p5_c3",
+   "page": 5,
+   "text": "to the scientific task contract and the\nmachine-readable interface together, unless otherwise specified.\nTask type\nFixed task contract\nMutable prompt harness\nPossible metric\nTitle/abstract\nscreening\nInclusion/exclusion\ncriteria\nand labelled records\nScreening\ninstructions,\nuncertainty guidance, edge-case\nhandling\nRecall,\nprecision,\nF1,\nworkload utility\nData extraction\nExtraction schema and reference extractions\nExtraction\norder,\nfield-use\nguidance,\nevidence-span\ninstructions\nExact or partial field\nmatch;\nevidence support score\nFull-text eligibility\nEligibility criteria and adjudicated decisions\nClause-by-clause\nassessment\nprocedure\nAgreement\nwith\nreviewer\nlabels;\nfalseexclusion penalty\nRisk-of-bias support\nAssessment rubric and expert\nratings\nDomain-specific rating instructions and justification format\nWeighted\nagreement;\nclass-pair cost matrix\nStudy-characteristic\ncoding\nCoding manual and labelled\nexamples\nCategory boundary guidance\nand examples\nMacro-F1;\nclassbalanced agreement\nEvidence-domain mapping\nDomain taxonomy and validated mappings\nTaxonomy application procedure\nMulticlass\nagreement;\nconfusion-cost utility\nSearch-query\ngeneration\nSearch objective and known\nrelevant"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p5_c4",
+   "page": 5,
+   "text": "Evidence-domain mapping\nDomain taxonomy and validated mappings\nTaxonomy application procedure\nMulticlass\nagreement;\nconfusion-cost utility\nSearch-query\ngeneration\nSearch objective and known\nrelevant studies\nQuery-construction\nand\nexpansion instructions\nRecall of known studies;\nquery\nprecision\nproxy\nTool selection or workflow routing\nAvailable tools, routing policy,\nand reference decisions\nTool-choice\ninstructions\nand\nfailure-handling rules\nTool-choice\naccuracy;\ncost-weighted\nrouting\nutility\nTable 2: Examples of repeatable evidence-synthesis and research-support tasks that can be expressed using the same\ncalibration protocol. The present paper validates the protocol using title and abstract screening, but the methodological\npattern applies whenever a task can be specified through structured inputs, outputs, reference examples, and an\nexecutable metric.\n5"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p6_c1",
+   "page": 6,
+   "text": "Materials and resources\nThe method shown uses Python, a prompt-optimisation framework, labelled or reference examples, a student language model for task execution, and a reflection language model for prompt\nrevision. The student model is the LLM of interest and is the target model which is to be deployed\nafter the prompt calibration.\nIn settings with cost, privacy, or governance constraints, this will\nusually be the smaller, less expensive or locally hosted model. The reflection model can be more\ncapable and expensive because it is used only during compilation, and its role is significantly less\ntoken-intensive. It inspects failures, reads metric feedback, and proposes revised instructions for the\nstudent program. This separation allows researchers to economically balance large LLM reasoning\ncapacity during calibration without requiring the same model for routine task execution. Recent\nliterature shows that calibrated smaller models can, in some settings, even approach larger-model\nperformance at substantially lower cost [16, 3].\nTemperature settings control the two roles differently. The student model is run with temperature\n=0.0 to reduce avoidable variation during evaluation"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p6_c2",
+   "page": 6,
+   "text": "performance at substantially lower cost [16, 3].\nTemperature settings control the two roles differently. The student model is run with temperature\n=0.0 to reduce avoidable variation during evaluation and execution of the scientifc task. The reflection model is run with a higher temperature, typically around temperature=1.0, because\nreflective prompt optimisation benefits from creative and diverse candidate revisions during search.\nThe Colab notebook uses example provider strings only; comparable smaller models can be substituted for the student and stronger models can likewise be substituted for reflection2. The notebook\nembeds a 12-record demonstration dataset with explicit train, val, and test splits to keep the\nmethod visible. A separate validation experiment tests the end-to-end workflow on non-toy data.\nThe tutorial code was tested with the package versions reported in Appendix D. GEPA is an active\noptimisation component in the DSPy ecosystem, and its API or serialisation behaviour may change\nacross package releases. Readers should therefore use the recorded package versions when reproducing the tutorial exactly, and should treat newer versions as requiring re-verification of"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p6_c3",
+   "page": 6,
+   "text": "may change\nacross package releases. Readers should therefore use the recorded package versions when reproducing the tutorial exactly, and should treat newer versions as requiring re-verification of the notebook,\ncompiled artefact, and evaluation outputs.\nStep 1: Define the task contract\nThe DSPy signature operationalises the task contract. It states what information the model\nreceives and what fields it must return. In different evidence-synthesis workflows, this contract may\ndescribe a screening decision (i.e., include or exclude), an extraction schema, a coding rubric,\na risk-of-bias judgement, or a tool-selection policy. It also contains the starting prompt harness,\nwhich is a concise but domain-rich description of the task, scope, reasoning or extraction procedure,\nand guidance for satisfying the fixed output contract. This context engineering step matters most\nfor smaller student models. A thin instruction gives GEPA little material to vary so it can propose\na meaningful alternative prompt, while a richer harness gives the reflection model more structure\nto inspect and work with when examples fail. Useful context includes task scope, near-miss cases,\nexpected evidence use,"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p6_c4",
+   "page": 6,
+   "text": "prompt, while a richer harness gives the reflection model more structure\nto inspect and work with when examples fail. Useful context includes task scope, near-miss cases,\nexpected evidence use, and the required form of the output.\nListing 1 mirrors the Colab notebook and gives the screening instantiation used in the worked\nexample. The same pattern can be rewritten for other tasks. For data extraction, the input fields\nmight include the full text and extraction schema, while the output fields might include structured\nstudy characteristics, effect sizes, populations, interventions, comparators, outcomes, and evidence\nspans. For tool selection, the input fields might include the task request and available tools, while\nthe output fields might include the selected tool, arguments, and confidence or fallback policy. In\nthe screening instantiation, the inclusion and exclusion criteria are supplied through the criteria\n2API credentials must be supplied through environment configuration as no key is stored in the notebook or\nmanuscript code.\n6"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p7_c1",
+   "page": 7,
+   "text": "input rather than being embedded as mutable prompt text.\nThis separation is deliberate.\nThe\ncriteria represent the scientific decision rule agreed for the review; GEPA should not rewrite/mutate\nthem.\nGEPA is allowed to revise the prompt harness around those criteria so that the student\nmodel applies them more reliably. Once defined, the criteria are treated as fixed protocol data, being\ndocumented and held constant for a calibration run.\nFor readability, STARTING_PROMPT is shown as the conceptual prompt harness; in the DSPy\nimplementation below, the same text is embedded in the AbstractScreening signature docstring.\nIn the validation experiment as well as in the Colab notebook, the review criteria were extracted\nfrom the full text of the systematic review [17] (referred to as Study 41), which is the secondary\nstudy identified as reference [41] in the SESR-Eval [18] dataset; the frozen criteria block used in the\nvalidation comparison is reported in the Appendix Listing 6.\nListing 1: DSPy task contract for title and abstract screening.\nimport os\nimport dspy\nSTUDENT_MODEL = \"openai/gpt-4.1-mini\"\n# Replace with the model to calibrate.\nREFLECTION_MODEL = \"openai/gpt-5-mini\"\n# Use a"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p7_c2",
+   "page": 7,
+   "text": "DSPy task contract for title and abstract screening.\nimport os\nimport dspy\nSTUDENT_MODEL = \"openai/gpt-4.1-mini\"\n# Replace with the model to calibrate.\nREFLECTION_MODEL = \"openai/gpt-5-mini\"\n# Use a stronger model for reflection.\nSEED = 10\n# Any fixed integer is acceptable; report it for reproducibility.\napi_key = os.getenv(\"OPENAI_API_KEY\")\nstudent_lm = dspy.LM(STUDENT_MODEL, temperature=0.0, api_key=api_key)\nreflection_lm = dspy.LM(\nREFLECTION_MODEL, temperature=1.0, max_tokens=16000, api_key=api_key\n)\ndspy.configure(lm=student_lm,\nadapter=dspy.ChatAdapter(use_json_adapter_fallback=False))\n# Documentation-only copy of the starting harness.\n# The same text is embedded in the Signature docstring below.\nSTARTING_PROMPT = \"\"\"\nScreen titles and abstracts for a systematic review of machine-learning-based\nsoftware defect prediction.\nContext:\n- The review focuses on primary empirical studies in software engineering.\n- Relevant studies predict defects, bugs, faults, or fault-proneness in software\nartefacts.\n- Relevant studies use machine learning and report an evaluation or comparison.\n- Exclude reviews, surveys, bug triage, issue severity, duplicate-report detection,\nand studies that do"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p7_c3",
+   "page": 7,
+   "text": "artefacts.\n- Relevant studies use machine learning and report an evaluation or comparison.\n- Exclude reviews, surveys, bug triage, issue severity, duplicate-report detection,\nand studies that do not predict defective software artefacts.\nOutput:\n- checks: brief fragments that connect the decision to the criteria.\n- label: exactly one token, include or exclude.\n\"\"\"\nclass AbstractScreening(dspy.Signature):\n\"\"\"\nScreen titles and abstracts for a systematic review of machine-learning-based\nsoftware defect prediction.\nContext:\n- The review focuses on primary empirical studies in software engineering.\n7"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p8_c1",
+   "page": 8,
+   "text": "- Relevant studies predict defects, bugs, faults, or fault-proneness in software\nartefacts.\n- Relevant studies use machine learning and report an evaluation or comparison.\n- Exclude reviews, surveys, bug triage, issue severity, duplicate-report\ndetection,\nand studies that do not predict defective software artefacts.\nOutput:\n- checks: brief fragments that connect the decision to the criteria.\n- label: exactly one token, include or exclude.\n\"\"\"\ncriteria: str = dspy.InputField(desc=\"Inclusion and exclusion criteria.\")\ntitle: str = dspy.InputField(desc=\"Paper title.\")\nabstract: str = dspy.InputField(desc=\"Paper abstract.\")\nchecks: str = dspy.OutputField(desc=\"Short fragments supporting the decision.\")\nlabel: str = dspy.OutputField(desc=\"Exactly one token: include or exclude.\")\nclass Screener(dspy.Module):\ndef __init__(self):\nsuper().__init__()\nself.classify = dspy.Predict(AbstractScreening)\ndef forward(self, criteria: str, title: str, abstract: str):\nreturn self.classify(criteria=criteria, title=title, abstract=abstract)\nStep 2: Codify the standard\nSimilar to machine learning, GEPA optimises against examples and a metric, not against a vague\ninstruction. The example dataset is split"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p8_c2",
+   "page": 8,
+   "text": "title=title, abstract=abstract)\nStep 2: Codify the standard\nSimilar to machine learning, GEPA optimises against examples and a metric, not against a vague\ninstruction. The example dataset is split into training examples that teach the task, the validation\nexamples which guide GEPA in optimising the prompts, and the held-out test examples provide a\nsmall feasibility check.\nThe metric is task-specific because different evidence-synthesis tasks have different error costs. In\nthe general protocol, the metric defines what the optimiser should reward, what output formats are\nvalid, and how competing errors should be balanced. For data extraction, this may mean combining\nexact field matches, partial credit for near-correct values, evidence-span checks, and penalties for\nunsupported or hallucinated values. For risk-of-bias support, it may mean weighting disagreements so\nthat adjacent-category errors are treated as less serious than errors at opposite ends of the rating scale.\nFor tool-selection tasks, it may mean rewarding the correct tool and valid arguments while penalising\nunsafe or unnecessary tool calls. For screening, the main trade-off is between false exclusions and false"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p8_c3",
+   "page": 8,
+   "text": "tasks, it may mean rewarding the correct tool and valid arguments while penalising\nunsafe or unnecessary tool calls. For screening, the main trade-off is between false exclusions and false\ninclusions. Listing 2 therefore shows one concrete metric for binary screening, where false exclusions\nare penalised more strongly than false inclusions.\nThe metric is the most important site of methodological control. A standard accuracy metric\ntells the optimiser whether an output was correct, but it does not explain how the output failed or\nhow severe that failure is in the downstream workflow. GEPA can use richer feedback: the metric\ncan return both a numeric score and a short natural-language diagnosis. This feedback gives the\nreflection model information it can convert into better instructions/prompts. For abstract screening,\nthe metric should encode the review policy. Given that missing a relevant study is usually worse than\nsending an irrelevant study to full-text review, the example metric here (Listing 2 shows the compact\nmetric used in the Colab notebook)3 penalises false exclusions more strongly than false inclusions.\n3The validation experiments used the expanded version in Appendix"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p8_c4",
+   "page": 8,
+   "text": "here (Listing 2 shows the compact\nmetric used in the Colab notebook)3 penalises false exclusions more strongly than false inclusions.\n3The validation experiments used the expanded version in Appendix B. It adds case-grounded feedback and stricter\n8"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p9_c1",
+   "page": 9,
+   "text": "It also checks for a minimal justification in the checks field. This constraint discourages prompt\nrevisions that obtain the right label while dropping the audit trail needed for reproducibility.\nMetric design is highly tunable. Researchers can adjust the false-positive score, add penalties for\nmalformed output, require criterion-level justifications, or add task-specific constraints such as “route\nuncertain records to human review”. The metric should be fixed before running the final optimisation\nand reported with the compiled artefact.\nListing 2: Compact GEPA metric used in the Colab notebook.\ndef has_supporting_checks(pred):\nchecks = str(getattr(pred, \"checks\", \"\")).strip()\nreturn bool(checks) and len(checks.split()) >= 3\ndef screening_metric(gold, pred, trace=None, pred_name=None, pred_trace=None):\nexpected = gold.label\nobserved = str(getattr(pred, \"label\", \"\")).strip().lower()\nif observed not in {\"include\", \"exclude\"}:\nscore = 0.0\nfeedback = \"The label must be exactly ’include’ or ’exclude’.\"\nelif observed == expected:\nscore = 1.0\nfeedback = \"Correct screening decision.\"\nelif expected == \"include\" and observed == \"exclude\":\nscore = 0.0\nfeedback = (\n\"False negative. Missing"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p9_c2",
+   "page": 9,
+   "text": "or ’exclude’.\"\nelif observed == expected:\nscore = 1.0\nfeedback = \"Correct screening decision.\"\nelif expected == \"include\" and observed == \"exclude\":\nscore = 0.0\nfeedback = (\n\"False negative. Missing relevant studies \"\n\"is costly in screening.\"\n)\nelse:\nscore = 0.4\nfeedback = (\n\"False positive. Include only when criteria \"\n\"are clearly satisfied.\"\n)\nif not has_supporting_checks(pred):\nscore = min(score, 0.6)\nfeedback = (\nfeedback\n+ \" Also provide brief checks that justify the label.\"\n)\nif pred_name is not None:\nreturn dspy.Prediction(score=score, feedback=feedback)\nreturn score\nDesigning the GEPA metric as a task-specific utility function\nThe compact metric in Listing 2 implements the error-cost policy for binary screening. A plain\nexact-match objective would assign full credit to a correct label and zero to any error. That is too\ncoarse for systematic review workflows, because a false negative removes a potentially relevant study\nfield-format instructions while preserving the same label-level asymmetric scoring. The supplementary validation code\nalso includes the helper utilities normalize_label() and _checks_format_ok(). Listing 10 shows them because\nlabel normalisation and trace"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p9_c3",
+   "page": 9,
+   "text": "asymmetric scoring. The supplementary validation code\nalso includes the helper utilities normalize_label() and _checks_format_ok(). Listing 10 shows them because\nlabel normalisation and trace validation are part of the executable evaluation contract.\n9"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p10_c1",
+   "page": 10,
+   "text": "from the pipeline, whereas a false positive mainly increases downstream screening workload. This\nasymmetry is well established in screening research [19]. Table 3 shows the scoring used in this\nexample and how it can be adjusted for similar use cases.\nGold label\nPredicted label\nError type\nScreening meaning\nScore\ninclude\ninclude\ncorrect\nrelevant study retained\n1.0\nexclude\nexclude\ncorrect\nirrelevant study removed\n1.0\ninclude\nexclude\nfalse negative\nrelevant study missed\n0.0\nexclude\ninclude\nfalse positive\nextra full-text workload\n0.4\nTable 3: Asymmetric scoring for binary screening. The false-positive value (0.4) is a policy choice: it treats a false\ninclusion as clearly inferior to a correct decision while distinguishing it from a false exclusion, which is the more severe\nscreening failure.\nThe false-positive score of 0.4 is a policy parameter rather than a universal screening constant.\nIncreasing this value makes the optimiser more tolerant of over-inclusion and can shift the calibrated\nprogram towards higher recall and higher downstream full-text screening workload. Decreasing it\nincreases pressure for precision, but may raise the risk of false exclusions.\nUsers applying this"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p10_c2",
+   "page": 10,
+   "text": "program towards higher recall and higher downstream full-text screening workload. Decreasing it\nincreases pressure for precision, but may raise the risk of false exclusions.\nUsers applying this\nprotocol to a new review should therefore report the chosen value and, where possible, perform a\nsensitivity analysis over plausible values such as 0.2, 0.4, and 0.6. The present validation uses 0.4 as\na moderate partial-credit setting to demonstrate the protocol, not as a recommended default for all\nevidence-synthesis tasks.\nThe GEPA metric should be reported as a calibration-time utility function rather than as the sole\nperformance measure. During optimisation, it combines label correctness, asymmetric error costs,\noutput-validity checks, and textual feedback for reflection. After optimisation, performance should\nstill be reported on held-out records using conventional measures such as accuracy, precision, recall,\nand F1. Appendix B provides the component-level details, shows how label normalisation and trace\nvalidation were implemented, and discusses how this design extends to multiclass screening.\nWhy GEPA rather than few-shot optimisation?\nApproach\nWhat it optimises\nReflection\nmodel?"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p10_c3",
+   "page": 10,
+   "text": "and trace\nvalidation were implemented, and discusses how this design extends to multiclass screening.\nWhy GEPA rather than few-shot optimisation?\nApproach\nWhat it optimises\nReflection\nmodel?\nBest suited for\nLimitation\nManual prompt revision\nHuman-written instructions\nNo\nSmall exploratory tasks\nPoor audit trail; low\nreproducibility\nFew-shot\nbootstrapping\nDemonstration selection\nNo\nor\noptional\nTasks where examples drive\nbehaviour\nLess direct instruction repair\nGEPA\nInstruction harness using metric feedback\nYes\nBoundary cases,\nstructured\noutputs, task-policy feedback\nHigher\ncalibration\ncost\nManual\nreflection\nloop\nHuman- or LLM-generated revisions\nOptional\nFramework-agnostic settings\nLess\nstandardised\npackaging\nFine-tuning\nModel weights\nNo at inference\nLarge labelled datasets\nHigher\nsetup\ncost;\nless prompt-level inspectability\nTable 4: Comparison of prompt-calibration and model-adaptation strategies relevant to structured evidence-synthesis\nworkflows.\nGEPA is used here because the protocol requires feedback-rich revision of the prompt harness,\nnot only selection or bootstrapping of few-shot examples. Few-shot optimisers are useful when the\nmain task is to choose demonstrations for"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p10_c4",
+   "page": 10,
+   "text": "requires feedback-rich revision of the prompt harness,\nnot only selection or bootstrapping of few-shot examples. Few-shot optimisers are useful when the\nmain task is to choose demonstrations for inclusion in a prompt.\nStructured evidence-synthesis\ntasks often fail at boundary conditions where a model may include a near-miss study, over-apply an\n10"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p11_c1",
+   "page": 11,
+   "text": "exclusion criterion, omit an evidence field, or choose the wrong workflow tool. These failures are\nbetter addressed by revising task instructions from case-grounded metric feedback while preserving\nthe fixed task contract and machine-readable interface.\nTable 4 situates GEPA among common\nalternatives.\nStep 3: Compile the program with GEPA\nWith the task contract, examples, and metric fixed, the next step is to compile the unoptimised\nScreener. Listing 3 shows the minimal GEPA compilation call used in the Colab tutorial.\nListing 3: Bounded GEPA compilation step.\nstudent = Screener()\ngepa = dspy.GEPA(\nmetric=screening_metric,\nreflection_lm=reflection_lm,\nmax_full_evals=2,\nreflection_minibatch_size=2,\nseed=SEED,\n)\ncompiled_screener = gepa.compile(student, trainset=trainset, valset=valset)\nThe main budget parameter is max_full_evals. It controls how many candidate program\nvariants GEPA can evaluate before returning a compiled or optimised program. Larger values give\nGEPA more opportunity to improve the prompt harness, but it increases the cost and may overspecialise when the validation set is small. The example uses max_full_evals=2 only to keep the\nColab run inexpensive. The"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p11_c2",
+   "page": 11,
+   "text": "to improve the prompt harness, but it increases the cost and may overspecialise when the validation set is small. The example uses max_full_evals=2 only to keep the\nColab run inexpensive. The validation experiment varies this parameter, reported as max_eval, to\nexamine the cost-performance trade-off.\nreflection_minibatch_size controls how many examples are shown to the reflection model\nwhen proposing revised instructions. Small minibatches are cheap and expose local errors; larger\nminibatches can reveal broader failure patterns, but may mix unrelated cases and increase cost. For\nsmall tutorials, values of 2 or 3 are sufficient. For real evidence-synthesis tasks, this value should be\nincreased only when enough diverse labelled or reference examples are available.\nParameter\nControls\nIncrease when\nRisk\nmax_full_evals\nSearch budget\nHeld-out\nperformance\nremains below the target operating point and\nvalidation examples are\nsufficiently diverse\nOver-specialisation\nreflection_minibatch_size\nExamples shown to reflector\nFailures are diverse\nDiluted feedback\nnum_threads\nParallel evaluation\nRuntime too long\nRate limits\ntemperature (reflection)\nRevision diversity\nRevisions too similar\nUnstable"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p11_c3",
+   "page": 11,
+   "text": "shown to reflector\nFailures are diverse\nDiluted feedback\nnum_threads\nParallel evaluation\nRuntime too long\nRate limits\ntemperature (reflection)\nRevision diversity\nRevisions too similar\nUnstable runs\nTable 5: Key GEPA parameters and practical guidance for tuning.\nOther parameters are implementation controls. num_threads affects evaluation speed, track_stats\nsupports debugging and trace reporting, and skip_perfect_score controls whether alreadycorrect examples are omitted from reflection. Table 5 summarises the parameters readers need to\nunderstand first.\nAfter compilation, the revised instruction text can be inspected and saved as\npart of the compiled DSPy artefact rather than treated as an undocumented manual prompt edit.\nAppendix A shows the relationship between the starting harness and a compiled harness.\n11"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p12_c1",
+   "page": 12,
+   "text": "Cost and budget reporting\nmax_full_evals should be reported as both an optimisation hyperparameter and a cost driver.\nGEPA cost depends on student-model evaluations, reflection-model calls, validation-set size, minibatch size, maximum reflection tokens, provider pricing, and retry behaviour. When available, users\nshould record model calls, input tokens, output tokens, wall-clock time, and provider cost. When\ntoken accounting is unavailable, they should at least report the GEPA budget, validation-set size,\nreflection minibatch size, model identifiers, temperatures, seeds, and execution date. Calibration cost\nis usually one-off or occasional, so it should be interpreted relative to the number of future records,\nreviews, or reruns over which the compiled artefact will be reused. Table 6 reports the budget and\nmodel settings available for this study.\nSetting\nStudent model\nReflection model\nmax_full_evals Seeds\nTutorial smoke test\nopenai/gpt-4.1-mini\nopenai/gpt-5-mini\n1\n10\nValidation ablation\nopenrouter/qwen/\nqwen-2.5-7b-instruct\nopenai/ gpt-5-mini\n2, 6, 12, 24\n10, 15, 25,\n35, 42\nTable 6:\nBudget and model settings for Colab notebook verification and archived validation.\nThe tutorial"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p12_c2",
+   "page": 12,
+   "text": "openrouter/qwen/\nqwen-2.5-7b-instruct\nopenai/ gpt-5-mini\n2, 6, 12, 24\n10, 15, 25,\n35, 42\nTable 6:\nBudget and model settings for Colab notebook verification and archived validation.\nThe tutorial\nused reflection_minibatch_size=2; the validation ablation used reflection_minibatch_size=8.\nExact token-level cost was not available from the local execution logs.\nFuture deployments should log model\ncalls, input tokens, output tokens, wall-clock time, provider cost, model identifiers, temperatures, execution date,\nreflection_minibatch_size, and max_full_evals.\nStep 4: Package and reuse the artefact\nNext, the compiled program should be saved and reloaded before being used in a study, turning\nthe prompt optimisation into a reusable research artefact. Listing 4 evaluates the compiled program,\nsaves it, reloads it into a fresh Screener, and verifies that the reloaded artefact produces the same\nheld-out predictions.\nListing 4: Evaluation and artefact round trip.\ndef evaluate(program, examples):\ncorrect = 0\npredictions = []\nfor example in examples:\npred = program(\ncriteria=example.criteria,\ntitle=example.title,\nabstract=example.abstract,\n)\nobserved = str(getattr(pred, \"label\","
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p12_c3",
+   "page": 12,
+   "text": "examples):\ncorrect = 0\npredictions = []\nfor example in examples:\npred = program(\ncriteria=example.criteria,\ntitle=example.title,\nabstract=example.abstract,\n)\nobserved = str(getattr(pred, \"label\", \"\")).strip().lower()\nexpected = str(example.label).strip().lower()\npredictions.append((expected, observed))\ncorrect += int(observed == expected)\nreturn {\n\"accuracy\": correct / len(examples),\n\"n\": len(examples),\n\"predictions\": predictions,\n}\ntest_metrics = evaluate(compiled_screener, testset)\ncompiled_screener.save(\"compiled_abstract_screener.json\")\nreloaded_screener = Screener()\nreloaded_screener.load(\"compiled_abstract_screener.json\")\n12"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p13_c1",
+   "page": 13,
+   "text": "reload_metrics = evaluate(reloaded_screener, testset)\nassert reload_metrics[\"predictions\"] == test_metrics[\"predictions\"]\nThe Colab notebook uses this round-trip check only to verify artefact reuse4.\nIn the JSON\nstate-only save used here, DSPy preserves the compiled program state needed to reload the same\nprogram architecture, including the compiled signature or instruction state and any stored predictor\nstate such as demonstrations or model assignments. It does not by itself preserve the full research\nprovenance needed to interpret or reproduce the calibration. That provenance must be recorded\nseparately, including the dataset version, split identifiers, metric source, optimisation configuration,\nmodel and provider details, package versions, seeds, adapter settings, and evaluation or prediction\nlogs. DSPy also supports whole-program saving with save_program=True, but that option uses\ncloudpickle and still does not replace the need to document the dataset, metric, splits, providerside model version, optimisation configuration, and evaluation logs.\nTransparency and artefact-level inspectability\nA central aim of the protocol is to make prompt calibration inspectable rather than"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p13_c2",
+   "page": 13,
+   "text": "model version, optimisation configuration, and evaluation logs.\nTransparency and artefact-level inspectability\nA central aim of the protocol is to make prompt calibration inspectable rather than ephemeral. In\nordinary prompt engineering, the final prompt is often the only visible object, while failed variants,\nmetric assumptions, data splits, and output-normalisation decisions are often lost. In this workflow,\nthe compiled LLM workflow is treated as a research artefact with provenance. The saved artefact\nshould therefore be accompanied by the fixed task specification, starting signature, optimisation\nmetric, GEPA configuration, random seeds, split identifiers, compiled prompt harness, software environment, and held-out prediction or output logs. In this workflow, the compiled LLM workflow is\ntreated as a research artefact with provenance. This packaging supports two forms of reproducibility. The first is execution-level reuse: the saved program can be reloaded and evaluated again under\nrecorded conditions.\nThe second is methodological transparency: the task specification, metric,\nprompt harness, traces, and evaluation outputs can be inspected to determine why a calibration was"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p13_c3",
+   "page": 13,
+   "text": "under\nrecorded conditions.\nThe second is methodological transparency: the task specification, metric,\nprompt harness, traces, and evaluation outputs can be inspected to determine why a calibration was\nselected and what trade-offs it encodes. The artefact should therefore be treated as an inspectable\nresearch object, not as a guarantee of provider-independent deterministic reproduction.\nTuning and troubleshooting guidance\nUsers should tune the method in the following order: (1) check data and label consistency; (2)\nrefine the metric so that feedback identifies specific failure types; (3) increase max_full_evals;\nand (4) adjust reflection_minibatch_size. Table 7 lists common failure modes and first\nremedies.\nMinimal replication recipe\nThe following steps summarise the complete protocol. Each step corresponds to a section above\nand a code in the companion notebook.\n1. Install the package versions recorded in Appendix D.\n2. Load source records or documents for the target evidence-synthesis task.\n3. Freeze the task contract, such as criteria, rubric, extraction schema, coding manual, or tool\npolicy.\n4The larger validation at the end of the notebook below evaluates the protocol on"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p13_c4",
+   "page": 13,
+   "text": "task.\n3. Freeze the task contract, such as criteria, rubric, extraction schema, coding manual, or tool\npolicy.\n4The larger validation at the end of the notebook below evaluates the protocol on SESR-Eval records\n13"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p14_c1",
+   "page": 14,
+   "text": "Symptom\nLikely cause\nFirst remedy\nInvalid outputs\nWeak output contract\nTighten label field description; add metric penalty for\nout-of-schema labels\nOver-selective decisions\nRecall\npressure\ntoo\nweak;\nfalse\nnegatives\nunderpenalised\nStrengthen false-negative feedback;\nadd examples\nwhere relevant studies are easy to miss\nOver-permissive decisions\nFalse-positive score too generous; inclusion evidence too\nweak\nLower false-positive partial credit; require explicit evidence for inclusion criteria\nValidation\nrises,\ntest\ndrops\nOver-specialisation\nReduce budget; increase validation diversity; simplify\nthe metric\nTrace\nmissing\nor\nmalformed\nOutput trace not rewarded\nCap score for missing checks; require criterion-level\nfragments\nTable 7: Common failure modes and recommended first remedies.\n4. Define a DSPy Signature that declares inputs, outputs, and the starting prompt harness.\n5. Build dspy.Example objects with explicit train/validation/test splits.\n6. Define the task metric with output-validity checks, feedback, and task-specific error weighting.\n7. Run GEPA with a fixed seed and bounded budget, such as max_full_evals.\n8. Save the compiled program to a JSON artefact.\n9. Reload the artefact"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p14_c2",
+   "page": 14,
+   "text": "checks, feedback, and task-specific error weighting.\n7. Run GEPA with a fixed seed and bounded budget, such as max_full_evals.\n8. Save the compiled program to a JSON artefact.\n9. Reload the artefact into a fresh program object and verify matching outputs.\n10. Report task-specific held-out metrics, such as accuracy, precision, recall, F1, extraction\nagreement, field-level match, weighted agreement, or routing accuracy.\nMethod validation\nThis validation checks whether the protocol can expose and document calibration trade-offs under a\nfixed structured task contract. It is not intended to rank models or to make a general performance\nclaim about GEPA. It demonstrates three points: a smaller student model can be calibrated under a\ntransparent protocol, optimisation budget can change the resulting operating point, and the compiled\nartefact can be evaluated and reused with documented provenance.5\nThe validation was instantiated as a binary title-and-abstract screening task using Qwen-2.5-7Binstruct as the student model and SESR-Eval Study 41 as the benchmark case. Study 41 contains\n1,194 candidate records for the secondary review Machine learning in software defect prediction: A"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p14_c3",
+   "page": 14,
+   "text": "as the student model and SESR-Eval Study 41 as the benchmark case. Study 41 contains\n1,194 candidate records for the secondary review Machine learning in software defect prediction: A\nbusiness-driven systematic mapping study [17], and is one of 24 software-engineering secondary-study\nscreening datasets in SESR-Eval [18]. The inclusion and exclusion criteria were extracted from the\nStudy 41 source article, reviewed as a compact task contract, and frozen before calibration. Across\nfive random seeds, stratified train/validation/test splits were generated under the same fixed criteria.\nThe principal comparator was the structured unoptimised DSPy program, evaluated before calling gepa.compile(). It used the same criteria, title, and abstract inputs, the same\n5The validation was conducted in a separate experimental workflow rather than in the companion Colab tutorial\nnotebook. The Colab notebook is an executable teaching artefact that demonstrates the code path, compilation,\nsaving, reloading, and adaptation steps on a small example.\n14"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p15_c1",
+   "page": 15,
+   "text": "checks and label outputs, and the same student model, temperature, adapter configuration,\nlabel normalisation, held-out examples, and confusion-matrix evaluation as the GEPA conditions.\nThe paired deltas therefore compare the same structured output contract before and after GEPA\nprompt-harness calibration. Where a label-only direct prompt is reported, it is only a practical reference for ordinary direct prompting, not the principal comparator for attributing the effect of GEPA\ncalibration.\nAppendix A.2 defines the structured baseline. The validation varied only the GEPA\nbudget. The tested max_full_evals values were 2, 6, 12, and 24, reported as max_eval. The\nmetric, model, data splits, and evaluation procedure were held constant. Performance was computed\non the held-out test set using confusion-matrix counts and is reported as mean ± sample standard\ndeviation across five runs.\nThe observed shifts were modest and should be read as operating-point changes in this validation\nsetting, not as evidence of universal optimisation advantage. The structured baseline achieved accuracy 0.788 ± 0.004 and F1 = 0.840 ± 0.004, with recall 0.896 ± 0.006 and precision 0.791 ± 0.003 for\nthe include"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p15_c2",
+   "page": 15,
+   "text": "as evidence of universal optimisation advantage. The structured baseline achieved accuracy 0.788 ± 0.004 and F1 = 0.840 ± 0.004, with recall 0.896 ± 0.006 and precision 0.791 ± 0.003 for\nthe include class. A low GEPA budget (max_eval = 2) produced the highest recall (0.938±0.033)\nbut increased the predicted include rate, implying more downstream full-text screening work. The\nmost balanced setting in this validation was max_eval = 12, with accuracy 0.797 ± 0.023, F1 =\n0.848 ± 0.011, and label-level utility 0.855 ± 0.007. Relative to the structured baseline, this setting\nhad ∆F1 = +0.008 ± 0.008 and ∆utility = +0.008 ± 0.005, while changing the predicted include rate\nby only +0.002±0.061. A larger budget (max_eval = 24) produced lower mean F1 and utility in this\nvalidation setting, illustrating why optimisation budget should be treated as a hyperparameter rather\nthan a simple benefit lever. Figure 2 visualises these operating-point shifts; full replication settings,\nmetric tables, paired deltas, and SESR-Eval contextual comparisons are provided in Appendix C.\nLimitations\nThis method calibrates a model to apply a documented task contract; it does not replace expert\njudgement in"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p15_c3",
+   "page": 15,
+   "text": "paired deltas, and SESR-Eval contextual comparisons are provided in Appendix C.\nLimitations\nThis method calibrates a model to apply a documented task contract; it does not replace expert\njudgement in evidence synthesis. Borderline eligibility decisions, ambiguous extracted fields, risk-ofbias judgements, and final synthesis decisions should remain under human oversight. Performance\ndepends on the quality and representativeness of the labelled or reference examples, the stability of\nthe selected model provider, and the fidelity of the metric to the task contract. Very small validation\nsets can also lead GEPA to over-specialise to local examples, especially when max_full_evals is\nincreased without more diverse validation data.\nThe validation is limited to one binary screening task, one benchmark case, one student model, and\na small number of repeated runs. The paired GEPA deltas should therefore be read as operating-point\nchanges under a fixed structured contract, not as a general claim that GEPA will improve all evidencesynthesis tasks or all models. Other tasks, including extraction, coding, risk-of-bias support, and tool\nrouting, require task-specific signatures, reference"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p15_c4",
+   "page": 15,
+   "text": "claim that GEPA will improve all evidencesynthesis tasks or all models. Other tasks, including extraction, coding, risk-of-bias support, and tool\nrouting, require task-specific signatures, reference examples, and metrics, although the calibrationand-packaging protocol remains the same. Exact numerical reproduction is not guaranteed across\nmodel-provider changes. API adapters, serving infrastructure, tokenizer behaviour, and provider-side\nmodel versions can change, so reproduction may require pinning the model identifier, SDK, adapter\nversions, package versions, and execution environment recorded in Appendix D.\nEthics statements\nThis study used public benchmark records and published secondary-study materials, and did not\ninvolve human participants, private personal data, intervention, or recruitment. Institutional ethics\napproval was therefore not required.\n15"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p16_c1",
+   "page": 16,
+   "text": "BL 2\n6\n12\n24\n0.75\n0.8\n0.85\n0.9\n0.95\nmax_eval\nMean score\nAccuracy\nRecall\nPrecision\nF1\nFigure 2: Budget-sensitive operating points across GEPA settings. BL denotes the structured unoptimised baseline.\nPoints show means across five runs; error bars show ±1 sample standard deviation. The figure shows that increasing\nGEPA budget did not produce a monotone improvement curve in this validation: low budget favoured recall, a\nmoderate budget gave the best balanced mean performance, and the largest tested budget reduced mean F1 and\nutility.\nFunding:\nThis research did not receive any specific grant from funding agencies in the public, commercial, or\nnot-for-profit sectors.\nDeclaration of interests\nThe author declares that he has no known competing financial interests or personal relationships\nthat could have appeared to influence the work reported in this paper.\nDeclaration of generative AI and AI-assisted technologies in the manuscript preparation\nprocess\nDuring the preparation of this work, the author used generative AI and AI-assisted tools to\nsupport manuscript drafting, language refinement, brainstorming, code checking, and verification of\nselected implementation details. After using"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p16_c2",
+   "page": 16,
+   "text": "the author used generative AI and AI-assisted tools to\nsupport manuscript drafting, language refinement, brainstorming, code checking, and verification of\nselected implementation details. After using these tools, the author reviewed, edited, and verified\nthe content as needed and takes full responsibility for the final manuscript, code, analyses, and\nconclusions.\n16"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p17_c1",
+   "page": 17,
+   "text": "Supplementary material and/or additional information\nSupplementary materials include the executable companion Colab tutorial notebook, the local smoketest script, the saved compiled-program artefact generated by the tutorial, and the small example\ndataset embedded in the notebook. The larger validation uses SESR-Eval Study 41 records and the\nStudy 41 source article cited above. Table 8 provides a compact checklist of reported reproducibility\nitems and their locations. The Colab notebook was executed end-to-end in a clean runtime on 24\nApril 2026 using the package versions reported in Appendix Appendix D. The saved artefact reloaded\nsuccessfully and produced the same smoke-test predictions and metrics as the compiled programme\nin the Colab run.\nItem\nReported?\nLocation\nModel identifiers (student + reflection)\nYes\nListing 1, Appendix D\nRandom seeds\nYes\nTable C.11\nTrain/validation/test split sizes\nYes\nTable C.11\nStructured baseline, direct-prompt reference, and frozen criteria\nYes\nAppendix A.1, Appendix A.2\nMetric source code\nYes\nListing 2, Appendix B\nExecution environment\nYes\nAppendix D\nSaved compiled artefact\nYes\nSupplementary material\nEvaluation metrics reported\nYes\nTables"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p17_c2",
+   "page": 17,
+   "text": "Appendix A.1, Appendix A.2\nMetric source code\nYes\nListing 2, Appendix B\nExecution environment\nYes\nAppendix D\nSaved compiled artefact\nYes\nSupplementary material\nEvaluation metrics reported\nYes\nTables C.12–C.13\nTable 8: Reproducibility checklist for the validation experiment.\nReferences\n[1] O. Khattab, A. Singhvi, P. Maheshwari, et al., DSPy: Compiling declarative language model\ncalls into self-improving pipelines, arXiv preprint arXiv:2310.03714 (2023).\n[2] K. Opsahl-Ong, M. J. Ryan, J. Purtell, D. Broman, C. Potts, M. Zaharia, O. Khattab, Optimizing instructions and demonstrations for multi-stage language model programs, in: 2024 Conference on Empirical Methods in Natural Language Processing, EMNLP 2024, Hybrid, Miami,\nUnited States of America, Nov 12 2024-Nov 16 2024, Association for Computational Linguistics\n(ACL), 2024, pp. 9340–9366.\n[3] L. A. Agrawal, S. Tan, D. Soylu, N. Ziems, R. Khare, K. Opsahl-Ong, A. Singhvi, H. Shandilya,\nM. J. Ryan, M. Jiang, C. Potts, K. Sen, A. G. Dimakis, I. Stoica, D. Klein, M. Zaharia,\nO. Khattab, Gepa: Reflective prompt evolution can outperform reinforcement learning (2025).\narXiv:2507.19457.\nURL https://arxiv.org/abs/2507.19457\n[4] J.-L."
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p17_c3",
+   "page": 17,
+   "text": "Dimakis, I. Stoica, D. Klein, M. Zaharia,\nO. Khattab, Gepa: Reflective prompt evolution can outperform reinforcement learning (2025).\narXiv:2507.19457.\nURL https://arxiv.org/abs/2507.19457\n[4] J.-L. Lieberum, M. Töws, M. Metzendorf, F. Heilmeyer, W. Siemens, C. Haverkamp,\nD. Böhringer, J. Meerpohl, A. Eisele-Metzger, Large language models for conducting systematic\nreviews: on the rise, but not yet ready for use—a scoping review, Journal of Clinical Epidemiology 181 (2025) 111746. doi:10.1016/j.jclinepi.2025.111746.\n[5] M. Sujau, M. Wada, E. Vallée, N. Hillis, T. Sušnjak, Accelerating disease model parameter extraction: An llm-based ranking approach to select initial studies for literature review automation,\nMachine Learning and Knowledge Extraction 7 (2) (2025). doi:10.3390/make7020028.\nURL https://www.mdpi.com/2504-4990/7/2/28\n17"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p18_c1",
+   "page": 18,
+   "text": "[6] L. Li, A. Mathrani, T. Susnjak, What level of automation is “good enough”? a benchmark of\nlarge language models for meta-analysis data extraction, Research Synthesis Methods (2026)\n1–22doi:10.1017/rsm.2025.10066.\n[7] L. Li, A. Mathrani, T. Susnjak, Automated risk-of-bias assessment of randomized controlled\ntrials: A first look at a gepa-trained programmatic prompting framework (2025).\narXiv:\n2512.01452.\nURL https://arxiv.org/abs/2512.01452\n[8] T. Susnjak, P. Hwang, N. Reyes, A. L. C. Barczak, T. McIntosh, S. Ranathunga, Automating\nresearch synthesis with domain-specific large language model fine-tuning, ACM Trans. Knowl.\nDiscov. Data 19 (3) (Mar. 2025). doi:10.1145/3715964.\nURL https://doi.org/10.1145/3715964\n[9] J. Zhuo, S. Zhang, X. Fang, H. Duan, D. Lin, K. Chen, ProSA: Assessing and understanding\nthe prompt sensitivity of LLMs, in: Findings of the Association for Computational Linguistics:\nEMNLP 2024, Association for Computational Linguistics, Miami, Florida, USA, 2024, pp. 1950–\n1976. doi:10.18653/v1/2024.findings-emnlp.108.\nURL https://aclanthology.org/2024.findings-emnlp.108/\n[10] A. Chatterjee, H. S. V. N. S. K. Renduchintala, S. Bhatia, T. Chakraborty, POSIX: A prompt"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p18_c2",
+   "page": 18,
+   "text": "1976. doi:10.18653/v1/2024.findings-emnlp.108.\nURL https://aclanthology.org/2024.findings-emnlp.108/\n[10] A. Chatterjee, H. S. V. N. S. K. Renduchintala, S. Bhatia, T. Chakraborty, POSIX: A prompt\nsensitivity index for large language models, in: Findings of the Association for Computational\nLinguistics: EMNLP 2024, Association for Computational Linguistics, Miami, Florida, USA,\n2024, pp. 14550–14565. doi:10.18653/v1/2024.findings-emnlp.852.\nURL https://aclanthology.org/2024.findings-emnlp.852/\n[11] L. Zhou, W. Schellaert, F. Martínez-Plumed, Y. Moros-Daval, C. Ferri, J. Hernández-Orallo,\nLarger and more instructable language models become less reliable, Nature (634) (2024) 61–68.\ndoi:10.1038/s41586-024-07930-y.\n[12] R. J. Gallo, M. Baiocchi, T. R. Savage, J. H. Chen, Establishing best practices in large language model research: an application to repeat prompting, Journal of the American Medical\nInformatics Association 32 (2) (2025) 386–390. doi:10.1093/jamia/ocae294.\nURL https://doi.org/10.1093/jamia/ocae294\n[13] M. Kearns, Responsible ai in the generative era, accessed: 2025-08-01 (May 2023).\nURL https://www.amazon.science/blog/responsible-ai-in-the-generative-era\n[14] M."
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p18_c3",
+   "page": 18,
+   "text": "[13] M. Kearns, Responsible ai in the generative era, accessed: 2025-08-01 (May 2023).\nURL https://www.amazon.science/blog/responsible-ai-in-the-generative-era\n[14] M. Staudinger, W. Kusa, F. Piroi, A. Lipani, A. Hanbury, A reproducibility and generalizability\nstudy of large language models for query generation, in: Proceedings of the 2024 Annual International ACM SIGIR Conference on Research and Development in Information Retrieval in the\nAsia Pacific Region, 2024, pp. 186–196.\n[15] C. Spiess, M. Vaziri, L. Mandel, M. Hirzel, Autopdl: Automatic prompt optimization for llm\nagents, in: L. Akoglu, C. Doerr, J. N. van Rijn, R. Garnett, J. R. Gardner (Eds.), Proceedings of\nthe Fourth International Conference on Automated Machine Learning, Vol. 293 of Proceedings\nof Machine Learning Research, PMLR, 2025, pp. 13/1–20.\nURL https://proceedings.mlr.press/v293/spiess25a.html\n18"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p19_c1",
+   "page": 19,
+   "text": "[16] Y. Zhao, P. Wang, H. F. Yang, How to auto-optimize prompts for domain tasks? adaptive\nprompting and reasoning through evolutionary domain knowledge adaptation, in: Proceedings\nof the 39th Conference on Neural Information Processing Systems, 2025.\n[17] S. Stradowski, L. Madeyski, Machine learning in software defect prediction: A business-driven\nsystematic mapping study, Information and Software Technology 155 (2023) 107128.\ndoi:\n10.1016/j.infsof.2022.107128.\nURL https://doi.org/10.1016/j.infsof.2022.107128\n[18] A. Huotala, M. Kuutila, M. Mäntylä, SESR-Eval: Dataset for evaluating LLMs in the titleabstract screening of systematic reviews (2025). arXiv:2507.19027.\nURL https://arxiv.org/abs/2507.19027\n[19] S. Matwin, A. Kouznetsov, D. Inkpen, O. Frunza, P. O’Blenis, A new algorithm for reducing\nthe workload of experts in performing systematic reviews, Journal of the American Medical\nInformatics Association 17 (4) (2010) 446–453. doi:10.1136/jamia.2010.004325.\nURL https://doi.org/10.1136/jamia.2010.004325\nAppendix A. Prompt references and prompt harnesses\nThe code listings in the article omit the full embedded example records, but the prompt text\nremains part of the method. The"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p19_c2",
+   "page": 19,
+   "text": "Appendix A. Prompt references and prompt harnesses\nThe code listings in the article omit the full embedded example records, but the prompt text\nremains part of the method. The label-only direct-prompt reference documents an ordinary manualinstruction comparator, while the prompt harness records the part of the DSPy program that GEPA\nmay revise. The principal validation baseline is the structured unoptimised DSPy program described\nin Appendix A.2. The inclusion and exclusion criteria are not part of the mutable harness; they are\nsupplied as fixed inputs through the criteria field. This prevents the optimiser from changing\nthe review protocol while allowing it to change how the student model interprets and applies that\nprotocol.\nThis appendix reports the label-only direct-prompt reference, frozen criteria block, structured\nunoptimised baseline, starting prompt harness, and an excerpt from a compiled harness.\nThese\nmaterials allow readers to inspect what was fixed, what was mutable, and what GEPA changed\nduring calibration. This reporting choice matters because two prompt-based LLM workflows may\nuse the same model and nominally the same task criteria, yet differ materially in task"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p19_c3",
+   "page": 19,
+   "text": "what GEPA changed\nduring calibration. This reporting choice matters because two prompt-based LLM workflows may\nuse the same model and nominally the same task criteria, yet differ materially in task framing, output\ncontract, uncertainty policy, and post-processing.\nAppendix A.1. Label-only direct-prompt reference and frozen criteria\nListing 5 gives the exact label-only direct-prompt reference, and Listing 6 gives the frozen criteria\nblock. The prompt requested only a single screening label and did not require a structured checks\ntrace. It is therefore reported as a practical reference for ordinary direct prompting, not as the\nprincipal comparator for attributing the effect of GEPA calibration. The main validation comparison\nuses the structured unoptimised DSPy baseline described in Appendix A.2.\nListing 5: Label-only direct-prompt reference.\nBASELINE_PROMPT = \"\"\"\nYou are screening research papers by TITLE and ABSTRACT against the\nprovided INCLUSION/EXCLUSION criteria.\nOutput MUST be exactly one label:\n- include : should be included for full-text review\n- exclude : should be excluded\n19"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p20_c1",
+   "page": 20,
+   "text": "If criteria are missing or ambiguous or your confidence is low, then be\nmore conservative and give preference to including the study.\n\"\"\".strip()\nListing 6: Frozen criteria block used in the validation comparison.\nCRITERIA_TEXT = \"\"\"\nINCLUSION CRITERIA:\n- The paper is an empirical study in software engineering\n(field of computer science).\n- The paper is a primary study.\n- The paper is focused on predicting defects in a software system\nusing machine learning techniques.\n- The paper evaluates, analyses, or compares prediction methods and\nprovides evidence for efficiency.\nEXCLUSION CRITERIA:\n- The paper was not a peer-reviewed article, conference proceeding,\nor book chapter.\n- The publication’s language was other than English.\n- The same or limited results were already published and included in\nanother study.\n\"\"\"\nAppendix A.2. Structured unoptimised DSPy baseline\nThe structured unoptimised baseline used the same AbstractScreening signature and Screener\nmodule as the GEPA-optimised programs, but was evaluated before calling gepa.compile(). It\ntherefore retained the same input fields, output fields, adapter, student model, temperature, criteria\ntext, label normalisation, and held-out"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p20_c2",
+   "page": 20,
+   "text": "but was evaluated before calling gepa.compile(). It\ntherefore retained the same input fields, output fields, adapter, student model, temperature, criteria\ntext, label normalisation, and held-out evaluation records as the GEPA conditions. This baseline\nisolates the effect of GEPA optimisation from the effect of using a structured output contract.\nOperationally, the structured baseline is the unoptimised DSPy module produced by student =\nScreener(). The GEPA condition begins from the same module but passes it to gepa.compile(\nstudent, trainset=trainset, valset=valset) before held-out evaluation. This pairing\nkeeps the machine-readable interface constant while allowing GEPA to revise the prompt harness\nduring calibration.\nAppendix A.3. Starting prompt harness\nListing 7 shows the mutable starting prompt harness used in the Colab notebook and as the\ninitial GEPA calibration target.\nListing 7: Starting prompt harness used in the Colab notebook and as the mutable starting point for GEPA.\nScreen titles and abstracts for a systematic review of machine-learning-based\nsoftware defect prediction.\nContext:\n- The review focuses on primary empirical studies in software engineering.\n- Relevant"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p20_c3",
+   "page": 20,
+   "text": "Screen titles and abstracts for a systematic review of machine-learning-based\nsoftware defect prediction.\nContext:\n- The review focuses on primary empirical studies in software engineering.\n- Relevant studies predict defects, bugs, faults, or fault-proneness in software\nartefacts.\n- Relevant studies use machine learning and report an evaluation or comparison.\n- Exclude reviews, surveys, bug triage, issue severity, duplicate-report detection,\nand studies that do not predict defective software artefacts.\n20"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p21_c1",
+   "page": 21,
+   "text": "Output:\n- checks: brief fragments that connect the decision to the criteria.\n- label: exactly one token, include or exclude.\nAppendix A.4. Example of a compiled harness\nThe exact compiled text depends on the labelled examples, metric feedback, reflection model,\nand optimisation budget. A compiled harness often expands the starting prompt by adding failurespecific guidance, clarifying near-miss categories, and giving more explicit instructions for satisfying\nthe fixed output contract. Listing 8 gives an excerpt from an actual optimised prompt generated\nduring validation. Compared with the starting harness, the compiled harness is more explicit about\nscope boundaries, clause-level checks, conservative inclusion policy, and the DSPy field structure\nrequired by the evaluation pipeline.\nListing 8: Excerpt from an optimised screening harness produced by GEPA.\nYou are screening research papers by TITLE and ABSTRACT against the\nprovided INCLUSION/EXCLUSION criteria.\nTask summary\n- Decide whether a paper is relevant for a narrow systematic review that\ncollects primary, peer-reviewed empirical studies that build, evaluate,\nor compare machine-learning models for predicting software"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p21_c2",
+   "page": 21,
+   "text": "whether a paper is relevant for a narrow systematic review that\ncollects primary, peer-reviewed empirical studies that build, evaluate,\nor compare machine-learning models for predicting software\ndefects/bugs/faults/failures.\n- Use only the provided criteria, TITLE, and ABSTRACT.\n- Output must use the exact DSPy markers and format described below and\nnothing else.\nRequired output format (exact tokens and ordering)\n- Return exactly three DSPy blocks in this order and no other text:\n[[ ## checks ## ]]\n(2--5 bullet fragments)\n[[ ## label ## ]]\n(exactly one token: include or exclude)\n[[ ## completed ## ]]\nRules for the [[ ## checks ## ]] block\n- Provide 2--5 bullets.\n- Each bullet is a short fragment, <= 8 words.\n- Bullets must name satisfied or violated inclusion or exclusion criteria.\n- Do not add prose or extra explanation in this block.\nInterpretation and decision policy\n- Treat original experiments, validation studies, and measured results\nas evidence of an empirical primary study.\n- Include studies predicting defects, fault-proneness, defect density,\nchange-proneness, build breakage, or security bugs when machine\nlearning is used and evaluation is reported.\n- Exclude bug-report"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p21_c3",
+   "page": 21,
+   "text": "- Include studies predicting defects, fault-proneness, defect density,\nchange-proneness, build breakage, or security bugs when machine\nlearning is used and evaluation is reported.\n- Exclude bug-report severity, priority, assignee, or triage tasks unless\nthey are explicitly framed as defect prediction.\n- If peer-review status or duplication is unclear, prefer include rather\nthan exclude.\n21"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p22_c1",
+   "page": 22,
+   "text": "Appendix B. Metric-design notes for GEPA optimisation\nThe main text presents a compact metric because the article body teaches the protocol rather\nthan reproducing every local experimental guardrail. This appendix records the richer logic behind\nthe local-testing metric and clarifies which parts are essential, optional, or policy-dependent.\nAppendix B.1. Why the metric is more than an accuracy check\nIn DSPy, an optimiser does not discover a universally good prompt. It discovers a prompt that\nmaximises the declared metric. The metric should therefore be understood as the task utility that\nGEPA is asked to maximise. In screening, this utility is asymmetric: missing a relevant record is\nusually more harmful than forwarding an irrelevant one to full-text review. The metric therefore\ngives correct predictions full credit, false negatives zero credit, and false positives partial credit. This\nscoring makes the precision–recall trade-off visible to the optimiser rather than hiding it inside a\nbinary right-or-wrong signal.\nAppendix B.2. Richer local-testing metric\nListing 9 gives the expanded local-testing metric used for validation and smoke testing.\nListing 9: Expanded local-testing"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p22_c2",
+   "page": 22,
+   "text": "a\nbinary right-or-wrong signal.\nAppendix B.2. Richer local-testing metric\nListing 9 gives the expanded local-testing metric used for validation and smoke testing.\nListing 9: Expanded local-testing metric with case-grounded feedback.\ndef gepa_metric(gold, pred, trace=None, pred_name=None, pred_trace=None):\ngold_lab = normalize_label(getattr(gold, \"label\", None))\npred_lab = normalize_label(getattr(pred, \"label\", None))\nchecks = (getattr(pred, \"checks\", \"\") or \"\").strip()\ncase = (\nf\"\\n\\nCASE\\nCRITERIA:\\n{getattr(gold, ’criteria’, ’’)[:800]}\"\nf\"\\n\\nTITLE:\\n{getattr(gold, ’title’, ’’)[:300]}\"\nf\"\\n\\nABSTRACT:\\n{getattr(gold, ’abstract’, ’’)[:1200]}\\n\"\n)\noutput_contract = (\n\"Return outputs using DSPy field markers exactly:\\n\"\n\"[[ ## checks ## ]]\\n\"\n\"(2-5 bullet fragments, each <= 8 words, max 30 words total)\\n\"\n\"[[ ## label ## ]]\\n\"\n\"(exactly one token: include or exclude)\\n\"\n\"[[ ## completed ## ]]\\n\"\n\"Do not add other text.\\n\"\n)\nif pred_lab not in {\"include\", \"exclude\"}:\nscore = 0.0\nfeedback = (\nf\"Invalid label ’{pred_lab}’. \"\nf\"Label must be exactly one of: include or exclude.\\n\"\n+ output_contract\n+ case\n)\nelif pred_lab == gold_lab:\nscore = 1.0\nfeedback = \"Correct.\\n\" + output_contract"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p22_c3",
+   "page": 22,
+   "text": "= (\nf\"Invalid label ’{pred_lab}’. \"\nf\"Label must be exactly one of: include or exclude.\\n\"\n+ output_contract\n+ case\n)\nelif pred_lab == gold_lab:\nscore = 1.0\nfeedback = \"Correct.\\n\" + output_contract\nelif gold_lab == \"include\" and pred_lab == \"exclude\":\nscore = 0.0\nfeedback = (\n22"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p23_c1",
+   "page": 23,
+   "text": "\"False negative. Prefer INCLUDE when uncertain to avoid \"\n\"missing relevant studies. Identify which criteria clause \"\n\"supports inclusion.\\n\"\n+ output_contract\n+ case\n)\nelse:\nscore = 0.4\nfeedback = (\n\"False positive. Only INCLUDE when the criteria are clearly \"\n\"satisfied. Identify which clause was over-applied.\\n\"\n+ output_contract\n+ case\n)\nif not _checks_format_ok(checks):\nscore = min(score, 0.6 if score > 0 else score)\nfeedback = \"checks format invalid or missing.\\n\" + output_contract + feedback\nif pred_name is not None:\nreturn dspy.Prediction(score=score, feedback=feedback)\nreturn score\nListing 10: Validation helper utilities used by the expanded metric.\ndef normalize_label(value):\ntext = str(value or \"\").strip().lower()\nif text in {\"include\", \"included\"}:\nreturn \"include\"\nif text in {\"exclude\", \"excluded\"}:\nreturn \"exclude\"\nreturn text\ndef _checks_format_ok(checks):\nif not checks:\nreturn False\nlines = [ln.strip() for ln in checks.splitlines() if ln.strip()]\nif not (2 <= len(lines) <= 5):\nreturn False\ntotal_words = 0\nfor line in lines:\nwords = line.lstrip(\"-* \").strip().split()\nif len(words) > 8:\nreturn False\ntotal_words += len(words)\nreturn total_words <= 30\nAppendix B.3."
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p23_c2",
+   "page": 23,
+   "text": "<= 5):\nreturn False\ntotal_words = 0\nfor line in lines:\nwords = line.lstrip(\"-* \").strip().split()\nif len(words) > 8:\nreturn False\ntotal_words += len(words)\nreturn total_words <= 30\nAppendix B.3. What each component is doing\nThe expanded metric performs five distinct jobs.\n1. It scores label correctness, but in a cost-sensitive way rather than a symmetric exact-match way.\n2. It distinguishes false negatives from false positives, so GEPA can prefer prompt variants that\npreserve recall.\n23"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p24_c1",
+   "page": 24,
+   "text": "3. It enforces the output schema, because semantically plausible but structurally invalid labels are\nunusable in an executable DSPy program.\n4. It preserves a bounded checks trace, which acts as a compact criteria checklist rather than\nunrestricted reasoning.\n5. It returns failure-specific textual feedback grounded in the actual case, which gives the reflection\nmodel more useful revision material than a bare scalar score.\nThe case block is especially important in reflective optimisation. The metric attaches the truncated criteria, title, and abstract to the feedback. This turns a generic message such as “false negative”\ninto an example-grounded diagnosis. The reflection model can then revise the prompt against the\nactual failure mode instead of inferring a change from aggregate performance alone.\nAppendix B.4. Why malformed checks are only partially penalised\nThe checks field is not the primary prediction target.\nThe primary target is still the final\nlabel. The limited penalty on malformed checks therefore expresses a deliberate compromise:\nsemantic correctness remains most important, but the optimiser is discouraged from dropping the\nstructured trace entirely. If the label is"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p24_c2",
+   "page": 24,
+   "text": "malformed checks therefore expresses a deliberate compromise:\nsemantic correctness remains most important, but the optimiser is discouraged from dropping the\nstructured trace entirely. If the label is already wrong, malformed checks do not materially change\nthe outcome. If the label is correct, however, capping the score prevents GEPA from learning that\nchecklist compliance is optional.\nAppendix B.5. Interpreting the score correctly\nThe GEPA metric is a calibration-time optimisation utility, not a neutral performance statistic.\nIt can prefer prompts that slightly lower precision if they reduce the risk of missing relevant studies.\nFor this reason, the paper reports conventional held-out metrics separately after optimisation. The\noptimisation metric defines which prompt variants are favoured during search; the evaluation metrics\ndescribe how the resulting program behaves on unseen examples.\nThe scalar values should be interpreted as a task-utility scale, not as calibrated probabilities.\nTheir ordinal relationship encodes the policy preference: correct outputs should score highest, false\nexclusions should be worse than false inclusions in high-recall screening, and malformed outputs"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p24_c3",
+   "page": 24,
+   "text": "Their ordinal relationship encodes the policy preference: correct outputs should score highest, false\nexclusions should be worse than false inclusions in high-recall screening, and malformed outputs\nshould be penalised even when the semantic label is correct. The magnitudes also matter because\nGEPA compares candidate programs using aggregate metric scores. Raising the false-positive score\nmakes the optimiser more tolerant of over-inclusion and may shift the prompt towards recall; lowering\nit makes the optimiser more conservative and may favour precision at the cost of missed records. The\nvalue 0.4 was used as a moderate partial-credit setting, not as a universal constant. Users should\ntreat these values as policy parameters and should report them with the compiled artefact.\nTable B.9 summarises how false-positive scores and checks penalties change the optimisation\nsignal.\nAppendix B.6. Sensitivity of the false-positive utility parameter\nThe false-positive score determines how strongly the optimisation utility tolerates over-inclusion\nrelative to false exclusion. Table B.10 recomputes the label-level utility from the archived confusion\nmatrices under three plausible false-positive"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p24_c4",
+   "page": 24,
+   "text": "the optimisation utility tolerates over-inclusion\nrelative to false exclusion. Table B.10 recomputes the label-level utility from the archived confusion\nmatrices under three plausible false-positive scores.\nThis is a post-hoc illustration only; it does\nnot rerun GEPA under each score. A full sensitivity analysis would repeat optimisation for each\ncandidate utility value because changing the metric can change the selected prompts.\n24"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p25_c1",
+   "page": 25,
+   "text": "Parameter\nSetting\nInterpretation\nFalse-positive score\nLower, e.g., 0.1–0.3\nStricter inclusion, with higher precision pressure.\nFalse-positive score\nModerate, e.g., 0.4–\n0.6\nBalanced high-recall screening.\nFalse-positive score\nHigher, e.g., 0.7–0.9\nStrong tolerance for over-inclusion, supporting a\nrecall-prioritising workflow.\nChecks cap\nLower\nStronger enforcement of the audit trace.\nChecks cap\nHigher\nLabel correctness dominates, while trace compliance is weaker.\nTable B.9: Interpretation of false-positive score and checks cap settings.\nCondition\nFP score 0.2\nFP score 0.4\nFP score 0.6\nStructured baseline\n0.818 ± 0.004\n0.847 ± 0.004\n0.877 ± 0.004\nGEPA max_eval = 2\n0.813 ± 0.027\n0.850 ± 0.017\n0.887 ± 0.009\nGEPA max_eval = 6\n0.817 ± 0.030\n0.849 ± 0.016\n0.880 ± 0.006\nGEPA max_eval = 12\n0.826 ± 0.015\n0.855 ± 0.007\n0.884 ± 0.004\nGEPA max_eval = 24\n0.806 ± 0.028\n0.832 ± 0.019\n0.858 ± 0.016\nTable B.10: Post-hoc label-level utility under alternative false-positive scores, computed from the archived confusion\nmatrices. Values are mean ± sample SD across five runs.\nAppendix B.7. How this changes in multiclass settings\nThe binary asymmetry used here does not transfer directly to multiclass"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p25_c2",
+   "page": 25,
+   "text": "archived confusion\nmatrices. Values are mean ± sample SD across five runs.\nAppendix B.7. How this changes in multiclass settings\nThe binary asymmetry used here does not transfer directly to multiclass screening. In a multiclass\nproblem, each error is simultaneously a false negative for the true class and a false positive for the\npredicted class. A more appropriate design is then a cost matrix over class pairs. For example,\npredicting uncertain for a truly includable record may be less severe than predicting exclude,\nbecause an uncertain record can still be routed to human review. Multiclass metrics therefore require\nclass-pair-specific scores and feedback rather than a single false-positive branch and a single falsenegative branch.\nAppendix B.8. Practical recommendation\nThe main article shows the compact metric because it is readable and teaches the core method.\nFor adaptation work, users should expect to iterate on the metric before they iterate on GEPA budget.\nIn most screening applications, metric design is the most direct way to align prompt optimisation\nwith the review workflow, because the optimiser can only learn the screening policy that the metric\nmakes explicit.\nAppendix"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p25_c3",
+   "page": 25,
+   "text": "metric design is the most direct way to align prompt optimisation\nwith the review workflow, because the optimiser can only learn the screening policy that the metric\nmakes explicit.\nAppendix C. Validation configuration and GEPA budget ablation\nThis appendix reports the validation details that support the concise Method validation section,\nso readers can reproduce the experiment without turning the main article into a benchmark-style\nresults report.\nAppendix C.1. Interpreting the budget ablation\nAcross five repeated splits, the structured baseline achieved an accuracy of 0.788 ± 0.004 and an\nF1 of 0.840±0.004, with recall 0.896±0.006 and precision 0.791±0.003 for the include class. The\ngold include prevalence was approximately 0.621 across all splits. With a small optimisation budget\n25"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p26_c1",
+   "page": 26,
+   "text": "Component\nValue\nWhy it matters\nDataset subset\nSESR-Eval Study 41\nDefines task population\nCriteria source\nStudy 41 full text\nDefines screening protocol\nCriteria extraction\nGPT-5 Nano, reviewed/frozen\nSeparates extraction from optimisation\nStudent model\nQwen-2.5-7B-instruct\nDeployable model under calibration\nReflection model\nGPT-5-mini\nPrompt revision model (calibration only)\nTrain/val/test sizes\n59/59/1076 for the structured baseline\nand most GEPA runs; one max_eval =\n12 GEPA run retained N = 1076\nDefines labelled budget and held-out evaluation set\nSeeds\n10, 15, 25, 35, 42\nEnables repeated-run replication\nGEPA budgets tested\n2, 6, 12, 24\nDefines optimisation effort\nMetric\nAsymmetric utility + checks penalty\nDefines optimisation objective\nStudent temperature\n0.0\nControls stochasticity\nTable C.11: Minimum replication configuration for the validation experiment.\nMethod\nAccuracy\nPrecision\nRecall\nF1\nMCC\nκ\nˆπ(include)\nUtility\nStructured baseline\n0.788 ± 0.004\n0.791 ± 0.003\n0.896 ± 0.006\n0.840 ± 0.004\n0.539 ± 0.010\n0.530 ± 0.009\n0.704 ± 0.005\n0.847 ± 0.004\nGEPA (max_eval = 2)\n0.776 ± 0.038\n0.762 ± 0.052\n0.938 ± 0.033\n0.839 ± 0.019\n0.518 ± 0.081\n0.482 ± 0.106\n0.768 ± 0.075\n0.850 ± 0.017"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p26_c2",
+   "page": 26,
+   "text": "± 0.004\n0.539 ± 0.010\n0.530 ± 0.009\n0.704 ± 0.005\n0.847 ± 0.004\nGEPA (max_eval = 2)\n0.776 ± 0.038\n0.762 ± 0.052\n0.938 ± 0.033\n0.839 ± 0.019\n0.518 ± 0.081\n0.482 ± 0.106\n0.768 ± 0.075\n0.850 ± 0.017\nGEPA (max_eval = 6)\n0.786 ± 0.045\n0.792 ± 0.072\n0.907 ± 0.050\n0.842 ± 0.021\n0.540 ± 0.099\n0.516 ± 0.129\n0.719 ± 0.105\n0.849 ± 0.016\nGEPA (max_eval = 12)\n0.797 ± 0.023\n0.799 ± 0.043\n0.905 ± 0.030\n0.848 ± 0.011\n0.562 ± 0.053\n0.548 ± 0.066\n0.706 ± 0.060\n0.855 ± 0.007\nGEPA (max_eval = 24)\n0.780 ± 0.039\n0.811 ± 0.071\n0.855 ± 0.050\n0.829 ± 0.021\n0.529 ± 0.102\n0.519 ± 0.107\n0.661 ± 0.091\n0.832 ± 0.019\nTable C.12: Qwen-2.5-7B abstract screening results (mean ± sample SD over 5 random splits; positive class is\ninclude). ˆπ(include) = (TP + FP)/N approximates downstream full-text screening workload. Utility is the labellevel asymmetric utility corresponding to the GEPA cost shaping, U = (TP + TN + 0.4 FP)/N. It excludes auxiliary\npenalties for malformed checks or invalid field formatting, which are used during optimisation but are not represented in the confusion matrix. MCC is Matthews correlation coefficient and κ is Cohen’s kappa computed from\nthe observed and expected agreement under the"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p26_c3",
+   "page": 26,
+   "text": "are used during optimisation but are not represented in the confusion matrix. MCC is Matthews correlation coefficient and κ is Cohen’s kappa computed from\nthe observed and expected agreement under the run-specific marginal rates. One GEPA run under max_eval = 12\nevaluated N = 1076 examples; all other reported structured baseline and GEPA runs used N = 1076.\nGEPA budget\n∆Accuracy\n∆Precision\n∆Recall\n∆F1\n∆ˆπ(include)\n∆Utility\nmax_eval = 2\n−0.012 ± 0.036\n−0.028 ± 0.051\n+0.042 ± 0.039\n−0.001 ± 0.018\n+0.064 ± 0.078\n+0.003 ± 0.016\nmax_eval = 6\n−0.002 ± 0.045\n+0.001 ± 0.072\n+0.010 ± 0.049\n+0.002 ± 0.020\n+0.015 ± 0.106\n+0.001 ± 0.015\nmax_eval = 12\n+0.009 ± 0.020\n+0.009 ± 0.041\n+0.009 ± 0.034\n+0.008 ± 0.008\n+0.002 ± 0.061\n+0.008 ± 0.005\nmax_eval = 24\n−0.008 ± 0.039\n+0.021 ± 0.071\n−0.041 ± 0.047\n−0.011 ± 0.020\n−0.043 ± 0.089\n−0.015 ± 0.018\nTable C.13: Differences (mean ± sample SD over 5 splits) between each GEPA setting and the structured baseline on\nthe corresponding seed. Positive values indicate higher metric values relative to baseline. The max_eval = 12, seed\n10 GEPA run used N = 1076, while the supplied structured baseline for the same seed used N = 1076; rerunning or\nrecomputing that"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p26_c4",
+   "page": 26,
+   "text": "higher metric values relative to baseline. The max_eval = 12, seed\n10 GEPA run used N = 1076, while the supplied structured baseline for the same seed used N = 1076; rerunning or\nrecomputing that baseline on the retained common subset would make the paired comparison exact.\n(max_eval = 2), GEPA increases recall to 0.938 ± 0.033 while reducing precision to 0.762 ± 0.052\nand increasing the predicted include rate to 0.768 ± 0.075. The paired deltas show that this setting\nprimarily reduces false negatives at the cost of additional false positives. Relative to the structured\nbaseline, recall increases by +0.042±0.039, precision decreases by −0.028±0.051, and the predicted\ninclude rate increases by +0.064 ± 0.078. This pattern is consistent with the asymmetric metric\nshaping that penalises false negatives more strongly than false positives.\nIn this validation setting, max_eval = 12 produced the best balanced operating point. It had the\nhighest mean F1 (0.848±0.011), accuracy (0.797±0.023), and label-level utility (0.855±0.007), with\nrecall 0.905±0.030 and precision 0.799±0.043. Relative to the structured baseline on corresponding\nseeds, max_eval = 12 had ∆F1 = +0.008 ± 0.008 and"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p26_c5",
+   "page": 26,
+   "text": "and label-level utility (0.855±0.007), with\nrecall 0.905±0.030 and precision 0.799±0.043. Relative to the structured baseline on corresponding\nseeds, max_eval = 12 had ∆F1 = +0.008 ± 0.008 and ∆utility = +0.008 ± 0.005, while changing the\npredicted include rate by only +0.002 ± 0.061. MCC and Cohen’s κ show the same broad pattern,\nwhich is consistent with a modest balanced shift rather than only a large shift in predicted include\nrate.\n26"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p27_c1",
+   "page": 27,
+   "text": "Increasing the budget to max_eval = 24 produced a non-monotonic outcome.\nMean recall\n(0.855 ± 0.050), F1 (0.829 ± 0.021), and utility (0.832 ± 0.019) fell below the structured baseline,\ndespite higher mean precision (0.811 ± 0.071). This pattern is compatible with instability or overspecialisation under a limited validation signal. It shows why optimisation budget should be treated\nas a controlled hyperparameter rather than a monotone benefit lever. For abstract screening workflows that prioritise minimising missed relevant studies, max_eval = 2 offers the highest recall at the\ncost of workload. In contrast, max_eval = 12 offers the best balanced operating point with almost\nno mean increase in predicted include rate. The lower mean values at max_eval=24 are consistent with over-specialisation under a small validation signal. The validation split contains only 59\nexamples, so repeated reflective revisions may begin to fit idiosyncratic boundary cases rather than\nthe broader held-out distribution. This does not prove that larger GEPA budgets always overfit. It\nillustrates a practical constraint: the safe optimisation budget is bounded by the size and diversity\nof the validation set."
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p27_c2",
+   "page": 27,
+   "text": "This does not prove that larger GEPA budgets always overfit. It\nillustrates a practical constraint: the safe optimisation budget is bounded by the size and diversity\nof the validation set. In small-label settings, users should treat max_full_evals as a hyperparameter, inspect held-out performance across seeds, and prefer the smallest budget that gives stable\nheld-out behaviour.\nAppendix C.2. Contextual comparison with SESR-Eval\nThe SESR-Eval benchmark provides useful scale context, although their testing protocols are\nnot directly comparable. In their testing GPT-4.1 mini tended to produce the best results. In the\nvalidation setting here, the optimised Study 41 workflow reached a mean accuracy of 0.833 ± 0.008\nwhen optimised with GPT-4.1 mini. SESR-Eval reports an aggregate Study 41 accuracy of 0.78 across\nall evaluated LLMs in their Table IX, and an average secondary-study accuracy of 0.73 for GPT-\n4.1 mini across 24 studies in Table VII [18]. These figures should be interpreted only as indicative\nbecause the prompt architecture, output requirements, and experimental setup differ. SESR-Eval\nused a more elaborate screening prompt and Likert-style decision procedure, whereas the"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p27_c3",
+   "page": 27,
+   "text": "as indicative\nbecause the prompt architecture, output requirements, and experimental setup differ. SESR-Eval\nused a more elaborate screening prompt and Likert-style decision procedure, whereas the present\nstudy evaluates a calibrated binary screening workflow designed to foreground reproducibility and\nprompt optimisation. Alos, the present validation places the calibrated 7B-class student model in\nthe same broad numerical range as the published SESR-Eval aggregate figures for Study 41. Direct\nranking is not appropriate again because the prompt architecture, output format, decision procedure,\nand evaluation setup differ. This context matters because the SESR-Eval benchmark was dominated\nby large proprietary or frontier-scale models, including several OpenAI models, Claude 3.7 Sonnet,\nLlama 4 Maverick (400B), and DeepSeek R1 (671B). Ministral 8B was the only clearly small open\nmodel in their comparison set [18].\nAppendix D. Execution environment used for local verification\nTable D.14 records the environment used for local verification and archived validation, not a\nrequired execution environment. The code can run in Google Colab or any compatible Python environment that supports the"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p27_c4",
+   "page": 27,
+   "text": "the environment used for local verification and archived validation, not a\nrequired execution environment. The code can run in Google Colab or any compatible Python environment that supports the listed package versions and model-provider configuration. The operating\nsystem documents the verified local run only; it is not a methodological dependency. Users may substitute locally hosted or open-weight student models where privacy, cost, or governance requirements\nfavour local inference.\nAppendix E. Schematic adaptation for meta-analysis data extraction\nThis appendix is illustrative only.\nIt is not an empirical validation.\nIt shows how the same\ncalibration pattern can be adapted to a structured extraction task when labelled examples and a\nscoring metric are available.\n27"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p28_c1",
+   "page": 28,
+   "text": "Component\nVerified configuration\nVerification date\n24 April 2026\nOperating system\nWindows 11; not required for the method\nAlternative execution environment\nGoogle Colab or equivalent Python runtime with the listed packages\nPython\n3.11.15\nDSPy\n3.2.0\nGEPA package\n0.0.27\nLiteLLM\n1.82.6\nOpenAI Python SDK\n2.32.0\nPandas\n3.0.2\nscikit-learn\n1.8.0\nProvider routing convention\nLiteLLM model strings with environment-based API credentials\nTutorial / smoke-test student model used\nin verification\nopenai/gpt-4.1-mini; replaceable with another supported\nstudent model\nTutorial / smoke-test reflection model used\nin verification\nopenai/gpt-5-mini; replaceable with another stronger reflection model\nValidation student model in archived experiment\nopenrouter/qwen/qwen-2.5-7b-instruct\nValidation reflection model in archived experiment\nopenai/gpt-5-mini\nTable D.14: Compact execution environment record for reproducibility. The listed configuration documents the verified\nlocal and archived validation runs; it is not a required platform. The tutorial can be run in Google Colab or another\ncompatible Python environment, and users may substitute supported student and reflection models according to cost,"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p28_c2",
+   "page": 28,
+   "text": "it is not a required platform. The tutorial can be run in Google Colab or another\ncompatible Python environment, and users may substitute supported student and reflection models according to cost,\nprivacy, governance, and availability constraints.\nIn a meta-analysis extraction task, the fixed scientific task contract consists of the review’s extraction schema, outcome definitions, eligible effect measures, unit rules, and conventions for prioritising\nadjusted versus unadjusted estimates. The input may be a full text, a table, or a selected collection\nof paragraphs. The output is a structured extraction record containing the study identifier, population, intervention or exposure, comparator, outcome, effect measure, numerical estimate, uncertainty\nmeasure, sample sizes, and evidence spans. Listing 11 sketches the corresponding DSPy signature.\nListing 11: Schematic DSPy signature for meta-analysis data extraction.\nclass MetaAnalysisExtraction(dspy.Signature):\n\"\"\"\nExtract quantitative values needed for meta-analysis from a study report.\nUse only the supplied text.\nReturn values only when they are explicitly supported by the text.\nIf a value is not reported, return not_reported.\n\"\"\""
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p28_c3",
+   "page": 28,
+   "text": "values needed for meta-analysis from a study report.\nUse only the supplied text.\nReturn values only when they are explicitly supported by the text.\nIf a value is not reported, return not_reported.\n\"\"\"\nextraction_schema: str = dspy.InputField(\ndesc=\"Fixed extraction schema, outcome definitions, and unit conventions.\"\n)\nreview_question: str = dspy.InputField(\ndesc=\"Review question and target population/intervention/comparator/outcome.\"\n)\nsource_text: str = dspy.InputField(\ndesc=\"Full text, table text, or selected paragraphs from the study report.\"\n)\nstudy_id: str = dspy.OutputField(desc=\"Study identifier or citation key.\")\npopulation: str = dspy.OutputField(\ndesc=\"Population or sample described in the extracted comparison.\"\n28"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p29_c1",
+   "page": 29,
+   "text": ")\nintervention_or_exposure: str = dspy.OutputField(\ndesc=\"Intervention, exposure, model, or treatment group.\"\n)\ncomparator: str = dspy.OutputField(desc=\"Comparator or control group.\")\noutcome: str = dspy.OutputField(desc=\"Outcome matching the extraction schema.\")\neffect_measure: str = dspy.OutputField(\ndesc=\"Effect measure, such as mean difference, odds ratio, risk ratio, \"\n\"hazard ratio, correlation, or standardised mean difference.\"\n)\neffect_value: str = dspy.OutputField(\ndesc=\"Numerical effect estimate or not_reported.\"\n)\nuncertainty: str = dspy.OutputField(\ndesc=\"Standard error, confidence interval, p value, standard deviation, \"\n\"or not_reported.\"\n)\nsample_sizes: str = dspy.OutputField(\ndesc=\"Group-level or total sample sizes needed for analysis, or\nnot_reported.\"\n)\nevidence_spans: str = dspy.OutputField(\ndesc=\"Short source fragments supporting the extracted values.\"\n)\nextraction_notes: str = dspy.OutputField(\ndesc=\"Brief notes on ambiguity, conversions, or missing values.\"\n)\nThe extraction metric would differ from the screening metric because the output is a multi-field\nrecord rather than a binary label. A compact design is shown in Listing 12. It would give full credit\nfor"
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p29_c2",
+   "page": 29,
+   "text": "extraction metric would differ from the screening metric because the output is a multi-field\nrecord rather than a binary label. A compact design is shown in Listing 12. It would give full credit\nfor correct numeric values within a pre-specified tolerance, partial credit for correct field identification\nwith missing uncertainty, and strong penalties for hallucinated values not supported by the text. It\nshould also penalise missing evidence spans, handle not_reported explicitly when the gold record\nindicates missingness, and apply higher penalties when the wrong outcome or comparison is extracted\nbecause those errors can corrupt the downstream meta-analysis.\nListing 12: Schematic metric design for extraction calibration.\ndef extraction_metric(gold, pred, trace=None, pred_name=None, pred_trace=None):\n\"\"\"\nSchematic only.\nScore combines:\n- schema validity\n- exact or tolerance-based numeric match\n- correct effect-measure type\n- correct outcome mapping\n- correct sample-size extraction\n- evidence-span support\n- penalty for hallucinated values\n\"\"\"\n...\nThe optimiser should not be asked to infer pooled meta-analytic results.\nIt should calibrate\nextraction of study-level values only."
+  },
+  {
+   "paper_id": "arxiv-2605-06937",
+   "chunk_id": "arxiv-2605-06937_p29_c3",
+   "page": 29,
+   "text": "- evidence-span support\n- penalty for hallucinated values\n\"\"\"\n...\nThe optimiser should not be asked to infer pooled meta-analytic results.\nIt should calibrate\nextraction of study-level values only. Statistical pooling remains a downstream analysis step.\n29"
+  }
+ ]
+}

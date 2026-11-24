@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2512-11261",
+ "fingerprint": "037aa3fde8d9318a",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "rejected",
+   "value": "étude d'évaluation d'une approche à deux étapes de triage dynamique",
+   "chunk_id": "arxiv-2512-11261_p4_c2",
+   "page": null,
+   "quote": "We evaluated this approach on ten systematic review datasets covering different stages including diagnostic, intervention, and prognostic studies, encompassing nearly 10,000 studies [16]. first stage performs initial screening using a low-cost LLM guided by dynamically constructed few-shot prompts and provides confidence scores; the second stage re-evaluates low-confidence instances using a high-performance LLM.",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "CLEF 2019 dataset, 10,320 titles/abstracts retrieved, 9,515 curated, 1,052 included, covering diagnosis, intervention, prognosis.",
+   "chunk_id": "arxiv-2512-11261_p9_c1",
+   "page": 9,
+   "quote": "the total number of titles and abstracts generated from the search step was 10,320. After data curation, the actual number of titles and abstracts included was 9,515, of which 1,052 were identified as ones should be included in their corresponding systematic reviews during the title and abstract screening stage.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Modèles évalués : Phi-3.5-mini, MediPhi, Gemma3-4B, Med-Gemma-4B, Med-Gemma-27B, GPT‑4.1‑mini, GPT‑4.1.",
+   "chunk_id": "arxiv-2512-11261_p10_c1",
+   "page": 10,
+   "quote": "including Phi-3.5-mini [33], MediPhi [34], Gemma3-4B [35], Med-Gemma-4B [36], and Med-Gemma-27B [36].",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "DFS a obtenu les meilleurs scores F1 sur les dix revues systématiques, surpassant Zero-Shot, Chain-of-Thought et Few-Shot.",
+   "chunk_id": "arxiv-2512-11261_p10_c1",
+   "page": 10,
+   "quote": "DFS achieved higher F1 scores in the title and abstract screening task across all ten systematic reviews compared to Zero-Shot, Chain-of-Thought, and Few-Shot methods.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Limites : taille limitée, faux négatifs, besoin de revue humaine, pas encore testé en conditions réelles.",
+   "chunk_id": "arxiv-2512-11261_p13_c2",
+   "page": 13,
+   "quote": "Despite these encouraging results, several limitations remain. First, due to data access constraints and computational costs, the scale of this study was relatively limited; evaluating the approach on larger-scale datasets would help further validate its robustness. Second, although the approach improved performance, false negatives still occurred.",
+   "note": ""
+  }
+ ]
+}

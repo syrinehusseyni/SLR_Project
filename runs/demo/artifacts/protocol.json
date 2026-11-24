@@ -1,0 +1,308 @@
+{
+  "topic": "Utilisation des grands modèles de langage (LLM) pour automatiser le screening titre/résumé dans les revues systématiques de la littérature",
+  "questions": [
+    {
+      "identifier": "RQ1",
+      "question": "Comment les grands modèles de langage (LLM) peuvent-ils améliorer l'efficacité du screening titre/résumé dans les revues systématiques de la littérature ?"
+    },
+    {
+      "identifier": "RQ2",
+      "question": "Quels sont les risques potentiels associés à l'utilisation de LLM pour automatiser le screening titre/résumé, notamment en termes de précision et de fiabilité ?"
+    },
+    {
+      "identifier": "RQ3",
+      "question": "Quelles sont les meilleures pratiques pour intégrer les LLM dans le processus de screening titre/résumé, en tenant compte des limites et des biais potentiels de ces modèles ?"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "C1",
+      "label": "Grands modèles de langage",
+      "terms": [
+        "large language model",
+        "LLM",
+        "ChatGPT",
+        "GPT-4",
+        "generative AI"
+      ]
+    },
+    {
+      "id": "C2",
+      "label": "Screening des revues systématiques",
+      "terms": [
+        "title and abstract screening",
+        "citation screening",
+        "systematic review automation",
+        "systematic review screening",
+        "study selection"
+      ]
+    }
+  ],
+  "criteria": {
+    "inclusion": [
+      {
+        "id": "I1",
+        "kind": "include",
+        "text": "Les études qui utilisent des grands modèles de langage (LLM) pour automatiser le screening titre/résumé dans les revues systématiques de la littérature."
+      },
+      {
+        "id": "I2",
+        "kind": "include",
+        "text": "Les articles qui comparent l'efficacité des LLM avec des méthodes de screening titre/résumé traditionnelles."
+      },
+      {
+        "id": "I3",
+        "kind": "include",
+        "text": "Les études qui évaluent la précision et la fiabilité des LLM dans le screening titre/résumé."
+      },
+      {
+        "id": "I4",
+        "kind": "include",
+        "text": "Les articles qui discutent des limites et des biais potentiels des LLM dans le screening titre/résumé."
+      },
+      {
+        "id": "I5",
+        "kind": "include",
+        "text": "Les études qui proposent des meilleures pratiques pour l'intégration des LLM dans le processus de screening titre/résumé."
+      }
+    ],
+    "exclusion": [
+      {
+        "id": "E1",
+        "kind": "exclude",
+        "text": "Les articles qui ne sont pas publiés dans des revues à comité de lecture."
+      },
+      {
+        "id": "E2",
+        "kind": "exclude",
+        "text": "Les études qui ne portent pas sur le screening titre/résumé dans les revues systématiques de la littérature."
+      },
+      {
+        "id": "E3",
+        "kind": "exclude",
+        "text": "Les articles qui ne mentionnent pas les LLM comme méthode d'automatisation du screening titre/résumé."
+      },
+      {
+        "id": "E4",
+        "kind": "exclude",
+        "text": "Les études qui ne sont pas écrites en anglais ou en français."
+      },
+      {
+        "id": "E5",
+        "kind": "exclude",
+        "text": "Les articles qui ne sont pas accessibles en ligne."
+      }
+    ],
+    "year_from": 2018,
+    "languages": [
+      "en"
+    ]
+  },
+  "facets": [
+    {
+      "id": "F1",
+      "rq_id": "RQ1",
+      "label": "Type d'étude",
+      "description": "Études comparant les performances de LLM avec des méthodes traditionnelles de screening",
+      "blocking": true
+    },
+    {
+      "id": "F2",
+      "rq_id": "RQ1",
+      "label": "Métrique",
+      "description": "Mesure de performance rapportée (rappel, précision, F1)",
+      "blocking": true
+    },
+    {
+      "id": "F3",
+      "rq_id": "RQ1",
+      "label": "Modèle utilisé",
+      "description": "Type de LLM (par exemple, BERT, RoBERTa, XLNet)",
+      "blocking": true
+    },
+    {
+      "id": "F4",
+      "rq_id": "RQ1",
+      "label": "Données",
+      "description": "Description des jeux de données utilisés (taille, domaine, etc.)",
+      "blocking": false
+    },
+    {
+      "id": "F5",
+      "rq_id": "RQ1",
+      "label": "Paramètres du modèle",
+      "description": "Description des paramètres ajustés pour le modèle (par exemple, hyperparamètres)",
+      "blocking": false
+    },
+    {
+      "id": "F6",
+      "rq_id": "RQ1",
+      "label": "Résultats",
+      "description": "Comparaison des performances des LLM avec les méthodes traditionnelles",
+      "blocking": true
+    },
+    {
+      "id": "F7",
+      "rq_id": "RQ2",
+      "label": "Type d'étude",
+      "description": "Études identifiant les risques potentiels associés à l'utilisation de LLM",
+      "blocking": true
+    },
+    {
+      "id": "F8",
+      "rq_id": "RQ2",
+      "label": "Métrique",
+      "description": "Mesure de performance rapportée (rappel, précision, F1)",
+      "blocking": true
+    },
+    {
+      "id": "F9",
+      "rq_id": "RQ2",
+      "label": "Modèle utilisé",
+      "description": "Type de LLM (par exemple, BERT, RoBERTa, XLNet)",
+      "blocking": true
+    },
+    {
+      "id": "F10",
+      "rq_id": "RQ2",
+      "label": "Données",
+      "description": "Description des jeux de données utilisés (taille, domaine, etc.)",
+      "blocking": false
+    },
+    {
+      "id": "F11",
+      "rq_id": "RQ2",
+      "label": "Limites du modèle",
+      "description": "Description des limites et des biais potentiels des LLM",
+      "blocking": true
+    },
+    {
+      "id": "F12",
+      "rq_id": "RQ2",
+      "label": "Résultats",
+      "description": "Évaluation des risques potentiels associés à l'utilisation de LLM",
+      "blocking": true
+    },
+    {
+      "id": "F13",
+      "rq_id": "RQ3",
+      "label": "Type d'étude",
+      "description": "Études proposant des meilleures pratiques pour l'utilisation de LLM",
+      "blocking": true
+    },
+    {
+      "id": "F14",
+      "rq_id": "RQ3",
+      "label": "Méthodologie",
+      "description": "Description de la méthodologie utilisée pour intégrer les LLM",
+      "blocking": true
+    },
+    {
+      "id": "F15",
+      "rq_id": "RQ3",
+      "label": "Modèle utilisé",
+      "description": "Type de LLM (par exemple, BERT, RoBERTa, XLNet)",
+      "blocking": true
+    },
+    {
+      "id": "F16",
+      "rq_id": "RQ3",
+      "label": "Données",
+      "description": "Description des jeux de données utilisés (taille, domaine, etc.)",
+      "blocking": false
+    },
+    {
+      "id": "F17",
+      "rq_id": "RQ3",
+      "label": "Paramètres du modèle",
+      "description": "Description des paramètres ajustés pour le modèle (par exemple, hyperparamètres)",
+      "blocking": false
+    },
+    {
+      "id": "F18",
+      "rq_id": "RQ3",
+      "label": "Résultats",
+      "description": "Évaluation des performances des LLM dans le contexte de la revue systématique",
+      "blocking": true
+    }
+  ],
+  "search_plan": {
+    "queries": [
+      {
+        "source": "openalex",
+        "query_param": "search.title_and_abstract",
+        "query": "(\"large language model\" OR LLM OR ChatGPT OR \"GPT-4\" OR \"generative AI\") AND (\"title and abstract screening\" OR \"citation screening\" OR \"systematic review automation\" OR \"systematic review screening\" OR \"study selection\")",
+        "params": {
+          "filter": "from_publication_date:2018-01-01"
+        },
+        "note": "Booléen complet (AND/OR en majuscules, phrases entre guillemets), titre + résumé."
+      },
+      {
+        "source": "arxiv",
+        "query_param": "search_query",
+        "query": "(all:\"large language model\" OR all:LLM OR all:ChatGPT OR all:\"GPT-4\" OR all:\"generative AI\") AND (all:\"title and abstract screening\" OR all:\"citation screening\" OR all:\"systematic review automation\" OR all:\"systematic review screening\" OR all:\"study selection\") AND submittedDate:[201801010000 TO 209912312359]",
+        "params": {},
+        "note": "Booléen sur tous les champs ; la valeur doit être encodée pour l'URL par le client."
+      },
+      {
+        "source": "crossref",
+        "query_param": "query",
+        "query": "large language model title and abstract screening",
+        "params": {
+          "filter": "from-pub-date:2018-01-01"
+        },
+        "note": "Crossref n'a pas d'opérateurs booléens : requête libre triée par pertinence, précision plus faible."
+      },
+      {
+        "source": "crossref",
+        "query_param": "query",
+        "query": "LLM citation screening",
+        "params": {
+          "filter": "from-pub-date:2018-01-01"
+        },
+        "note": "Crossref n'a pas d'opérateurs booléens : requête libre triée par pertinence, précision plus faible."
+      },
+      {
+        "source": "crossref",
+        "query_param": "query",
+        "query": "ChatGPT systematic review automation",
+        "params": {
+          "filter": "from-pub-date:2018-01-01"
+        },
+        "note": "Crossref n'a pas d'opérateurs booléens : requête libre triée par pertinence, précision plus faible."
+      },
+      {
+        "source": "semanticscholar",
+        "query_param": "query",
+        "query": "large language model title and abstract screening",
+        "params": {
+          "year": "2018-"
+        },
+        "note": "Recherche par pertinence en mots-clés simples (pas de syntaxe booléenne sur /paper/search)."
+      },
+      {
+        "source": "semanticscholar",
+        "query_param": "query",
+        "query": "LLM citation screening",
+        "params": {
+          "year": "2018-"
+        },
+        "note": "Recherche par pertinence en mots-clés simples (pas de syntaxe booléenne sur /paper/search)."
+      },
+      {
+        "source": "semanticscholar",
+        "query_param": "query",
+        "query": "ChatGPT systematic review automation",
+        "params": {
+          "year": "2018-"
+        },
+        "note": "Recherche par pertinence en mots-clés simples (pas de syntaxe booléenne sur /paper/search)."
+      }
+    ]
+  },
+  "generation": {
+    "concepts": "accepted",
+    "criteria": "repaired",
+    "facets": "repaired"
+  }
+}

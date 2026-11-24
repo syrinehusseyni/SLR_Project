@@ -1,0 +1,400 @@
+{
+ "paper_id": "arxiv-2401-06320",
+ "source_sha256": "9bb97e7645184c385f8bf5e00a6377ee31ec08f8b9f6a1a1746efad899d3ae07",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 16,
+ "pages_read": 16,
+ "page_chars": [
+  3030,
+  3716,
+  3491,
+  3351,
+  3508,
+  3219,
+  3871,
+  3608,
+  3635,
+  4126,
+  3801,
+  3221,
+  3346,
+  3217,
+  3269,
+  1245
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p1_c1",
+   "page": 1,
+   "text": "Zero-shot Generative Large Language Models for\nSystematic Review Screening Automation\nShuai Wang∗\nHarrisen Scells†\nShengyao Zhuang‡\nMartin Potthast†§\nBevan Koopman‡\nGuido Zuccon∗\nFebruary 2, 2024\nAbstract\nSystematic reviews are crucial for evidence-based medicine as they comprehensively analyse published research findings on specific questions. Conducting such reviews is often resource- and time-intensive, especially in the screening phase, where\nabstracts of publications are assessed for inclusion in a review. This study investigates the effectiveness of using zero-shot large language models (LLMs) for automatic\nscreening. We evaluate the effectiveness of eight different LLMs and investigate a\ncalibration technique that uses a predefined recall threshold to determine whether\na publication should be included in a systematic review. Our comprehensive evaluation using five standard test collections shows that instruction fine-tuning plays an\nimportant role in screening, that calibration renders LLMs practical for achieving a\ntargeted recall, and that combining both with an ensemble of zero-shot models saves\nsignificant screening time compared to state-of-the-art approaches.\n1"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p1_c2",
+   "page": 1,
+   "text": "renders LLMs practical for achieving a\ntargeted recall, and that combining both with an ensemble of zero-shot models saves\nsignificant screening time compared to state-of-the-art approaches.\n1\nIntroduction\nSystematic reviews are used extensively in medicine to comprehensively summarise all\nresearch findings on a specific question. Systematic reviews ensure a high level of rigour\nby including all and only those publications that meet predefined criteria, called the set of\n‘included documents’.1 The selection of included documents starts with searching relevant\ndatabases such as PubMed [58] and the Cochrane Library [17]. This search returns a list\nof ‘candidate documents’, which are then screened for relevance and quality using the\nresearchers’ explicit inclusion and exclusion criteria.\nSystematic reviews are labour-intensive and time-consuming, with most resources being invested in screening candidate documents, a process that can take months. While\nthere are various methods to assist in optimizing the creation of systematic reviews (Section 2), one particular line of work focuses on minimising the number of documents that\nneed to be manually screened. This has previously been"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p1_c3",
+   "page": 1,
+   "text": "in optimizing the creation of systematic reviews (Section 2), one particular line of work focuses on minimising the number of documents that\nneed to be manually screened. This has previously been pursued with classifiers to filter\nout documents that are not relevant, which may include manually labelling a significant\nnumber of the candidate documents to tune the classifier to the screening task at hand.\nMeanwhile, instruction-based generative large language models (LLMs), such as OpenAI’s ChatGPT,2 Llama [46], and Alpaca [44], have demonstrated a remarkable ability\nto generate high-quality results in response to user instructions that often do not require task-specific tuning [44, 63]. In automating systematic reviews, these models have\n∗The University of Queensland, Australia.\n†Leipzig University, Germany.\n‡CSIRO, Australia.\n§Leipzig University and ScaDS.AI, Germany.\n1Other commonly used terms are ‘studies’, ‘research publications’, and ‘references’.\n2https://chat.openai.com/\n1\narXiv:2401.06320v2 [cs.IR] 1 Feb 2024"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p2_c1",
+   "page": 2,
+   "text": "been fine-tuned for query formulation [55, 56], as well as document classification and\nranking [56, 35, 4, 43].\nIn this paper, we focus specifically on the use of zero-shot large language models for\nthe automatic screening of documents in systematic reviews (Section 3). By ‘zero-shot’,\nwe mean using generative LLMs without explicitly optimising them for the screening task,\nwhich has the potential to relieve medical experts of any additional labelling burden. We\nexamine two settings of our approach, an uncalibrated and a calibrated one. Both approaches prompt the model and use the probability of the next predicted (target) tokens\nto categorise documents as either ‘included’ or ‘excluded’; the former directly uses the\ntoken with higher probability between ‘yes’ and ‘no’, the latter introduces the hyperparameter θ as a new decision boundary of the classifier, calculated from the difference of\nthe two tokens instead; θ is adjusted based on starting documents or previous systematic\nreviews.\nIn our evaluation, we address four research questions to investigate the factors that\ninfluence the effectiveness of the proposed zero-shot generative LLM-based automated\nscreening method for"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p2_c2",
+   "page": 2,
+   "text": "reviews.\nIn our evaluation, we address four research questions to investigate the factors that\ninfluence the effectiveness of the proposed zero-shot generative LLM-based automated\nscreening method for systematic reviews (Section 4):\nRQ1 How does the architecture and size of the LLMs influence effectiveness?\nRQ2 How does instruction-based fine-tuning influence effectiveness?\nRQ3 How does the calibration of the classifier’s decisions with respect to the target\ntokens’ likelihoods influence effectiveness?\nRQ4 How does ensembling LLM-based classifiers and current strong neural baselines\ninfluence effectiveness?\nOur evaluation results (Section 5) show that LlaMa2-7b-ins is currently the best model\nfor this task, much better than the 13b parameter variant. In general, instruction-based\nfine-tuning always outperforms the base models that have not been fine-tuned, and models based on LlaMa2 consistently outperform the baseline BERT-based method.\nOur\napproach also slightly outperforms (i.e. is competitive with) the fine-tuned Bio-SIEVE\nbaseline. The calibrated setting of our method with ensembling achieves the best result\noverall and approaches the predefined recall target for the test"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p2_c3",
+   "page": 2,
+   "text": "is competitive with) the fine-tuned Bio-SIEVE\nbaseline. The calibrated setting of our method with ensembling achieves the best result\noverall and approaches the predefined recall target for the test topics, which indicates\npractical use.\n2\nRelated Work\nIt is a requirement for high-quality systematic reviews to retrieve literature using a\nBoolean query [11, 14]; the set of all retrieved documents must then be fully screened\n(assessed) for inclusion in the systematic review [11].\nResearch has explored the automatic creation of effective Boolean queries [39, 41, 40, 38, 55] (also with respect to\nthe use of controlled vocabularies such as MeSH [53, 50, 51]), and the ranking of the\nset of documents retrieved by the Boolean query (a task called “screening prioritisation”) [32, 12, 3, 59, 2, 28, 37, 28, 27, 1, 65, 36], in order to begin downstream processes\nof the systematic review earlier [33], e.g., acquiring the full-text of studies or results extraction. The datasets that we consider in our experiments, including the CLEF TAR\ndatasets [22, 24, 23], specifically considered the task of screening prioritisation. In our\npaper, we consider a different task, the one of automating the"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p2_c4",
+   "page": 2,
+   "text": "in our experiments, including the CLEF TAR\ndatasets [22, 24, 23], specifically considered the task of screening prioritisation. In our\npaper, we consider a different task, the one of automating the screening phase of the\nsystematic review; we discuss previous work related to this direction next.\nPopular methods for automating the document screening phase are based on text\nclassification [45]: a classifier is learned for an individual systematic review, typically in\na supervised manner using labels obtained on a subset of the documents to be screened.\nMethods include traditional machine learning models like SVM [49, 15], as well as classifiers based on encoder-based LLMs like BERT/BioBERT [35, 6, 10]. Text classification\n2"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p3_c1",
+   "page": 3,
+   "text": "Answer the following yes/no\nquestion. Should the following\nretrieved study be included in\nthe systematic review?\nReview: t\nStudy: d\nThe answer is '\nPrompt\nGenerative\nLLM\nNext token probabilities\nInclude : Snorm(d, t) ≥θ\nExclude : Snorm(d, t) < θ\n{\nuncalibrated\ncalibrated\nInclude : P(yes|d, t) ≥P(no|d, t)\nExclude : P(yes|d, t) < P(no|d, t)\n{\n[0.11,0.112,0.123,… . ,0.0001]\nP(yes|d, t)\nP(no|d, t)\nS(d, t) = P(yes|d, t) −P(no|d, t)\nI(d, t) =\nI(d, t) =\nFigure 1: Our framework for automatic document screening using generative LLMs.\nP(yes|d, t) (P(no|d, t)) is the likelihood of the yes (no) token in the next token probability list, and θ is the decision boundary(threshold) used by the calibrated setting.\nmethods are typically trained incrementally (acquiring labels through cycles of automatic\nclassification) and often using active learning [48, 9, 21, 20, 31, 5, 42, 62]. It is important\nto note that all of the methods above requires fine-tuning using labelled data specific to\nsystematic review text classification in order to be effective.\nIn our work, we take a step further by considering the latest developments in generative LLMs to enhance the screening process. At the same time of"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p3_c2",
+   "page": 3,
+   "text": "review text classification in order to be effective.\nIn our work, we take a step further by considering the latest developments in generative LLMs to enhance the screening process. At the same time of developing this work,\nothers have also explored similar directions. [43] employed ChatGPT for document screening, finding that ChatGPT’s effectiveness is poor if the set of documents to be screened\nis imbalanced – which is often the case in systematic reviews (i.e., typically, there are\nmany more excluded documents than included among those that have been screened).\nHigher classification accuracy than ChatGPT was displayed by Bio-SIEVE [35], a model\nfine-tuned from the Guanaco checkpoint [19]– which in turn is based on the Llama architecture. However, Bio-SIEVE also displayed severe consistency issues across review topics. Importantly, both these works have notable limitations. The first study [43] focused\nsolely on the closed-sourced ChatGPT model. In addition, the evaluation was limited to\nonly five systematic review topics and did not consider publicly available datasets with\na broader range of review topics used in previous work. The second study [35] required\nto fine-tune the"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p3_c3",
+   "page": 3,
+   "text": "to\nonly five systematic review topics and did not consider publicly available datasets with\na broader range of review topics used in previous work. The second study [35] required\nto fine-tune the LLM, and relied on a self-constructed dataset for evaluation3, limiting\ncomparison with previous work. Furthermore, it only reported evaluation with respect\nto precision, recall, and accuracy; thus: (i) there is no account for the effect of class imbalance, (ii) there is no account that high-recall is considered essential in practice when\nconducting a systematic review. Conversely, in our work, we (1) consider open-sourced\nLLMs in a zero-shot setup, where further fine-tuning is not required, (2) take into account class imbalance and the high-recall nature of the task when evaluating methods,\n(3) rely on publicly available datasets that have been extensively used in previous work,\nthus facilitating comparison and reproduction.\n3\nGenerative LLMs for Automatic Document Screening\nOur framework for using a generative LLM for automatic document screening is shown\nin Figure 1. The LLM considers a candidate document d ∈D for the systematic review\ntopic t ∈T; document screening is modelled as a"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p3_c4",
+   "page": 3,
+   "text": "for using a generative LLM for automatic document screening is shown\nin Figure 1. The LLM considers a candidate document d ∈D for the systematic review\ntopic t ∈T; document screening is modelled as a classification task, using the function\nI(d, t) : D, T →{0, 1}. Document d is included for systematic review t when I(d, t) is 1,\n3Although the dataset is described to be public, it currently only contains the DOIs of the systematic\nreview topics but not the labels, making reproduction difficult.\n3"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p4_c1",
+   "page": 4,
+   "text": "and otherwise excluded. The function I(d, t) is computed with respect to the output of\nthe LLM for the prompt containing d and t. We investigate two instantiations of I(d, t),\nuncalibrated and calibrated, which we explain below.\nUncalibrated Screening. To determine whether a document should be included or\nnot, uncalibrated screening directly compares the absolute values of the token likelihoods\nP(yes|d, t) and P(no|d, t) as generated by the LLM:\nI(d, t) =\n(\n1,\nif P(yes|d, t) ≥P(no|d, t)\n0,\notherwise.\nTo ensure deterministic output, we forgo actual text generation with LLM. Instead,\nwe represent the model decision using solely the probability of the next predicted token\neither to be ‘yes’ or ‘no’. In this setting, the LLM returns an answer to the provided\nprompt of the decision with respect to the highest likelihood from the two tokens.\nCalibrated Screening. Building upon our uncalibrated instantiation, we calculate\nthe difference between the likelihood of the next token to be yes, or no; then, we use a\nthreshold to determine the inclusion of the document. We begin by computing the score\nS(d, t) as the difference between the yes and no token likelihoods:\nS(d, t) =\n(\nP(yes|d, t)"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p4_c2",
+   "page": 4,
+   "text": "or no; then, we use a\nthreshold to determine the inclusion of the document. We begin by computing the score\nS(d, t) as the difference between the yes and no token likelihoods:\nS(d, t) =\n(\nP(yes|d, t) −P(no|d, t),\nif P(yes|d, t) ≥P(no|d, t)\n0,\notherwise.\nHowever, the probability distribution of the tokens depends on the individual documents, and thus is different across the documents. We then use min-max normalisation\nto normalise scores across all documents for a review topic t:\nSnorm(d, t) =\nS(d, t) −Min({∀di ∈D : S(di, t)}))\nMax({∀di ∈D : S(di, t)}) −Min({∀di ∈D : S(di, t)})\nNext, we identify a threshold θ using training data; θ is determined such that when\nused as the lower bound on scores for inclusion decisions, it ensures a minimum recall\nrate k. Finally, we use θ to decide if a candidate document should be included:\nI(d, t) =\n(\n1,\nif Snorm(d, t) ≥θ\n0,\notherwise.\nThe intuition behind exploring a calibrating screening approach is twofold. First, in\nthe context of systematic review document screening, recall is of param-ount importance.\nFor automation techniques to be used in practice, they must ensure the identification\nof all (or most) of the documents that should be"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p4_c3",
+   "page": 4,
+   "text": "review document screening, recall is of param-ount importance.\nFor automation techniques to be used in practice, they must ensure the identification\nof all (or most) of the documents that should be included in the review. This is crucial because failing to capture all relevant documents may compromise the integrity of\nthe review’s conclusions and miss the main objective of a systematic review, that is its\ncomprehensiveness. However, this focus on recall may not be naturally accounted for by\nLLMs, especially when accuracy is used to train/fine-tune classification models in the\npresence of highly imbalanced classes. Second, the inherent biases in different LLMs can\nlead to varying outcomes; some models may be naturally more inclusive, capturing a\nbroader array of documents, while others may be more exclusive, being overly selective in\ntheir output. To account for these biases and to allow for customisation based on specific\nreview needs, the calibrated instantiation of I(d, t) offers a more adaptable and nuanced\napproach.\nEnsembling of Screening Methods. We also consider an ensemble of screening\nmethods.\nIn particular, in our experiments we will ensemble the two most zero-shot"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p4_c4",
+   "page": 4,
+   "text": "a more adaptable and nuanced\napproach.\nEnsembling of Screening Methods. We also consider an ensemble of screening\nmethods.\nIn particular, in our experiments we will ensemble the two most zero-shot\neffective LLMs and the BERT-based method we use as a comparative baseline. We use\nCombSUM to fuse the individual methods’ decisions [26]. For Uncalibrated Screening,\n4"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p5_c1",
+   "page": 5,
+   "text": "we directly combine the likelihoods of the model outputs. The decision rule I(d, t) is\nformulated as follows:\nI(d, t) =\n(\n1,\nif P\nm∈Methods Pm(yes|d, t) ≥P\nm∈Methods Pm(no|d, t)\n0,\notherwise.\nFor Calibrated Screening, we normalize Snorm to make the decisions:\nI(d, t) =\n(\n1,\nif P\nm∈Methods Snorm(d, t) ≥θ\n0,\notherwise.\n4\nExperimental Setup\n4.1\nConsidered LLMs\nWe employ an array of zero-shot generative LLMs that differ in architecture, training\nsteps, and size (model parameters) to extensively evaluate their effectiveness for automatic\nsystematic review document screening.\nLlaMa: The LlaMa series offers an open-sourced suite of decoder models with parameter sizes ranging from 7B to 65B. Exceptional in its zero-shot capabilities, LlaMa\noutperforms GPT-3 across multiple NLP benchmarks.\nThese models leverage a rich\nand diverse training dataset of approximately 1.4 trillion tokens, harvested from various\nsources including web pages, code repositories, and Wikipedia [46].\nAlpaca: Alpaca has been fine-tuned on the 7B-parameter LlaMa model according\nto the self-instruct methodology [57]. Alpaca’s training corpus originates from the textdavinci-003 model 4, initialized with 175 unique tasks."
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p5_c2",
+   "page": 5,
+   "text": "fine-tuned on the 7B-parameter LlaMa model according\nto the self-instruct methodology [57]. Alpaca’s training corpus originates from the textdavinci-003 model 4, initialized with 175 unique tasks. Preliminary assessments suggest\nthat Alpaca, through instruction-based fine-tuning, achieves similar effectiveness to the\nOpenAI’s text-davinci-003 model [44].\nGuanaco:\nThe Guanaco models stem from the LlaMa base models and are obtained\nthrough the memory-efficient 4-bit QLoRA fine-tuning on the OASST1 dataset [25, 60].\nThis represents a different fine-tuning strategy than that used in the other considered\nLLMs. Guanaco models have demonstrated competitive performance against commercial\nsystems on the Vicuna and OpenAssistant benchmarks [13, 25].\nFalcon: Falcon is available in two variants: Falcon-7B and Falcon-40B. These models\nwere trained on large-scale corpora of 1 and 1.5 trillion tokens, respectively, primarily\nsourced from the RefinedWeb dataset [34]. Notably, the Falcon family includes specialized “instruct” versions — Falcon-7B-Instruct and Falcon-40B-Instruct — that excel in\nassistant-style tasks through fine-tuning on instructional and conversational datasets.\nLlaMa2: LlaMa2"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p5_c3",
+   "page": 5,
+   "text": "specialized “instruct” versions — Falcon-7B-Instruct and Falcon-40B-Instruct — that excel in\nassistant-style tasks through fine-tuning on instructional and conversational datasets.\nLlaMa2: LlaMa2 extends the original LlaMa family, and comes in three parameter\nsizes: 7B, 13B, and 70B. Despite maintaining architectural similarity with its predecessor,\nLlaMa2 is trained on an expanded dataset of 2 trillion tokens, a 40% increase from\nLlaMa [46, 47]. LlaMa2 also includes a specialized “Chat” variant, LlaMa2 Chat, which\nincorporates advanced fine-tuning techniques such as “Ghost Attention” for multi-turn\ndialogue consistency and an array of reinforcement learning methods [47].\nOverall, we select eight models in our study: LlaMa-7b, Alpaca-7b-ins, Guanaco-7bins, LlaMa2-7b, LlaMa2-13b, Falcon-7b-ins, LlaMa2-7b-ins, LlaMa2-13b-ins.5\nTable 1\ndemonstrates the prompts used for LLM-based automatic screening. Note that we do not\ninclude special tokens in the prompt due to page limit, specific prompt for each model\nare adapted based on their special token setup. While we could have considered other\nmodels like the popular ChatGPT, their use can be financially prohibitive for our task."
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p5_c4",
+   "page": 5,
+   "text": "prompt for each model\nare adapted based on their special token setup. While we could have considered other\nmodels like the popular ChatGPT, their use can be financially prohibitive for our task.\n4https://platform.openai.com/docs/models/gpt-3-5\n5Note that for consistency of the paper, we name all instruction-tuned models with -ins; The original names are: Alpaca-7b-ins: alpaca; Guanaco-7b-ins: guanaco-7b; Falcon-7b-ins: falcon-7b-instruct;\nLlaMa2-7b-ins: LlaMa2-7b-chat; LlaMa2-13b-ins: LlaMa2-13b-chat;\n5"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p6_c1",
+   "page": 6,
+   "text": "Table 1: Input types and prompts designed for each model. Italicised text indicates values\nthat are replaced with respective content.\nModel\nPrompt\nAlpaca\nBelow is an instruction that describes a task, paired with an input that provides\nfurther context.\nWrite a response that appropriately completes the request.\n### Instruction:\nAnswer ‘yes’ or ‘no’ to Judge if the following retrieved study should be included by\nthe systematic review?\n### Input:\nReview:\nreview title\nStudy:\ncandidate document\n### Response:\nAll\nOther\nModels\nAnswer ‘yes’ or ‘no’ to Judge if the following retrieved study should be included by\nthe systematic review?\nReview:\nreview title\nStudy:\ncandidate document\nThe answer is ‘\nThe predicted cost will be USD$4,000 and USD$80,000 if we use GPT-3.5-turbo and\nGPT-4, respectively. In our experiments, all employed models were configured to have a\nmaximum token limit of 2048. This adjustment was particularly applied to the Alpaca\nmodel (original model has a limit of 512) and LlaMa2 models(original model has a limit\nof 4096) to ensure uniformity across all models. Consequently, we observed no instances\nof truncation in the experimental data.\n4.2\nDatasets\nWe experiment on the"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p6_c2",
+   "page": 6,
+   "text": "models(original model has a limit\nof 4096) to ensure uniformity across all models. Consequently, we observed no instances\nof truncation in the experimental data.\n4.2\nDatasets\nWe experiment on the CLEF TAR datasets and the Seed Collection dataset. Four datasets\nwere released as part of CLEF TAR [22, 24, 23], covering different types of systematic\nreviews. The 2017 dataset contains 50 Diagnostic Test Accuracy (DTA) topics; 2018 adds\n30 more; while in 2019, a dataset consisted of 8 DTA topics, while another included 40\nintervention review (Int) topics. These datasets contain relevance assessments for about\n600,000 documents in total, and for each topic, the review title and the protocol file are\nalso provided. These datasets are distributed with standard train-test splits; however,\nbecause we consider the zero-shot capabilities of the investigated models, we do not use\nthese splits and instead test on all available topics.\nThe Seed Collection dataset consists of 39 review topics and over 50,000 candidate documents [52].6 For each topic, the review title and inclusion/inclusion labels are provided\nalong with a set of “seed documents”: documents that were provided to the researcher"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p6_c3",
+   "page": 6,
+   "text": "over 50,000 candidate documents [52].6 For each topic, the review title and inclusion/inclusion labels are provided\nalong with a set of “seed documents”: documents that were provided to the researcher\ndesigning the search strategy (query) for the review and that provide examples of documents related to the review (most are likely to meet the inclusion criteria, but it is possible\nsome do not). In our experiment, we only evaluate based on the retrieved documents;\nincluded documents that are not in retrieved document set are removed.\n5\nResults\n5.1\nBaseline\nWe compare the effectiveness of zero-shot LLMs against a baseline that relies on the BERT\narchitecture but uses a domain-specific variant as backbone: BioBERT [29, 54]. BioBERT\nemploys the same architecture as BERT, but the corpus used for self-supervised training\ncontains biomedical text (instead of general domain text like for BERT). BioBERT has\nbeen shown effective across a range of applications related to health tasks, including for\nscreening prioritisation on medical systematic reviews on the datasets we consider [54],\n6We removed topic 18 as no relevant document exited in the candidate document list (the topic only\ncontains"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p6_c4",
+   "page": 6,
+   "text": "for\nscreening prioritisation on medical systematic reviews on the datasets we consider [54],\n6We removed topic 18 as no relevant document exited in the candidate document list (the topic only\ncontains one relevant document)\n6"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p7_c1",
+   "page": 7,
+   "text": "Table 2: Comparison of uncalibrated results between baseline method and generative\nlarge language models.\nStatistical significance, determined by a Student’s two-tailed\npaired t-test with Bonferroni correction (p < 0.05), between the top-performing method\nLlaMa2-7b-ins and others is marked by *.\nModel\nP\nR\nB-AC\nF3\nSuc\nWSS\nCLEF-2017\nBioBERT\n0.06\n0.95*\n0.61*\n0.30\n0.74*\n0.26*\nLlaMa-7b\n0.04*\n0.92*\n0.48*\n0.24*\n0.46*\n0.03*\nLlaMa2-7b\n0.07\n0.50*\n0.60*\n0.23*\n0.02*\n0.70*\nLlaMa2-13b\n0.04*\n1.00*\n0.50*\n0.25*\n0.98*\n0.00*\nFalcon-7b-ins\n0.05*\n0.92*\n0.52*\n0.25*\n0.44\n0.12*\nAlpaca-7b-ins\n0.04*\n0.92*\n0.51*\n0.25*\n0.38\n0.11*\nLlaMa2-7b-ins\n0.08\n0.87\n0.72\n0.35\n0.26\n0.56\nLlaMa2-13b-ins\n0.19*\n0.41*\n0.66*\n0.31\n0.04*\n0.91*\nGuanaco-7b-ins\n0.04*\n1.00*\n0.50*\n0.25*\n1.00*\n0.00*\nCLEF-2018\nBioBERT\n0.06\n0.97*\n0.59*\n0.9\n0.87*\n0.19*\nLlaMa-7b\n0.05*\n0.92*\n0.48*\n0.25*\n0.33\n0.04*\nLlaMa2-7b\n0.07\n0.49*\n0.59*\n0.22*\n0.03*\n0.69*\nLlaMa2-13b\n0.05*\n1.00*\n0.50*\n0.26\n1.00*\n0.00*\nFalcon-7b-ins\n0.05*\n0.92\n0.51*\n0.25*\n0.40\n0.11*\nAlpaca-7b-ins\n0.05*\n0.91\n0.51*\n0.25*\n0.30\n0.11*\nLlaMa2-7b-ins\n0.09\n0.88\n0.75\n0.37\n0.27\n0.59\nLlaMa2-13b-ins\n0.26*\n0.36*\n0.66*\n0.30\n0.00*\n0.94*\nGuanaco-7b-ins\n0.05*\n1.00*\n0.50*\n0.26\n1.00*\n0.00*\nCLEF-2019-dta"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p7_c2",
+   "page": 7,
+   "text": "0.05*\n0.91\n0.51*\n0.25*\n0.30\n0.11*\nLlaMa2-7b-ins\n0.09\n0.88\n0.75\n0.37\n0.27\n0.59\nLlaMa2-13b-ins\n0.26*\n0.36*\n0.66*\n0.30\n0.00*\n0.94*\nGuanaco-7b-ins\n0.05*\n1.00*\n0.50*\n0.26\n1.00*\n0.00*\nCLEF-2019-dta\nBioBERT\n0.07\n0.99\n0.58\n0.30\n0.88\n0.18*\nLlaMa-7b\n0.07\n0.93\n0.48*\n0.27\n0.25\n0.03*\nLlaMa2-7b\n0.08\n0.48*\n0.58*\n0.23\n0.00*\n0.68\nLlaMa2-13b\n0.07\n1.00\n0.50*\n0.28\n1.00\n0.00*\nFalcon-7b-ins\n0.07\n0.95\n0.54*\n0.29\n0.50\n0.12*\nAlpaca-7b-ins\n0.07\n0.91\n0.52*\n0.28\n0.25\n0.12*\nLlaMa2-7b-ins\n0.09\n0.92\n0.71\n0.35\n0.62\n0.49\nLlaMa2-13b-ins\n0.19\n0.49*\n0.69\n0.32\n0.00*\n0.87*\nGuanaco-7b-ins\n0.07\n1.00\n0.50*\n0.28\n1.00\n0.00*\nModel\nP\nR\nB-AC\nF3\nSuc\nWSS\nCLEF-2019-Int\nBioBERT\n0.10\n0.98*\n0.58*\n0.32\n0.90*\n0.16*\nLlaMa-7b\n0.05*\n0.86\n0.47*\n0.26\n0.30\n0.08*\nLlaMa2-7b\n0.08\n0.30*\n0.55*\n0.18*\n0.05*\n0.80*\nLlaMa2-13b\n0.05\n1.00*\n0.50*\n0.29\n0.97*\n0.00*\nFalcon-7b-ins\n0.05\n0.91\n0.50*\n0.27\n0.57\n0.09*\nAlpaca-7b-ins\n0.05\n0.87\n0.49*\n0.27\n0.30\n0.12*\nLlaMa2-7b-ins\n0.08\n0.90\n0.70\n0.35\n0.42\n0.48\nLlaMa2-13b-ins\n0.17*\n0.45*\n0.67\n0.33\n0.05*\n0.87*\nGuanaco-7b-ins\n0.05\n1.00*\n0.50*\n0.29\n1.00*\n0.00*\nSeed Collection\nBioBERT\n0.04\n0.93\n0.54*\n0.24\n0.77*\n0.16*\nLlaMa-7b\n0.04\n0.89\n0.48*\n0.21\n0.56\n0.07*\nLlaMa2-7b\n0.04\n0.29*\n0.53*\n0.15*\n0.03*\n0.78*\nLlaMa2-13b\n0.04"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p7_c3",
+   "page": 7,
+   "text": "0.05\n1.00*\n0.50*\n0.29\n1.00*\n0.00*\nSeed Collection\nBioBERT\n0.04\n0.93\n0.54*\n0.24\n0.77*\n0.16*\nLlaMa-7b\n0.04\n0.89\n0.48*\n0.21\n0.56\n0.07*\nLlaMa2-7b\n0.04\n0.29*\n0.53*\n0.15*\n0.03*\n0.78*\nLlaMa2-13b\n0.04\n1.00*\n0.50*\n0.23\n1.00*\n0.00*\nFalcon-7b-ins\n0.04\n0.93\n0.50*\n0.22\n0.69\n0.07*\nAlpaca-7b-ins\n0.04\n0.90\n0.50*\n0.22\n0.49\n0.10*\nLlaMa2-7b-ins\n0.05\n0.90\n0.66\n0.27\n0.54\n0.40\nLlaMa2-13b-ins\n0.13*\n0.48*\n0.67\n0.28\n0.05*\n0.85*\nGuanaco-7b-ins\n0.04\n1.00*\n0.50*\n0.23\n1.00*\n0.00*\nand thus is a strong baseline. To use BioBERT in our text classification task, we concatenate the topic title with the candidate document to form the input to the backbone. A\nclassification head based on a sigmoid activation function is then used to determine the\ninclusion of a candidate document for the specified topic.7\n5.2\nEvaluation Measures\nWe use set-based metrics for evaluation: precision, recall, and F-3, which emphasize\nthe importance of recall over precision. Additionally, we adopt balanced accuracy (B-\nAC) as a pivotal metric, as it particularly suits the nature of the systematic review\ndocument screening task, where excluded documents substantially outnumber included\nones; B-AC = 1\n2\n\nTP\nTP+FN +\nTN\nTN+FP\n\n. We also report"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p7_c4",
+   "page": 7,
+   "text": "as it particularly suits the nature of the systematic review\ndocument screening task, where excluded documents substantially outnumber included\nones; B-AC = 1\n2\n\nTP\nTP+FN +\nTN\nTN+FP\n\n. We also report the success rate, which quantifies the\nfraction of topics achieving a pre-specified target recall. We adopt a representative target\nrecall of 0.95, a standard threshold for systematic review document screening [7, 18, 8]:\noften systems that do not achieve at least 0.95 recall are deemed of no practical use for\nsystematic review automation. Lastly, we gauge the efficiency of automatic document\n7In the uncalibrated setting for BioBERT, we established a decision threshold of 0.5 to determine the\ninclusion of a document in a review topic. Specifically, a document is included if the BioBERT output\nsatisfies the condition output ≥0.5; otherwise, it is excluded.\n7"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p8_c1",
+   "page": 8,
+   "text": "Table 3: Comparison between the Calibrated (Cal) and Uncalibrated (Unc) approaches\nusing the BioBERT model, LlaMa2-7b-ins model (7b-ins), the LlaMa2-13b-ins model\n(13b-ins) and the Ensemble of the three models (Ensemb).\nThe calibrated method’s\nnumber or character in the bracket () denotes the pre-set target recall (0.95 & 1) or using\nseed documents (S). Statistical significance for each generative model across different\ndatasets is assessed using a Student’s two-tailed paired t-test with a Bonferroni correction\n(p < 0.05) with respect to the uncalibrated approach, denoted by *. The highest evaluated\nscores for each dataset are bolded.\nModel\nSetting\nP\nR\nB-AC\nF3\nSuc\nWSS\nCLEF-2017\nBio\nBERT\nUnc\n0.06\n0.95\n0.61\n0.30\n0.74\n0.26\nCal(0.95)\n0.06\n0.92\n0.64\n0.31\n0.50*\n0.34*\nCal(1)\n0.06\n0.97\n0.60\n0.29\n0.82\n0.23\n7b-ins\nUnc\n0.08\n0.87\n0.72\n0.35\n0.26\n0.56\nCal(0.95)\n0.06*\n0.92*\n0.69*\n0.32\n0.52\n0.44\nCal(1)\n0.05*\n0.99*\n0.60*\n0.28\n0.96\n0.20\n13b-ins\nUnc\n0.19\n0.41\n0.66\n0.31\n0.04\n0.91\nCal(0.95)\n0.06*\n0.93\n0.59*\n0.28\n0.50*\n0.25*\nCal(1)\n0.05*\n0.98\n0.53*\n0.26\n0.88*\n0.08*\nEnsemb\nUnc\n0.31\n0.13\n0.56\n0.13\n0.00\n0.98\nCal(0.95)\n0.08\n0.93*\n0.72\n0.35*\n0.52*\n0.50*\nCal(1)\n0.06\n0.97*\n0.63\n0.30\n0.90*\n0.29*\nCLEF-2018\nBio"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p8_c2",
+   "page": 8,
+   "text": "0.28\n0.50*\n0.25*\nCal(1)\n0.05*\n0.98\n0.53*\n0.26\n0.88*\n0.08*\nEnsemb\nUnc\n0.31\n0.13\n0.56\n0.13\n0.00\n0.98\nCal(0.95)\n0.08\n0.93*\n0.72\n0.35*\n0.52*\n0.50*\nCal(1)\n0.06\n0.97*\n0.63\n0.30\n0.90*\n0.29*\nCLEF-2018\nBio\nBERT\nUnc\n0.06\n0.97\n0.59\n0.29\n0.87\n0.19\nCal(0.95)\n0.07\n0.91*\n0.63\n0.30\n0.57*\n0.33*\nCal(1)\n0.06\n0.97\n0.59\n0.29\n0.87\n0.21\n7b-ins\nUnc\n0.09\n0.88\n0.75\n0.37\n0.27\n0.59\nCal(0.95)\n0.08*\n0.94*\n0.71*\n0.35*\n0.50\n0.46\nCal(1)\n0.06*\n0.99*\n0.62*\n0.30\n1.00\n0.24\n13b-ins\nUnc\n0.26\n0.36\n0.66\n0.30\n0.00\n0.94\nCal(0.95)\n0.06\n0.94*\n0.59*\n0.29\n0.47*\n0.22*\nCal(1)\n0.05\n0.97\n0.53*\n0.27\n0.80*\n0.08*\nEnsemb\nUnc\n0.35\n0.12\n0.54\n0.12\n0.00\n0.95\nCal(0.95)\n0.09*\n0.94*\n0.75\n0.38*\n0.50*\n0.54*\nCal(1)\n0.06\n0.99*\n0.64\n0.32*\n0.93*\n0.28*\nCLEF-2019-dta\nBio\nBERT\nUnc\n0.07\n0.99\n0.58\n0.30\n0.88\n0.18\nCal(0.95)\n0.08\n0.89\n0.59\n0.26\n0.50\n0.27\nCal(1)\n0.08\n0.91\n0.59\n0.27\n0.62\n0.25\n7b-ins\nUnc\n0.09\n0.92\n0.71\n0.35\n0.62\n0.49\nCal(0.95)\n0.10*\n0.91*\n0.71*\n0.34\n0.50\n0.50\nCal(1)\n0.08*\n0.97*\n0.66\n0.32\n0.75\n0.34\n13b-ins\nUnc\n0.19\n0.49\n0.69\n0.32\n0.00\n0.87\nCal(0.95)\n0.08\n0.95\n0.56\n0.29\n0.50*\n0.16*\nCal(1)\n0.07\n0.99\n0.51\n0.28\n0.88*\n0.03*\nEnsemb\nUnc\n0.31\n0.21\n0.59\n0.19\n0.00\n0.96\nCal(0.95)\n0.10\n0.91\n0.73\n0.34*\n0.50*\n0.52*\nCal(1)\n0.09*\n0.99\n0.64\n0.32*\n1.00*\n0.28*"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p8_c3",
+   "page": 8,
+   "text": "0.08\n0.95\n0.56\n0.29\n0.50*\n0.16*\nCal(1)\n0.07\n0.99\n0.51\n0.28\n0.88*\n0.03*\nEnsemb\nUnc\n0.31\n0.21\n0.59\n0.19\n0.00\n0.96\nCal(0.95)\n0.10\n0.91\n0.73\n0.34*\n0.50*\n0.52*\nCal(1)\n0.09*\n0.99\n0.64\n0.32*\n1.00*\n0.28*\nModel\nSetting\nP\nR\nB-AC\nF3\nSuc\nWSS\nCLEF-2019-Int\nBio\nBERT\nUnc\n0.10\n0.98\n0.58\n0.32\n0.90\n0.16\nCal(0.95)\n0.10\n0.87*\n0.59\n0.29\n0.50*\n0.31*\nCal(1)\n0.10\n0.90*\n0.59\n0.30\n0.62*\n0.27*\n7b-ins\nUnc\n0.08\n0.90\n0.70\n0.35\n0.42\n0.48\nCal(0.95)\n0.08*\n0.91*\n0.67*\n0.34\n0.50\n0.42\nCal(1)\n0.07*\n0.93*\n0.64*\n0.33\n0.65\n0.34\n13b-ins\nUnc\n0.17\n0.45\n0.67\n0.33\n0.05\n0.87\nCal(0.95)\n0.07*\n0.90\n0.58\n0.30\n0.50*\n0.25*\nCal(1)\n0.06*\n0.94\n0.55\n0.29\n0.62*\n0.16*\nEnsemb\nUnc\n0.35\n0.23\n0.58\n0.22\n0.05\n0.92\nCal(0.95)\n0.09*\n0.93*\n0.70\n0.37*\n0.50*\n0.45*\nCal(1)\n0.08*\n0.96*\n0.67\n0.35*\n0.68*\n0.35*\nSeed Collection\nBio\nBERT\nUnc\n0.04\n0.93\n0.54\n0.24\n0.77\n0.16\nCal(0.95)\n0.05\n0.80*\n0.55\n0.22\n0.50*\n0.29*\nCal(1)\n0.05\n0.83\n0.55\n0.23\n0.53*\n0.26\nCal (S)\n0.04\n0.93\n0.54\n0.23\n0.76\n0.15\n7b-ins\nUnc\n0.05\n0.90\n0.66\n0.27\n0.54\n0.40\nCal(0.95)\n0.05*\n0.90*\n0.66\n0.28*\n0.51\n0.41\nCal(1)\n0.05*\n0.92*\n0.65\n0.27*\n0.56\n0.38\nCal (S)\n0.05\n0.97*\n0.6*\n0.26\n0.77*\n0.22*\n13b-ins\nUnc\n0.13\n0.48\n0.67\n0.28\n0.05\n0.85\nCal(0.95)\n0.06*\n0.87\n0.64*\n0.27*\n0.51*\n0.39*\nCal(1)\n0.05*\n0.93"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p8_c4",
+   "page": 8,
+   "text": "0.51\n0.41\nCal(1)\n0.05*\n0.92*\n0.65\n0.27*\n0.56\n0.38\nCal (S)\n0.05\n0.97*\n0.6*\n0.26\n0.77*\n0.22*\n13b-ins\nUnc\n0.13\n0.48\n0.67\n0.28\n0.05\n0.85\nCal(0.95)\n0.06*\n0.87\n0.64*\n0.27*\n0.51*\n0.39*\nCal(1)\n0.05*\n0.93\n0.59*\n0.26\n0.59*\n0.25*\nCal (S)\n0.06*\n0.87*\n0.63\n0.29\n0.54*\n0.38*\nEnsemb\nUnc\n0.16\n0.18\n0.52\n0.14\n0.00\n0.86\nCal(0.95)\n0.07*\n0.86*\n0.71\n0.31*\n0.49*\n0.53*\nCal(1)\n0.07*\n0.88*\n0.70\n0.30*\n0.56*\n0.49*\nCal (S)\n0.04*\n1.00*\n0.55\n0.25*\n0.97*\n0.10*\nscreening using the Work Saved by Sampling at a specific recall level (WSS) [16]. This\nis expressed as: WSS = T N+F N\nN\n−(1 −r) where N denotes the total sample count and\n8"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p9_c1",
+   "page": 9,
+   "text": "Table 4: Comparison of Fine-tuned baseline to our method; Statistical significance, determined by a Student’s two-tailed paired t-test with Bonferroni correction (p < 0.05),\nbetween Uncalibrated Bio-SIEVE method and others is marked by *.\nModel\nSetting\nP\nR\nB-AC\nF3\nSuc\nWSS\nBio-SIEVE\nOriginal/Calibrated\n0.232\n0.576\n0.727\n0.429\n0.111\n0.858\nCalibrated(Recall=0.95)\n0.102*\n0.877*\n0.683\n0.348\n0.481*\n0.471*\nCalibrated (Recall=1)\n0.088*\n0.945*\n0.666\n0.339\n0.704*\n0.369*\nLlaMa2-7b-ins\nUncalibrated\n0.078*\n0.920*\n0.725\n0.359\n0.333\n0.513*\nCalibrated (Recall=0.95)\n0.068*\n0.935*\n0.685\n0.333\n0.481*\n0.421*\nCalibrated(Recall=1)\n0.059*\n0.990*\n0.621*\n0.311\n1.000*\n0.241*\nEnsemble\nUncalibrated\n0.400*\n0.204*\n0.594*\n0.199*\n0.037\n0.972*\nCalibrated (Recall=0.95)\n0.095*\n0.937*\n0.729\n0.373\n0.519*\n0.500*\nCalibrated (Recall=1)\n0.068*\n0.981*\n0.630*\n0.322\n0.889*\n0.266*\nr signifies the recall level; we set r to 1, representing total recall.\n5.3\nThreshold Setting\nFor the calibration setting, the threshold θ value needs to be set. We devise two approaches to determine θ:\n1. Extrapolation from Collection: we perform a leave-one-out experiment across\nall systematic review topics in a dataset. We identify threshold"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p9_c2",
+   "page": 9,
+   "text": "to be set. We devise two approaches to determine θ:\n1. Extrapolation from Collection: we perform a leave-one-out experiment across\nall systematic review topics in a dataset. We identify threshold values that have\nconsistently yielded robust results in the sample topics (all other topics except the\ntarget topic)—optimizing for a high recall rate—using the median score of candidate\ndocuments that achieved the target recall. The obtained threshold is then applied to\nthe target topic under consideration. Note that cross-validation is used to determine\nthe θ value only: the LLMs are still zero-shot. This is, however, a somewhat artificial\nsetting, in that if training material was available for determining θ, then it could\nalso be used to tune the LLMs (though computational costs may prevent this but\nour method does not require training of the LLM itself). We will consider a more\nappropriate option next.\n2. Calibration with Seed Studies: we employ the uncalibrated LLM to generate\ninclusion scores for a set of seed studies (exemplar documents that are often identified prior to searching and screening). If the lowest score for a seed study is below\nthe classifier’s threshold for inclusion"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p9_c3",
+   "page": 9,
+   "text": "scores for a set of seed studies (exemplar documents that are often identified prior to searching and screening). If the lowest score for a seed study is below\nthe classifier’s threshold for inclusion (decision boundary), then the threshold is\nlowered to the score obtained by that seed study: we use this as the new threshold\nfor the calibrated LLM. This adjustment aims to improve recall. Typical targets\nfor recall for systematic review are 0.95 or 1; we then experiment with these values\nto determine θ.\nRQ1: Architecture and Size of Model. Consider the results reported in Table 2.\nFor model architecture, we compare four models: Falcon-7b-ins, Alpaca-7b-ins, LlaMa2-\n7b-ins and Guanaco-2-7b-ins — all of which have the same number of parameters. The\nresults indicate that LlaMa2-7b-ins is the most effective for the task, outperforming the\nothers across all evaluation metrics except recall and success rate. Specifically, this model\nobtained a high WSS while incurring only a marginal drop in recall: a significant loss was\nobserved only on CLEF-2017. Concerning success rate, LlaMa2-7b-ins exhibited comparable performance to its counterparts, showing no statistically significant"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p9_c4",
+   "page": 9,
+   "text": "drop in recall: a significant loss was\nobserved only on CLEF-2017. Concerning success rate, LlaMa2-7b-ins exhibited comparable performance to its counterparts, showing no statistically significant differences.\nFor model size, we consider two variants of the LlaMa2-ins architecture: one with 7\nbillion parameters (LlaMa2-7b-ins) and another with 13 billion parameters (LlaMa2-13bins). Our findings suggest a trade-off between recall and WSS. Specifically, the 7-billion\nparameter variant obtains significantly higher recall, but this comes at the expense of\nreduced savings, evidenced by significantly lower WSS. Regarding B-AC, LlaMa2-7b-ins\n9"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p10_c1",
+   "page": 10,
+   "text": "generally outperforms its larger counterpart across multiple datasets, except for the Seed\nCollection. Statistically significant differences in B-AC were only noted for CLEF-2017\nand CLEF-2018.\nRQ2:\nImpact of instruction fine-tuning.\nConsider again Table 2.\nWe contrast instruction-fine-tuned models against their base counterparts: LlaMa2-7b-ins VS.\nLlaMa2-7b, LlaMa2-13b-ins VS. LlaMa2-13b, Alpaca-7b-ins VS. LlaMa-7b.\nAcross all\ndifferences, a significant improvement in B-AC is observed. Nevertheless, the models exhibit divergent behaviours in other metrics. For LlaMa-7b and LlaMa2-13b, fine-tuning\nleads to higher WSS at the expense of reduced recall. Conversely, LlaMa2-7b-ins exhibits\na significant decline in WSS but obtains higher recall, success rate, and F3 except in\nthe CLEF-2019-dta, where the F3 improvement is not statistically significant. We also\nconducted a comparative evaluation with Guanaco-7b-ins, a QLoRA fine-tuned model.\nWhile it does outperform LlaMa-7b in B-AC, the model classifies all candidate documents\nas relevant, nullifying any practical applicability for systematic review screening.\nIn summary, our analyses suggest that instruction-based fine-tuning is"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p10_c2",
+   "page": 10,
+   "text": "the model classifies all candidate documents\nas relevant, nullifying any practical applicability for systematic review screening.\nIn summary, our analyses suggest that instruction-based fine-tuning is generally beneficial for improving document screening accuracy. However, the specific gains — whether\nin savings or recall — depend on the base model’s architecture. Our experiments also\nsuggest that QLoRa fine-tuning does not yield an effective model for this particular task.\nRQ3: Impact of Calibration. Consider Table 3. We find that calibrated models\nreliably meet their pre-set recall targets and provide an attractive solution for practical\nimplementation for automatic document screening. Specifically, in our tests that considered the extrapolation from collection calibration, approximately 50% of the topics met\nthe pre-set recall target of 0.95 by comparing success rates obtained in each dataset (note\nthat success rate in our experiments is set to measure a 0.95 recall level). This further\nimproves (success rate between 0.56 and 1.00) when the target recall for determining\nthe threshold is set to 1. We further compare the performance of three calibrated models, BioBERT,"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p10_c3",
+   "page": 10,
+   "text": "This further\nimproves (success rate between 0.56 and 1.00) when the target recall for determining\nthe threshold is set to 1. We further compare the performance of three calibrated models, BioBERT, LlaMa2-7b-ins and LlaMa2-13b-ins. Generally, the 7-billion parameter\nLlaMa2 model significantly outperforms the two other models in both B-AC and WSS.\nAs for success rate and recall, the models exhibit similar effectiveness; LlaMa2-7b-ins\nperforms the same or better in 60% of the cases for success rate and in 40% of cases for\naverage recall.\nThe calibration with seed documents method could only be tested on the Seed Collection, as CLEF datasets have no seed studies. In this case, LlaMa2-7b-ins consistently\nobtains higher recall: 70% of topics achieved perfect recall, compared to only 50% using\nthe other calibration method. Although calibration with seed studies generally improves\nrecall, our analysis indicates that LlaMa2-13b-ins displays more volatile effectiveness in\nthis setting, possibly due to the varying quality and quantity of seed documents across\ndifferent topics.\nEnsemble of Automatic Screening Methods. Consider Table 3 with respect to\nthe Ensemble results, obtained by"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p10_c4",
+   "page": 10,
+   "text": "possibly due to the varying quality and quantity of seed documents across\ndifferent topics.\nEnsemble of Automatic Screening Methods. Consider Table 3 with respect to\nthe Ensemble results, obtained by ensambling LlaMa2-7b-ins, LlaMa2-13b-ins and the\nBioBERT baseline. The Ensemble strategy yields consistently higher B-AC and WSS,\nwhen calibrated. Moreover, when pitted against individual generative LLMs calibrated\nwith the same threshold recall, the Ensemble method obtains higher WSS, precision, and\nF3. Exceptions are observed in CLEF-2018 and Seed Collection, where the Ensemble\nstrategy registers lower success rates. Interestingly, the Ensemble’s performance dips in\nrecall when not calibrated.\nThis decline may be attributed to the model’s aggressive\ndocument exclusion strategy, as evidenced by its consistently high WSS across datasets.\nOverall, our findings indicate that a calibrated Ensemble approach generally outperforms\nsingle generative LLMs.\n6\nDiscussion and Outlook\nComparison with fine-tuned LLMs. Although this study aimed to investigate the\neffectiveness of zero-shot generative LLMs in systematic review document screening, we\n10"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p11_c1",
+   "page": 11,
+   "text": "are also interested in comparing our method to the state-of-the-art fine-tuned model. For\nthis comparison, we consider the Bio-SIEVE approach, a fine-tuned model for systematic\nreview document screening, and compare it with our best methods in Table 4.8\nWe\nalso apply our calibration approach to Bio-SIEVE. Surprisingly the most effective model,\nLlaMa2-7b-ins, obtains a B-AC comparable to Bio-SIEVE, and our Ensemble method is\neven more effective than Bio-SIEVE, although differences are not significant.\nAnother noteworthy observation is Bio-SIEVE’s low recall and success rate, especially\nwhen not calibrated (original). These results raise concerns regarding Bio-SIEVE’s practical utility for the screening task, as a low recall is often not accepted by the researchers\nconducting the review as it translates into missing important studies. While calibration\nimproves Bio-SIEVE’s recall, this is still inferior to our zero-shot model under the same\ncalibration setting. This finding suggests that although fine-tuning can improve effectiveness, it requires careful calibration for systematic review document screening. Looking\nforward, fine-tuning remains an interesting avenue for research but"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p11_c2",
+   "page": 11,
+   "text": "although fine-tuning can improve effectiveness, it requires careful calibration for systematic review document screening. Looking\nforward, fine-tuning remains an interesting avenue for research but may necessitate alternative calibration strategies for practical utility for this task.\nVariation in model input prompt. While we only considered one type of prompt\nfor each model, it is important to highlight that generative LLMs are sensitive to prompt\nformulation [61, 64, 30]. Due to page constraints, we could not deeply discuss the effects\nof alternative prompt formulations, such as those based on inclusion/exclusion criteria or\nseed studies. However, preliminary investigations into these aspects show a similar trend\nto what is observed when solely using review topic titles as prompts. These additional\nresults are provided in a supplementary digital appendix for completeness.9\n7\nConclusion\nWe comprehensively evaluated zero-shot LLMs for systematic review document screening\nand introduced a calibration method for tuning the model output. We further explored the\nutility of an ensemble method that combines the top zero-shot LLMs with the BioBERT\nbaseline.\nOur results highlight the"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p11_c3",
+   "page": 11,
+   "text": "a calibration method for tuning the model output. We further explored the\nutility of an ensemble method that combines the top zero-shot LLMs with the BioBERT\nbaseline.\nOur results highlight the importance of output calibration when applying generative\nLLMs to systematic review document screening. This calibration maintains review quality\nand reliably by meeting pre-set recall targets, thus offering the flexibility to adjust the\nmodel to the specific requirements of a systematic review. Furthermore, when calibrated,\nour ensemble method outperforms the current state-of-the-art fine-tuned model, Bio-\nSIEVE [35]. We also emphasized the role of instruction-based fine-tuning in effectively\nleveraging generative LLMs for this application, while we showed that QLoRa-tuning does\nnot yield effective results for this task.\nThe findings reported in the paper suggest that LLM-based methods can be created\nfor automatically screening documents for systematic reviews, leading to considerable\nsavings in manual effort. Furthermore, this can be done without requiring expensive finetuning (both in terms of labelling and computation). The fact that a high recall level\ncan be obtained across a large"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p11_c4",
+   "page": 11,
+   "text": "in manual effort. Furthermore, this can be done without requiring expensive finetuning (both in terms of labelling and computation). The fact that a high recall level\ncan be obtained across a large number of different types of reviews suggests that these\nmethods might be mature enough for actual adoption in systematic review workflows.\nReferences\n[1] Abualsaud, M., Ghelani, N., Zhang, H., Smucker, M.D., Cormack, G.V., Grossman,\nM.R.: A system for efficient high-recall retrieval. In: Proceedings of the 41st Annual\n8Comparison is however not straightforward as Bio-SIEVE used most of the datasets we consider here\nfor fine-tuning; we then evaluate effectiveness using the only 27 topics from CLEF-TAR that were not\nused to fine-tune Bio-SIEVE.\n9https://github.com/ielab/ECIR-2024-llm-screening\n11"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p12_c1",
+   "page": 12,
+   "text": "International ACM SIGIR Conference on Research and Development in Information\nRetrieval. pp. 1317–1320 (2018)\n[2] Alharbi, A., Briggs, W., Stevenson, M.: Retrieving and ranking studies for systematic\nreviews: University of Sheffield’s approach to CLEF eHealth 2018 Task 2. In: CEUR\nWorkshop Proceedings: Working Notes of CLEF 2018: Conference and Labs of the\nEvaluation Forum. vol. 2125. CEUR Workshop Proceedings (2018)\n[3] Alharbi, A., Stevenson, M.: Ranking abstracts to identify relevant evidence for systematic reviews: The university of sheffield’s approach to CLEF eHealth 2017 task\n2. In: CEUR Workshop Proceedings: Working Notes of CLEF 2017: Conference and\nLabs of the Evaluation Forum (2017)\n[4] Alshami, A., Elsayed, M., Ali, E., Eltoukhy, A.E., Zayed, T.: Harnessing the power\nof chatgpt for automating systematic review process: Methodology, case study, limitations, and future directions. Systems 11(7), 351 (2023)\n[5] Anagnostou, A., Lagopoulos, A., Tsoumakas, G., Vlahavas, I.P.: Combining interreview learning-to-rank and intra-review incremental training for title and abstract\nscreening in systematic reviews. In: CEUR Workshop Proceedings: Working Notes\nof CLEF 2017: Conference"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p12_c2",
+   "page": 12,
+   "text": "interreview learning-to-rank and intra-review incremental training for title and abstract\nscreening in systematic reviews. In: CEUR Workshop Proceedings: Working Notes\nof CLEF 2017: Conference and Labs of the Evaluation Forum (2017)\n[6] Aum, S., Choe, S.: srbert: automatic article classification model for systematic\nreview using bert. Systematic reviews 10(1), 1–8 (2021)\n[7] Bramer, W.M., Rethlefsen, M.L., Kleijnen, J., Franco, O.H.: Optimal database\ncombinations for literature searches in systematic reviews: a prospective exploratory\nstudy. Systematic reviews 6, 1–12 (2017)\n[8] Callaghan, M.W., M¨uller-Hansen, F.: Statistical stopping criteria for automated\nscreening in systematic reviews. Systematic Reviews 9(1), 1–14 (2020)\n[9] Carvallo, A., Parra, D., Lobel, H., Soto, A.: Automatic document screening of medical literature using word and text embeddings in an active learning setting. Scientometrics 125, 3047–3084 (2020)\n[10] Carvallo, A., Parra, D., Rada, G., Perez, D., Vasquez, J.I., Vergara, C.: Neural\nlanguage models for text classification in evidence-based medicine. arXiv preprint\narXiv:2012.00584 (2020)\n[11] Chandler, J., Cumpston, M., Li, T., Page, M.J., Welch, V.A.:"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p12_c3",
+   "page": 12,
+   "text": "J.I., Vergara, C.: Neural\nlanguage models for text classification in evidence-based medicine. arXiv preprint\narXiv:2012.00584 (2020)\n[11] Chandler, J., Cumpston, M., Li, T., Page, M.J., Welch, V.A.: Cochrane Handbook\nfor Systematic Reviews of Interventions. John Wiley & Sons (2019)\n[12] Chen, J., Chen, S., Song, Y., Liu, H., Wang, Y., Hu, Q., He, L., Yang, Y.: ECNU\nat 2017 eHealth task 2: Technologically assisted reviews in empirical medicine. In:\nCEUR Workshop Proceedings: Working Notes of CLEF 2017: Conference and Labs\nof the Evaluation Forum (2017)\n[13] Chiang, W.L., Li, Z., Lin, Z., Sheng, Y., Wu, Z., Zhang, H., Zheng, L., Zhuang, S.,\nZhuang, Y., Gonzalez, J.E., et al.: Vicuna: An open-source chatbot impressing gpt-4\nwith 90%* chatgpt quality. See https://vicuna. lmsys. org (accessed 14 April 2023)\n(2023)\n[14] Clark, J.: Systematic reviewing. In: Suhail A. R. Doi, G.M.W. (ed.) Methods of\nClinical Epidemiology. Springer (2013)\n[15] Cohen, A.M., Ambert, K., McDonagh, M.: A prospective evaluation of an automated\nclassification system to support evidence-based medicine and systematic review. In:\nAMIA annual symposium proceedings. vol. 2010, p. 121. American Medical Informatics"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p12_c4",
+   "page": 12,
+   "text": "evaluation of an automated\nclassification system to support evidence-based medicine and systematic review. In:\nAMIA annual symposium proceedings. vol. 2010, p. 121. American Medical Informatics Association (2010)\n12"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p13_c1",
+   "page": 13,
+   "text": "[16] Cohen, A., Hersh, W., Peterson, K., Yen, P.: Reducing workload in systematic review\npreparation using automated citation classification. Journal of the American Medical\nInformatics Association 13(2), 206–219 (2006)\n[17] Collaboration, C.: The cochrane library. Database available on disk and CDROM.\nOxford, UK, Update Software (2002)\n[18] Crumley, E.T., Wiebe, N., Cramer, K., Klassen, T.P., Hartling, L.: Which resources\nshould be used to identify rct/ccts for systematic reviews: a systematic review. BMC\nMedical Research Methodology 5, 1–13 (2005)\n[19] Dettmers, T., Pagnoni, A., Holtzman, A., Zettlemoyer, L.: Qlora: Efficient finetuning of quantized llms. arXiv preprint arXiv:2305.14314 (2023)\n[20] Di Nunzio, G.M., Beghini, F., Vezzani, F., Henrot, G.:\nAn interactive twodimensional approach to query aspects rewriting in systematic reviews. IMS unipd\nat CLEF eHealth task 2. In: CEUR Workshop Proceedings: Working Notes of CLEF\n2017: Conference and Labs of the Evaluation Forum (2017)\n[21] Di Nunzio, G.M., Ciuffreda, G., Vezzani, F.: Interactive sampling for systematic\nreviews. IMS unipd at CLEF 2018 eHealth task 2. In: CEUR Workshop Proceedings:\nWorking Notes of CLEF 2018:"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p13_c2",
+   "page": 13,
+   "text": "(2017)\n[21] Di Nunzio, G.M., Ciuffreda, G., Vezzani, F.: Interactive sampling for systematic\nreviews. IMS unipd at CLEF 2018 eHealth task 2. In: CEUR Workshop Proceedings:\nWorking Notes of CLEF 2018: Conference and Labs of the Evaluation Forum (2018)\n[22] Kanoulas, E., Li, D., Azzopardi, L., Spijker, R.: CLEF 2017 technologically assisted\nreviews in empirical medicine overview. In: CEUR Workshop Proceedings: Working\nNotes of CLEF 2017: Conference and Labs of the Evaluation Forum (2017)\n[23] Kanoulas, E., Li, D., Azzopardi, L., Spijker, R.: CLEF 2019 technology assisted\nreviews in empirical medicine overview. In: CEUR Workshop Proceedings: Working\nNotes of CLEF 2018: Conference and Labs of the Evaluation Forum. vol. 2380 (2019)\n[24] Kanoulas, E., Spijker, R., Li, D., Azzopardi, L.: CLEF 2018 technology assisted\nreviews in empirical medicine overview. In: CEUR Workshop Proceedings: Working\nNotes of CLEF 2018: Conference and Labs of the Evaluation Forum (2018)\n[25] K¨opf, A., Kilcher, Y., von R¨utte, D., Anagnostidis, S., Tam, Z.R., Stevens,\nK.,\nBarhoum, A.,\nDuc,\nN.M.,\nStanley,\nO.,\nNagyfi,\nR.,\net al.:\nOpenassistant conversations–democratizing large language model alignment. arXiv"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p13_c3",
+   "page": 13,
+   "text": "Y., von R¨utte, D., Anagnostidis, S., Tam, Z.R., Stevens,\nK.,\nBarhoum, A.,\nDuc,\nN.M.,\nStanley,\nO.,\nNagyfi,\nR.,\net al.:\nOpenassistant conversations–democratizing large language model alignment. arXiv preprint\narXiv:2304.07327 (2023)\n[26] Kozorovitsky, A.K., Kurland, O.: From“identical”to“similar”: Fusing retrieved lists\nbased on inter-document similarities. Journal of Artificial Intelligence Research 41,\n267–296 (2011)\n[27] Lagopoulos, A., Anagnostou, A., Minas, A., Tsoumakas, G.: Learning-to-rank and\nrelevance feedback for literature appraisal in empirical medicine. In: CEUR Workshop Proceedings: Working Notes of CLEF 2018: Conference and Labs of the Evaluation Forum. pp. 52–63. Springer (2018)\n[28] Lee, G.E., Sun, A.: Seed-driven document ranking for systematic reviews in evidencebased medicine. In: Proceedings of the 41st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval. pp. 455–464 (2018)\n[29] Lee, J., Yoon, W., Kim, S., Kim, D., Kim, S., So, C.H., Kang, J.: Biobert: a\npre-trained biomedical language representation model for biomedical text mining.\nBioinformatics 36(4), 1234–1240 (2020)\n[30] Lu, Y., Bartolo, M., Moore, A., Riedel,"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p13_c4",
+   "page": 13,
+   "text": "S., So, C.H., Kang, J.: Biobert: a\npre-trained biomedical language representation model for biomedical text mining.\nBioinformatics 36(4), 1234–1240 (2020)\n[30] Lu, Y., Bartolo, M., Moore, A., Riedel, S., Stenetorp, P.: Fantastically ordered\nprompts and where to find them: Overcoming few-shot prompt order sensitivity.\narXiv preprint arXiv:2104.08786 (2021)\n13"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p14_c1",
+   "page": 14,
+   "text": "[31] Minas, A., Lagopoulos, A., Tsoumakas, G.: Aristotle university’s approach to the\ntechnologically assisted reviews in empirical medicine task of the 2018 CLEF eHealth\nlab. In: CEUR Workshop Proceedings: Working Notes of CLEF 2018: Conference\nand Labs of the Evaluation Forum (2018)\n[32] Miwa, M., Thomas, J., O’Mara-Eves, A., Ananiadou, S.: Reducing systematic review\nworkload through certainty-based screening. Journal of Biomedical Informatics 51,\n242–253 (2014)\n[33] Norman, C.R., Leeflang, M.M., Porcher, R., N´ev´eol, A.: Measuring the impact\nof screening automation on meta-analyses of diagnostic test accuracy. Systematic\nreviews 8(1), 243 (2019)\n[34] Penedo, G., Malartic, Q., Hesslow, D., Cojocaru, R., Cappelli, A., Alobeidli, H.,\nPannier, B., Almazrouei, E., Launay, J.: The refinedweb dataset for falcon llm:\noutperforming curated corpora with web data, and web data only. arXiv preprint\narXiv:2306.01116 (2023)\n[35] Robinson, A., Thorne, W., Wu, B.P., Pandor, A., Essat, M., Stevenson, M., Song,\nX.: Bio-sieve: Exploring instruction tuning large language models for systematic\nreview automation. arXiv preprint arXiv:2308.06610 (2023)\n[36] Scells, H., Zuccon, G.: You can teach an"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p14_c2",
+   "page": 14,
+   "text": "M., Song,\nX.: Bio-sieve: Exploring instruction tuning large language models for systematic\nreview automation. arXiv preprint arXiv:2308.06610 (2023)\n[36] Scells, H., Zuccon, G.: You can teach an old dog new tricks: Rank fusion applied\nto coordination level matching for ranking in systematic reviews. In: Proceedings of\nthe 42nd European Conference on Information Retrieval. pp. 399–414 (2020)\n[37] Scells, H., Zuccon, G., Deacon, A., Koopman, B.: QUT ielab at CLEF eHealth\n2017 technology assisted reviews track: Initial experiments with learning to rank. In:\nCEUR Workshop Proceedings: Working Notes of CLEF 2017: Conference and Labs\nof the Evaluation Forum (2017)\n[38] Scells, H., Zuccon, G., Koopman, B.: Automatic boolean query refinement for systematic review literature search. In: Proceedings of the 28th World Wide Web Conference. pp. 1646–1656 (2019)\n[39] Scells, H., Zuccon, G., Koopman, B.: A comparison of automatic boolean query\nformulation for systematic reviews. Information Retrieval Journal pp. 1–26 (2020)\n[40] Scells, H., Zuccon, G., Koopman, B.: A computational approach for objectively\nderived systematic review search strategies. In: Proceedings of the 42nd European"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p14_c3",
+   "page": 14,
+   "text": "Retrieval Journal pp. 1–26 (2020)\n[40] Scells, H., Zuccon, G., Koopman, B.: A computational approach for objectively\nderived systematic review search strategies. In: Proceedings of the 42nd European\nConference on Information Retrieval. pp. 385–398 (2020)\n[41] Scells, H., Zuccon, G., Koopman, B., Clark, J.: Automatic boolean query formulation\nfor systematic review literature search. In: Proceedings of the 29th World Wide Web\nConference. pp. 1071–1081 (2020)\n[42] Singh, J., Thomas, L.: IIIT-H at CLEF eHealth 2017 task 2: Technologically assisted\nreviews in empirical medicine. In: CEUR Workshop Proceedings: Working Notes of\nCLEF 2017: Conference and Labs of the Evaluation Forum (2017)\n[43] Syriani, E., David, I., Kumar, G.: Assessing the ability of chatgpt to screen articles\nfor systematic reviews. arXiv preprint arXiv:2307.06464 (07 2023)\n[44] Taori, R., Gulrajani, I., Zhang, T., Dubois, Y., Li, X., Guestrin, C., Liang, P.,\nHashimoto, T.B.: Stanford alpaca: An instruction-following llama model. https:\n//github.com/tatsu-lab/stanford alpaca (2023)\n[45] Thomas, J., Harden, A.: Methods for the thematic synthesis of qualitative research\nin systematic reviews. BMC medical research"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p14_c4",
+   "page": 14,
+   "text": "llama model. https:\n//github.com/tatsu-lab/stanford alpaca (2023)\n[45] Thomas, J., Harden, A.: Methods for the thematic synthesis of qualitative research\nin systematic reviews. BMC medical research methodology 8(1), 45 (2008)\n14"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p15_c1",
+   "page": 15,
+   "text": "[46] Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.A., Lacroix, T.,\nRozi`ere, B., Goyal, N., Hambro, E., Azhar, F., et al.: Llama: Open and efficient\nfoundation language models. arXiv preprint arXiv:2302.13971 (2023)\n[47] Touvron, H., Martin, L., Stone, K., Albert, P., Almahairi, A., Babaei, Y., Bashlykov,\nN., Batra, S., Bhargava, P., Bhosale, S., et al.: Llama 2: Open foundation and finetuned chat models. arXiv preprint arXiv:2307.09288 (2023)\n[48] Wallace, B.C., Small, K., Brodley, C.E., Lau, J., Trikalinos, T.A.: Deploying an\ninteractive machine learning system in an evidence-based practice center: Abstrackr.\nIn: Proceedings of the 2nd ACM International Health Informatics Symposium. pp.\n819–824 (2012)\n[49] Wallace, B.C., Trikalinos, T.A., Lau, J., Brodley, C., Schmid, C.H.: Semi-automated\nscreening of biomedical citations for systematic reviews. BMC bioinformatics 11(1),\n55 (2010)\n[50] Wang, S., Li, H., Scells, H., Locke, D., Zuccon, G.: Mesh term suggestion for systematic review literature search. In: Proceedings of the 25th Australasian Document\nComputing Symposium. pp. 1–8 (2021)\n[51] Wang, S., Li, H., Zuccon, G.: Mesh suggester: A library and system for"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p15_c2",
+   "page": 15,
+   "text": "systematic review literature search. In: Proceedings of the 25th Australasian Document\nComputing Symposium. pp. 1–8 (2021)\n[51] Wang, S., Li, H., Zuccon, G.: Mesh suggester: A library and system for mesh term\nsuggestion for systematic review boolean query construction. In: Proceedings of the\nSixteenth ACM International Conference on Web Search and Data Mining. pp. 1176–\n1179 (2023)\n[52] Wang, S., Scells, H., Clark, J., Koopman, B., Zuccon, G.: From little things big\nthings grow: A collection with seed studies for medical systematic review literature search. In: Proceedings of the 45th International ACM SIGIR Conference on\nResearch and Development in Information Retrieval. pp. 3176–3186 (2022)\n[53] Wang, S., Scells, H., Koopman, B., Zuccon, G.: Automated mesh term suggestion\nfor effective query formulation in systematic reviews literature search. Intelligent\nSystems with Applications p. 200141 (2022)\n[54] Wang, S., Scells, H., Koopman, B., Zuccon, G.: Neural rankers for effective screening\nprioritisation in medical systematic review literature search. In: Proceedings of the\n26th Australasian Document Computing Symposium. pp. 1–10 (2022)\n[55] Wang, S., Scells, H., Koopman, B.,"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p15_c3",
+   "page": 15,
+   "text": "screening\nprioritisation in medical systematic review literature search. In: Proceedings of the\n26th Australasian Document Computing Symposium. pp. 1–10 (2022)\n[55] Wang, S., Scells, H., Koopman, B., Zuccon, G.: Can chatgpt write a good boolean\nquery for systematic review literature search? In: Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information\nRetrieval. p. 1426–1436. SIGIR ’23, Association for Computing Machinery, New\nYork, NY, USA (2023). https://doi.org/10.1145/3539618.3591703, https://doi.org/\n10.1145/3539618.3591703\n[56] Wang, S., Scells, H., Potthast, M., Koopman, B., Zuccon, G.: Generating natural\nlanguage queries for more effective systematic review screening prioritisation. arXiv\npreprint arXiv:2309.05238 (2023)\n[57] Wang, Y., Kordi, Y., Mishra, S., Liu, A., Smith, N.A., Khashabi, D., Hajishirzi,\nH.: Self-instruct: Aligning language model with self generated instructions. arXiv\npreprint arXiv:2212.10560 (2022)\n[58] White, J.: Pubmed 2.0. Medical reference services quarterly 39(4), 382–387 (2020)\n[59] Wu, H., Wang, T., Chen, J., Chen, S., Hu, Q., He, L.: Ecnu at 2018 ehealth task\n2: Technologically assisted reviews in"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p15_c4",
+   "page": 15,
+   "text": "J.: Pubmed 2.0. Medical reference services quarterly 39(4), 382–387 (2020)\n[59] Wu, H., Wang, T., Chen, J., Chen, S., Hu, Q., He, L.: Ecnu at 2018 ehealth task\n2: Technologically assisted reviews in empirical medicine. Methods-a Companion to\nMethods in Enzymology 4(5), 7 (2018)\n15"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p16_c1",
+   "page": 16,
+   "text": "[60] Xu, Y., Xie, L., Gu, X., Chen, X., Chang, H., Zhang, H., Chen, Z., Zhang, X.,\nTian, Q.: Qa-lora: Quantization-aware low-rank adaptation of large language models. arXiv preprint arXiv:2309.14717 (2023)\n[61] Yang, C., Wang, X., Lu, Y., Liu, H., Le, Q.V., Zhou, D., Chen, X.: Large language\nmodels as optimizers. arXiv preprint arXiv:2309.03409 (2023)\n[62] Yang, E., MacAvaney, S., Lewis, D.D., Frieder, O.: Goldilocks: Just-right tuning\nof bert for technology-assisted review. In: European Conference on Information Retrieval. pp. 502–517. Springer (2022)\n[63] Zhang, R., Wang, Y.S., Yang, Y.:\nGeneration-driven contrastive self-training\nfor\nzero-shot\ntext\nclassification\nwith\ninstruction-tuned\ngpt.\narXiv\npreprint\narXiv:2304.11872 (2023)\n[64] Zhao, Z., Wallace, E., Feng, S., Klein, D., Singh, S.: Calibrate before use: Improving\nfew-shot performance of language models. In: International Conference on Machine\nLearning. pp. 12697–12706. PMLR (2021)\n[65] Zou, J., Li, D., Kanoulas, E.: Technology assisted reviews: Finding the last few\nrelevant documents by asking Yes/No questions to reviewers. In: Proceedings of the\n41st Annual International ACM SIGIR Conference on Research and Development"
+  },
+  {
+   "paper_id": "arxiv-2401-06320",
+   "chunk_id": "arxiv-2401-06320_p16_c2",
+   "page": 16,
+   "text": "assisted reviews: Finding the last few\nrelevant documents by asking Yes/No questions to reviewers. In: Proceedings of the\n41st Annual International ACM SIGIR Conference on Research and Development in\nInformation Retrieval. pp. 949–952 (2018)\n16"
+  }
+ ]
+}

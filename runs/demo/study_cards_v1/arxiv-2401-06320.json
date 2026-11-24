@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2401-06320",
+ "fingerprint": "d5075e02b0f858d2",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude expérimentale comparative évaluant des modèles LLM contre BioBERT sur la sélection de documents pour des revues systématiques, utilisant un protocole d'ensemblage de méthodes de screening et de fusion CombSUM.",
+   "chunk_id": "arxiv-2401-06320_p4_c4",
+   "page": 4,
+   "quote": "Ensembling of Screening Methods. We also consider an ensemble of screening methods.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "rejected",
+   "value": "CLEF TAR datasets : 2017 (50 DTA topics), 2018 (30 DTA topics), 2019 (8 DTA topics + 40 Int topics), ~600 000 documents ; Seed Collection : 39 topics, >50 000 documents.",
+   "chunk_id": "arxiv-2401-06320_p6_c2",
+   "page": null,
+   "quote": "Four datasets were released as part of CLEF TAR [22, 24, 23], covering different types of systematic reviews. The 2017 dataset contains 50 Diagnostic Test Accuracy (DTA) topics; 2018 adds 30 more; while in 2019, a dataset consisted of 8 DTA topics, while another included 40 intervention review (Int) topics. These datasets contain relevance assessments for about 600,000 documents in total, and for each topic, the review title and the protocol file are also provided.",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Les modèles évalués sont LlaMa, Alpaca, Guanaco, Falcon, LlaMa2 et BioBERT.",
+   "chunk_id": "arxiv-2401-06320_p5_c1",
+   "page": 5,
+   "quote": "LlaMa: The LlaMa series offers an open-sourced suite of decoder models with parameter sizes ranging from 7B to 65B. Exceptional in its zero-shot capabilities, LlaMa outperforms GPT-3 across multiple NLP benchmarks.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "LlaMa2-7b-ins atteint un rappel parfait sur 70 % des sujets, contre 50 % avec l’autre méthode, et améliore le taux de réussite entre 0,56 et 1,00.",
+   "chunk_id": "arxiv-2401-06320_p10_c3",
+   "page": null,
+   "quote": "LlaMa2-7b-ins consistently obtains higher recall: 70% of topics achieved perfect recall, compared to only 50% using the other calibration method.",
+   "note": "nombres de la valeur absents de la citation : ['0.56', '1.00']"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Bio-SIEVE présente des problèmes de cohérence sévères entre les sujets.",
+   "chunk_id": "arxiv-2401-06320_p3_c2",
+   "page": 3,
+   "quote": "Bio-SIEVE also displayed severe consistency issues across review topics.",
+   "note": ""
+  }
+ ]
+}

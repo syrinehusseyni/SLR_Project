@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2605-06937",
+ "fingerprint": "f37d6fcf0fb95501",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Revue systématique",
+   "chunk_id": "arxiv-2605-06937_p21_c2",
+   "page": 21,
+   "quote": "whether a paper is relevant for a narrow systematic review that collects primary, peer-reviewed empirical studies that build, evaluate, or compare machine-learning models for predicting software defects/bugs/faults/failures.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "GEPA",
+   "chunk_id": "arxiv-2605-06937_p10_c3",
+   "page": 10,
+   "quote": "GEPA is used here because the protocol requires feedback-rich revision of the prompt harness, not only selection or bootstrapping of few-shot examples.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Exactitude 0.797 ± 0.023, F1 0.848 ± 0.011, utilité 0.855 ± 0.007",
+   "chunk_id": "arxiv-2605-06937_p15_c2",
+   "page": 15,
+   "quote": "The most balanced setting in this validation was max_eval = 12, with accuracy 0.797 ± 0.023, F1 = 0.848 ± 0.011, and label‑level utility 0.855 ± 0.007.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les décisions de sélection, les champs ambigus, les jugements de risque de biais et les décisions finales doivent rester sous supervision humaine.",
+   "chunk_id": "arxiv-2605-06937_p15_c3",
+   "page": 15,
+   "quote": "Borderline eligibility decisions, ambiguous extracted fields, risk-ofbias judgements, and final synthesis decisions should remain under human oversight.",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4411506008",
+ "fingerprint": "bae9e3bf55ea1d3d",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  }
+ ]
+}

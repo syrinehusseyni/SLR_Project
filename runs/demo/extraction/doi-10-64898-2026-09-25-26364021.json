@@ -1,0 +1,405 @@
+{
+ "paper_id": "doi-10-64898-2026-09-25-26364021",
+ "source_sha256": "cb44c3fc3196faeaaa3fae64e7efcdb2be00f49b301b0ba2a7deba7e26304457",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 23,
+ "pages_read": 23,
+ "page_chars": [
+  1351,
+  2077,
+  1168,
+  2723,
+  2410,
+  2524,
+  2394,
+  2418,
+  2366,
+  2557,
+  2518,
+  2475,
+  2745,
+  2165,
+  1292,
+  4786,
+  3835,
+  2090,
+  1660,
+  3039,
+  1241,
+  848,
+  318
+ ],
+ "repeated_lines": [
+  "It is made available under a",
+  "doi:",
+  "this version posted October #, #.",
+  "CC-BY #.# International license",
+  "https://doi.org/#.#/#.#.#.#",
+  "The copyright holder for this preprint",
+  "medRxiv preprint",
+  "(which was not certified by peer review)",
+  "is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity."
+ ],
+ "chunks": [
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p1_c1",
+   "page": 1,
+   "text": "1\n\nTitle and abstract screening for systematic reviews with Jev, a System One model:\ncomparison with generative large language models\n\nKentaro Matsui, M.D., Ph.D.1,2, Yoshikazu Takaesu, M.D., Ph.D.3\nAffiliations:\n1 Department of Sleep Medicine, National Center Hospital, National Center of Neurology and\nPsychiatry, Tokyo, Japan.\n2 Department of Sleep-Wake Disorders, National Institute of Mental Health, National Center of\nNeurology and Psychiatry, Tokyo, Japan.\n3 Department of Neuropsychiatry, Graduate School of Medicine, University of the Ryukyus,\nOkinawa, Japan.\n\nType of manuscript: Research Article\nCorresponding Author: Kentaro Matsui, M.D., Ph.D.\nAddress: 4-1-1, Ogawahigashicho, Kodaira, Tokyo 187–8553, Japan\nPhone: +81-42-341-2711, Fax: +81-42-344-6745\nEmail: matsui.kentaro@ncnp.go.jp\n3 figures and 2 tables; 1 supplementary figure and 1 supplementary table\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p1_c2",
+   "page": 1,
+   "text": "the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint\nNOTE: This preprint reports new research that has not been certified by peer review and should not be used to guide clinical practice."
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p2_c1",
+   "page": 2,
+   "text": "2\n\nAbstract\nLarge language models (LLMs) screen titles and abstracts without review-specific training, but\ngenerating screening decisions as text takes processing time and incurs API charges. We evaluated\nJev, a non-generative model returning classification probabilities, on 4527 records from two\nsystematic reviews of bipolar disorder treatments. We used human reviewers’ decisions to retain\nrecords for full-text assessment as the reference standard. In the primary analysis, we asked Jev\nyes-or-no questions (“Noul”) about whether to retain each record. Records were retained when their\nretention probability was at least 50%, a cutoff specified before the final evaluation runs. We also\nevaluated lower retention thresholds. For comparison, we gave Jev explicit include/exclude options\n(“Choice”) and used the same prompts with GPT-5 mini and GPT-6 Astra; both LLMs used default\nreasoning. In the primary analysis at 50%, sensitivity and specificity were 99.6% and 98.9% for\nlight therapy and 93.2% and 93.5% for adjunctive pharmacotherapy. Lower cutoffs selected on these\ndata retained all reference-positive records. Compared with assessing every record manually, these\ncutoffs reduced the"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p2_c2",
+   "page": 2,
+   "text": "93.2% and 93.5% for adjunctive pharmacotherapy. Lower cutoffs selected on these\ndata retained all reference-positive records. Compared with assessing every record manually, these\ncutoffs reduced the number requiring human assessment by 96.9% for light therapy and 61.3% for\nadjunctive pharmacotherapy. For light therapy and adjunctive pharmacotherapy, sensitivity was\n92.3% and 90.0% with Jev using explicit options at 50%, 87.2% and 90.0% with GPT-5 mini, and\n92.3% and 80.8% with GPT-6 Astra. Costs for screening all 4527 records once were US$0.20 for Jev\nusing explicit options, US$2.59 for GPT-5 mini, and US$33.45 for GPT-6 Astra. Jev's probabilities\ncould provide graded information for reviewers assessing titles and abstracts.\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p3_c1",
+   "page": 3,
+   "text": "3\n\nHighlights\nWhat is already known\nGenerative LLMs can screen titles and abstracts using natural-language eligibility criteria, but generating each\ndecision takes time and incurs API charges.\nWhat is new\nJev screened records without generating text or requiring training on records labeled for each review. In two\nreviews, screening cost substantially less than with the tested LLM configurations.\nPotential impact for Research Synthesis Methods readers\nRather than providing only an include-or-exclude decision, Jev indicates how strongly the model favors\nretaining each record. Reviewers could consider this information alongside the title, abstract, and eligibility\ncriteria.\nKeywords: systematic reviews; title and abstract screening; machine learning; large language models;\nprobability thresholds; workload reduction.\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p4_c1",
+   "page": 4,
+   "text": "4\n\n1. Introduction\nClinical practice guidelines depend on systematic reviews, which take a long time to\nproduce,1 and title and abstract screening accounts for much of the workload. With earlier machinelearning classifiers, records were ranked by a relevance score, but training required labeled records\nfrom each review.2,3 Large language models (LLMs) can screen titles and abstracts using eligibility\ncriteria written in natural language, without training on records labeled for the individual review.\nTitle and abstract screening is now conducted with LLMs, and recent evidence syntheses reported\nhigh sensitivity.4,5 Although routine use of LLMs has been judged premature,6 combining judgments\nfrom several models or pairing an LLM with a human reviewer performed well,7,8 and\nimplementation has already extended to national clinical guideline production.9\nScreening, however, is a classification task performed through text generation with\ngenerative LLMs. Outputs are decisions rather than scores10-12 and LLM confidence is often poorly\ncalibrated.13-15 Errors also occur: eligible studies were excluded under some screening conditions\nwith GPT-5, a previous frontier model from OpenAI.16 In"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p4_c2",
+   "page": 4,
+   "text": "and LLM confidence is often poorly\ncalibrated.13-15 Errors also occur: eligible studies were excluded under some screening conditions\nwith GPT-5, a previous frontier model from OpenAI.16 In addition, generating each screening\ndecision and any intermediate reasoning token by token takes processing time and incurs API\ncharges.17-19 The cost of screening a fixed set of records can be lowered by sending multiple records\nto the LLM in each request (batching). However, increasing the number of records per request has\nbeen reported to reduce sensitivity or produce invalid outputs in some models.20\nJev, a recently introduced non-generative model developed by TypeSafe AI and described by\nits developer as a System One model, processes natural-language input and returns probabilities for\nspecified answers without generating text token by token.21,22 According to TypeSafe AI, Jev\nevaluates multiple questions about the same input in parallel, so asking additional questions has\nlittle effect on the time needed to return a response.22 For screening, several records can be placed\nin the shared input, with a separate question asking whether to retain each record. This\narrangement could reduce the"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p4_c3",
+   "page": 4,
+   "text": "time needed to return a response.22 For screening, several records can be placed\nin the shared input, with a separate question asking whether to retain each record. This\narrangement could reduce the time and cost of screening a fixed set of records. Like an LLM, Jev\ndoes not require training on records labeled for each review. It also provides a score for each record,\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c1",
+   "page": 5,
+   "text": "5\n\na feature of earlier classifiers trained for individual reviews,2,3 which may convey more information\nthan a binary include-or-exclude decision.\nAlthough Jev has shown task-dependent probability calibration when used to judge\ngenerated responses,23 its screening performance and the correspondence between its probabilities\nand human retention decisions remain untested in systematic reviews. We evaluated Jev on two\ndatasets from our previous study of title and abstract screening10 and compared Jev with two\ngenerative LLMs using the same prompts. We examined sensitivity, the number of records requiring\nhuman review, and probability calibration against human retention decisions. We also assessed\nwhether performance was maintained as the number of records per request increased, and\nmeasured latency, processing time, and cost.\n\n2. Methods\n2.1. Study design, datasets, and reference standard\nWe analyzed two datasets previously used to evaluate GPT-3.5 and GPT-410: 1381 records\nfrom a systematic review of bright light therapy for bipolar disorder (hereafter, light therapy)24 and\n3146 from a systematic review of adjunctive pharmacotherapy for bipolar depression.25 Eligibility\ncriteria"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c2",
+   "page": 5,
+   "text": "review of bright light therapy for bipolar disorder (hereafter, light therapy)24 and\n3146 from a systematic review of adjunctive pharmacotherapy for bipolar depression.25 Eligibility\ncriteria are described in the source reviews,24,25 and human screening procedures in our previous\nstudy.10 The original records had been screened in duplicate by pairs of human evaluators. Their\ndecisions formed the basis of the reference standard; records retained for full-text assessment are\nreferred to as human-retained records. In our previous study, records retained by human reviewers\nbut excluded by GPT were reassessed. When exclusion was judged appropriate, the reference label\nwas changed to excluded. We incorporated 13 adjudicated exclusions and resolved three additional\nlabels: a related open-label report, a discrepancy between source sheets, and a missing consensus\nlabel. Reference labels were then fixed before the final evaluations.10 The final reference standard\ncomprised 26 human-retained records for light therapy and 87 for adjunctive pharmacotherapy.\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c3",
+   "page": 5,
+   "text": "records for light therapy and 87 for adjunctive pharmacotherapy.\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p6_c1",
+   "page": 6,
+   "text": "6\n\n2.2. Jev and prompts\nA Jev request contains the content to be evaluated, termed the state, and one or more\nquestions. Each question consists of instructions and a question type. The questions are evaluated\nagainst the same state independently and in parallel, and each receives an answer in the format\nspecified by its type, without text generation. Figure 1 summarizes the screening approaches and\nstudy design. We used two question types. A “Noul” question asks for a yes-or-no judgment and\nreturns a single value from 0 to 1: the probability of yes. A “Choice” question presents a set of\noptions and returns a probability for each option; these probabilities sum to 1.21-23 We accessed jev-\n1.13.0 through the TypeSafe API on September 18, 2026 (UTC).\nThe primary analysis used Noul questions.22 We used GPT-6 Astra (OpenAI) as an agent in\na separate Codex session to draft screening criteria from the two source reviews,24,25 without giving\nGPT-6 Astra access to screening records, reference labels, earlier prompts, or screening results. The\ncriteria specified that records with uncertain eligibility should be retained and clearly incompatible\nrecords excluded. Each request's state"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p6_c2",
+   "page": 6,
+   "text": "labels, earlier prompts, or screening results. The\ncriteria specified that records with uncertain eligibility should be retained and clearly incompatible\nrecords excluded. Each request's state contained the criteria and one or more records, with an\nidentifier for each record. One Noul question per record asked whether that record should be\nretained for full-text assessment. We treated the returned value as the probability of retention.\nThe secondary analysis used Choice questions.22 We adapted the prompts from our previous\nstudy10 to assess study design, population, intervention, and comparator together, with include and\nexclude as the options. Each request's state contained one record, and the instructions contained the\ncriteria and query. We used the probability assigned to include as the probability of retention. The\ncomplete prompts are provided in Figure S1.\n\n2.3. Screening runs\nA run consisted of screening all 4527 records across both datasets once. As the focus of this\nstudy, Jev was run 10 times under each condition to characterize run-to-run variability. The\nprimary analysis used one record per request, and we repeated it with up to 10, 25, or 50 records\n.\nCC-BY 4.0"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p6_c3",
+   "page": 6,
+   "text": "Jev was run 10 times under each condition to characterize run-to-run variability. The\nprimary analysis used one record per request, and we repeated it with up to 10, 25, or 50 records\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p7_c1",
+   "page": 7,
+   "text": "7\n\nper request. The concurrency limit was 50 requests in all conditions. Single-record runs used a fixed\ninput order. For requests containing multiple records, each dataset was reshuffled before every run\nusing fixed seeds, supplied with the code. The input budget was approximately 32,000 tokens per\nrequest.26 To stay within this budget, we grouped records using a 90,000-character budget for their\ncombined title and abstract text, including the title and abstract labels. Transient failures were\nretried automatically. All returned identifiers and probabilities were checked programmatically for\ncompleteness and valid format.\n\n2.4. Comparison with generative LLMs\nWe accessed GPT-5 mini (gpt-5-mini-2025-08-07) and GPT-6 Astra (gpt-6-astra) through the\nOpenAI API on September 19, 2026 (UTC). Each request contained one record, followed by the\ncriteria, query, and response options of the secondary analysis and an instruction to answer with\nthe single letter I or E.10 We ran GPT-5 mini with the lowest accepted reasoning setting (minimal)\nand the default setting (reasoning effort unspecified), and GPT-6 Astra with the default setting.\nPrevious studies set the temperature to 0 to reduce"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p7_c2",
+   "page": 7,
+   "text": "the lowest accepted reasoning setting (minimal)\nand the default setting (reasoning effort unspecified), and GPT-6 Astra with the default setting.\nPrevious studies set the temperature to 0 to reduce variability in outputs,10 but the API did not\naccept a temperature setting for either model. We therefore ran each condition three times, with up\nto 50 concurrent requests. For all models, request latency covered dispatch to the parsed response,\nexcluding pacing and retry waits. Run processing time included pacing, rate-limit waits, and retries.\nCosts were calculated from token usage in saved successful responses at the study list prices,\nincluding LLM reasoning tokens as output tokens. Setup calls and unobserved usage from failed\nrequests were excluded. Time and token usage were counted once per request when records were\nbundled.\n\n2.5. Statistical analysis\nWe calculated sensitivity and specificity for each dataset and run, using human screening\ndecisions as the reference. We also calculated the percentage reduction in records requiring human\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p7_c3",
+   "page": 7,
+   "text": "the percentage reduction in records requiring human\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p8_c1",
+   "page": 8,
+   "text": "8\n\nassessment compared with reviewing all records. A 50% probability cutoff was specified before the\nfinal evaluation runs: Jev retained records with a probability at or above this cutoff. We evaluated\nother cutoffs in 5-percentage-point increments. For each dataset, we also identified the highest\ncutoff, to the nearest percentage point, at which Jev retained every human-retained record in all 10\nruns.\nWe grouped records by Jev's probability of retention and calculated the percentage in each\ngroup that human reviewers had retained for full-text assessment. To use the same probability\nintervals in the primary and secondary analyses, we first calculated each record's mean probability\nacross runs in each analysis. We used these means to count records in 10-percentage-point intervals,\nthen merged adjacent intervals until each contained at least 20 records in both analyses. After\nfixing these boundaries, we assigned records to intervals using their probabilities in each individual\nrun. We summarized the percentages retained by human reviewers as means and ranges across\nruns.\nWe measured variation between runs as the percentage of all 4527 records for which the\nretain-or-exclude"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p8_c2",
+   "page": 8,
+   "text": "run. We summarized the percentages retained by human reviewers as means and ranges across\nruns.\nWe measured variation between runs as the percentage of all 4527 records for which the\nretain-or-exclude decision differed between runs. Jev was run 10 times and each LLM condition\nthree times. To compare variation over the same number of runs, we considered all 120 possible\ncombinations of three Jev runs. For each combination, we calculated the percentage of records\nwhose decisions were not identical across the three runs, then averaged these 120 percentages. We\nalso calculated the standard deviation of each record's probability across the 10 Jev runs, separately\nfor each condition defined by the number of records per request.\n\n3. Results\n3.1. Screening performance in the primary analysis\nAfter full-text assessment, six reports of six trials were included in the original lighttherapy review, and nine reports of five trials in the original adjunctive-pharmacotherapy review.\nJev Noul retained all of these reports in all 10 runs at the prespecified 50% cutoff. In the primary\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p8_c3",
+   "page": 8,
+   "text": "all of these reports in all 10 runs at the prespecified 50% cutoff. In the primary\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p9_c1",
+   "page": 9,
+   "text": "9\n\nanalysis at the prespecified 50% cutoff, mean sensitivity and specificity were 99.6% and 98.9% for\nlight therapy and 93.2% and 93.5% for adjunctive pharmacotherapy. For light therapy, 49% was the\nhighest cutoff that retained all human-retained records in every run. At this cutoff, mean specificity\nwas 98.7% and the number of records requiring human assessment was reduced by 96.9%. For\nadjunctive pharmacotherapy, the corresponding cutoff was 20%, with mean specificity of 63.1% and\na reduction in review volume of 61.3% (Table 1).\nAcross the 10 primary-analysis runs, seven distinct human-retained records had a\nretention probability below 50% at least once: one from the light-therapy review and six from the\nadjunctive-pharmacotherapy review. A post hoc assessment of their titles and abstracts identified\nexplicit incompatibilities with the primary-analysis criteria in three records; eligibility remained\nuncertain in the other four, warranting further assessment under the instruction to retain\nuncertain records (Table S1).\n\n3.2. Human retention according to model-assigned probability\nIn both datasets and both analyses, no record assigned a probability below 10% was\nhuman-retained in"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p9_c2",
+   "page": 9,
+   "text": "retain\nuncertain records (Table S1).\n\n3.2. Human retention according to model-assigned probability\nIn both datasets and both analyses, no record assigned a probability below 10% was\nhuman-retained in any run. Among light-therapy records with probabilities of 60 to 100%, the mean\npercentage of human-retained records was 83.4% in the primary analysis and 93.6% in the\nsecondary analysis. For adjunctive pharmacotherapy, the percentage of human-retained records was\nat most 4.9% in any interval below 60%. The percentage increased across the four intervals from\n60% to 100%, reaching 85.9% in the primary analysis and 69.2% in the secondary analysis in the\nhighest interval, 90 to 100% (Figure 2).\n\n3.3. Comparison with generative LLMs\nJev Choice retained all reports included in the two systematic reviews in all 10 runs at the\n50% cutoff. In the secondary analysis with Jev Choice at the 50% cutoff, sensitivity and specificity\nwere 92.3% and 99.7% for light therapy and 90.0% and 95.4% for adjunctive pharmacotherapy. The\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p9_c3",
+   "page": 9,
+   "text": "pharmacotherapy. The\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p10_c1",
+   "page": 10,
+   "text": "10\n\nhighest cutoff retaining all human-retained light-therapy records in every run was 22%, with\nspecificity of 99.2% and a reduction in review volume of 97.3%. For adjunctive pharmacotherapy, the\ncorresponding cutoff was 14%, with specificity of 83.4% and a reduction in review volume of 81.1%\n(Table 2).\nGPT-5 mini with minimal reasoning excluded one report included in the light-therapy\nreview in all three runs and two or three reports included in the adjunctive-pharmacotherapy\nreview per run. With the secondary-analysis prompts and minimal reasoning, mean sensitivity and\nspecificity for GPT-5 mini were 73.1% and 99.9% for light therapy and 70.9% and 93.4% for\nadjunctive pharmacotherapy.\nGPT-5 mini with default reasoning excluded the same light-therapy report in one of three\nruns and retained all nine reports included in the adjunctive-pharmacotherapy review in every run.\nWith default reasoning, GPT-5 mini had sensitivity of 87.2% and specificity of 99.5% for light\ntherapy; for adjunctive pharmacotherapy, sensitivity was 90.0% and specificity was 93.2%.\nGPT-6 Astra with default reasoning retained all included reports from both reviews in all\nthree runs. For GPT-6 Astra with"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p10_c2",
+   "page": 10,
+   "text": "adjunctive pharmacotherapy, sensitivity was 90.0% and specificity was 93.2%.\nGPT-6 Astra with default reasoning retained all included reports from both reviews in all\nthree runs. For GPT-6 Astra with default reasoning, sensitivity and specificity were 92.3% and\n98.1% for light therapy and 80.8% and 94.4% for adjunctive pharmacotherapy.\nAlthough we could not set the temperature to 0 for either LLM, all responses consisted of\nthe single letter I (retain for full-text assessment) or E (exclude), as requested. Mean output tokens\nper record were 10 for GPT-5 mini with minimal reasoning, 200 for GPT-5 mini with default\nreasoning, and 9 for GPT-6 Astra.\nOf the 113 records retained by human reviewers for full-text assessment across both\ndatasets, Jev Choice excluded 10 or 11 per run at the 50% cutoff. GPT-5 mini excluded 31 to 35 with\nminimal reasoning and 11 to 13 with default reasoning; GPT-6 Astra excluded 18 or 19. We also\nexamined Jev Choice's probabilities for records excluded by the LLMs. With default reasoning, the\ntwo LLMs excluded 24 distinct human-retained records at least once across their three runs. For 10\nof these 24 records, Jev Choice's mean retention probability across"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p10_c3",
+   "page": 10,
+   "text": "LLMs. With default reasoning, the\ntwo LLMs excluded 24 distinct human-retained records at least once across their three runs. For 10\nof these 24 records, Jev Choice's mean retention probability across 10 runs was below 50%.\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p11_c1",
+   "page": 11,
+   "text": "11\n\nWe assessed run-to-run variability in retain-or-exclude decisions across repeated\nscreenings of the same 4527 records. At the 50% cutoff, decisions differed between runs for 1.4% of\nrecords with Jev Choice and 2.6% with Jev Noul across all 10 runs. For the GPT models, each\nassessed over three runs, the corresponding percentages were 3.1% for GPT-5 mini under minimal\nreasoning, 4.6% under default reasoning, and 0.5% for GPT-6 Astra. To compare variability over\nthree runs, we averaged the percentage of records with differing decisions across all 120\ncombinations of three Jev runs. At the 50% cutoff, these averages were 0.7% for Jev Choice and\n1.4% for Jev Noul.Median request latency for Jev was 256 ms in the primary analysis and 258 ms in\nthe secondary analysis. For GPT-5 mini, median latency was 1273 ms with minimal reasoning and\n2332 ms with default reasoning; for GPT-6 Astra, it was 1511 ms. With one record per request, Jev\nrequests were spaced to remain within the API request limit. This pacing determined the total\nprocessing time: a mean of 249 seconds per run in the primary analysis and 251 seconds in the\nsecondary analysis. Mean processing time was 137 seconds for GPT-5"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p11_c2",
+   "page": 11,
+   "text": "limit. This pacing determined the total\nprocessing time: a mean of 249 seconds per run in the primary analysis and 251 seconds in the\nsecondary analysis. Mean processing time was 137 seconds for GPT-5 mini with minimal reasoning,\n270 seconds with default reasoning, and 161 seconds for GPT-6 Astra. No request to any model\nreceived a rate-limit response.\nJev cost US$0.22 per run in the primary analysis and US$0.20 in the secondary analysis.\nCosts per run were US$0.88 for GPT-5 mini with minimal reasoning, US$2.59 with default\nreasoning, and US$33.45 for GPT-6 Astra.\n\n3.4. Multiple records per request\nAt the 50% cutoff, Jev Noul retained all reports included in the two systematic reviews\nafter full-text assessment. This was the case in all 10 runs with up to 10, 25, or 50 records per\nrequest. With limits of 10, 25, and 50 records per request, requests contained a mean of 10.0, 24.9,\nand 43.7 records, respectively. Every run completed without failed or invalid responses. Mean\nprocessing time for all 4527 records was 25.7 seconds with up to 10 records per request, 15.7\nseconds with up to 25, and 15.3 seconds with up to 50, compared with 249 seconds with one record\n.\nCC-BY 4.0"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p11_c3",
+   "page": 11,
+   "text": "time for all 4527 records was 25.7 seconds with up to 10 records per request, 15.7\nseconds with up to 25, and 15.3 seconds with up to 50, compared with 249 seconds with one record\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p12_c1",
+   "page": 12,
+   "text": "12\n\nper request. Costs ranged from US$0.10 to US$0.11 per run across the multiple-record conditions.\nMedian request latency was 450 ms with up to 10 records per request, 736 ms with up to 25, and\n1270 ms with up to 50.\nAt the 50% cutoff, light-therapy sensitivity was 100.0% in every run across these conditions.\nSpecificity ranged from 97.0 to 97.2%, compared with 98.9% with one record per request. For\nadjunctive pharmacotherapy, sensitivity was 91.7%, 90.5%, and 89.7% with up to 10, 25, and 50\nrecords per request, respectively, compared with 93.2% with one record. Specificity ranged from 92.1\nto 93.4%, compared with 93.5% with one record (Figure 3). At the highest cutoffs retaining all\nhuman-retained records, adjunctive-pharmacotherapy specificity was 51.1%, 57.7%, and 53.6% with\nup to 10, 25, and 50 records per request, respectively, compared with 63.1% with one record. The\nmean standard deviation of each record's probability across runs was 0.009 with one record per\nrequest and 0.031 to 0.034 with multiple records per request.\n\n4. Discussion\nIn these reviews, Jev screened titles and abstracts without generating text or training on\nrecords labeled for each review. Jev Choice used"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p12_c2",
+   "page": 12,
+   "text": "to 0.034 with multiple records per request.\n\n4. Discussion\nIn these reviews, Jev screened titles and abstracts without generating text or training on\nrecords labeled for each review. Jev Choice used the same prompts as the LLMs; at the prespecified\ncutoff, its sensitivity and specificity were similar to or higher than those of the LLMs with default\nreasoning, and its cost was lower. Like earlier classifiers trained for individual reviews,2,3 Jev\nprovides a graded score for each record. Jev can do so using eligibility criteria written in natural\nlanguage.\nJev's low screening cost warrants comparison with GPT-5 mini as another low-cost\nscreening option. Previous studies have reported high but imperfect LLM screening sensitivity;5,27,28\nour earlier GPT-based study also documented exclusions of human-retained records.10 Even with\nminimal reasoning, GPT-5 mini cost more than Jev Choice. Moreover, it excluded reports ultimately\nincluded in both source reviews. Default reasoning improved sensitivity and retained all ultimately\nincluded reports from the adjunctive-pharmacotherapy review, but the same light-therapy report\n.\nCC-BY 4.0 International license\nIt is made available under a\nis"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p12_c3",
+   "page": 12,
+   "text": "sensitivity and retained all ultimately\nincluded reports from the adjunctive-pharmacotherapy review, but the same light-therapy report\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p13_c1",
+   "page": 13,
+   "text": "13\n\nmissed in all three runs with minimal reasoning was still excluded in one of three runs. Although\nJev also excluded some human-retained records at the prespecified 50% cutoff, it retained all\nreports ultimately included after full-text assessment in both source reviews across all tested\nconditions and runs. GPT-6 Astra also retained all of these reports in all three runs, but screening\nall 4527 records once cost approximately 170 times as much as with Jev Choice. Previous research\nhas documented errors in human abstract screening, with an estimated miss rate of approximately\n8–13% with a single reviewer, and even dual independent screening can miss around 0–3% of\neligible studies.29-31 Given the inherent limitations of human performance, the low miss rate of Jev\nmay already be at a level sufficient to replace a single human reviewer, although further research is\nneeded because its performance may depend on domain knowledge that varies across fields. Another\npotential advantage is that, Jev's probability output indicates how strongly the model favors\nretaining a record. While it does not establish eligibility or substitute for human judgment on final\ninclusion,32 reviewers"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p13_c2",
+   "page": 13,
+   "text": "is that, Jev's probability output indicates how strongly the model favors\nretaining a record. While it does not establish eligibility or substitute for human judgment on final\ninclusion,32 reviewers could consider this graded information alongside the title, abstract, and\neligibility criteria when assessing a record.\nProcessing time also matters when screening must be repeated after searches are\nupdated.33 With one record per request, Jev returned individual responses faster than the LLMs.\nHowever, the total time to screen all records was similar because Jev requests were spaced to stay\nwithin its API limit. Sending multiple records per request reduced the total time to seconds. All Jev\nruns completed successfully, whereas invalid outputs have been reported for some generative LLMs\nwith larger batches.20 Of note, compared with sending one record per request, sending multiple\nrecords lowered sensitivity for adjunctive pharmacotherapy at the fixed cutoff and increased\nvariation in probabilities across runs. Given that screening with one record per request already\ncompleted within a practical time frame, sending multiple records per request may not be necessary\nwhen sensitivity is"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p13_c3",
+   "page": 13,
+   "text": "across runs. Given that screening with one record per request already\ncompleted within a practical time frame, sending multiple records per request may not be necessary\nwhen sensitivity is prioritized.\nSeveral limitations affect the interpretation of these findings. First, both reviews concerned\nbipolar disorder, limiting generalizability to other clinical areas. The datasets also contained few\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p14_c1",
+   "page": 14,
+   "text": "14\n\nhuman-retained records, and no independent external validation was performed. Second, the\nhighest cutoffs retaining all human-retained records were identified from the evaluation data and\nare therefore optimistic; they would not be known in advance in a prospective review. Third, the\nLLM comparison covered only two models from one developer and the tested reasoning settings. In\naddition, screening sensitivity may vary with prompt wording,27,34 but we did not systematically\nevaluate this variation. Finally, all models were accessed through proprietary APIs on specific dates,\nand the results may change with later model updates.\n\n5. Conclusions\nAcross the two systematic reviews evaluated, Jev achieved high screening sensitivity at the\nprespecified cutoff, retained all reports included after full-text assessment, and cost less than the\ntested LLM configurations. External validation is needed, as this study used only the datasets from\nour previous evaluation. System One models such as Jev are likely to play a central role in title and\nabstract screening for future systematic reviews. The emergence of additional models in this class\ncould broaden the options for simplifying"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p14_c2",
+   "page": 14,
+   "text": "such as Jev are likely to play a central role in title and\nabstract screening for future systematic reviews. The emergence of additional models in this class\ncould broaden the options for simplifying systematic review workflows and improving review quality.\n\nAcknowledgments\nWe used GPT-6 Astra (OpenAI) and Claude Fable 5.1 (Anthropic) to assist with prompt development,\ncode drafting, analysis, and manuscript preparation. These tools were accessed through Codex or\nClaude Code. The screening models and their use are described in the Methods. The authors are\nresponsible for the final content.\n\nAuthor contributions\nKentaro Matsui: Conceptualization, Methodology, Software, Formal analysis, Data curation, Writing\n- original draft, Funding acquisition. Yoshikazu Takaesu: Data curation, Supervision, Writing -\nreview & editing.\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p15_c1",
+   "page": 15,
+   "text": "15\n\nFunding\nJapan Society for the Promotion of Science (JSPS) KAKENHI, grant 26K10503. The funder had no\nrole in study design, data collection, analysis, or interpretation.\nCompeting interests\nThe authors declare none.\nEthics\nThis study analyzed bibliographic records and existing screening labels; no human participants or\nidentifiable patient data were involved. Ethics approval and participant consent were not applicable.\nData availability\nReference labels, model predictions, request-level resource measurements, prompts, model settings,\nand analysis code are available at https://github.com/matsuikentaro1/jev-title-abstract-screening.\nThese materials support reanalysis of the saved model outputs. Original titles and abstracts include\nthird-party database content, including Embase, and are not shared because of applicable licensing\nrestrictions. Repeating model inference requires the original input texts and access to the relevant\nAPIs.\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p15_c2",
+   "page": 15,
+   "text": "under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p16_c1",
+   "page": 16,
+   "text": "16\n\nReferences\n1.\nBorah R, Brown AW, Capers PL, Kaiser KA. Analysis of the time and workers needed to conduct\nsystematic reviews of medical interventions using data from the PROSPERO registry. BMJ open. Feb\n2017;7(2):e012545. doi:10.1136/bmjopen-2016-012545\n2.\nO'Mara-Eves A, Thomas J, McNaught J, Miwa M, Ananiadou S. Using text mining for study\nidentification in systematic reviews: a systematic review of current approaches. Syst Rev. Jan 14\n2015;4(1):5. doi:10.1186/2046-4053-4-5\n3.\nMarshall IJ, Wallace BC. Toward systematic review automation: a practical guide to using\nmachine learning tools in research synthesis. Syst Rev. Jul 2019;8(1):163. doi:10.1186/s13643-019-1074-9\n4.\nLaignelot F, Martin GL, Ossman M, et al. Large language models show promising performance\nfor some systematic review tasks but call for cautious implementation: a systematic review. J Clin\nEpidemiol. Jun 2026;194:112221. doi:10.1016/j.jclinepi.2026.112221\n5.\nXie C, Kong W, Pi L, et al. Performance of Large Language Models in Automated Medical\nLiterature Screening: A Systematic Review and Meta-Analysis. Journal of evidence-based medicine. Jul\n2026:e70166. doi:10.1111/jebm.70166\n6.\nLieberum J-L, Toews M,"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p16_c2",
+   "page": 16,
+   "text": "Language Models in Automated Medical\nLiterature Screening: A Systematic Review and Meta-Analysis. Journal of evidence-based medicine. Jul\n2026:e70166. doi:10.1111/jebm.70166\n6.\nLieberum J-L, Toews M, Metzendorf M-I, et al. Large language models for conducting\nsystematic reviews: on the rise, but not yet ready for use-a scoping review. J Clin Epidemiol. May\n2025;181:111746. doi:10.1016/j.jclinepi.2025.111746\n7.\nSanghera R, Thirunavukarasu AJ, El Khoury M, et al. High-performance automated abstract\nscreening with large language model ensembles. Journal of the American Medical Informatics\nAssociation : JAMIA. May 2025;32(5):893-904. doi:10.1093/jamia/ocaf050\n8.\nVembye MH, Christensen J, Mølgaard AB, Schytt FLW. Generative pretrained transformer\nmodels can function as highly reliable second screeners of titles and abstracts in systematic reviews: A\nproof of concept and common guidelines. Psychological methods. Jul 2025;doi:10.1037/met0000769\n9.\nFagerberg P, Sallander O, Vikhe Patil K, et al. Audited large language model triage for\nsystematic review screening in national clinical guideline production: validation and prospective\ndeployment. medRxiv. 2026:2026.06.02.26354724."
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p16_c3",
+   "page": 16,
+   "text": "Patil K, et al. Audited large language model triage for\nsystematic review screening in national clinical guideline production: validation and prospective\ndeployment. medRxiv. 2026:2026.06.02.26354724. doi:10.64898/2026.06.02.26354724\n10.\nMatsui K, Utsumi T, Aoki Y, Maruki T, Takeshima M, Takaesu Y. Human-Comparable\nSensitivity of Large Language Models in Identifying Eligible Studies Through Title and Abstract\nScreening: 3-Layer Strategy Using GPT-3.5 and GPT-4 for Systematic Reviews. J Med Internet Res. Aug\n2024;26:e52758. doi:10.2196/52758\n11.\nSciurti A, Migliara G, Siena LM, et al. Compact large language models for title and abstract\nscreening in systematic reviews: An assessment of feasibility, accuracy, and workload reduction. Res\nSynth Methods. Mar 2026;17(2):332-347. doi:10.1017/rsm.2025.10044\n12.\nJanoudi G, Uzun M, Disher T, et al. Validating Loon Lens 1.0 for Autonomous Abstract\nScreening and Confidence-Guided Human-in-the-Loop Workflows in Systematic Reviews. Value in health\n: the journal of the International Society for Pharmacoeconomics and Outcomes Research. Nov\n2025;28(11):1630-1636. doi:10.1016/j.jval.2025.09.008\n13.\nSavage T, Wang J, Gallo R, et al. Large language"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p16_c4",
+   "page": 16,
+   "text": ": the journal of the International Society for Pharmacoeconomics and Outcomes Research. Nov\n2025;28(11):1630-1636. doi:10.1016/j.jval.2025.09.008\n13.\nSavage T, Wang J, Gallo R, et al. Large language model uncertainty proxies: discrimination and\ncalibration for medical diagnosis and treatment. Journal of the American Medical Informatics\nAssociation : JAMIA. Jan 2025;32(1):139-149. doi:10.1093/jamia/ocae254\n14.\nBoie SD, Reis F, Frey N, Grünewald E, Balzer F. Calibration of Self-Reported Confidence and\nAccuracy of Large Language Models in Medical Question Answering. Journal of medical systems. Jun\n2026;50(1)doi:10.1007/s10916-026-02430-0\n15.\nOmar M, Agbareia R, Glicksberg BS, Nadkarni GN, Klang E. Benchmarking the Confidence of\nLarge Language Models in Answering Clinical Questions: Cross-Sectional Evaluation Study. JMIR Med\nInform. May 2025;13:e66917. doi:10.2196/66917\n16.\nLee KH, Kim H, Yang DS, Yoon WS, Rim CH. Qualitative Analysis of Discrepancy Patterns\nBetween Large Language Models and Human Reviewers in Abstract Screening for Systematic Reviews. J\nEpidemiol. Jul 2026;doi:10.2188/jea.JE20260233\n17.\nOami T, Okada Y, Nakada T-A. Performance of a Large Language Model in Screening"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p16_c5",
+   "page": 16,
+   "text": "and Human Reviewers in Abstract Screening for Systematic Reviews. J\nEpidemiol. Jul 2026;doi:10.2188/jea.JE20260233\n17.\nOami T, Okada Y, Nakada T-A. Performance of a Large Language Model in Screening Citations.\nJAMA Netw Open. Jul 2024;7(7):e2420496. doi:10.1001/jamanetworkopen.2024.20496\n18.\nOami T, Okada Y, Nakada T-A. Optimal large language models to screen citations for systematic\nreviews. Res Synth Methods. Nov 2025;16(6):859-875. doi:10.1017/rsm.2025.10014\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p17_c1",
+   "page": 17,
+   "text": "17\n\n19.\nOami T, Okada Y, Nakada T-A. GPT-3.5 Turbo and GPT-4 Turbo in Title and Abstract Screening\nfor Systematic Reviews. JMIR Med Inform. Mar 2025;13:e64682. doi:10.2196/64682\n20.\nFagerberg P, Sallander O, Patil KV, et al. Batch Size Effects on Mid-2025 State-of-the-Art Large\nLanguage Model Performance in Automated Title and Abstract Screening. Cochrane evidence synthesis\nand methods. May 2026;4(3):e70082. doi:10.1002/cesm.70082\n21.\nAlmeida D. Introducing System One Models and Jev. Accessed September 18, 2026.\nhttps://typesafe.ai/blog/introducing-system-one-models-and-jev\n22.\nTypeSafe\nAI.\nPrimitives\n(Questions).\nAccessed\nSeptember\n18,\n2026.\nhttps://docs.typesafe.ai/primitives\n23.\nLi Y-B, Miao Y, Krishnan R, Padman R. JEV-as-a-Judge: Accept When Confident, Escalate\nWhen Unsure. 2026:\n24.\nTakeshima M, Utsumi T, Aoki Y, et al. Efficacy and safety of bright light therapy for manic and\ndepressive symptoms in patients with bipolar disorder: A systematic review and meta-analysis.\nPsychiatry Clin Neurosci. Apr 2020;74(4):247-256. doi:10.1111/pcn.12976\n25.\nMaruki T, Utsumi T, Takeshima M, et al. Efficacy and safety of adjunctive therapy to\nlamotrigine, lithium, or valproate monotherapy"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p17_c2",
+   "page": 17,
+   "text": "Clin Neurosci. Apr 2020;74(4):247-256. doi:10.1111/pcn.12976\n25.\nMaruki T, Utsumi T, Takeshima M, et al. Efficacy and safety of adjunctive therapy to\nlamotrigine, lithium, or valproate monotherapy in bipolar depression: a systematic review and metaanalysis of randomized controlled trials. International journal of bipolar disorders. Oct 21 2022;10(1):24.\ndoi:10.1186/s40345-022-00271-7\n26.\nTypeSafe AI. Models. Accessed September 18, 2026. https://docs.typesafe.ai/models\n27.\nCao C, Sang J, Arora R, et al. Development of Prompt Templates for Large Language Model-\nDriven\nScreening\nin\nSystematic\nReviews.\nAnn\nIntern\nMed.\nMar\n2025;178(3):389-401.\ndoi:10.7326/ANNALS-24-02189\n28.\nTran V-T, Gartlehner G, Yaacoub S, et al. Sensitivity and Specificity of Using GPT-3.5 Turbo\nModels for Title and Abstract Screening in Systematic Reviews and Meta-analyses. Ann Intern Med. Jun\n2024;177(6):791-799. doi:10.7326/M23-3389\n29.\nEdwards P, Clarke M, DiGuiseppi C, Pratap S, Roberts I, Wentz R. Identification of randomized\ncontrolled trials in systematic reviews: accuracy and reliability of screening records. Stat Med. Jun\n2002;21(11):1635-40. doi:10.1002/sim.1190\n30.\nNama N, Hennawy M, Barrowman N,"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p17_c3",
+   "page": 17,
+   "text": "of randomized\ncontrolled trials in systematic reviews: accuracy and reliability of screening records. Stat Med. Jun\n2002;21(11):1635-40. doi:10.1002/sim.1190\n30.\nNama N, Hennawy M, Barrowman N, O'Hearn K, Sampson M, McNally JD. Successful\nincorporation of single reviewer assessments during systematic review screening: development and\nvalidation of sensitivity and work-saved of an algorithm that considers exclusion criteria and count. Syst\nRev. Apr 2021;10(1):98. doi:10.1186/s13643-021-01632-6\n31.\nGartlehner G, Affengruber L, Titscher V, et al. Single-reviewer abstract screening missed 13\npercent of relevant studies: a crowd-based, randomized controlled trial. J Clin Epidemiol. May\n2020;121:20-28. doi:10.1016/j.jclinepi.2020.01.005\n32.\nFlemyng E, Noel-Storr A, Macura B, et al. Position Statement on Artificial Intelligence (AI) Use\nin Evidence Synthesis Across Cochrane, the Campbell Collaboration, JBI, and the Collaboration for\nEnvironmental\nEvidence\n2025.\nCampbell\nsystematic\nreviews.\nDec\n2025;21(4):e70074.\ndoi:10.1002/cl2.70074\n33.\nElliott JH, Synnot A, Turner T, et al. Living systematic review: 1. Introduction-the why, what,\nwhen, and how. J Clin Epidemiol. Nov 2017;91:23-30."
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p17_c4",
+   "page": 17,
+   "text": "Dec\n2025;21(4):e70074.\ndoi:10.1002/cl2.70074\n33.\nElliott JH, Synnot A, Turner T, et al. Living systematic review: 1. Introduction-the why, what,\nwhen, and how. J Clin Epidemiol. Nov 2017;91:23-30. doi:10.1016/j.jclinepi.2017.08.010\n34.\nAdam TJ, Abosabie SAS, Dittmer M, et al. Prompt engineering of large language models for\npaper screening in medical meta-analyses and systematic reviews: A prospective comparative study. Res\nSynth Methods. Sep 2026;17(5):939-956. doi:10.1017/rsm.2026.10093\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p18_c1",
+   "page": 18,
+   "text": "18\n\nFigure legends\nFigure 1. Screening approaches and study design.\nPanel A illustrates the inputs and outputs of the screening approaches. The output from Noul is the\nprobability of a yes answer; outputs from Choice include probabilities for the specified options. For\nJev, the probability of retention was compared with a cutoff. Outputs from Choice also include the\nmost probable option and a confidence value, neither of which was used in this analysis. LLM\noutputs were I or E under the study settings. Panel B shows the two analyses: evaluation of Jev\nprobabilities against human screening decisions using Noul and newly drafted prompts, and\ncomparison with generative LLMs using Choice and prompts adapted from the earlier study.\nAdditional Noul experiments evaluated multiple records per request. Human retention refers to\nretention for full-text assessment, not final inclusion. Noul and Choice were not compared using\nidentical prompts. LLM denotes large language model.\n\nFigure 2. Human retention for full-text assessment according to Jev-assigned probability.\nPanels A and B show the results with the newly drafted prompts (primary analysis), and Panels C\nand D those with the prompts"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p18_c2",
+   "page": 18,
+   "text": "retention for full-text assessment according to Jev-assigned probability.\nPanels A and B show the results with the newly drafted prompts (primary analysis), and Panels C\nand D those with the prompts adapted from the earlier GPT-based study (secondary analysis). Bars\nindicate means across 10 runs, and error bars the range; n denotes the mean number of records per\nrun. Intervals are shared between analyses within each dataset and displayed at equal spacing.\n\nFigure 3. Screening of multiple records per request with Jev and the newly drafted prompts.\nPanel A shows the processing time per run for all 4527 records. Panels B and C show sensitivity and\nspecificity at the 50% cutoff. Points indicate means across 10 runs, and error bars the range.\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p19_c1",
+   "page": 19,
+   "text": "19\n\nTable 1. Screening with Jev Noul and newly drafted prompts at different probability cutoffs (primary analysis).\nRetention cutoff\nSensitivity,\n%\nSpecificity,\n%\nRecords retained\n100% sensitivity,\nruns\nLight therapy (1381 records; 26 retained by the reference standard)\n≥10%\n100.0\n72.9 (72.8 to 73.1)\n392.7 (391 to 395)\n10/10\n≥20%\n100.0\n88.9 (88.5 to 89.5)\n176.2 (168 to 182)\n10/10\n≥30%\n100.0\n95.5 (95.3 to 95.7)\n87.1 (84 to 90)\n10/10\n≥50%a\n99.6 (96.2 to 100.0)\n98.9 (98.7 to 99.0)\n41.4 (40 to 43)\n9/10\n≥49%b\n100.0\n98.7 (98.6 to 98.9)\n43.1 (41 to 45)\n10/10\nAdjunctive pharmacotherapy (3146 records; 87 retained by the reference standard)\n≥10%\n100.0\n30.9 (30.6 to 31.0)\n2201.4 (2198 to 2210)\n10/10\n≥20%\n100.0\n63.1 (62.6 to 63.4)\n1217.0 (1208 to 1232)\n10/10\n≥30%\n98.9\n79.7 (79.4 to 80.0)\n708.5 (699 to 717)\n0/10\n≥50%a\n93.2 (93.1 to 94.3)\n93.5 (93.4 to 93.7)\n279.6 (273 to 284)\n0/10\n≥20%b\n100.0\n63.1 (62.6 to 63.4)\n1217.0 (1208 to 1232)\n10/10\nNote: Values are means (range) across 10 runs; a single value indicates no variation at the reported precision. Records meeting the cutoff are retained for fulltext assessment. The cutoff applies to the probability of retention. a Cutoff fixed before the"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p19_c2",
+   "page": 19,
+   "text": "value indicates no variation at the reported precision. Records meeting the cutoff are retained for fulltext assessment. The cutoff applies to the probability of retention. a Cutoff fixed before the final evaluation runs. b Highest cutoff retaining every humanretained record in all 10 runs, determined from these data.\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p20_c1",
+   "page": 20,
+   "text": "20\n\nTable 2. Screening with Jev Choice and generative LLMs using the same adapted prompts (secondary analysis).\nModel and retention cutoff\nSensitivity,\n%\nSpecificity,\n%\nRecords retained\nHuman-retained\nrecords excluded\nLight therapy (1381 records; 26 retained by the reference standard)\nJev Choice, ≥10%\n100.0\n98.4 (98.4 to 98.5)\n47.1 (46 to 48)\n0.0\nJev Choice, ≥20%\n100.0\n99.1 (99.0 to 99.1)\n38.3 (38 to 39)\n0.0\nJev Choice, ≥30%\n93.5 (92.3 to 100.0)\n99.4 (99.3 to 99.5)\n32.3 (31 to 34)\n1.7 (0 to 2)\nJev Choice, ≥50%a\n92.3\n99.7 (99.6 to 99.9)\n28.0 (26 to 29)\n2.0\nJev Choice, ≥22%b\n100.0\n99.2 (99.1 to 99.2)\n37.3 (37 to 38)\n0.0\nGPT-5 mini, minimal reasoning\n73.1 (65.4 to 76.9)\n99.9\n20.3 (18 to 22)\n7.0 (6 to 9)\nGPT-5 mini, default reasoning\n87.2 (84.6 to 88.5)\n99.5 (99.4 to 99.6)\n30.0 (29 to 31)\n3.3 (3 to 4)\nGPT-6 Astra, default reasoning\n92.3\n98.1 (98.1 to 98.2)\n49.3 (49 to 50)\n2.0\nAdjunctive pharmacotherapy (3146 records; 87 retained by the reference standard)\nJev Choice, ≥10%\n100.0\n80.1 (79.9 to 80.4)\n695.6 (687 to 702)\n0.0\nJev Choice, ≥20%\n97.6 (95.4 to 98.9)\n87.1 (86.8 to 87.3)\n480.6 (474 to 489)\n2.1 (1 to 4)\nJev Choice, ≥30%\n93.3 (92.0 to 94.3)\n91.0 (90.8 to 91.1)\n356.4 (352 to 361)"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p20_c2",
+   "page": 20,
+   "text": "to 80.4)\n695.6 (687 to 702)\n0.0\nJev Choice, ≥20%\n97.6 (95.4 to 98.9)\n87.1 (86.8 to 87.3)\n480.6 (474 to 489)\n2.1 (1 to 4)\nJev Choice, ≥30%\n93.3 (92.0 to 94.3)\n91.0 (90.8 to 91.1)\n356.4 (352 to 361)\n5.8 (5 to 7)\nJev Choice, ≥50%a\n90.0 (89.7 to 90.8)\n95.4 (95.3 to 95.7)\n218.0 (211 to 221)\n8.7 (8 to 9)\nJev Choice, ≥14%b\n100.0\n83.4 (83.1 to 83.7)\n593.3 (587 to 604)\n0.0\nGPT-5 mini, minimal reasoning\n70.9 (70.1 to 71.3)\n93.4 (93.2 to 93.7)\n262.7 (254 to 270)\n25.3 (25 to 26)\nGPT-5 mini, default reasoning\n90.0 (89.7 to 90.8)\n93.2 (93.0 to 93.4)\n287.3 (280 to 291)\n8.7 (8 to 9)\nGPT-6 Astra, default reasoning\n80.8 (80.5 to 81.6)\n94.4 (94.3 to 94.5)\n240.3 (237 to 245)\n16.7 (16 to 17)\nNote: Values are means (range) across three runs for GPT-5 mini and GPT-6 Astra and 10 runs for Jev; a single value indicates no variation at the reported precision. We used\nprompts adapted from the earlier GPT-based study for all models; we used Choice questions for Jev. The Jev cutoff applies to the probability of retention. With Jev, all humanretained records were retained in 10/10 runs at cutoffs of 10%, 20%, and 22% for light therapy and 10% and 14% for adjunctive pharmacotherapy; this occurred in 1/10 runs"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p20_c3",
+   "page": 20,
+   "text": "retention. With Jev, all humanretained records were retained in 10/10 runs at cutoffs of 10%, 20%, and 22% for light therapy and 10% and 14% for adjunctive pharmacotherapy; this occurred in 1/10 runs\nat 30% for light therapy and in 0/10 runs at the other displayed cutoffs. Mean processing time and cost per run were 137 seconds and US$0.88 for GPT-5 mini with minimal\nreasoning, 270 seconds and US$2.59 with default reasoning, 161 seconds and US$33.45 for GPT-6 Astra, and 251 seconds and US$0.20 for Jev. a Cutoff fixed before the final\nevaluation runs. b Highest cutoff retaining every human-retained record in all 10 runs, determined from these data. Abbreviations: LLM, large language model.\n\n.\nCC-BY 4.0 International license\nIt is made available under a\nis the author/funder, who has granted medRxiv a license to display the preprint in perpetuity.\n(which was not certified by peer review)\nThe copyright holder for this preprint\nthis version posted October 1, 2026.\n;\nhttps://doi.org/10.64898/2026.09.25.26364021\ndoi:\nmedRxiv preprint"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p21_c1",
+   "page": 21,
+   "text": "Eligibility criteria +\ntitle and abstract\nJev (Noul)\nJev (Choice)\nGPT-5 mini /\nGPT-6 Astra\nRetain for full-text\nassessment?\nInclude or Exclude?\nInclude or Exclude?\nP(Yes) = 0.72\nP(Include) = 0.72\nP(Exclude) = 0.28\nGenerated text: “I” or “E”\nApply a cutoff\nRetain / Exclude\nRetain / Exclude\nTwo reviews, 4,527 records\nHuman screening decisions as reference\nSource reviews → Criteria drafted by GPT-6 Astra\nSeparate session; no screening records or reference labels\nJev (Noul)\nNewly drafted prompts, 10 runs\nProbability vs. human retention\nCutoffs vs. sensitivity and review volume\nAdditional experiment: up to 10, 25 or 50 records per request\nOne probability per record; assess time and performance\np1\np2\np3\nPrompts reused from the earlier study\nJev (Choice)\n10 runs\nGPT-5 mini: minimal / default\nGPT-6 Astra: default\n3 runs per condition\nSensitivity, specificity, and reproducibility\nProcessing time and cost\nA What does each approach return?\nProbabilities 0.72 and 0.28 are illustrative examples, not study results.\nLLM outputs shown for this study. No review-specific model training.\nB Two study questions\n1 Can probabilities guide screening?\n2 How does Jev compare with LLMs?\n.\nCC BY 4.0"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p21_c2",
+   "page": 21,
+   "text": "not study results.\nLLM outputs shown for this study. No review-specific model training.\nB Two study questions\n1 Can probabilities guide screening?\n2 How does Jev compare with LLMs?\n.\nCC BY 4.0 International license\nIt is made available under a"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p22_c1",
+   "page": 22,
+   "text": "0–<10%\nn=988\n10–<60%\nn=364\n60–100%\nn=29\n0\n20\n40\n60\n80\n100\nHuman retention for\nfull-text assessment (%)\n0.0%\n0.5%\n83.4%\nA Light therapy\nNewly drafted prompts\n0–<10%\nn=945\n10–<20%\nn=984\n20–<30%\nn=508\n30–<40%\nn=259\n40–<50%\nn=170\n50–<60%\nn=104\n60–<70%\nn=60\n70–<80%\nn=54\n80–<90%\nn=41\n90–100%\nn=21\n0.0%\n0.0%\n0.2%\n1.4%\n0.8%\n2.2%\n16.5%\n40.2%\n70.4%\n85.9%\nB Adjunctive pharmacotherapy\nNewly drafted prompts\n0–<10%\nn=1334\n10–<60%\nn=22\n60–100%\nn=25\nJev-assigned retention probability\n0\n20\n40\n60\n80\n100\nHuman retention for\nfull-text assessment (%)\n0.0%\n12.2%\n93.6%\nC Light therapy\nReused prompts\n0–<10%\nn=2450\n10–<20%\nn=215\n20–<30%\nn=124\n30–<40%\nn=80\n40–<50%\nn=58\n50–<60%\nn=50\n60–<70%\nn=41\n70–<80%\nn=51\n80–<90%\nn=43\n90–100%\nn=34\nJev-assigned retention probability\n0.0%\n1.0%\n3.0%\n1.5%\n2.9%\n4.9%\n22.3%\n32.4%\n63.0%\n69.2%\nD Adjunctive pharmacotherapy\nReused prompts"
+  },
+  {
+   "paper_id": "doi-10-64898-2026-09-25-26364021",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p23_c1",
+   "page": 23,
+   "text": "1\n10\n25\n50\nRecords per request\n0\n50\n100\n150\n200\n250\nProcessing time for 4527 records (s)\n249 s\n26 s\n16 s\n15 s\nA Processing time\n1\n10\n25\n50\nRecords per request\n85\n90\n95\n100\nPerformance at the 50% cutoff (%)\nB Light therapy\nSensitivity\nSpecificity\n1\n10\n25\n50\nRecords per request\n85\n90\n95\n100\nC Adjunctive pharmacotherapy"
+  }
+ ]
+}

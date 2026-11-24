@@ -1,0 +1,21 @@
+{
+  "topic": "Utilisation des grands modèles de langage (LLM) pour automatiser le screening titre/résumé dans les revues systématiques de la littérature",
+  "status": "accepted",
+  "text": "RQ1. Comment les grands modèles de langage (LLM) peuvent-ils améliorer l'efficacité du screening titre/résumé dans les revues systématiques de la littérature ?\nRQ2. Quels sont les risques potentiels associés à l'utilisation de LLM pour automatiser le screening titre/résumé, notamment en termes de précision et de fiabilité ?\nRQ3. Quelles sont les meilleures pratiques pour intégrer les LLM dans le processus de screening titre/résumé, en tenant compte des limites et des biais potentiels de ces modèles ?",
+  "questions": [
+    {
+      "identifier": "RQ1",
+      "question": "Comment les grands modèles de langage (LLM) peuvent-ils améliorer l'efficacité du screening titre/résumé dans les revues systématiques de la littérature ?"
+    },
+    {
+      "identifier": "RQ2",
+      "question": "Quels sont les risques potentiels associés à l'utilisation de LLM pour automatiser le screening titre/résumé, notamment en termes de précision et de fiabilité ?"
+    },
+    {
+      "identifier": "RQ3",
+      "question": "Quelles sont les meilleures pratiques pour intégrer les LLM dans le processus de screening titre/résumé, en tenant compte des limites et des biais potentiels de ces modèles ?"
+    }
+  ],
+  "error": "",
+  "repair_attempts": 0
+}

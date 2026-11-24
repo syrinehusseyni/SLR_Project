@@ -1,0 +1,294 @@
+{
+ "paper_id": "W4388718056",
+ "source_sha256": "89620ec33993c0e425b581d183d18d1a1035e53c9911c33489385abaf4f07256",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 12,
+ "pages_read": 12,
+ "page_chars": [
+  3303,
+  4660,
+  4732,
+  1520,
+  3528,
+  1352,
+  3483,
+  5620,
+  2563,
+  4120,
+  3524,
+  527
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p1_c1",
+   "page": 1,
+   "text": "Automated title and abstract screening for scoping reviews using\nthe GPT-4 Large Language Model\nDavid Wilkins1\n1Discipline of General Practice, The University of Adelaide\nNovember 15, 2023\nAbstract\nScoping reviews, a type of systematic literature\nreview, require intensive human effort to screen\nlarge numbers of scholarly sources for their relevance to the review objectives.\nThis manuscript\nintroduces GPTscreenR, a package for the R statistical programming language that uses the GPT-\n4 Large Language Model (LLM) to automatically\nscreen sources.\nThe package makes use of the\nchain-of-thought technique with the goal of maximising performance on complex screening tasks. In\nvalidation against consensus human reviewer decisions, GPTscreenR performed similarly to an alternative zero-shot technique, with a sensitivity\nof 71%, specificity of 89%, and overall accuracy\nof 84%.\nNeither method achieved perfect accuracy nor human levels of intraobserver agreement.\nGPTscreenR demonstrates the potential for LLMs\nto support scholarly work and provides a userfriendly software framework that can be integrated\ninto existing review pipelines.\n1\nIntroduction\nA scoping review is a relatively novel type"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p1_c2",
+   "page": 1,
+   "text": "for LLMs\nto support scholarly work and provides a userfriendly software framework that can be integrated\ninto existing review pipelines.\n1\nIntroduction\nA scoping review is a relatively novel type of literature review that aims to map the key concepts\nand existing activity within an area of research\n[1]. Like systematic reviews, scoping reviews typically use rigorous, transparent [13], and sometimes\npre-registered methods for gathering and synthesising evidence, and increasingly use formal frameworks for both performing and reporting reviews\n[11].\nScoping reviews can inform future systematic reviews or primary research in the same area\n[18]. However, they differ from systematic reviews\nin aiming to describe the breadth of coverage of the\navailable literature rather than research findings in\ndepth [1].\nFrameworks for performing a scoping review typically involve defining a research area or question,\nsearching bibliographic databases for potentially\nrelevant published material (‘sources’), screening\nthese sources to identify those relevant to the area\nor question, and systematically extracting and reporting data from the relevant sources [20, 1]. The\nscreening stage will usually"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p1_c3",
+   "page": 1,
+   "text": "screening\nthese sources to identify those relevant to the area\nor question, and systematically extracting and reporting data from the relevant sources [20, 1]. The\nscreening stage will usually involve initial screening of source titles and abstracts against predetermined inclusion and exclusion criteria, followed by full text screening, with both steps performed in replicate by at least two human reviewers\n[10, 12, 13]. Because database searches can return\nmany hundreds or thousands of potentially relevant\nsources, these screening steps can require intensive\nhuman time and effort.\nMany software methods\nhave been proposed or used to support or partially\nautomate source screening for scoping reviews, including text mining to prioritise relevant sources\nfor human screening [16, 5, 2], automated clustering\nand labelling of sources to support human decisionmaking [17], and ‘crowdsourcing’ screening to untrained workers via online platforms [8]. A similar\nbut more extensive set of methods have been developed and employed for systematic reviews [6, 3]\nfor which the process of source screening is broadly\ncomparable.\nSince the release of the first Generative Pretrained Transformer (GPT)"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p1_c4",
+   "page": 1,
+   "text": "have been developed and employed for systematic reviews [6, 3]\nfor which the process of source screening is broadly\ncomparable.\nSince the release of the first Generative Pretrained Transformer (GPT) Large Language Model\n(LLM)\nby\nOpenAI\n(San\nFrancisco,\nCalifor-\n1\narXiv:2311.07918v1 [cs.CL] 14 Nov 2023"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p2_c1",
+   "page": 2,
+   "text": "nia,\nUnited States of America) in 2018 [15],\ntransformer-based LLMs and the GPT lineage in\nparticular have seen rapid and widespread adoption for a range of automation tasks. Broadly, these\nmodels generate a probabilistically weighted list of\n‘tokens’ (parts of text such as letter combinations\nand punctuation) to continue or complete some input text (a ‘prompt’), having been trained to do\nso by practising such predictions on large humanwritten corpora. When this generative process is\niterated, it allows for a range of applications involving analysis and production of text, such as summarising documents, generating fiction in a particular genre or style, or conversing with humans [9].\nWhile LLMs are not yet widely used to screen\nsources for literature reviews, early work suggests\nthey may perform well in this role. Guo et al. [4] reported the use of a GPT-lineage model (they do not\nspecify which, though their published code suggests\nOpenAI’s ‘gpt-3.5-turbo’ model) to screen 24,307\ntitles and abstracts from five systematic reviews\nand one scoping review, achieving weighted average sensitivity of 76% and specificity of 91% when\ncompared to human reviewers. Their approach involves"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p2_c2",
+   "page": 2,
+   "text": "titles and abstracts from five systematic reviews\nand one scoping review, achieving weighted average sensitivity of 76% and specificity of 91% when\ncompared to human reviewers. Their approach involves giving the model a brief prompt instructing\nit to take on the persona of a researcher screening\ntitles and abstracts, followed by a source’s title and\nabstract as well as the inclusion and exclusion criteria. The model is instructed to respond with a\ndecision to include or exclude the source, and the\nprocess is iterated across the full set of sources to\nbe screened. Syriani et al. [19] similarly reported\nthe use of ‘gpt-3.5-turbo’ to screen titles and abstracts for a systematic review and achieved sensitivities of above 70%. They also systematically\nevaluated prompts given to the LLM to identify a\nprompt that performed best at the screening task;\ntheir chosen prompt, like that of Guo et al., placed\nthe LLM in the role of an academic reviewer.\nBoth of these approaches made use of a single,\nfixed text prompt template, which the LLM then\ncompletes with additional text representing its response (the decision to include or exclude a source),\na method sometimes called ‘zero-shot"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p2_c3",
+   "page": 2,
+   "text": "of a single,\nfixed text prompt template, which the LLM then\ncompletes with additional text representing its response (the decision to include or exclude a source),\na method sometimes called ‘zero-shot prompting’.\nRecent work has identified a number of methods\nwhich can be superior to zero-shot prompting when\nusing LLMs for tasks that require complex or multistep reasoning. These methods include ‘chain-ofthought prompting’ [21], in which a complex task\nis broken down into a series of intermediate steps,\nand the ‘tree of thoughts’ strategy [23], in which\nmultiple parallel chains of thought are generated,\ncompared, and integrated.\nThe LLM is induced\nto follow these complex reasoning strategies either\nby being given examples of multi-step reasoning on\nsimilar tasks, or by being lead through the process\nwith a series of intermediate prompts.\nIn this paper, I introduce a package for the R programming language [14] called GPTscreenR that\nimplements a chain-of-thought approach to using\nGPT-4 for scoping review title and abstract screening, and evaluate its performance by comparison to\nhuman reviewers. The purpose of this package is to\nassist and augment rather than replace human reviewers"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p2_c4",
+   "page": 2,
+   "text": "for scoping review title and abstract screening, and evaluate its performance by comparison to\nhuman reviewers. The purpose of this package is to\nassist and augment rather than replace human reviewers in performing scoping reviews. This package represents the first LLM-based screening tool\ndesigned specifically for scoping reviews. Further,\nthis study provides the first report on the accuracy\nof LLM-based screening using the most recent iteration of the GPT model lineage, GPT-4, and using\nthe recently developed chain-of-thought approach.\n2\nMethods\n2.1\nThe GPTscreenR package\nGPTscreenR is an R [14] package released under\nthe MIT open source licence.\nThe source code\nis available for download from GitHub at https:\n//github.com/wilkox/GPTscreenR. At the time\nof writing the most recent package version was\n0.0.3, and the results presented in this paper were\nobtained using this version.\nGPTscreenR consists of two main components.\nThe first is a set of internal functions for interfacing with the OpenAI Application Programming\nInterface (API), which allows for ‘conversations’\nwith the GPT-4 LLM, as well as functions for\nrepresenting and manipulating those conversations.\nThese internal"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p2_c5",
+   "page": 2,
+   "text": "with the OpenAI Application Programming\nInterface (API), which allows for ‘conversations’\nwith the GPT-4 LLM, as well as functions for\nrepresenting and manipulating those conversations.\nThese internal functions are designed to be modelagnostic, so that future versions of the package or\nusers with particular needs can use different GPT\nmodels. The OpenAI API requires an OpenAI account, and OpenAI charges fees for use of the API.\nIn order to access the API, GPTscreenR requires a\nsecret key to be registered prior to source screening, and instructions for doing so are provided in\nthe package documentation and on loading of the\npackage in R if the key has not been correctly reg-\n2"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p3_c1",
+   "page": 3,
+   "text": "istered.\nThe second component is a set of user-facing\nfunctions to perform source screening with GPT-\n4. The review description() function assists in\ngenerating a text description of the review’s objectives and inclusion and exclusion criteria, using the\nPopulation, Concept, and Context (PCC) framework [10, 12] for defining the review’s inclusion and\nexclusion criteria. The use of this function is optional, and users may instead choose to provide a\ndescription of the review and criteria for source selection using any framework or format they see fit.\nThe screen source() function performs the\nmain task of the package.\nThis function mediates an conversation with GPT-4 in which chainof-thought prompting [21] is used to guide GPT-\n4 through screening a source title and abstract\nagainst the study inclusion criteria. The template\nfor this conversation is given in Figure 1. The OpenAI API defines a conversation as a series of messages, each of which originates from one of three\nroles: system, representing an authoritative voice\nthat can instruct GPT-4 on its task and behaviour;\nuser, representing a human user that can interact\nwith GPT-4; and assistant, representing the responses"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p3_c2",
+   "page": 3,
+   "text": "system, representing an authoritative voice\nthat can instruct GPT-4 on its task and behaviour;\nuser, representing a human user that can interact\nwith GPT-4; and assistant, representing the responses generated by GPT-4. In screen source(),\nthe system role gives GPT-4 general instructions,\nwhile the user role provides the user-written review\ndescription and the source title and abstract.\nThe specific phrase ‘work step by step’ is derived\nfrom the ‘let’s think step by step’ prompt phrase\nwhich significantly improves LLM performance on\nmulti-step reasoning tasks with a zero-shot prompt\n[7], adapted to this chain-of-thought approach.\nGPT-4 is instructed to summarise the inclusion\ncriteria for the scoping review, compare the title\nand abstract against these summarised criteria, and\nmake a final recommendation on whether to include\nor exclude the source (Figure 1).\nThis approach\nwas chosen after noting that a major source of error\nwhen attempting to screen sources with zero-shot,\none-shot, or few-shot prompts (i.e. with a single\nprompt and no, one, or a few examples) was that\nGPT-4 would fail to consider important inclusion\ncriteria. As an example, Figure 2a presents a conversation with"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p3_c3",
+   "page": 3,
+   "text": "or few-shot prompts (i.e. with a single\nprompt and no, one, or a few examples) was that\nGPT-4 would fail to consider important inclusion\ncriteria. As an example, Figure 2a presents a conversation with GPT-4 using a zero-shot prompt.\nThe screening task in this example is intentionally\nadversarial and designed to lead the model towards\nmaking an error. In order to correctly recommend\nexclusion of the source, GPT-4 must notice that\nthe review is looking for research on therapy alpaca\ninterventions, but that the source reports on a therapy camel intervention. The presence of multiple\nother inclusion criteria which are met by the source,\nas well as the mention of alpacas in the source abstract, serve as distractors. In this example, GPT-4\nincorrectly recommends inclusion. If the conversation is then continued to draw GPT-4’s attention\nto the error, it is able to identify and correct it\n(Figure 2b), suggesting that the error arises from a\nfailure of GPT-4 to properly consider the relevant\ninclusion criterion rather than an inability to do\nso. Using the chain-of-thought approach overcomes\nthis problem without the need for human intervention and correction (Figure 2c). GPT-4 identifies"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p3_c4",
+   "page": 3,
+   "text": "inclusion criterion rather than an inability to do\nso. Using the chain-of-thought approach overcomes\nthis problem without the need for human intervention and correction (Figure 2c). GPT-4 identifies\n‘The context of the study must involve the use of\ntherapy alpacas as a part of a programme of care\nin residential aged care facilities.’ as an inclusion\ncriterion, and correctly assesses that this is the only\ninclusion criterion not met. GPT-4 then correctly\nrecommends exclusion of the source.\nThe screen source() function returns a list\ncomprising the complete transcript of the conversation with GPT-4 and GPT-4’s final recommendation as a logical (Boolean) value.\nThe conversation transcript can be used to interrogate\ncases where GPT-4 may have returned an incorrect or unexpected result. The package also provides a function screen sources(), which applies\nscreen source() iteratively across a data frame of\nsources. screen sources() caches screening outcomes to a file as they accumulate, so that screening can be split across multiple sessions and recover\nfrom interruptions.\n2.2\nValidation\nTo validate GPTscreenR’s approach, six scoping reviews were identified from the Open Science"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p3_c5",
+   "page": 3,
+   "text": "so that screening can be split across multiple sessions and recover\nfrom interruptions.\n2.2\nValidation\nTo validate GPTscreenR’s approach, six scoping reviews were identified from the Open Science Framework (OSF; https://osf.io) where the review inclusion criteria and the results of title and abstract\nscreening were publicly available. A summary of\nthe review characteristics is provided in Table 1.\nRandom subsets were used where the large number of sources made it prohibitive in time and cost\nto screen the full set. The total number of sources\navailable for screening and the number used for validation from each review are given in Table 1.\nSome of the reviews did not include source full\nabstracts in the publicly available files, and when\n3"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p4_c1",
+   "page": 4,
+   "text": "System: You are helping academic researchers perform a scoping review. Your task is to screen\na single source against the review criteria. In the next message, you will be provided\nwith the review objective and inclusion and exclusion criteria, and then you will then be\nprovided with the source title and abstract.\nUser:\nThe user-provided review description.\nSystem: You must work step by step. FIRST, generate a numbered list of criteria that must be\nmet for a source to be included.\nGPT-4: GPT-4 replies with a numbered list of criteria.\nSystem: NEXT, for each numbered criterion, decide whether the criterion is TRUE or FALSE\nfor the source. It is normal for the title and abstract to not have enough information\nto make a clear decision for every statement. For these situations, give your best guess.\nAfter giving your response of TRUE or FALSE, give a one sentence explanation for your\nresponse.\nGPT-4: GPT-4 replies with a decision and explanation for each criterion.\nSystem: FINALLY, consider your decisions on whether the source meets the conclusion criteria.\nRespond with a single word, either INCLUDE or EXCLUDE, representing your recommendation on whether the source meets the inclusion"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p4_c2",
+   "page": 4,
+   "text": "your decisions on whether the source meets the conclusion criteria.\nRespond with a single word, either INCLUDE or EXCLUDE, representing your recommendation on whether the source meets the inclusion criteria. Do not write anything\nother than INCLUDE or EXCLUDE.\nGPT-4: GPT-4 replies with its nal recommendation.\nFigure 1: Template for the conversation with GPT-4 mediated by the screen source() function. Messages with variable content, including user-provided data as well as GPT-4’s responses, are given in\nitalics.\n4"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p5_c1",
+   "page": 5,
+   "text": "User:\nYou are being used to help researchers perform a scoping review. A scoping review is a\ntype of systematic review used to map the published scholarship on a topic. To gather\nrelevant sources for a scoping review, the researchers search bibliographic databases for\nsources that match a selected Population, Concept, and Context (the inclusion criteria).\nThe titles and abstracts of sources that are found in this search search are then screened\nagainst the inclusion criteria.\nThis review has the following objective and inclusion criteria:\nOBJECTIVE: This scoping review will examine the existing primary research on the role\nof therapy alpacas in enhancing the mental health and emotional well-being of elderly\nresidential aged care facility residents\nPOPULATION: Elderly people living in residential aged care facilities. `Elderly' is dened\nas 65 years of age or older.\nCONTEXT: Residential aged care facilities that have used therapy alpacas as part of\ntheir programme of care for residents.\n`Residential aged care facility' is dened as a\nresidential setting intended as a long-term place of residence for elderly people which\nincludes provision of support for activities of daily living"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p5_c2",
+   "page": 5,
+   "text": "`Residential aged care facility' is dened as a\nresidential setting intended as a long-term place of residence for elderly people which\nincludes provision of support for activities of daily living (e.g. meal preparation, bathing,\nhousekeeping) and nursing support (e.g. medication management). Such facilities will\nalso typically oer other structured programmes and facilities to provide entertainment,\ndiversion, and wellbeing. It excludes other residential settings intended for elderly people\nthat do no provide daily living or nursing supports (e.g. independent living villages) or\nthat are not long-term (e.g. hospitals or hospices).\nCONCEPT: The impact of therapy alpaca programmes on stress reduction, emotional\nwell-being, mental health, overall life satisfaction, or similar outcomes for residents.\nHere is the title and abstract of the source for you to screen:\nTITLE: Therapy Ungulate Visits Reduce Depression, Anxiety, and Stress in Australian\nNursing Home Residents\nABSTRACT: Nursing home residents typically have rates of depression, anxiety, and stress\n(DAS) signicantly higher than those of equivalent populations living independently. As\nwell as reducing quality of life and"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p5_c3",
+   "page": 5,
+   "text": "home residents typically have rates of depression, anxiety, and stress\n(DAS) signicantly higher than those of equivalent populations living independently. As\nwell as reducing quality of life and increasing morbidity and mortality, DAS signicantly\nincreases the burden on both nursing homes and health systems in caring for the elderly.\nRecent pilot trials of the use of therapy ungulates (alpacas, llamas, and camels) have shown\npromising initial results in reducing DAS among nursing home residents. We conducted\na randomised control trial involving 8,124 residents across 17 nursing homes in urban\nand rural Australia in which residents were randomised to either a weekly 2-hour therapy\ncamel visit or equivalent time in a television viewing lounge.\nResidents receiving the\nintervention had signicantly (p < 0.01) reduced levels of depression (mean DASS-21\nscore for depression reduction 8.2 points), anxiety (mean reduction 11 points) and stress\n(mean reduction 13 points) compared to the control arm. This study represents the rst\nlarge-scale randomised trial of ungulate therapy for nursing home residents, and provides\nstrong support for its eectiveness in reducing DAS.\nPlease respond with a"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p5_c4",
+   "page": 5,
+   "text": "arm. This study represents the rst\nlarge-scale randomised trial of ungulate therapy for nursing home residents, and provides\nstrong support for its eectiveness in reducing DAS.\nPlease respond with a single word, either INCLUDE or EXCLUDE, representing your\nrecommendation\nGPT-4: INCLUDE\nFigure 2a: A conversation with GPT-4, using a zero-shot prompt to instruct the model to screen a\nsingle source for a hypothetical scoping review. This adversarial task has been intentionally designed to\ninfluence GPT-4 towards making an error.\n5"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p6_c1",
+   "page": 6,
+   "text": "Table 1: Scoping reviews used to validate the performance of GPTscreenR. ‘total available’ is the\nnumber of sources available for screening following attempted retrieval of missing abstracts, correction\nof malformed data, and removal of sources with missing, irreparable, or duplicate data; it may differ\nfrom the number reported by the review authors.\nShort name\nOSF project title\nOSF URL\nFile(s)\nSources\nscreened (total available)\n‘COVID’\nComplementary,\nAlternative,\nand\nIntegrative\nMedicine-Specific\nCOVID-19\nMisinformation on Social\nMedia:\nA Scoping\nReview\nhttps://osf.io/ytz5e\n‘TITLE\nAB-\nSTRACT\nFULL\nTEXT\nSCREEN-\nING DATA CAIM\nCOVID-19\nSM\nMisinfo Mar2223.xlsx‘\n324 (458)\n‘melanoma’\nScoping Review –\nMelanoma\nhttps://osf.io/knje4\n‘Melanoma\nData.xlsx‘\n72 (128)\n‘smartphones’\nSmartphone Addiction\nScoping\nReview\nhttps://osf.io/f9huw\n‘Scop rev full.csv‘\n256 (5,376)\n‘solastalgia’\nAustralian\nSolastalgia\nScoping\nReview\nhttps://osf.io/qxe3n\n‘Solastalgia\nre-screening\nand\nextraction\nspreadsheet\nDec\n2022.xlsx‘\n150 (150)\n‘suicide’\nSocial Norms and\nSuicidality - Scoping Review\nhttps://osf.io/btpzc\n‘June 2022 Screenings\nExtraction\nTOP\nUP.xlsx‘,\n‘Nov20\nStage\n2\nRemoval\nof\nduplicates\nand\nscreenings.xlsx‘"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p6_c2",
+   "page": 6,
+   "text": "150 (150)\n‘suicide’\nSocial Norms and\nSuicidality - Scoping Review\nhttps://osf.io/btpzc\n‘June 2022 Screenings\nExtraction\nTOP\nUP.xlsx‘,\n‘Nov20\nStage\n2\nRemoval\nof\nduplicates\nand\nscreenings.xlsx‘\n100 (2,094)\n‘teachers’\nTeachers’\nsoft\nskills:\na Scoping\nReview\nhttps://osf.io/n9rkd\n‘Teachers´\nSoft\nSkills\na\nSR\n-\nScreening\nNM\n&\nOJ(1).xlsx‘\n245 (355)\n6"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p7_c1",
+   "page": 7,
+   "text": "User:\nThis doesn't seem right. The inclusion criteria includes the concept of therapy alpaca\nprogrammes, while the abstract describes a study of a therapy camel programme. Can\nyou explain your reasoning?\nGPT-4: I apologize for the oversight. You're right. While the abstract mentions therapy ungulates (which includes alpacas, llamas, and camels), the specic intervention studied was\ntherapy camel visits, not alpacas. Given the specic criteria you've set for the scoping\nreview, this study does not directly address the role of therapy alpacas.\nBased on this clarication, the correct recommendation would be:\nEXCLUDE.\nFigure 2b: A continuation of the conversation in Figure 2a, in which GPT-4 is lead to recognise and\ncorrect the error.\nthese abstracts could not be obtained from external\ndatabases these sources were excluded from validation. There were also many cases where missing,\nmalformed, or duplicate data required either manual correction or exclusion of sources. The scoping\nreview data, code used to prepare this data for validation, and code for calculating summary statistics\nare available in a reproducible form in the package repository on GitHub (https://github.com/"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p7_c2",
+   "page": 7,
+   "text": "review data, code used to prepare this data for validation, and code for calculating summary statistics\nare available in a reproducible form in the package repository on GitHub (https://github.com/\nwilkox/GPTscreenR/tree/master/validation).\nThe consensus human reviewer decision at the\ntitle and abstract screening level was used as the\ngold standard outcome. Accuracy, sensitivity and\nspecificity were calculated by comparing GPT-4’s\nrecommendation against this gold standard. Three\nof the scoping reviews (COVID, solastalgia, and\nteachers) included individual human reviewer decisions in addition to the final decision in their\npublicly available datasets, and these were used\nto calculate human intraobserver agreement (Cohen’s kappa) using the R function cohen.kappa()\nfrom the psych package [22]. This was compared\nto human/GPT-4 agreement across all screened\nsources, calculated with the same method.\n2.3\nComparison to zero-shot method\nIn order to directly compare the chain-of-thoughts\napproach to a zero-shot approach (i.e. a conversation consisting of a single prompt with no examples, followed by GPT-4’s response), the validation\nscreening task was repeated using the prompt designed by"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p7_c3",
+   "page": 7,
+   "text": "to a zero-shot approach (i.e. a conversation consisting of a single prompt with no examples, followed by GPT-4’s response), the validation\nscreening task was repeated using the prompt designed by Guo et al. [4], substituting the permitted responses INCLUDE and EXCLUDE for included\nand excluded respectively in order to maintain\ncompatibility with GPTscreenR’s parsing of the\nresponse (Figure 3).\nIn cases where a random\nsubset of sources had been used for validation of\nGPTscreenR, the same subset was used.\nThe\ncode used to prepare this data and calculate summary statistics was otherwise identical to that used\nfor the chain-of-thoughts method validation and\nis available in the ‘zeroshot’ branch of the package repository on GitHub (https://github.com/\nwilkox/GPTscreenR/tree/zeroshot).\n3\nResults\n1,147 sources were screened from the six scoping reviews. GPTscreenR achieved an overall accuracy of\n84% compared to the gold standard of the consensus human reviewer decision, with weighted average\nsensitivity of 71% and weighted average specificity\nof 89% (Figure 4). For the three reviews that provided individual reviewer decisions, the weighted\naverage Cohen’s kappa was 0.67, while the"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p7_c4",
+   "page": 7,
+   "text": "average\nsensitivity of 71% and weighted average specificity\nof 89% (Figure 4). For the three reviews that provided individual reviewer decisions, the weighted\naverage Cohen’s kappa was 0.67, while the weighted\naverage Cohen’s kappa between final human and\nGPT-4 decisions was 0.52.\nThe zero-shot method achieved an overall accuracy of 83%, with weighted average sensitivity of\n72% and weighted average specificity of 87%. The\nweighted average Cohen’s kappa between human\nand GPT-4 decisions was 0.52.\n7"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p8_c1",
+   "page": 8,
+   "text": "System: You are helping academic researchers perform a scoping review. Your task is to screen\na single source against the review criteria. In the next message, you will be provided\nwith the review objective and inclusion and exclusion criteria, and then you will then be\nprovided with the source title and abstract.\nUser:\nOBJECTIVE: This scoping review will examine the existing primary research on the role\nof therapy alpacas in enhancing the mental health and emotional well-being of elderly\nresidential aged care facility residents\nPOPULATION: Elderly people living in residential aged care facilities. `Elderly' is dened\nas 65 years of age or older.\nCONTEXT: Residential aged care facilities that have used therapy alpacas as part of\ntheir programme of care for residents.\n`Residential aged care facility' is dened as a\nresidential setting intended as a long-term place of residence for elderly people which\nincludes provision of support for activities of daily living (e.g. meal preparation, bathing,\nhousekeeping) and nursing support (e.g. medication management). Such facilities will\nalso typically oer other structured programmes and facilities to provide entertainment,\ndiversion, and"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p8_c2",
+   "page": 8,
+   "text": "bathing,\nhousekeeping) and nursing support (e.g. medication management). Such facilities will\nalso typically oer other structured programmes and facilities to provide entertainment,\ndiversion, and wellbeing. It excludes other residential settings intended for elderly people\nthat do no provide daily living or nursing supports (e.g. independent living villages) or\nthat are not long-term (e.g. hospitals or hospices).\nCONCEPT: The impact of therapy alpaca programmes on stress reduction, emotional\nwell-being, mental health, overall life satisfaction, or similar outcomes for residents.\nTITLE: Therapy Ungulate Visits Reduce Depression, Anxiety, and Stress in Australian\nNursing Home Residents\nABSTRACT: Nursing home residents typically have rates of depression, anxiety, and stress\n(DAS) signicantly higher than those of equivalent populations living independently. As\nwell as reducing quality of life and increasing morbidity and mortality, DAS signicantly\nincreases the burden on both nursing homes and health systems in caring for the elderly.\nRecent pilot trials of the use of therapy ungulates (alpacas, llamas, and camels) have shown\npromising initial results in reducing DAS among nursing"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p8_c3",
+   "page": 8,
+   "text": "homes and health systems in caring for the elderly.\nRecent pilot trials of the use of therapy ungulates (alpacas, llamas, and camels) have shown\npromising initial results in reducing DAS among nursing home residents. We conducted\na randomised control trial involving 8,124 residents across 17 nursing homes in urban\nand rural Australia in which residents were randomised to either a weekly 2-hour therapy\ncamel visit or equivalent time in a television viewing lounge.\nResidents receiving the\nintervention had signicantly (p < 0.01) reduced levels of depression (mean DASS-21\nscore for depression reduction 8.2 points), anxiety (mean reduction 11 points) and stress\n(mean reduction 13 points) compared to the control arm. This study represents the rst\nlarge-scale randomised trial of ungulate therapy for nursing home residents, and provides\nstrong support for its eectiveness in reducing DAS.\nSystem: You must work step by step. FIRST, generate a numbered list of criteria that must be\nmet for a source to be included.\nGPT-4:\n1.The research study must involve elderly people aged 65 years or older.\n2.The study's population must be residents of residential aged care facilities.\n3.The context of the"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p8_c4",
+   "page": 8,
+   "text": "to be included.\nGPT-4:\n1.The research study must involve elderly people aged 65 years or older.\n2.The study's population must be residents of residential aged care facilities.\n3.The context of the study must involve the use of therapy alpacas as a part of a\nprogramme of care in residential aged care facilities.\n4.The study must examine the impact of therapy alpaca programmes on outcomes such\nas stress reduction, emotional well-being, mental health, or overall life satisfaction\nfor the residents.\n5.The study must be primary research, not purely theoretical or hypothetical work.\nIt must be based on new research and data collection, not a review or summary of\nprevious studies.\nSystem: NEXT, for each numbered criterion, decide whether the criterion is TRUE or FALSE\nfor the source. It is normal for the title and abstract to not have enough information\nto make a clear decision for every statement. For these situations, give your best guess.\nAfter giving your response of TRUE or FALSE, give a one sentence explanation for your\nresponse.\nGPT-4:\n1.TRUE - The research study involves elderly individuals as it is focused on nursing\nhome residents, who are typically over 65 years of age.\n2.TRUE"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p8_c5",
+   "page": 8,
+   "text": "a one sentence explanation for your\nresponse.\nGPT-4:\n1.TRUE - The research study involves elderly individuals as it is focused on nursing\nhome residents, who are typically over 65 years of age.\n2.TRUE - The population of the study constitutes residents of nursing homes, which\nare a type of residential aged care facilities.\n3.FALSE - The study does involve therapy ungulates, but it specically mentions\ntherapy camels being used, not therapy alpacas.\n4.TRUE - The study examines the impact of therapy ungulate programmes on reducing\ndepression, anxiety, and stress in nursing home residents, which falls within the scope\nof emotional well-being and mental health outcomes.\n5.TRUE - The study is primary research, as it reports fresh ndings from a randomized\ncontrol trial rather than summarizing or reviewing previous studies.\nSystem: FINALLY, consider your decisions on whether the source meets the conclusion criteria.\nRespond with a single word, either INCLUDE or EXCLUDE, representing your recommendation on whether the source meets the inclusion criteria. Do not write anything\nother than INCLUDE or EXCLUDE.\nGPT-4: EXCLUDE\nFigure 2c: A conversation with GPT-4, instructing it to perform the"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p8_c6",
+   "page": 8,
+   "text": "on whether the source meets the inclusion criteria. Do not write anything\nother than INCLUDE or EXCLUDE.\nGPT-4: EXCLUDE\nFigure 2c: A conversation with GPT-4, instructing it to perform the same adversarial task presented\nin Figure 2a, but using the chain-of-thought approach. This is not a continuation of the conversation\npresented in Figures 2a and 2b but a new conversation. In this case, GPT-4 correctly recommends\nexcluding the source.\nThe model also correctly identifies that the source meets all of the relevant\ninclusion criteria except for the requirement that the source report on an alpaca intervention.\n8"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p9_c1",
+   "page": 9,
+   "text": "System: Instructions: You are a researcher rigorously screening titles and abstracts of scientic\npapers for inclusion or exclusion in a review paper. Use the criteria below to inform your\ndecision. If any exclusion criteria are met or not all inclusion criteria are met, exclude\nthe article. If all inclusion criteria are met, include the article. Only type INCLUDE or\nEXCLUDE to indicate your decision. Do not type anything else.\nTitle: The source title.\nAbstract: The source abstract.\nThe review description.\nGPT-4: GPT-4 replies with a decision.\nFigure 3: Zero-shot prompt used as a comparator for the chain-of-thoughts approach, derived from the\napproach of Guo et al. [4]. Variable content, including user-provided data as well as GPT-4’s response,\nis given in italics.\n40\n60\n80\n100\nAccuracy Sensitivity Specificity\nStatistic\nValue (%)\nStudy\nCOVID\nMelanoma\nSmartphones\nSolastalgia\nSuicide\nTeachers\nFigure 4: Accuracy, sensitivity, and specificity of\nGPTscreenR compared to the gold standard of the\nconsensus human reviewer decision. The box-andwhisker plot represents for each statistic the median\n(central bar), 25th and 75th percentiles (upper and\nlower hinges of the box), and largest value"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p9_c2",
+   "page": 9,
+   "text": "the\nconsensus human reviewer decision. The box-andwhisker plot represents for each statistic the median\n(central bar), 25th and 75th percentiles (upper and\nlower hinges of the box), and largest value ± 1.5\n× the interquartile range (whiskers). Points given\nthe values for the individual scoping reviews used\nfor validation.\n4\nDiscussion\n4.1\nPerformance of GPTscreenR\nGPTscreenR and its chain-of-thought approach\nperformed comparably to the zero-shot method reported by Guo et al. [4]. Also similarly to their\nreport, Cohen’s kappa was higher for inter-human\nthan human-GPT-4 agreement, suggesting that despite this generally good performance GPT-based\nmethods still do not match the performance of a\nhuman reviewer when the consensus human decision is used as the gold standard.\n4.2\nComparison\nto\nthe\nzero-shot\nmethod\nThe replication of Guo et al.’s zero-shot prompt\non the reviews used for validation in this study resulted in similar weighted average sensitivity (78%)\ncompared to their report (76%), though somewhat\npoorer specificity (84% compared to 91%). There\nare a number of possible factors contributing to\nthis difference. Firstly, this study used the GPT-\n4 model while Guo et al. likely"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p9_c3",
+   "page": 9,
+   "text": "though somewhat\npoorer specificity (84% compared to 91%). There\nare a number of possible factors contributing to\nthis difference. Firstly, this study used the GPT-\n4 model while Guo et al. likely used the ‘gpt-3.5-\nturbo’ model, although it might be expected that\nthe more advanced GPT-4 would generally perform\nbetter on the same task. Secondly, this study included only scoping reviews, while Guo et al. examined five systematic reviews and only one scoping\nreview, although the reported sensitivity (100%)\nand specificity (94%) for that scoping review were\n9"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p10_c1",
+   "page": 10,
+   "text": "higher than the weighted average for this study.\nThirdly, validation with both the chain-of-thoughts\nand zero-shot methods was dependent on the availability of source and screening data from the included reviews, and it was noted that most of the\nreviews had issues with missing, malformed, missing, and duplicate data, including lacking the text\nof some or all source abstracts and sufficient information to retrieve them from public databases.\nWhile effort was made to rectify these issues, many\nsources from the included reviews could not be\nused for validation, and the differing quality of the\ndatasets used in the two studies may have affected\nthe performance of the zero-shot method. Finally,\nthe different reviews used for validation in the two\nstudies likely posed different levels of difficulty the\nzero-shot approach. If LLM-based approaches to\nsource screening become more widely adopted, the\nperformance of different methods can be more accurately determined across a growing sample of reviews.\nCompared against the zero-shot method, the\nchain-of-thought method achieved poorer sensitivity but higher specificity. This result is consistent\nwith rationale for selecting the"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p10_c2",
+   "page": 10,
+   "text": "sample of reviews.\nCompared against the zero-shot method, the\nchain-of-thought method achieved poorer sensitivity but higher specificity. This result is consistent\nwith rationale for selecting the chain-of-thought\nmethod, which was to reduce type I errors (false\npositives) of the type demonstrated in Figure 2a.\nHowever, this came at the cost of higher type II\nerror. It is not possible to retrospectively examine\nthe reasoning process that lead GPT-4 to make an\nincorrect recommendation such as a false negative,\nas asking it to explain its reasoning post-hoc will\nresult in a confabulated statistically likely response;\nas they have no direct access to their internal processes, LLMs are unable to meaningfully introspect.\nHowever, unlike the zero-shot method, the chain-ofthought method as implemented by GPTscreenR\ndoes allow reviewers to view and assess the reasons for GPT-4’s final decision, by reviewing the\ntranscript of the conversation with GPT-4 and in\nparticular its assessment of the source against its\nsummarised list of criteria.\nThis may be useful\nfor resolving disagreements between human reviewers and GPT-4, or disagreements among human reviewers.\n4.3\nLimitations of this"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p10_c3",
+   "page": 10,
+   "text": "of the source against its\nsummarised list of criteria.\nThis may be useful\nfor resolving disagreements between human reviewers and GPT-4, or disagreements among human reviewers.\n4.3\nLimitations of this approach\nCompared to the prompts used by Guo et al. [4]\nand Syriani et al. [19], both the prompt used for\nthis approach and the response generated by GPT-\n4 have substantially higher token counts.\nThis\nresults in both a longer time to screen a single\nsource (typically 20–30 seconds) and a higher dollar cost, as the OpenAI API currently charges on\na per-token basis.\nThis may make GPTscreenR\nless appealing to some reviewers, particularly when\nscreening a large number of sources.\nValidation of GPTscreenR was limited by a small\nnumber of scoping reviews with publicly available, high-quality data on human title and abstract screening decisions.\nBecause a subset of\nthese reviews were used for both testing and validation, there is a risk of over-fitting of the prompt\nto these particular reviews. The public release of\nGPTscreenR encourages users to contribute data\nfrom their own scoping reviews to support more accurately measuring GPTscreenR’s real-world performance, and to guide further"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p10_c4",
+   "page": 10,
+   "text": "The public release of\nGPTscreenR encourages users to contribute data\nfrom their own scoping reviews to support more accurately measuring GPTscreenR’s real-world performance, and to guide further refinement of the\napproach.\n5\nConclusions\nThe use of Large Language Models to screen\nsources for scoping reviews is a promising technology to reduce the human time and effort required to\nperform these reviews. The GPTscreenR package\nperforms comparably to a zero-shot based approach\nto source screening. However, as with the zero-shot\napproach, agreement between its decisions and the\nhuman reviewer consensus fell short of inter-human\nagreement, suggesting that LLM-based screening\nis not yet as reliable as a human reviewer.\nFuture work may help to further quantify and refine\nGPTscreenR’s performance, and to expand this approach to other types of scholarly review and to\nother stages of the review process.\n6\nReferences\nReferences\n[1]\nHilary Arksey and Lisa O’Malley. “Scoping studies: towards a methodological framework”. In: International Journal of Social Research Methodology 8.1 (2005), pp. 19–32.\ndoi: 10.1080/1364557032000119616.\n10"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p11_c1",
+   "page": 11,
+   "text": "[2]\nKevin E. K. Chai et al. “Research Screener:\na machine learning tool to semi-automate abstract screening for systematic reviews”. In:\nSystematic Reviews 10.1 (2021), p. 93. doi:\n10.1186/s13643-021-01635-3.\n[3]\nAllison Gates et al. “Performance and usability of machine learning for screening in\nsystematic reviews: a comparative evaluation\nof three tools”. In: Systematic Reviews 8.1\n(2019), p. 278. doi: 10.1186/s13643-019-\n1222-2.\n[4]\nEddie Guo et al. “Automated Paper Screening for Clinical Reviews Using Large Language Models”. In: arXiv (2023). doi: 10.\n48550/arxiv.2305.00844.\n[5]\nBrian E. Howard et al. “SWIFT-Review:\na text-mining workbench for systematic review”. In: Systematic Reviews 5.1 (2016),\np. 87. doi: 10.1186/s13643-016-0263-z.\n[6]\nHanan Khalil, Daniel Ameen, and Armita\nZarnegar. “Tools to support the automation\nof systematic reviews: a scoping review”. In:\nJournal of Clinical Epidemiology 144 (2022),\npp. 22–42. doi: 10.1016/j.jclinepi.2021.\n12.005.\n[7]\nTakeshi Kojima et al. “Large Language\nModels are Zero-Shot Reasoners”. In: arXiv\n(2022). doi: 10.48550/arxiv.2205.11916.\n[8]\nMichael L. Mortensen et al. “An exploration of crowdsourcing citation screening for\nsystematic"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p11_c2",
+   "page": 11,
+   "text": "“Large Language\nModels are Zero-Shot Reasoners”. In: arXiv\n(2022). doi: 10.48550/arxiv.2205.11916.\n[8]\nMichael L. Mortensen et al. “An exploration of crowdsourcing citation screening for\nsystematic reviews”. In: Research Synthesis\nMethods 8.3 (2017), pp. 366–386. doi: 10.\n1002/jrsm.1252.\n[9]\nOpenAI. Introducing ChatGPT. ”https://\nopenai.com/blog/chatgpt”. 2023.\n[10]\nMicah D. J. Peters et al. “Updated methodological guidance for the conduct of scoping\nreviews”. In: JBI Evidence Synthesis 18.10\n(2020), 2119–2126. doi: 10.11124/jbies-\n20-00167.\n[11]\nMicah D. J. Peters et al. “Scoping reviews:\nreinforcing and advancing the methodology\nand application”. In: Systematic Reviews 10.1\n(2021), p. 263. doi: 10.1186/s13643-021-\n01821-3.\n[12]\nMicah DJ Peters et al. “Chapter 11: Scoping\nReviews (2020 version)”. In: JBI Manual for\nEvidence Synthesis. Ed. by E Aromataris and\nZ Munn. JBI, 2020. isbn: 9780648848806.\ndoi: 10.46658/jbimes-20-12. url: https:\n//synthesismanual.jbi.global/.\n[13]\nMai T. Pham et al. “A scoping review of scoping reviews: advancing the approach and enhancing the consistency”. In: Research Synthesis Methods 5.4 (2014), pp. 371–385. doi:\n10.1002/jrsm.1123.\n[14]\nR Core Team."
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p11_c3",
+   "page": 11,
+   "text": "et al. “A scoping review of scoping reviews: advancing the approach and enhancing the consistency”. In: Research Synthesis Methods 5.4 (2014), pp. 371–385. doi:\n10.1002/jrsm.1123.\n[14]\nR Core Team. R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. Vienna, Austria, 2023. url: https://www.R-project.\norg/.\n[15]\nAlec\nRadford\net\nal.\nImproving language\nunderstanding\nby\ngenerative\npre-training.\n”https : / / openai . com / research /\nlanguage-unsupervised”. 2018.\n[16]\nIan Shemilt et al. “Pinpointing needles in giant haystacks: use of text mining to reduce\nimpractical screening workload in extremely\nlarge scoping reviews”. In: Research Synthesis Methods 5.1 (2014), pp. 31–49. doi: 10.\n1002/jrsm.1093.\n[17]\nClaire\nStansfield,\nJames\nThomas,\nand\nJosephine\nKavanagh.\n“‘Clustering’\ndocuments\nautomatically\nto\nsupport\nscoping\nreviews\nof\nresearch:\na\ncase\nstudy”.\nIn:\nResearch\nSynthesis\nMethods\n4.3\n(2013),\npp. 230–241. doi: 10.1002/jrsm.1082.\n[18]\nAnthea Sutton et al. “Meeting the review\nfamily: exploring review types and associated information retrieval requirements”. In:\nHealth Information & Libraries Journal 36.3\n(2019), pp. 202–222. doi: 10 . 1111 /"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p11_c4",
+   "page": 11,
+   "text": "et al. “Meeting the review\nfamily: exploring review types and associated information retrieval requirements”. In:\nHealth Information & Libraries Journal 36.3\n(2019), pp. 202–222. doi: 10 . 1111 / hir .\n12276.\n[19]\nEugene Syriani, Istvan David, and Gauransh\nKumar. “Assessing the Ability of ChatGPT\nto Screen Articles for Systematic Reviews”.\nIn: arXiv (2023).\n[20]\nThe Joanna Briggs Institute. The Joanna\nBriggs Institute Reviewers’ Manual 2015:\nMethodology for JBI Scoping Reviews. The\nJoanna Briggs Institute, 2015.\n11"
+  },
+  {
+   "paper_id": "W4388718056",
+   "chunk_id": "W4388718056_p12_c1",
+   "page": 12,
+   "text": "[21]\nJason Wei et al. “Chain of Thought Prompting Elicits Reasoning in Large Language\nModels”. In: arXiv (2022). doi: 10.48550/\narxiv.2201.11903.\n[22]\nWilliam Revelle. psych: Procedures for Psychological,\nPsychometric,\nand\nPersonality\nResearch. R package version 2.3.6. Northwestern University. Evanston, Illinois, 2023. url:\nhttps://CRAN.R-project.org/package=\npsych.\n[23]\nShunyu Yao et al. “Tree of Thoughts: Deliberate Problem Solving with Large Language\nModels”. In: arXiv (2023). url: https://\narxiv.org/abs/2305.10601.\n12"
+  }
+ ]
+}

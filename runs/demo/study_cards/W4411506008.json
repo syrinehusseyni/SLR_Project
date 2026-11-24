@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4411506008",
+ "fingerprint": "f2e9715379726559",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude systématique de littérature suivant les directives PRISMA",
+   "chunk_id": "W4411506008_p2_c1",
+   "page": 2,
+   "quote": "This study adhered to the PRISMA guidelines for systematic literature review, including study identification, screening, eligibility assessment, and inclusion (Syriani et al. 2023).",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Premièrement, les efforts devraient être dirigés vers l'amélioration de la capacité de ChatGPT à gérer des structures logiques complexes et des débats académiques nuancés, éventuellement par un ajustement fin spécifique au domaine et des ensembles de données d'entraînement améliorés.",
+   "chunk_id": "W4411506008_p11_c6",
+   "page": 11,
+   "quote": "First, efforts should be directed toward enhancing ChatGPT's ability to handle complex logical structures and nuanced academic debates, possibly through domain-specific fine-tuning and enhanced training data sets.",
+   "note": ""
+  }
+ ]
+}

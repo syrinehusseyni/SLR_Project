@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4367368990",
+ "fingerprint": "fbf1d557089a3616",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Commentaire basé sur un webinaire explorant les réponses de ChatGPT aux tâches de méthodologie de revue systématique.",
+   "chunk_id": "W4367368990_p1_c3",
+   "page": 1,
+   "quote": "On February 6, 2023, PICO Portal developers hosted a webinar to explore ChatGPT’s responses to tasks related to SR methodology.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": "passage relatif à un autre travail, à une annexe ou à une déclaration d'usage (scope=other)"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Limite : manque de références appropriées et vérifiables.",
+   "chunk_id": "W4367368990_p2_c4",
+   "page": 2,
+   "quote": "A particularly strong limitation of the system is the lack of referencing appropriate and verifiable sources when asked for factual information.",
+   "note": ""
+  }
+ ]
+}

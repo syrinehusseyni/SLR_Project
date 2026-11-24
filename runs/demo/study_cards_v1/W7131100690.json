@@ -1,0 +1,57 @@
+{
+ "paper_id": "W7131100690",
+ "fingerprint": "e287c371e4a1ee87",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Étude expérimentale comparative",
+   "chunk_id": "W7131100690_p22_c2",
+   "page": 22,
+   "quote": "We ran the experiment on the 100 synthetic abstracts in triplicate.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "rejected",
+   "value": "100 synthetic abstracts (25 eligible + 25 ineligible from GPT‑4o, 50 from Gemini 2.5 Pro)",
+   "chunk_id": "W7131100690_p15_c1",
+   "page": null,
+   "quote": "To generate synthetic abstracts, we used the SR1 eligibility criteria and prompted gpt-4o (ChatGPT app) on March 24, 2025, to generate 25 eligible and 25 ineligible abstracts. Among the ineligible abstracts, 10 were intended to fail three PECOS elements, 10 to fail two elements, and 5 to fail one element. To diversify writing style and content, we repeated the procedure with Gemini 2.5 Pro Preview 03-25 (Google AI Studio) on April 6, 2025 and generated an additional 50 abstracts using the same PECOS-failure distribution (prompts in Supplementary File 1). This yielded 100 synthetic abstracts with a 1:1 eligible:ineligible ratio (Supplementary File 1).",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "rejected",
+   "value": "Les modèles évalués incluent Llama3.3:70b, gpt-4.1-mini et o3-mini-high.",
+   "chunk_id": "W7131100690_p46_c2",
+   "page": null,
+   "quote": "Fs-NR-L(os): Llama3.3:70b with a few-shot prompt and no reasoning in the output; Fs-M: gpt-4.1-mini with a few-shot prompt; Zs-Ag-NR-L: o3-mini-high with a zero-shot prompt, agentic search enabled, and no reasoning in the output.",
+   "note": "citation absente du chunk cité"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "gpt‑4.1 a atteint 87,0 % de sensibilité à R6, tandis que o3 a déclenché plus de 10 % des dossiers pour examen manuel.",
+   "chunk_id": "W7131100690_p41_c1",
+   "page": null,
+   "quote": "gpt-4.1 achieved only 87.0% sensitivity at R6, while o3 (as Zs-NR-o3) flagged over twice as many records for manual review at R6 (>10% of TiAb) than Zs-Ag-NR-L",
+   "note": "citation absente du chunk cité"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "rejected",
+   "value": "Les auteurs signalent qu'ils n'ont pas évalué exhaustivement toutes les permutations de flux de travail ni les grands modèles, limitant ainsi leurs conclusions aux mini‑LLM et à la tâche TiAb.",
+   "chunk_id": "W7131100690_p57_c1",
+   "page": null,
+   "quote": "A further limitation is that we did not exhaustively evaluate all possible workflow permutations, or large flagship models used in previous studies [10, 12]. Our conclusions are therefore restricted to the “mini” LLMs assessed and the specific TiAb screening task addressed here.",
+   "note": "citation absente du chunk cité"
+  }
+ ]
+}

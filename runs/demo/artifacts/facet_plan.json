@@ -1,0 +1,265 @@
+{
+  "version": "facet-plan-v1",
+  "protocol_sha256": "c85fc52e256d3c33d9c5bc23b873e21970e5b2e82be71ab1ec25edf6dffb06c4",
+  "gate_id": "G1:facet_plan:c85fc52e256d",
+  "source_facets": [
+    {
+      "facet_id": "F1",
+      "rq_id": "RQ1",
+      "original_label": "Type d'étude",
+      "original_description": "Études comparant les performances de LLM avec des méthodes traditionnelles de screening",
+      "category": "design"
+    },
+    {
+      "facet_id": "F2",
+      "rq_id": "RQ1",
+      "original_label": "Métrique",
+      "original_description": "Mesure de performance rapportée (rappel, précision, F1)",
+      "category": "metrics"
+    },
+    {
+      "facet_id": "F3",
+      "rq_id": "RQ1",
+      "original_label": "Modèle utilisé",
+      "original_description": "Type de LLM (par exemple, BERT, RoBERTa, XLNet)",
+      "category": "models"
+    },
+    {
+      "facet_id": "F4",
+      "rq_id": "RQ1",
+      "original_label": "Données",
+      "original_description": "Description des jeux de données utilisés (taille, domaine, etc.)",
+      "category": "data"
+    },
+    {
+      "facet_id": "F5",
+      "rq_id": "RQ1",
+      "original_label": "Paramètres du modèle",
+      "original_description": "Description des paramètres ajustés pour le modèle (par exemple, hyperparamètres)",
+      "category": "parameters"
+    },
+    {
+      "facet_id": "F6",
+      "rq_id": "RQ1",
+      "original_label": "Résultats",
+      "original_description": "Comparaison des performances des LLM avec les méthodes traditionnelles",
+      "category": "results"
+    },
+    {
+      "facet_id": "F7",
+      "rq_id": "RQ2",
+      "original_label": "Type d'étude",
+      "original_description": "Études identifiant les risques potentiels associés à l'utilisation de LLM",
+      "category": "risks_limits"
+    },
+    {
+      "facet_id": "F8",
+      "rq_id": "RQ2",
+      "original_label": "Métrique",
+      "original_description": "Mesure de performance rapportée (rappel, précision, F1)",
+      "category": "metrics"
+    },
+    {
+      "facet_id": "F9",
+      "rq_id": "RQ2",
+      "original_label": "Modèle utilisé",
+      "original_description": "Type de LLM (par exemple, BERT, RoBERTa, XLNet)",
+      "category": "models"
+    },
+    {
+      "facet_id": "F10",
+      "rq_id": "RQ2",
+      "original_label": "Données",
+      "original_description": "Description des jeux de données utilisés (taille, domaine, etc.)",
+      "category": "data"
+    },
+    {
+      "facet_id": "F11",
+      "rq_id": "RQ2",
+      "original_label": "Limites du modèle",
+      "original_description": "Description des limites et des biais potentiels des LLM",
+      "category": "risks_limits"
+    },
+    {
+      "facet_id": "F12",
+      "rq_id": "RQ2",
+      "original_label": "Résultats",
+      "original_description": "Évaluation des risques potentiels associés à l'utilisation de LLM",
+      "category": "results"
+    },
+    {
+      "facet_id": "F13",
+      "rq_id": "RQ3",
+      "original_label": "Type d'étude",
+      "original_description": "Études proposant des meilleures pratiques pour l'utilisation de LLM",
+      "category": "methodology"
+    },
+    {
+      "facet_id": "F14",
+      "rq_id": "RQ3",
+      "original_label": "Méthodologie",
+      "original_description": "Description de la méthodologie utilisée pour intégrer les LLM",
+      "category": "methodology"
+    },
+    {
+      "facet_id": "F15",
+      "rq_id": "RQ3",
+      "original_label": "Modèle utilisé",
+      "original_description": "Type de LLM (par exemple, BERT, RoBERTa, XLNet)",
+      "category": "models"
+    },
+    {
+      "facet_id": "F16",
+      "rq_id": "RQ3",
+      "original_label": "Données",
+      "original_description": "Description des jeux de données utilisés (taille, domaine, etc.)",
+      "category": "data"
+    },
+    {
+      "facet_id": "F17",
+      "rq_id": "RQ3",
+      "original_label": "Paramètres du modèle",
+      "original_description": "Description des paramètres ajustés pour le modèle (par exemple, hyperparamètres)",
+      "category": "parameters"
+    },
+    {
+      "facet_id": "F18",
+      "rq_id": "RQ3",
+      "original_label": "Résultats",
+      "original_description": "Évaluation des performances des LLM dans le contexte de la revue systématique",
+      "category": "results"
+    }
+  ],
+  "facets": [
+    {
+      "id": "design",
+      "label": "Type et dessin de l'étude",
+      "description": "Dessin de l'étude des auteurs : expérience, comparaison, benchmark ou autre approche.",
+      "query_en": "study design experimental comparative benchmark methodology screening study",
+      "blocking": true,
+      "reuse_field": "design",
+      "source_facet_ids": [
+        "F1"
+      ],
+      "rq_ids": [
+        "RQ1"
+      ]
+    },
+    {
+      "id": "metrics",
+      "label": "Métriques",
+      "description": "Mesures utilisées pour évaluer l'efficacité, la précision ou la fiabilité du screening.",
+      "query_en": "screening evaluation metrics accuracy precision recall F1 sensitivity specificity reliability",
+      "blocking": true,
+      "reuse_field": "findings",
+      "source_facet_ids": [
+        "F2",
+        "F8"
+      ],
+      "rq_ids": [
+        "RQ1",
+        "RQ2"
+      ]
+    },
+    {
+      "id": "models",
+      "label": "Modèles et outils",
+      "description": "LLM, modèles et outils de screening évalués ou utilisés, avec leur rôle.",
+      "query_en": "large language model LLM screening model system tool GPT ChatGPT fine-tuned zero-shot",
+      "blocking": true,
+      "reuse_field": "models",
+      "source_facet_ids": [
+        "F3",
+        "F9",
+        "F15"
+      ],
+      "rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3"
+      ]
+    },
+    {
+      "id": "data",
+      "label": "Données",
+      "description": "Jeux de données, échantillons, tailles et domaines utilisés dans l'étude.",
+      "query_en": "dataset corpus sample size records titles abstracts systematic reviews domain",
+      "blocking": false,
+      "reuse_field": "data",
+      "source_facet_ids": [
+        "F4",
+        "F10",
+        "F16"
+      ],
+      "rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3"
+      ]
+    },
+    {
+      "id": "parameters",
+      "label": "Paramètres",
+      "description": "Paramètres d'entraînement, de prompting ou de configuration du modèle.",
+      "query_en": "hyperparameters prompt settings temperature training epochs fine-tuning configuration",
+      "blocking": false,
+      "reuse_field": "",
+      "source_facet_ids": [
+        "F5",
+        "F17"
+      ],
+      "rq_ids": [
+        "RQ1",
+        "RQ3"
+      ]
+    },
+    {
+      "id": "results",
+      "label": "Résultats",
+      "description": "Résultats rapportés qui répondent à la question de recherche associée.",
+      "query_en": "results findings screening performance outcomes efficiency errors comparison",
+      "blocking": true,
+      "reuse_field": "findings",
+      "source_facet_ids": [
+        "F6",
+        "F12",
+        "F18"
+      ],
+      "rq_ids": [
+        "RQ1",
+        "RQ2",
+        "RQ3"
+      ]
+    },
+    {
+      "id": "risks_limits",
+      "label": "Risques et limites",
+      "description": "Risques, biais, faux négatifs et limites rapportés par les auteurs.",
+      "query_en": "risks limitations bias false negatives hallucination reliability threats screening",
+      "blocking": true,
+      "reuse_field": "limitations",
+      "source_facet_ids": [
+        "F7",
+        "F11"
+      ],
+      "rq_ids": [
+        "RQ2"
+      ]
+    },
+    {
+      "id": "methodology",
+      "label": "Méthodologie et pratiques",
+      "description": "Méthodes d'intégration, workflow et recommandations de bonnes pratiques.",
+      "query_en": "methodology workflow integration implementation human in the loop guidelines best practices screening",
+      "blocking": true,
+      "reuse_field": "",
+      "source_facet_ids": [
+        "F13",
+        "F14"
+      ],
+      "rq_ids": [
+        "RQ3"
+      ]
+    }
+  ]
+}

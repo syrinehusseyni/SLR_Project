@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2501-05468",
+ "fingerprint": "fb1303bfc0d2c368",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude comparative d'outil de revue systématique",
+   "chunk_id": "arxiv-2501-05468_p12_c2",
+   "page": 12,
+   "quote": "we aim to demonstrate LatteReview's practical utility in systematic review applications through two distinct evaluation approaches.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "six article collections from the SYNERGY dataset collection",
+   "chunk_id": "arxiv-2501-05468_p14_c1",
+   "page": 14,
+   "quote": "six different article collections from the SYNERGY dataset collection",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "rejected",
+   "value": "Les modèles utilisés sont GPT‑4O‑mini, Gemini‑1.5‑flash, GPT‑4O, ainsi que des alternatives comme O1, Claude 3.5 Sonnet et Gemini 1.5 Pro.",
+   "chunk_id": "arxiv-2501-05468_p12_c3",
+   "page": null,
+   "quote": "The workflow comprises two junior reviewers—one powered by Google's Gemini-1.5-flash and another by OpenAI's GPT-4O-mini—both selected for their balance of performance and cost-effectiveness. A senior reviewer agent, utilizing OpenAI's GPT-4O, intervenes only in cases of disagreement between the junior reviewers to make final inclusion decisions. We note that alternative high-performance models such as OpenAI’s O1, Claude 3.5 Sonnet, or Gemini 1.5 Pro could also serve effectively in the senior reviewer role.",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Le workflow atteint une exactitude de 0.63, un rappel de 1.0 et une précision de 0.05, avec un AUC de 0.95.",
+   "chunk_id": "arxiv-2501-05468_p13_c1",
+   "page": 13,
+   "quote": "Accuracy=0.63,\nRecall=1.0,\nPrecision=0.05\nAccuracy=0.96,\nRecall=0.5,\nPrecision=0.28\nAccuracy=0.93,\nRecall=0.8,\nPrecision=0.21\n0.95",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "rejected",
+   "value": "Les systèmes d'IA ont des limites, notamment l'ambiguïté, le manque de contexte ou d'instructions insuffisantes.",
+   "chunk_id": "arxiv-2501-05468_p5.8_c2",
+   "page": null,
+   "quote": "While LatteReview offers powerful automation capabilities, it's essential to recognize the limitations inherent in any AI-based system. Even the most advanced LLMs can struggle with certain review items due to factors like ambiguity, lack of context, or insufficient instructions.",
+   "note": "chunk_id absent des extraits fournis"
+  }
+ ]
+}

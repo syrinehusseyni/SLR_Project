@@ -1,0 +1,57 @@
+{
+ "paper_id": "doi-10-64898-2026-09-25-26364021",
+ "fingerprint": "bafca626b17a331a",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "rejected",
+   "value": "étude comparative d'évaluation de performance d'outils de screening (Jev vs LLMs) sur des bases de données de revues systématiques",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c1] [PAGE 5",
+   "page": null,
+   "quote": "We evaluated Jev on two datasets from our previous study of title and abstract screening10 and compared Jev with two generative LLMs using the same prompts.",
+   "note": "chunk_id absent des extraits fournis"
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "1381 records from a systematic review of bright light therapy for bipolar disorder and 3146 records from a systematic review of adjunctive pharmacotherapy for bipolar depression, totaling 4527 records.",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c1",
+   "page": 5,
+   "quote": "We analyzed two datasets previously used to evaluate GPT-3.5 and GPT-410: 1381 records from a systematic review of bright light therapy for bipolar disorder (hereafter, light therapy)24 and 3146 from a systematic review of adjunctive pharmacotherapy for bipolar depression.25 Eligibility criteria",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Les modèles utilisés sont GPT‑6 Astra (OpenAI) et Claude Fable 5.1 (Anthropic), ainsi que le modèle Jev.",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p14_c2",
+   "page": 14,
+   "quote": "We used GPT-6 Astra (OpenAI) and Claude Fable 5.1 (Anthropic) to assist with prompt development, code drafting, analysis, and manuscript preparation.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Pour la thérapie lumineuse, le seuil optimal était de 22 %, avec une spécificité de 99,2 % et une réduction de 97,3 % du volume de revue. Pour la pharmacothérapie adjuvante, le seuil était de 14 %, spécificité 83,4 % et réduction 81,1 %.",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p10_c1",
+   "page": 10,
+   "quote": "highest cutoff retaining all human-retained light-therapy records in every run was 22%, with specificity of 99.2% and a reduction in review volume of 97.3%. For adjunctive pharmacotherapy, the corresponding cutoff was 14%, with specificity of 83.4% and a reduction in review volume of 81.1% (Table 2).",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les auteurs signalent que les limites de l’étude incluent une généralisation restreinte aux troubles bipolaires et des ensembles de données peu nombreux.",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p13_c3",
+   "page": 13,
+   "quote": "Several limitations affect the interpretation of these findings. First, both reviews concerned bipolar disorder, limiting generalizability to other clinical areas. The datasets also contained few",
+   "note": ""
+  }
+ ]
+}

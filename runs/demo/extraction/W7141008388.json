@@ -1,0 +1,305 @@
+{
+ "paper_id": "W7141008388",
+ "source_sha256": "21fdca10736e302093c21cd35d5338648c5e3c3934b508932377aeffeb564435",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 17,
+ "pages_read": 17,
+ "page_chars": [
+  1944,
+  2532,
+  2227,
+  2434,
+  2242,
+  2343,
+  2268,
+  2025,
+  2522,
+  1561,
+  2501,
+  2756,
+  2213,
+  2297,
+  2007,
+  2463,
+  316
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p1_c1",
+   "page": 1,
+   "text": "Fine-Tuning A Large Language Model for\nSystematic Review Screening\nKweku Yamoah1, Noah Schroeder∗1, Emmanuel Dorley1, Neha Rani1,\nand Caleb Schutz1\n1University of Florida, Gainesville, FL, 32611\nMarch 27, 2026\nAbstract\nSystematic reviews traditionally have taken considerable amounts\nof human time and energy to complete, in part due to the extensive\nnumber of titles and abstracts that must be reviewed for potential inclusion. Recently, researchers have begun to explore how to use large\nlanguage models (LLMs) to make this process more efficient. However, research to date has shown inconsistent results. We posit this\nis because prompting alone may not provide sufficient context for the\nmodel(s) to perform well. In this study, we fine-tune a small 1.2 billion\nparameter open-weight LLM specifically for study screening in the context of a systematic review in which humans rated more than 8500 titles\nand abstracts for potential inclusion. Our results showed strong performance improvements from the fine-tuned model, with the weighted F1\nscore improving 80.79% compared to the base model. When run on the\nfull dataset of 8,277 studies, the fine-tuned model had 86.40% agreement with the human"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p1_c2",
+   "page": 1,
+   "text": "the fine-tuned model, with the weighted F1\nscore improving 80.79% compared to the base model. When run on the\nfull dataset of 8,277 studies, the fine-tuned model had 86.40% agreement with the human coder, a 91.18% true positive rate, a 86.38% true\nnegative rate, and perfect agreement across multiple inference runs.\nTaken together, our results show that there is promise for fine-tuning\nLLMs for title and abstract screening in large-scale systematic reviews.\n1\nIntroduction\nSystematic reviews are a critical method in educational technology research,\noffering researchers synthesized findings across an entire field of study. However, systematic reviews are inherently time-consuming [1, 2], with one study\nestimating that reviews take on average 67 weeks to complete [1]. Much of\nthe time required for systematic reviews comes from the first stage of study\n∗Corresponding author: schroedern@ufl.edu\n1\narXiv:2603.24767v1 [cs.CL] 25 Mar 2026"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p2_c1",
+   "page": 2,
+   "text": "screening, when titles and abstracts are reviewed. Large-scale, comprehensive syntheses may have thousands of titles and abstracts that need to be\nreviewed for potential inclusion.\nFor example, the authors are currently\nworking on a systematic review where they screened more than 8,500 titles\nand abstracts. Such a process is time and resource intensive.\nResearchers have been exploring how large language models (LLMs) can\nbe used to help alleviate the burden of title and abstract screening. One\nlarge scale study found that LLMs can potentially reduce the human workload during this phase of systematic reviews by up to 93% [3]. However,\nLLMs are heavily context dependent and can be strongly influenced by the\nwording of the prompt and other parameter settings, and not all models will\nperform identically even with the same parameter settings or prompt [4, 3].\nConsequently, while promising, the current state of the art is not to fully\nrely on LLMs during title and abstract screening [5, 6].\nWhile the context-dependence of of LLMs has often been viewed as as\na quality that prohibits their widespread adoption in the systematic review\nprocess, we argue that it could instead be beneficial"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p2_c2",
+   "page": 2,
+   "text": "While the context-dependence of of LLMs has often been viewed as as\na quality that prohibits their widespread adoption in the systematic review\nprocess, we argue that it could instead be beneficial to embrace their contextdependence. In short, we hypothesized that fine-tuning a small LLM based\non human-coded data from one specific review could lead to higher performing and more consistent LLM inferences for that review. Fine-tuning a small\nLLM is an easily approachable task using publicly available code, and small\nLLMs can be run and trained on commonly available consumer hardware\n[7, 8]. Moreover, the process of title and abstract screening during systematic reviews creates the foundation for well-formatted datasets for training\nmodels. The purpose of this study was to explore how fine-tuning a small\nLLM can impact its performance during LLM-based screening of titles and\nabstracts for an individual systematic review.\n1.1\nThe Present Study\nWe explored if fine-tuning a small LLM for a specific systematic review could\nachieve strong and reliable results. If so, it could greatly reduce the amount\nof time required to conduct systematic reviews. Specifically, we sought to\nanswer the"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p2_c3",
+   "page": 2,
+   "text": "a specific systematic review could\nachieve strong and reliable results. If so, it could greatly reduce the amount\nof time required to conduct systematic reviews. Specifically, we sought to\nanswer the following research questions:\n1. What is the model’s baseline performance at title and abstract screening compared to human ratings?\n2. How does a fine-tuned, small LLM perform on a small validation\ndataset compared to human ratings?\n3. How does a fine-tuned, small LLM perform across a large, full dataset\ncompared to a human rater?\n2"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p3_c1",
+   "page": 3,
+   "text": "2\nMethods\n2.1\nThe Dataset and Human Coding\nThe dataset consisted of the titles and abstracts from 8,694 studies that\nwere located as part of a systematic review on the influence of generative\nartificial intelligence technologies in undergraduate computer science education. Specifically, the dataset consists of titles, abstracts, and human-coded\ninclusion or exclusion decisions (coded as ‘1’ or ‘0’, respectively). The entire\ndataset was coded by humans for inclusion or exclusion in the systematic\nreview. Three individuals participated in the coding process. In order to\ncalculate inter-rater agreement, 273 titles and abstracts were coded by all\nthree coders. The inter-rater agreement exceeded 99%.\n2.2\nThe LLM and Fine-Tuning\nWe fine-tuned Liquid AI’s LFM2.5-1.2B-Instruct in bfloat16 precision [9].\nThe model was selected because its compact size (1.2B parameters) enables\nlocal training and evaluation on single-GPU hardware while retaining strong\ninstruction-following capability.\n2.2.1\nFine-Tuning Approach\nWe performed supervised fine-tuning (SFT) using full-parameter fine-tuning,\ni.e., updating all model weights rather than training parameter-efficient\nadapters.\nWhile"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p3_c2",
+   "page": 3,
+   "text": "2.2.1\nFine-Tuning Approach\nWe performed supervised fine-tuning (SFT) using full-parameter fine-tuning,\ni.e., updating all model weights rather than training parameter-efficient\nadapters.\nWhile parameter-efficient fine-tuning (PEFT) methods such as\nLoRA can be highly effective, prior comparative studies show that PEFT\nand full fine-tuning exhibit meaningful trade-offs in both performance and\ncomputational cost, and PEFT can underperform full fine-tuning depending\non task difficulty, data regime, and language setting [10, 11, 12]. Because\nour setting involves a single target task and a relatively small base model,\nfull fine-tuning is feasible and avoids adapter-induced capacity constraints,\nallowing the model to realize the highest adaptation ceiling for the task.\n2.2.2\nTraining Stack and Efficiency (Unsloth)\nWe implemented SFT using Unsloth integrated with the Hugging Face/TRL\ntraining stack. Unsloth provides optimized kernels (e.g., Triton-based implementations and other training-time optimizations) that reduce memory\nuse and accelerate fine-tuning while remaining compatible with standard\nHugging Face tooling [13, 14, 15, 16].\n2.2.3\nTraining Configuration\nWe configured training"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p3_c3",
+   "page": 3,
+   "text": "optimizations) that reduce memory\nuse and accelerate fine-tuning while remaining compatible with standard\nHugging Face tooling [13, 14, 15, 16].\n2.2.3\nTraining Configuration\nWe configured training using the hyperparameters in Table 1.\n3"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p4_c1",
+   "page": 4,
+   "text": "Table 1: Fine-tuning configuration for LFM2.5-1.2B-Instruct.\nWe\nreport the training regime, hyperparameters, and implementation choices\nused in our experiments.\nParameter\nValue\nRationale\nFine-tuning regime\nAdaptation method\nFull fine-tuning\nUpdate all weights (no adapters) to maximize task-specific\ncapacity [10, 11].\nOptimization\nOptimizer\nAdamW (8-bit)\nReduces optimizer-state memory while preserving AdamW\nbehavior [17].\nLearning rate\n2 × 10−5\nConservative step size to reduce overfitting under limited\nsupervision.\nWarmup steps\n5\nShort warmup relative to the total step budget.\nTraining steps\n320\nFixed training budget for controlled comparison.\nWeight decay\n0.01\nStandard L2 regularization for stability.\nLR scheduler\nLinear\nSimple decay schedule suitable for short runs.\nBatching\nPer-device batch size\n2\nConstrained by GPU memory.\nGradient accumulation\n4\nEffective batch size of 8.\nModel and objective\nBase model\nLFM2.5-1.2B-\nInstruct\nCompact instruction-tuned model enabling local experimentation [9].\nMax sequence length\n4,096\nSupports long abstracts and prompt context.\nResponse masking\nEnabled\nCompute loss only over assistant tokens (instruction tuning).\nPrecision\nBF16\nEfficient mixed"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p4_c2",
+   "page": 4,
+   "text": "[9].\nMax sequence length\n4,096\nSupports long abstracts and prompt context.\nResponse masking\nEnabled\nCompute loss only over assistant tokens (instruction tuning).\nPrecision\nBF16\nEfficient mixed precision on supported hardware.\nTraining stack\nUnsloth + TRL\nFast,\nVRAM-efficient\nfine-tuning\nwith\nHF-compatible\ntooling [13, 15, 16].\nFull fine-tuning configuration.\nFull fine-tuning was enabled in Unsloth\n(full_finetuning=True), resulting in all model parameters being trainable\n(100% of weights updated). We used bfloat16 mixed precision for efficiency\nand stability on modern accelerators, and an 8-bit AdamW optimizer to\nreduce optimizer-state memory footprint.\n2.2.4\nDataset Partitioning\nTable 2: Distribution of labeled abstracts across training and test partitions.\nDataset\nTotal\nExclude (0)\nInclude (1)\nInclusion Rate\nTraining set\n315\n194\n121\n38.4%\nTest set\n56\n39\n17\n30.4%\nTotal\n371\n233\n138\n37.2%\nThe curated dataset of 371 labeled abstracts was partitioned into training and test sets, with the distribution summarized in Table 2. The training\nset comprised 315 abstracts (194 exclusions, 121 inclusions), while the heldout test set contained 56 abstracts (39 exclusions, 17 inclusions). This"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p4_c3",
+   "page": 4,
+   "text": "distribution summarized in Table 2. The training\nset comprised 315 abstracts (194 exclusions, 121 inclusions), while the heldout test set contained 56 abstracts (39 exclusions, 17 inclusions). This split\npreserved approximately similar class proportions across both sets, with inclusion rates of 38.4% and 30.4% for training and test sets, respectively.\nIt is important to note that the class distribution in our curated dataset\n4"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p5_c1",
+   "page": 5,
+   "text": "differs substantially from typical systematic review screening scenarios, where\ninclusion rates are typically 1–5%. Since this was an initial exploration of\nfeasibility and our dataset was sufficiently large, our training set was intentionally enriched with positive examples to provide sufficient signal for the\nmodel to learn inclusion criteria, addressing the challenge of extreme class\nimbalance in real-world screening.\n2.2.5\nTraining Procedure and Implementation\nTraining data comprised 371 labeled abstracts, formatted as instructionresponse pairs using the LFM2 chat template. Response-only masking was\napplied during training, computing the cross-entropy loss exclusively over\nassistant response tokens while masking instruction tokens. This technique\nencourages the model to focus on learning accurate screening decisions rather\nthan memorizing instruction templates, and has become standard practice\nin instruction-tuned model development [18].\n2.2.6\nComputational Resources\nTraining was conducted on a single NVIDIA B200 GPU with 180GB memory.\nThe 320-step training run completed in approximately 2 minutes, with peak\nGPU memory utilization remaining below 40GB.\n2.3\nEvaluation and"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p5_c2",
+   "page": 5,
+   "text": "was conducted on a single NVIDIA B200 GPU with 180GB memory.\nThe 320-step training run completed in approximately 2 minutes, with peak\nGPU memory utilization remaining below 40GB.\n2.3\nEvaluation and Validation\nWe employed a multi-stage evaluation strategy to assess the fine-tuned model’s\nperformance on systematic review screening, using both held-out test data\nand prospective screening of new abstracts.\n2.3.1\nEvaluation Metrics\nGiven the inherent class imbalance in systematic review screening, we selected evaluation metrics appropriate for imbalanced classification tasks.\nStandard accuracy can be misleading when one class dominates; therefore,\nwe report multiple complementary metrics:\nBalanced Accuracy.\nDefined as the arithmetic mean of sensitivity (recall for the positive class) and specificity (recall for the negative class):\nBalanced Accuracy =\n1\n2\n\nTP\nTP+FN +\nTN\nTN+FP\n\n.\nThis metric provides equal\nweight to both classes regardless of their prevalence.\nWeighted Metrics.\nWe computed precision, recall, and F1-score using\nweighted averaging, where each class’s contribution is weighted by its support\n(number of true instances). This approach accounts for class imbalance while\nstill"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p5_c3",
+   "page": 5,
+   "text": "precision, recall, and F1-score using\nweighted averaging, where each class’s contribution is weighted by its support\n(number of true instances). This approach accounts for class imbalance while\nstill reflecting performance on the majority class.\n5"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p6_c1",
+   "page": 6,
+   "text": "Per-Class Metrics.\nTo provide granular insight into model behavior, we\nreport precision, recall, and F1-score separately for both the exclude class\n(0) and include class (1).\nFor systematic review screening, recall on the\ninclude class (sensitivity) is particularly critical, as missed relevant studies\ncan compromise review validity.\nConfusion Matrix.\nWe report the full confusion matrix (TP, TN, FP,\nFN) to enable computation of derived metrics and facilitate comparison with\nother screening tools.\n2.3.2\nInter–Rater Reliability\nTo assess agreement between the human screener and our fine-tuned language model, we employed several complementary measures of inter-rater\nreliability. These statistics quantify the proportion of agreement that exceeds\nchance expectations and help diagnose situations in which class prevalence\nor rater bias can unduly influence the apparent level of agreement.\nCohen’s Kappa (κ).\nFor pairwise agreement between the human decisions and each model prediction, we computed Cohen’s kappa. Since κ is\nsensitive to prevalence and marginal distributions [19], we report it alongside\nthe alternative measures described below.\nPrevalence-Adjusted Bias-Adjusted Kappa (PABAK)."
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p6_c2",
+   "page": 6,
+   "text": "Cohen’s kappa. Since κ is\nsensitive to prevalence and marginal distributions [19], we report it alongside\nthe alternative measures described below.\nPrevalence-Adjusted Bias-Adjusted Kappa (PABAK).\nOne common criticism of κ is that it decreases as the prevalence of the positive class\nmoves away from 50% [20].\nTo mitigate this sensitivity, [19] proposed a\nprevalence- and bias-adjusted kappa (PABAK) that assumes equal prevalence and no bias [20]. Under these assumptions and for binary classifications, PABAK reduces to PABAK = 2po −1. PABAK depends only on the\nobserved agreement and thus provides a prevalence insensitive complement\nto Cohen’s κ for pairwise comparisons.\nGwet’s Agreement Coefficient (AC1).\nTo further address the limitations of κ, we computed Gwet’s AC1 coefficient. Gwet introduced this statistic as an alternative agreement measure whose chance-agreement term does\nnot depend on the marginal distributions; consequently, AC1 yields more\nrobust estimates when trait prevalence or rater classification probabilities\nare imbalanced [21, 22, 23]. We calculated AC1 for the binary ratings of\nthe human screener and each model inference pass. For the multi-rater case\n(human plus"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p6_c3",
+   "page": 6,
+   "text": "or rater classification probabilities\nare imbalanced [21, 22, 23]. We calculated AC1 for the binary ratings of\nthe human screener and each model inference pass. For the multi-rater case\n(human plus three model passes) we computed the generalized AC1 and reported 95% confidence intervals obtained via a non-parametric bootstrap\nover items.\n6"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p7_c1",
+   "page": 7,
+   "text": "Fleiss’ Kappa.\nTo quantify agreement across more than two raters simultaneously, we computed Fleiss’ kappa. Fleiss’ statistic generalizes Cohen’s\nkappa to an arbitrary number of raters and measures how much the observed\nagreement exceeds what would be expected by chance across the entire rating matrix [24]. We evaluated Fleiss’ kappa on the four-rater matrix (human\nscreener and three model passes) and report bootstrap-based 95% confidence\nintervals.\n2.3.3\nMulti-Pass Inference Protocol\nTo evaluate model consistency and calibration, we performed three independent inference passes using sampling temperatures T ∈{0.1, 0.4, 0.8}.\nLower temperatures yield near-deterministic outputs, whereas higher temperatures introduce stochasticity that can reveal the model’s uncertainty\n[25]. For each test example and temperature we recorded the model’s binary\nprediction and computed the full suite of classification metrics against the\nground-truth human decision. We also assessed inter-pass reliability by computing pairwise κ between the outputs of the different temperature settings.\n2.3.4\nInference protocol.\nWe used a structured prompt template that was recently shown to perform well in similar"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p7_c2",
+   "page": 7,
+   "text": "by computing pairwise κ between the outputs of the different temperature settings.\n2.3.4\nInference protocol.\nWe used a structured prompt template that was recently shown to perform well in similar screening tasks in the medical domain [4].\nFor each\ntest example, we extracted the user prompt and ground-truth label from\nthe ChatML-formatted text by locating the user and assistant markers.\nPredictions were generated by applying the model’s chat template to the\nuser prompt and using greedy decoding with a short generation budget\n(max_new_tokens=8).\nThe predicted class was parsed as the first occurrence of 0 or 1 in the generated text. To increase robustness, the evaluator\nalso checked for decision keywords (e.g., “include”/“exclude”); if no decision\ntoken was found, it fell back to the majority class (configured as 0). This\nprocedure matches the evaluation code used to compute the agreement coefficients discussed above.\n2.4\nModel Availability\nTo support reproducibility, we release the fine-tuned model, dataset, and full\ncodebase. Model: https://huggingface.co/IARG-UF/lfm-2.5-1.2b-instruct_\nfor_sys_review. Dataset: https://huggingface.co/datasets/IARG-UF/\nllm_sys_review. Code:"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p7_c3",
+   "page": 7,
+   "text": "the fine-tuned model, dataset, and full\ncodebase. Model: https://huggingface.co/IARG-UF/lfm-2.5-1.2b-instruct_\nfor_sys_review. Dataset: https://huggingface.co/datasets/IARG-UF/\nllm_sys_review. Code: https://github.com/Intelligent-Agents-Research-Group/\nllm_systematic_review.\n7"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p8_c1",
+   "page": 8,
+   "text": "3\nResults\n3.1\nBaseline Performance Before Fine-Tuning\nThe model’s baseline performance was dismal as shown in Table 3. Balanced\naccuracy was only 53.07%, and the per-class performance was poor (Table\n4). The base model’s percentage agreement with the human rater was very\nlow (6.52%) which is reflected in Gwet’s AC1 (-0.863, Table 6).\nTable 3: Binary classification performance across evaluation settings.\nWe report results for three settings: (i) the base model (no finetuning) evaluated on the full dataset, (ii) the fine-tuned model evaluated\non the held-out test split used during fine-tuning, and (iii) the fine-tuned\nmodel evaluated on the full dataset. Metrics are percentages. Accuracy is\noverall accuracy; Balanced Accuracy is mean per-class recall (useful under\nstrong class imbalance).\nWe report Macro/Weighted F1 and additionally\nMacro/Weighted F2, where F2 weights recall four times more than precision.\nMacro metrics weight classes equally; weighted metrics weight by class support.\nSetting\nN\nAcc. Bal. Acc. Macro-F1 Macro-F2 W-F1 W-F2\nBase (no fine-tune)\nFull dataset\n8,277\n6.52\n53.07\n6.22\n4.86\n11.52\n7.54\nFine-tuned\nHeld-out test split\n56 94.64\n94.49\n93.77\n94.19\n94.68\n94.65"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p8_c2",
+   "page": 8,
+   "text": "Setting\nN\nAcc. Bal. Acc. Macro-F1 Macro-F2 W-F1 W-F2\nBase (no fine-tune)\nFull dataset\n8,277\n6.52\n53.07\n6.22\n4.86\n11.52\n7.54\nFine-tuned\nHeld-out test split\n56 94.64\n94.49\n93.77\n94.19\n94.68\n94.65\nFine-tuned\nFull dataset\n8,277 86.40\n88.78\n48.95\n50.41\n92.31 88.48\n3.2\nResults with Validation Dataset\nOur fine-tuned model performed well across all metrics on the validation\ndataset (Table 3). Moreover, the per class metrics also showed strong performance for both excluded and included classifications (Table 4), and the\nconfusion matrix showed only a 5.88% false negatives rate (Table 5). The\nmodel had strong agreement with the human coder (94.64%) and Gwet’s\nAC1 was very good (.906, Table 6).\n3.3\nResults Across Full Dataset\nThe results from the larger corpus of all 8,277 remaining studies that were not\nin the training data or validation dataset showed markedly improved results\ncompared to the base model. As shown in Table 3, the fine-tuned model’s\nbalanced accuracy improved by 35.71% and the weighted F1 scores improved\n8"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p9_c1",
+   "page": 9,
+   "text": "Table 4: Per-class performance across evaluation settings. We report\nprecision, recall, and F1 for each class (0=Exclude, 1=Include). Recall equals\nper-class accuracy (i.e., accuracy restricted to the examples of that true\nclass): for class 0, TN/(TN + FP); for class 1, TP/(TP + FN). Support is\nthe number of true instances per class. Values are percentages.\nSetting\nClass\nSupport\nPrec.\nRec.\nF1\nBase (no fine-tune)\nFull dataset\n0 (Exclude)\n8,243\n100.00\n6.14\n11.57\n1 (Include)\n34\n0.44\n100.00\n0.87\nFine-tuned\nHeld-out test split\n0 (Exclude)\n39\n97.37\n94.87\n96.10\n1 (Include)\n17\n88.89\n94.12\n91.43\nFine-tuned\nFull dataset\n0 (Exclude)\n8,243\n99.96\n86.38\n92.67\n1 (Include)\n34\n2.69\n91.18\n5.22\n80.79%. Per-class results show that the majority class dominates aggregate\nperformance Exclude class, which achieves 99.96% precision, 86.38% recall,\nand 92.67% F1 (Table 4).\nIn contrast, the Include class exhibits a pronounced recall–precision trade-off: recall is high (91.18%), indicating strong\nsensitivity to eligible studies, but precision is low (2.69%), which correspondingly depresses F1 (5.22%) (Table 4).\nSince systematic review screening\ntypically prioritizes minimizing missed inclusions over"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p9_c2",
+   "page": 9,
+   "text": "to eligible studies, but precision is low (2.69%), which correspondingly depresses F1 (5.22%) (Table 4).\nSince systematic review screening\ntypically prioritizes minimizing missed inclusions over minimizing additional\ncandidates for manual review, this emphasis on sensitivity is also reflected in\nthe recall-weighted F2 summary reported in Table 3. The confusion matrix\nshows that 8.82% of the studies that should have been included were instead\nincorrectly classified as excluded, and only 13.62% of cases that should have\nbeen excluded were included. Agreement with the human rater was 86.40%\nand Gwet’s AC1 was strong (.843), even though Cohen’s kappa was low (Table 6). Finally, we questioned if the fine-tuned model would perform well\nacross various temperatures. The model had perfect agreement with itself\nacross temperatures, and when the three different temperature results were\nanalyzed in relation to the human coding, we found a strong Gwet’s AC1 of\n.842 (Table 7).\n4\nDiscussion\nIn this study we explored the extent to which fine-tuning a LLM could improve its performance and consistency in screening titles and abstracts for a\nspecific systematic review. Our results showed that"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p9_c3",
+   "page": 9,
+   "text": "this study we explored the extent to which fine-tuning a LLM could improve its performance and consistency in screening titles and abstracts for a\nspecific systematic review. Our results showed that fine-tuning the model resulted in a notable performance improvements in all metrics. In the context\nof using LLM-based screening to save time in a systematic review screening\nprocess, we perceive the model’s false positives (including studies that should\nbe excluded) as preferable to false negatives (excluding studies that should\n9"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p10_c1",
+   "page": 10,
+   "text": "Table 5: Confusion matrices as percentages (row-normalized). For\neach setting, we report the confusion matrix normalized by the number of\ntrue examples in each class (rows sum to 100%). Columns correspond to predicted labels (0=Exclude, 1=Include); rows correspond to true labels. This\npresentation highlights false positive and false negative rates independently\nof class prevalence.\nSetting\nTrue class\nPred 0\nPred 1\nBase (no fine-tune)\nFull dataset\nTrue 0 (Exclude)\n6.14\n93.86\nTrue 1 (Include)\n0.00\n100.00\nFine-tuned\nHeld-out test split\nTrue 0 (Exclude)\n94.87\n5.13\nTrue 1 (Include)\n5.88\n94.12\nFine-tuned\nFull dataset\nTrue 0 (Exclude)\n86.38\n13.62\nTrue 1 (Include)\n8.82\n91.18\nTable 6: Model–human agreement across evaluation settings. We\nreport agreement statistics computed from the binary confusion matrix for\nthree settings: (i) the base model (no fine-tuning) evaluated on the full\ndataset, (ii) the fine-tuned model evaluated on the held-out test split used\nduring fine-tuning, and (iii) the fine-tuned model evaluated on the full\ndataset. Po denotes observed agreement (i.e., accuracy) reported as a percentage. We additionally report Cohen’s κ (chance-corrected agreement),\nPABAK"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p10_c2",
+   "page": 10,
+   "text": "(iii) the fine-tuned model evaluated on the full\ndataset. Po denotes observed agreement (i.e., accuracy) reported as a percentage. We additionally report Cohen’s κ (chance-corrected agreement),\nPABAK (prevalence-adjusted, bias-adjusted κ), and Gwet’s AC1 (a chancecorrected agreement measure that is often more stable under strong prevalence imbalance).\nSetting\nN\nPo (%)\nCohen’s κ\nPABAK\nGwet AC1\nBase (no fine-tune)\nFull dataset\n8,277\n6.52\n0.001\n-0.870\n-0.863\nFine-tuned\nHeld-out test split\n56\n94.64\n0.875\n0.893\n0.906\nFine-tuned\nFull dataset\n8,277\n86.40\n0.045\n0.728\n0.843\n10"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p11_c1",
+   "page": 11,
+   "text": "Table 7: Agreement and consistency over Phase-1 screening labels\n(N = 8,277). Multi-rater agreement is computed across four raters: the\nhuman decision and three LLM inference runs at decoding temperatures\nT ∈{0.1, 0.4, 0.8}. We report Fleiss’ κ and multi-rater Gwet’s AC1 with\n95% bootstrap confidence intervals (item-wise resampling). We additionally\nreport LLM-only consistency as pairwise Cohen’s κ between the three temperature runs (computed over all items; no CI). Perfect pairwise agreement\n(κ=1.0) indicates identical predicted labels across temperatures in this setting.\nStatistic\nEstimate\nCI95 (lo)\nCI95 (hi)\nHuman + LLM runs (4 raters)\nFleiss’ κ\n0.603\n0.599\n0.607\nGwet AC1\n0.842\n0.834\n0.850\nLLM-only consistency (pairwise Cohen’s κ across temperatures)\nT=0.1 vs. T=0.4\n1.000\n–\n–\nT=0.1 vs. T=0.8\n1.000\n–\n–\nT=0.4 vs. T=0.8\n1.000\n–\n–\nbe included), as the human rater will presumably review the false positives\nduring full-text screening. In the context of our dataset, if we ran the model\nbefore a human screener reviewed the studies, humans would have reviewed\nonly 13.62% of the excluded studies, while missing 8.82% of the studies that\nshould have been included.\nOur results raise the"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p11_c2",
+   "page": 11,
+   "text": "before a human screener reviewed the studies, humans would have reviewed\nonly 13.62% of the excluded studies, while missing 8.82% of the studies that\nshould have been included.\nOur results raise the question of if models can perform as well as our\nfine-tuned model did, how should we use them? The integration of artificial\nintelligence into systematic review work flows could take two forms, human\nin the loop or AI in the loop [26]. In a human in the loop scenario, AI would\nfunction as a primary screener, with a human reviewing its work. Our results\nshow promise for this approach, but replication and more methodological\nwork needs to be done before this can be recommended.\nMeanwhile, AI\nin the loop approaches would have the humans do the primary screening,\nwith an AI to act as a second screener. Our results show more support for\nusing fine-tuned LLMs for this type of approach. Having two humans screen\ntitles and abstracts is recommended best practice from major organizations\nlike the Campbell Collaboration [27] and Cochrane [28], but it is inherently\ntime consuming and therefore expensive. Our fine-tuned LLM performed\nwell-enough where it could be considered as a second or third"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p11_c3",
+   "page": 11,
+   "text": "Campbell Collaboration [27] and Cochrane [28], but it is inherently\ntime consuming and therefore expensive. Our fine-tuned LLM performed\nwell-enough where it could be considered as a second or third screener of\ntitles and abstracts. This assumes that at least one human has categorized\nall studies and the fine-tuned LLM acts as a second screener.\nA human\ncould then reconcile the ratings, similar to how a human would reconcile\nratings between two independent screeners. This holds the potential to save\n11"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p12_c1",
+   "page": 12,
+   "text": "significant costs associated with two humans reviewing and categorizing a\nlarge corpus of titles and abstracts.\n4.1\nPractical Implications\nIn short, our works shows the potential of embracing the context dependence\nof LLMs to reduce a systematic reviewers’ workload. This is consistent with\nprior studies that suggested that LLMs can reduce workload [29]. While\nfine-tuning an LLM may take time, it could potentially save considerable\ntime when a systematic review contains as many studies to be reviewed as\nour sample did here. However, fine-tuning only saves a researcher time if\nthe model’s performance is strong enough to rationalize its use. Our model\nreached this level for at least considering the LLM as a second screener for\nour individual systematic review screening process. However, methodological\nwork is needed to understand the generalizability of our findings, as discussed\nin the next section.\n4.2\nLimitations and Future Directions\nOur findings highlight the need for extensive methodological work around\nthe fine-tuning of LLMs to assist in systematic review study screening. We\nhighlight three limitations and future directions for research: model selection,\ntraining data"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p12_c2",
+   "page": 12,
+   "text": "methodological work around\nthe fine-tuning of LLMs to assist in systematic review study screening. We\nhighlight three limitations and future directions for research: model selection,\ntraining data construction, and LLM post-training method.\nThe selection of which LLM to fine-tune is not a trivial task. Since this\nwas our initial exploration, we started with a very small LLM. We chose to\nuse LiquidAI’s LFM2.5 1.2 billion parameter model because it is very small,\narchitecturally very fast, and can be run and fine-tuned on minimal hardware\n[9]. Our results showed that even this very small LLM can perform very well\nwhen fine-tuned to do a specific task. It is an open question as to if the\nprocess would be even more effective with incrementally larger models.\nSecond, extensive methodological work is needed around dataset construction, as the dataset used for training could strongly influence model\nperformance. We were fortunate to have a corpus of more than 8500 humancoded studies from an on-going systematic review that had more than 150\nstudies included for full-text screening. This allowed us to construct a thorough training dataset, a unique validation dataset, and an independent"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p12_c3",
+   "page": 12,
+   "text": "an on-going systematic review that had more than 150\nstudies included for full-text screening. This allowed us to construct a thorough training dataset, a unique validation dataset, and an independent full\ndataset on which to test the model. However, we acknowledge that our training dataset contained more included studies than a typical systematic review\nin education may include. This raises the question of how small of a training\ndataset, specifically in regards to included cases, can one use and achieve\nacceptable results? Moreover, we question if such a finding could generalize\nacross models and datasets.\nFinally, we used full fine-tuning, rather than an approach like low-rank\nadaptation (LoRA) [30] which can be more computationally efficient during\n12"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p13_c1",
+   "page": 13,
+   "text": "training. Research is needed to better understand how other forms of LLM\npost-training influences LLM performance in the systematic review screening context. For example, it is possible that other approaches like direct\npreference optimization or various types of reinforcement learning, or even a\ncombination of approaches into a coherent pipeline may lead to better results\n[31, 32].\n5\nConclusion\nSystematic reviews are time-consuming methodologies that produce the standard best-evidence often used for evidence-based decision- and policy-making.\nPrevious research has shown mixed results as to if LLMs can facilitate the\ntitle and abstract screening process in a reliable, time-efficient matter. We\nsought to explore if fine-tuning a small, 1.2B parameter LLM would result in\na model that not only performs well for this specific systematic review, but\nalso performs consistently across multiple inference runs. Our results showed\nthat fine-tuning model resulted in dramatic performance improvements and\nonly a small false negative rate. Together, we show that there is potential for\nfine-tuned LLMs, trained to perform well for individual systematic reviews,\nto be used as at least second"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p13_c2",
+   "page": 13,
+   "text": "and\nonly a small false negative rate. Together, we show that there is potential for\nfine-tuned LLMs, trained to perform well for individual systematic reviews,\nto be used as at least second screeners, potentially saving time and money\nduring the systematic review process.\nFunding\nThis material is based upon work supported by the National Science Foundation under Grant DUE-2518159. Any opinions, findings, and conclusions\nor recommendations expressed in this material are those of the author(s) and\ndo not necessarily reflect the views of the National Science Foundation.\nReferences\n[1] Rohit Borah, Andrew W Brown, Patrice L Capers, and Kathryn A\nKaiser. Analysis of the time and workers needed to conduct systematic\nreviews of medical interventions using data from the prospero registry.\nBMJ open, 7(2):e012545, 2017.\n[2] Christian Cao, Rohit Arora, Paul Cento, Katherine Manta, Elina Farahani, Matthew Cecere, Anabel Selemon, Jason Sang, Ling Xi Gong,\nRobert Kloosterman, et al.\nAutomation of systematic reviews with\nlarge language models. medRxiv, pages 2025–06, 2025.\n[3] Fernando M Delgado-Chaves, Matthew J Jennings, Antonio Atalaia,\nJustus Wolff, Rita Horvath, Zeinab M Mamdouh, Jan"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p13_c3",
+   "page": 13,
+   "text": "of systematic reviews with\nlarge language models. medRxiv, pages 2025–06, 2025.\n[3] Fernando M Delgado-Chaves, Matthew J Jennings, Antonio Atalaia,\nJustus Wolff, Rita Horvath, Zeinab M Mamdouh, Jan Baumbach, and\n13"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p14_c1",
+   "page": 14,
+   "text": "Linda Baumbach. Transforming literature screening: The emerging role\nof large language models in systematic reviews. Proceedings of the National Academy of Sciences, 122(2):e2411962122, 2025.\n[4] Christian Cao, Jason Sang, Rohit Arora, David Chen, Robert Kloosterman, Matthew Cecere, Jaswanth Gorla, Richard Saleh, Ian Drennan,\nBijan Teja, et al.\nDevelopment of prompt templates for large language model–driven screening in systematic reviews. Annals of Internal\nMedicine, 178(3):389–401, 2025.\n[5] Ella Flemyng, Anna Noel-Storr, Biljana Macura, Gerald Gartlehner,\nJames Thomas, Joerg J Meerpohl, Zoe Jordan, Jan Minx, Angelika\nEisele-Metzger, Candyce Hamel, et al. Position statement on artificial\nintelligence (ai) use in evidence synthesis across cochrane, the campbell\ncollaboration, jbi and the collaboration for environmental evidence 2025.\nCochrane Database of Systematic Reviews, (10), 2025.\n[6] Michael Li, Jianping Sun, and Xianming Tan.\nEvaluating the effectiveness of large language models in abstract screening: a comparative\nanalysis. Systematic reviews, 13(1):219, 2024.\n[7] Peiyuan Zhang, Guangtao Zeng, Tianduo Wang, and Wei Lu. Tinyllama: An open-source small language model, 2024."
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p14_c2",
+   "page": 14,
+   "text": "in abstract screening: a comparative\nanalysis. Systematic reviews, 13(1):219, 2024.\n[7] Peiyuan Zhang, Guangtao Zeng, Tianduo Wang, and Wei Lu. Tinyllama: An open-source small language model, 2024.\n[8] Peter Belcak, Greg Heinrich, Shizhe Diao, Yonggan Fu, Xin Dong,\nSaurav Muralidharan, Yingyan Celine Lin, and Pavlo Molchanov. Small\nlanguage models are the future of agentic ai, 2025.\n[9] Liquid AI. Liquid AI/LFM2.5-1.2b-instruct · hugging face — huggingface.co. https://huggingface.co/LiquidAI/LFM2.5-1.2B-Instruct,\n2025. [Accessed 19-01-2026].\n[10] Olesya Razuvayevskaya, Ben Wu, João A. Leite, Freddy Heppell, Ivan\nSrba, Carolina Scarton, Kalina Bontcheva, and Xingyi Song.\nComparison between parameter-efficient techniques and full fine-tuning: A\ncase study on multilingual news article classification.\nPLOS ONE,\n19(5):e0301738, 2024.\n[11] Megh Thakkar, Quentin Fournier, Matthew D. Riemer, Pin-Yu Chen,\nAmal Zouaq, Payel Das, and Sarath Chandar. A deep dive into the\ntrade-offs of parameter-efficient preference alignment techniques.\nIn\nProceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL), 2024.\n[12] Vladislav Lialin, Vihaan Deshpande, and Anna"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p14_c3",
+   "page": 14,
+   "text": "preference alignment techniques.\nIn\nProceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL), 2024.\n[12] Vladislav Lialin, Vihaan Deshpande, and Anna Rumshisky. Parameterefficient fine-tuning methods for pretrained language models: A survey,\n2024.\n14"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p15_c1",
+   "page": 15,
+   "text": "[13] Hugging Face.\nMake llm fine-tuning 2x faster with unsloth and trl.\nhttps://huggingface.co/blog/unsloth-trl, 2024. Accessed: 2026-\n01-28.\n[14] Hugging\nFace.\nUnsloth\n(transformers\ncommunity\nintegration).\nhttps://huggingface.co/docs/transformers/community_\nintegrations/unsloth, 2026. Accessed: 2026-01-28.\n[15] Hugging Face.\nUnsloth integration (trl documentation).\nhttps:\n//huggingface.co/docs/trl/en/unsloth_integration, 2026.\nAccessed: 2026-01-28.\n[16] Unsloth.\nUnsloth documentation.\nhttps://unsloth.ai/docs, 2026.\nAccessed: 2026-01-28.\n[17] Tim Dettmers, Mike Lewis, Sam Shleifer, and Luke Zettlemoyer. 8-bit\noptimizers via block-wise quantization, 2022.\n[18] Chunting Zhou, Pengfei Liu, Puxin Xu, Srini Iyer, Jiao Sun, Yuning\nMao, Xuezhe Ma, Avia Efrat, Ping Yu, Lili Yu, Susan Zhang, Gargi\nGhosh, Mike Lewis, Luke Zettlemoyer, and Omer Levy. Lima: Less is\nmore for alignment, 2023.\n[19] Ted Byrt, Janet Bishop, and John B. Carlin.\nBias, prevalence and\nkappa. Journal of Clinical Epidemiology, 46(5):423–429, 1993.\n[20] Guanmin Chen, Peter Faris, Brenda Hemmelgarn, Robin L. Walker, and\nHude Quan. Measuring agreement of administrative data with chart\ndata using prevalence unadjusted and"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p15_c2",
+   "page": 15,
+   "text": "46(5):423–429, 1993.\n[20] Guanmin Chen, Peter Faris, Brenda Hemmelgarn, Robin L. Walker, and\nHude Quan. Measuring agreement of administrative data with chart\ndata using prevalence unadjusted and adjusted kappa. BMC medical\nresearch methodology, 9:5, January 2009.\n[21] Kilem Li Gwet. Handbook of inter-rater reliability: the definitive guide\nto measuring the extent of agreement among raters ; [a handbook for\nresearchers, practitioners, teachers & students]. Advanced Analytics,\nGaithersburg, MD, 3. ed edition, 2012.\n[22] Kilem L. Gwet. Inter-rater reliability: Dependency on trait prevalence\nand marginal homogeneity. 2002.\n[23] Meera Viswanathan and Nancy D. Berkman. Development of the RTI\nItem Bank on Risk of Bias and Precision of Observational Studies.\nAHRQ Methods for Effective Health Care. Agency for Healthcare Research and Quality (US), Rockville (MD), 2011.\n[24] Joseph L. Fleiss.\nMeasuring nominal scale agreement among many\nraters. Psychological Bulletin, 76(5):378–382, November 1971.\n15"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p16_c1",
+   "page": 16,
+   "text": "[25] Matthew Renze. The effect of sampling temperature on problem solving\nin large language models. In Yaser Al-Onaizan, Mohit Bansal, and Yun-\nNung Chen, editors, Findings of the Association for Computational Linguistics: EMNLP 2024, pages 7346–7356, Miami, Florida, USA, November 2024. Association for Computational Linguistics.\n[26] Dominik Dellermann, Philipp Ebel, Matthias Soellner, and Jan Marco\nLeimeister. Hybrid Intelligence. Business & Information Systems Engineering, 61(5):637–643, October 2019. arXiv:2105.00691 [cs].\n[27] Ariel M Aloe, Omar Dewidar, Emily A Hennessy, Terri Pigott, Gavin\nStewart, Vivian Welch, David B Wilson, and Campbell MECCIR Working Group. Campbell standards: Modernizing campbell’s methodologic\nexpectations for campbell collaboration intervention reviews (meccir).\nCampbell Systematic Reviews, 20(4):e1445, 2024.\n[28] Carol Lefebvre, Julie Glanville, Simon Briscoe, Anne Littlewood, Chris\nMarshall, Maria-Inti Metzendorf, Anna Noel-Storr, Tamara Rader,\nFarhad Shokraneh, James Thomas, et al.\nSearching for and selecting studies. Cochrane handbook for systematic reviews of interventions,\npages 67–107, 2019.\n[29] Ava Homiar, James Thomas, Edoardo G Ostinelli,"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p16_c2",
+   "page": 16,
+   "text": "Shokraneh, James Thomas, et al.\nSearching for and selecting studies. Cochrane handbook for systematic reviews of interventions,\npages 67–107, 2019.\n[29] Ava Homiar, James Thomas, Edoardo G Ostinelli, Jaycee Kennett,\nClaire Friedrich, Pim Cuijpers, Mathias Harrer, Stefan Leucht, Clara\nMiguel, Alessandro Rodolico, Yuki Kataoka, Tomohiro Takayama,\nKeisuke Yoshimura, Ryuhei So, Yasushi Tsujimoto, Yosuke Yamagishi,\nShiro Takagi, Masatsugu Sakata, Ðorđe Bašić, Eirini Karyotaki, Jennifer Potts, Georgia Salanti, Toshi A Furukawa, and Andrea Cipriani.\nDevelopment and evaluation of prompts for a large language model to\nscreen titles and abstracts in a living systematic review. BMJ Mental\nHealth, 28(1):e301762, July 2025.\n[30] Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi\nLi, Shean Wang, Lu Wang, and Weizhu Chen. Lora: Low-rank adaptation of large language models, 2021.\n[31] Kohsei Matsutani, Shota Takashiro, Gouki Minegishi, Takeshi Kojima,\nYusuke Iwasawa, and Yutaka Matsuo.\nRl squeezes, sft expands: A\ncomparative study of reasoning llms, 2025.\n[32] Team OLMo, Pete Walsh, Luca Soldaini, Dirk Groeneveld, Kyle Lo,\nShane Arora, Akshita Bhagia, Yuling Gu, Shengyi Huang,"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p16_c3",
+   "page": 16,
+   "text": "Rl squeezes, sft expands: A\ncomparative study of reasoning llms, 2025.\n[32] Team OLMo, Pete Walsh, Luca Soldaini, Dirk Groeneveld, Kyle Lo,\nShane Arora, Akshita Bhagia, Yuling Gu, Shengyi Huang, Matt Jordan, Nathan Lambert, Dustin Schwenk, Oyvind Tafjord, Taira Anderson, David Atkinson, Faeze Brahman, Christopher Clark, Pradeep\nDasigi, Nouha Dziri, Allyson Ettinger, Michal Guerquin, David Heineman, Hamish Ivison, Pang Wei Koh, Jiacheng Liu, Saumya Malik,\n16"
+  },
+  {
+   "paper_id": "W7141008388",
+   "chunk_id": "W7141008388_p17_c1",
+   "page": 17,
+   "text": "William Merrill, Lester James V. Miranda, Jacob Morrison, Tyler Murray, Crystal Nam, Jake Poznanski, Valentina Pyatkin, Aman Rangapur,\nMichael Schmitz, Sam Skjonsberg, David Wadden, Christopher Wilhelm, Michael Wilson, Luke Zettlemoyer, Ali Farhadi, Noah A. Smith,\nand Hannaneh Hajishirzi. 2 olmo 2 furious, 2025.\n17"
+  }
+ ]
+}

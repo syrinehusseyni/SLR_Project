@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2501-05468",
+ "fingerprint": "77c0c9aca1c4727b",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "rejected",
+   "value": "Évaluation comparative d'un outil d'automatisation de revues systématiques (LatteReview) via la collection SYNERGY.",
+   "chunk_id": "arxiv-2501-05468_p12_c2",
+   "page": null,
+   "quote": "First, we evaluate the framework using the SYNERGY collection, a comprehensive pool of article datasets compiled from previous systematic reviews, complete with their original inclusion and exclusion criteria.",
+   "note": "termes de la valeur absents de la citation : ['LatteReview']"
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "dataset créé en interrogeant PubMed pour des articles de rapport de cas sur les complications des vaccins COVID-19",
+   "chunk_id": "arxiv-2501-05468_p8_c1",
+   "page": 8,
+   "quote": "Figure 3. (A) A review workflow for screening titles and abstracts from a dataset created by querying PubMed for case report articles on complications of COVID-19 vaccines.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Utilisation d'un agent de revue senior utilisant GPT-4O pour intervenir en cas de désaccord.",
+   "chunk_id": "arxiv-2501-05468_p12_c3",
+   "page": 12,
+   "quote": "A senior reviewer agent, utilizing OpenAI's GPT-4O, intervenes only in cases of disagreement between the junior reviewers to make final inclusion decisions.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Accuracy=0.63, Recall=1.0, Precision=0.05",
+   "chunk_id": "arxiv-2501-05468_p13_c1",
+   "page": 13,
+   "quote": "Accuracy=0.63, Recall=1.0, Precision=0.05",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les limites incluent l'ambiguïté, le manque de contexte ou d'instructions insuffisantes, nécessitant une supervision humaine.",
+   "chunk_id": "arxiv-2501-05468_p20_c2",
+   "page": 20,
+   "quote": "While LatteReview offers powerful automation capabilities, it's essential to recognize the limitations inherent in any AI-based system.",
+   "note": ""
+  }
+ ]
+}

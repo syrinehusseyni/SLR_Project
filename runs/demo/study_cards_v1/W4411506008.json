@@ -1,0 +1,57 @@
+{
+ "paper_id": "W4411506008",
+ "fingerprint": "214b946dac41da5e",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Revue systématique selon PRISMA, avec un cadre SRPF complémentaire",
+   "chunk_id": "W4411506008_p2_c1",
+   "page": 2,
+   "quote": "This study adhered to the PRISMA guidelines for systematic literature review, including study identification, screening, eligibility assessment, and inclusion",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "GPT-4, GPT-3.5, ChatGPT 3.5",
+   "chunk_id": "W4411506008_p10_c1",
+   "page": 10,
+   "quote": "In a direct comparison, GPT-4 achieved 13.4% precision in article screening versus 9.4% for GPT-3.5 (Chelli et al. 2024)",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "Les modèles d'IA améliorent l'efficacité de 40 % et obtiennent une sensibilité de 80.6 % à 96.2 % en screening, mais la précision peut chuter à 4.6 % et les hallucinations atteindre 91 %.",
+   "chunk_id": "W4411506008_p11_c5",
+   "page": null,
+   "quote": "AI models can substantially improve efficiency, with time savings of up to 40% across various review tasks. Accuracy was particularly strong in structured fields such as medical research, where title and abstract screening sensitivities ranged from 80.6% to 96.2%. However, performance declined in more interpretative contexts, with precision dropping as low as 4.6% and hallucination rates reaching 91%.",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Risques de hallucinations pouvant inclure références fabriquées, citations erronées ou interprétations incorrectes, menaçant l'intégrité académique.",
+   "chunk_id": "W4411506008_p1_c3",
+   "page": 1,
+   "quote": "Hallucinated outputs can include fabricated references, misquoted findings, or incorrect interpretations, each of which poses a direct threat to the integrity of academic work (Fui-Hoon Nah et al. 2023).",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "paper_id": "W7141008388",
+ "fingerprint": "cb9cd74559d32477",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude expérimentale comparative utilisant un protocole d’inférence multi-pass avec températures de sampling T ∈{0.1, 0.4, 0.8}",
+   "chunk_id": "W7141008388_p7_c1",
+   "page": 7,
+   "quote": "We performed three independent inference passes using sampling temperatures T ∈{0.1, 0.4, 0.8}.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "8 694 études portant sur l'influence de l'IA générative dans l'enseignement supérieur en informatique.",
+   "chunk_id": "W7141008388_p3_c1",
+   "page": 3,
+   "quote": "The dataset consisted of the titles and abstracts from 8,694 studies that were located as part of a systematic review on the influence of generative artificial intelligence technologies in undergraduate computer science education.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Un modèle LLM open‑weight de 1,2 milliard de paramètres, fine‑tuned pour le tri de revues systématiques",
+   "chunk_id": "W7141008388_p1_c1",
+   "page": 1,
+   "quote": "fine-tune a small 1.2 billion parameter open-weight LLM",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Le modèle fine‑tuned atteint 99,96 % de précision, 86,38 % de rappel et 92,67 % de F1 pour la classe Exclude, tandis que la classe Include obtient 2,69 % de précision, 91,18 % de rappel et 5,22 % de F1.",
+   "chunk_id": "W7141008388_p9_c1",
+   "page": 9,
+   "quote": "Exclude class, which achieves 99.96% precision, 86.38% recall, and 92.67% F1 (Table 4). In contrast, the Include class exhibits a pronounced recall–precision trade-off: recall is high (91.18%), indicating strong sensitivity to eligible studies, but precision is low (2.69%), which correspondingly depresses F1 (5.22%) (Table 4).",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Limites liées à la sélection du modèle, à la construction des données d'entraînement et à la méthode post-entraînement.",
+   "chunk_id": "W7141008388_p12_c2",
+   "page": 12,
+   "quote": "We highlight three limitations and future directions for research: model selection, training data construction, and LLM post-training method.",
+   "note": ""
+  }
+ ]
+}

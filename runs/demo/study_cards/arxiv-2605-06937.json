@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2605-06937",
+ "fingerprint": "333a12015a9c945d",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "expérience de validation",
+   "chunk_id": "arxiv-2605-06937_p25_c3",
+   "page": 25,
+   "quote": "Appendix C. Validation configuration and GEPA budget ablation This appendix reports the validation details that support the concise Method validation section, so readers can reproduce the experiment without turning the main article into a benchmark-style results report.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "GEPA",
+   "chunk_id": "arxiv-2605-06937_p10_c3",
+   "page": 10,
+   "quote": "GEPA is used here because the protocol requires feedback-rich revision of the prompt harness, not only selection or bootstrapping of few-shot examples.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Exactitude 0,788 ± 0,004, F1 0,840 ± 0,004, rappel 0,896 ± 0,006, précision 0,791 ± 0,003 pour la classe inclure.",
+   "chunk_id": "arxiv-2605-06937_p15_c2",
+   "page": 15,
+   "quote": "The structured baseline achieved accuracy 0.788 ± 0.004 and F1 = 0.840 ± 0.004, with recall 0.896 ± 0.006 and precision 0.791 ± 0.003 for the include class.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les décisions de sélection, les champs ambigus, les jugements de risque de biais et les décisions finales doivent rester sous supervision humaine.",
+   "chunk_id": "arxiv-2605-06937_p15_c3",
+   "page": 15,
+   "quote": "Borderline eligibility decisions, ambiguous extracted fields, risk-ofbias judgements, and final synthesis decisions should remain under human oversight.",
+   "note": ""
+  }
+ ]
+}

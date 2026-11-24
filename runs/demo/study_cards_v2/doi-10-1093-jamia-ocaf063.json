@@ -1,0 +1,57 @@
+{
+ "paper_id": "doi-10-1093-jamia-ocaf063",
+ "fingerprint": "a0ec7de41debe9d0",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "revue utilisant GPT-4o pour automatiser les processus de revue systématique",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p28_c1",
+   "page": 28,
+   "quote": "Our review utilized approximately 500$ in OpenAI Azure costs for GPT-4o model.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "ChatGPT4 a une exactitude de 90,2 % pour le filtrage de titres et résumés.",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p30_c2",
+   "page": 30,
+   "quote": "ChatGPT4.Title and abstract screening.Accuracy=90.2;",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les catégories d'extraction, notamment les métriques de performance, ont une exactitude relativement faible, nécessitant prudence.",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p16_c1",
+   "page": 16,
+   "quote": "Some extraction categories, such as performance metrics, had relatively lower accuracy, so the results of this extraction category should be taken with caution.",
+   "note": ""
+  }
+ ]
+}

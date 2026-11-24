@@ -1,0 +1,158 @@
+{
+  "limits": {
+    "model": "openai/gpt-oss-20b",
+    "prompt": "study_card.txt",
+    "top_k": 3,
+    "pause": 3.0,
+    "max_papers": null,
+    "fields": [
+      "design",
+      "data",
+      "models",
+      "findings",
+      "limitations"
+    ]
+  },
+  "papers": [
+    {
+      "paper_id": "W4388718056",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/W4388718056.json",
+      "counts": {
+        "verified": 5
+      }
+    },
+    {
+      "paper_id": "W7141008388",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/W7141008388.json",
+      "counts": {
+        "verified": 5
+      }
+    },
+    {
+      "paper_id": "W4367368990",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/W4367368990.json",
+      "counts": {
+        "verified": 2,
+        "not_reported": 3
+      }
+    },
+    {
+      "paper_id": "W7131100690",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/W7131100690.json",
+      "counts": {
+        "verified": 1,
+        "rejected": 4
+      }
+    },
+    {
+      "paper_id": "W4411506008",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/W4411506008.json",
+      "counts": {
+        "verified": 2,
+        "not_reported": 3
+      }
+    },
+    {
+      "paper_id": "arxiv-2512-11261",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/arxiv-2512-11261.json",
+      "counts": {
+        "verified": 5
+      }
+    },
+    {
+      "paper_id": "arxiv-2501-05468",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/arxiv-2501-05468.json",
+      "counts": {
+        "rejected": 1,
+        "verified": 4
+      }
+    },
+    {
+      "paper_id": "doi-10-1093-jamia-ocaf063",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/doi-10-1093-jamia-ocaf063.json",
+      "counts": {
+        "verified": 3,
+        "not_reported": 2
+      }
+    },
+    {
+      "paper_id": "arxiv-2308-06610",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/arxiv-2308-06610.json",
+      "counts": {
+        "verified": 5
+      }
+    },
+    {
+      "paper_id": "arxiv-2608-14551",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/arxiv-2608-14551.json",
+      "counts": {
+        "verified": 4,
+        "not_reported": 1
+      }
+    },
+    {
+      "paper_id": "arxiv-2605-06937",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/arxiv-2605-06937.json",
+      "counts": {
+        "verified": 4,
+        "not_reported": 1
+      }
+    },
+    {
+      "paper_id": "arxiv-2401-06320",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/arxiv-2401-06320.json",
+      "counts": {
+        "verified": 4,
+        "not_reported": 1
+      }
+    },
+    {
+      "paper_id": "doi-10-64898-2026-09-25-26364021",
+      "status": "complete",
+      "reason": "",
+      "file": "study_cards/doi-10-64898-2026-09-25-26364021.json",
+      "counts": {
+        "verified": 4,
+        "rejected": 1
+      }
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "complete": 13,
+    "incomplete": 0,
+    "failed": 0,
+    "skipped_not_extracted": 0,
+    "llm_calls": 17,
+    "tokens": 37878,
+    "fields": {
+      "verified": 48,
+      "not_reported": 11,
+      "rejected": 6
+    }
+  }
+}

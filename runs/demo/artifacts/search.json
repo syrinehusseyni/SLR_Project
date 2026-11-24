@@ -1,0 +1,805 @@
+{
+  "runs": [
+    {
+      "source": "openalex",
+      "query_param": "search.title_and_abstract",
+      "query": "(\"large language model\" OR LLM OR ChatGPT OR \"GPT-4\" OR \"generative AI\") AND (\"title and abstract screening\" OR \"citation screening\" OR \"systematic review automation\" OR \"systematic review screening\" OR \"study selection\")",
+      "status": "ok",
+      "retrieved": 10,
+      "skipped_invalid": 0,
+      "error": ""
+    },
+    {
+      "source": "arxiv",
+      "query_param": "search_query",
+      "query": "(all:\"large language model\" OR all:LLM OR all:ChatGPT OR all:\"GPT-4\" OR all:\"generative AI\") AND (all:\"title and abstract screening\" OR all:\"citation screening\" OR all:\"systematic review automation\" OR all:\"systematic review screening\" OR all:\"study selection\") AND submittedDate:[201801010000 TO 209912312359]",
+      "status": "ok",
+      "retrieved": 10,
+      "skipped_invalid": 0,
+      "error": ""
+    },
+    {
+      "source": "crossref",
+      "query_param": "query",
+      "query": "large language model title and abstract screening",
+      "status": "ok",
+      "retrieved": 3,
+      "skipped_invalid": 7,
+      "error": ""
+    },
+    {
+      "source": "crossref",
+      "query_param": "query",
+      "query": "LLM citation screening",
+      "status": "ok",
+      "retrieved": 5,
+      "skipped_invalid": 5,
+      "error": ""
+    },
+    {
+      "source": "crossref",
+      "query_param": "query",
+      "query": "ChatGPT systematic review automation",
+      "status": "ok",
+      "retrieved": 10,
+      "skipped_invalid": 0,
+      "error": ""
+    },
+    {
+      "source": "semanticscholar",
+      "query_param": "query",
+      "query": "large language model title and abstract screening",
+      "status": "rate_limited",
+      "retrieved": 0,
+      "skipped_invalid": 0,
+      "error": "semanticscholar : échec après 4 tentatives (HTTP 429)"
+    },
+    {
+      "source": "semanticscholar",
+      "query_param": "query",
+      "query": "LLM citation screening",
+      "status": "rate_limited",
+      "retrieved": 0,
+      "skipped_invalid": 0,
+      "error": "semanticscholar : échec après 4 tentatives (HTTP 429)"
+    },
+    {
+      "source": "semanticscholar",
+      "query_param": "query",
+      "query": "ChatGPT systematic review automation",
+      "status": "rate_limited",
+      "retrieved": 0,
+      "skipped_invalid": 0,
+      "error": "semanticscholar : échec après 4 tentatives (HTTP 429)"
+    }
+  ],
+  "papers": [
+    {
+      "id": "W4388718056",
+      "title": "Automated title and abstract screening for scoping reviews using the GPT-4 Large Language Model",
+      "abstract": "Scoping reviews, a type of literature review, require intensive human effort to screen large numbers of scholarly sources for their relevance to the review objectives. This manuscript introduces GPTscreenR, a package for the R statistical programming language that uses the GPT-4 Large Language Model (LLM) to automatically screen sources. The package makes use of the chain-of-thought technique with the goal of maximising performance on complex screening tasks. In validation against consensus human reviewer decisions, GPTscreenR performed similarly to an alternative zero-shot technique, with a sensitivity of 71%, specificity of 89%, and overall accuracy of 84%. Neither method achieved perfect accuracy nor human levels of intraobserver agreement. GPTscreenR demonstrates the potential for LLMs to support scholarly work and provides a user-friendly software framework that can be integrated into existing review processes.",
+      "doi": "10.48550/arxiv.2311.07918",
+      "source": "openalex",
+      "url": "http://arxiv.org/abs/2311.07918",
+      "open_access": true,
+      "year": 2023,
+      "authors": [
+        "David E. Wilkins"
+      ],
+      "venue": "arXiv (Cornell University)",
+      "pdf_url": "https://arxiv.org/pdf/2311.07918"
+    },
+    {
+      "id": "W7141008388",
+      "title": "Fine-Tuning A Large Language Model for Systematic Review Screening",
+      "abstract": "Systematic reviews traditionally have taken considerable amounts of human time and energy to complete, in part due to the extensive number of titles and abstracts that must be reviewed for potential inclusion. Recently, researchers have begun to explore how to use large language models (LLMs) to make this process more efficient. However, research to date has shown inconsistent results. We posit this is because prompting alone may not provide sufficient context for the model(s) to perform well. In this study, we fine-tune a small 1.2 billion parameter open-weight LLM specifically for study screening in the context of a systematic review in which humans rated more than 8500 titles and abstracts for potential inclusion. Our results showed strong performance improvements from the fine-tuned model, with the weighted F1 score improving 80.79% compared to the base model. When run on the full dataset of 8,277 studies, the fine-tuned model had 86.40% agreement with the human coder, a 91.18% true positive rate, a 86.38% true negative rate, and perfect agreement across multiple inference runs. Taken together, our results show that there is promise for fine-tuning LLMs for title and abstract screening in large-scale systematic reviews.",
+      "doi": "10.48550/arxiv.2603.24767",
+      "source": "openalex",
+      "url": "http://arxiv.org/abs/2603.24767",
+      "open_access": true,
+      "year": 2026,
+      "authors": [
+        "Kweku Andoh Yamoah",
+        "Noah L. Schroeder",
+        "Emmanuel Dorley",
+        "Neha Rani",
+        "Caleb Schutz"
+      ],
+      "venue": "arXiv (Cornell University)",
+      "pdf_url": "https://arxiv.org/pdf/2603.24767"
+    },
+    {
+      "id": "W4410813691",
+      "title": "Do it faster with PICOS: Generative AI-Assisted systematic review screening",
+      "abstract": "",
+      "doi": "10.1016/j.jbi.2025.104860",
+      "source": "openalex",
+      "url": "https://doi.org/10.1016/j.jbi.2025.104860",
+      "open_access": false,
+      "year": 2025,
+      "authors": [
+        "Sai Krishna Vallamchetla",
+        "Omar Abdelkader",
+        "Ali Elnaggar",
+        "Doaa Ramadan",
+        "Md Manjurul Islam Shourav",
+        "Irbaz Bin Riaz",
+        "Michelle Lin"
+      ],
+      "venue": "Journal of Biomedical Informatics",
+      "pdf_url": ""
+    },
+    {
+      "id": "W4408354914",
+      "title": "GPT-3.5 Turbo and GPT-4 Turbo in Title and Abstract Screening for Systematic Reviews",
+      "abstract": "Unlabelled: This study demonstrated that while GPT-4 Turbo had superior specificity when compared to GPT-3.5 Turbo (0.98 vs 0.51), as well as comparable sensitivity (0.85 vs 0.83), GPT-3.5 Turbo processed 100 studies faster (0.9 min vs 1.6 min) in citation screening for systematic reviews, suggesting that GPT-4 Turbo may be more suitable due to its higher specificity and highlighting the potential of large language models in optimizing literature selection.",
+      "doi": "10.2196/64682",
+      "source": "openalex",
+      "url": "https://doi.org/10.2196/64682",
+      "open_access": true,
+      "year": 2025,
+      "authors": [
+        "Takehiko Oami",
+        "Yohei Okada",
+        "Taka‐aki Nakada"
+      ],
+      "venue": "JMIR Medical Informatics",
+      "pdf_url": ""
+    },
+    {
+      "id": "W4367368990",
+      "title": "Are ChatGPT and large language models “the answer” to bringing us closer to systematic review automation?",
+      "abstract": "In this commentary, we discuss ChatGPT and our perspectives on its utility to systematic reviews (SRs) through the appropriateness and applicability of its responses to SR related prompts. The advancement of artificial intelligence (AI)-assisted technologies leave many wondering about the current capabilities, limitations, and opportunities for integration AI into scientific endeavors. Large language models (LLM)-such as ChatGPT, designed by OpenAI-have recently gained widespread attention with their ability to respond to various prompts in a natural-sounding way. Systematic reviews (SRs) utilize secondary data and often require many months and substantial financial resources to complete, making them attractive grounds for developing AI-assistive technologies. On February 6, 2023, PICO Portal developers hosted a webinar to explore ChatGPT's responses to tasks related to SR methodology. Our experience from exploring the responses of ChatGPT suggest that while ChatGPT and LLMs show some promise for aiding in SR-related tasks, the technology is in its infancy and needs much development for such applications. Furthermore, we advise that great caution should be taken by non-content experts in using these tools due to much of the output appearing, at a high level, to be valid, while much is erroneous and in need of active vetting.",
+      "doi": "10.1186/s13643-023-02243-z",
+      "source": "openalex",
+      "url": "https://doi.org/10.1186/s13643-023-02243-z",
+      "open_access": true,
+      "year": 2023,
+      "authors": [
+        "Riaz Qureshı",
+        "Daniel P. Shaughnessy",
+        "Kayden Gill",
+        "Karen A. Robinson",
+        "Tianjing Li",
+        "Eitan Agai"
+      ],
+      "venue": "Systematic Reviews",
+      "pdf_url": "https://systematicreviewsjournal.biomedcentral.com/counter/pdf/10.1186/s13643-023-02243-z"
+    },
+    {
+      "id": "W4410983776",
+      "title": "Validation of Generative AI Models to Expedite Title and Abstract Screening in Systematic Reviews",
+      "abstract": "Introduction Systematic literature reviews (SLRs) are a vital aspect of evidence-based research, directing healthcare decisions and impacting policymaking-specific issues, however, the traditional process of conducting them could be lengthy, labor-intensive, and costly. This augments the need for more efficient strategies, such as automation using generative artificial intelligence (AI), which could help the researchers reduce their workload and streamline the SLR process. The current study investigates the relative efficiency of the generative AI models (Claude Sonnet 3.5, Gemini Flash 1.5, and GPT-4) in the title and abstract screening phase of SLRs. Methods Key biomedical databases, including Embase ® , Medline ® , and Cochrane, were searched to identify relevant randomised controlled trials in patients with schizophrenia. This study presented a hybrid approach for systematic reviews, where one reviewer is a human expert and the other leverages three large language models (LLM). A subject matter expert in conducting SLRs, optimized and fine-tuned the final prompt, delivered through a Python application programming interface, to identify evidence meeting key inclusion and exclusion criteria. The screening results obtained from one human reviewer and three AI models were reviewed by subject matter expert (SME). AI models’ performance was evaluated using metrics such as accuracy, sensitivity, specificity, and precision to assess their success in identifying publications included in the final SLR. Results All three AI models performed exceptionally well in screening based on titles and abstracts. While there were no significant differences in accuracy rates, Gemini Flash 1.5 exhibited the highest accuracy rate at 96.02%, followed by GPT-4 (95.00%) and Claude Sonnet 3.5 (94.69%). In terms of sensitivity, GPT-4 exhibited better results, attaining 95.97% of sensitivity, followed by 94.63% with Gemini Flash 1.5, and 88.59% with Claude Sonnet 3.5. Among the AI models evaluated, GPT demonstrated highest concordance with the human reviewer at 88.77%, followed closely by Gemini Flash at 86.63% and Claude Sonnet at 85.81%, indicating a consistently high level of agreement across all models.",
+      "doi": "10.22541/au.174897561.15670282/v1",
+      "source": "openalex",
+      "url": "https://doi.org/10.22541/au.174897561.15670282/v1",
+      "open_access": true,
+      "year": 2025,
+      "authors": [
+        "Ankita Sood",
+        "Sumeet Attri",
+        "Pankaj Rai",
+        "Mrinal Mayank",
+        "Rajdeep Kaur",
+        "Barinder Singh",
+        "Shubhram Pandey"
+      ],
+      "venue": "",
+      "pdf_url": "https://www.authorea.com/doi/pdf/10.22541/au.174897561.15670282/v1"
+    },
+    {
+      "id": "W7131100690",
+      "title": "Cost-Efficient Large Language Model-Assisted Title and Abstract Screening for Systematic Reviews: Method Evaluation and Validation",
+      "abstract": "Abstract Background The yearly number of publications in many fields, including research on potential health effects of electromagnetic fields (EMF), has steadily risen, making systematic reviews (SRs) increasingly laborious. Automating the title and abstract screening phase using large language models (LLMs) is a promising solution. However, prior studies have underexplored structured LLM workflows, including explicit reasoning outputs, few-shot prompting, and task-decomposition. Methods We systematically devised and evaluated multiple LLM-based workflows using both open-source and proprietary models. The most promising workflows were validated on eight independent SR datasets, focusing on EMF and non-EMF research domains. Workflows were designed to elicit PECOS-wise decisions with explicit reasoning, and record-level verdicts were derived using deterministic decision rules. Results Three workflows, one based on an open-source (llama3.3:70b) and two based on proprietary LLMs, achieved high sensitivity while substantially reducing manual screening effort. The proprietary LLM gpt-4.1-mini embedded in a few-shot workflow with PECOS-wise reasoning, reached a pooled sensitivity of 96.4% (95% CI: 94.8%–97.6%) with a workload reduction of 80.4% (95% CI: 63.7%–90.5%) at an approximate batch API cost of $1.0 per 1,000 records. Overall, small “mini” models performed competitively, demonstrating cost-efficient and resource-friendly applicability. Conclusions Carefully selected LLM workflows implementing few-shot prompting and explicit PECOS-wise reasoning can achieve near-human sensitivity while substantially reducing manual screening effort. These findings provide a transparent and versatile framework for AI-assisted literature screening in systematic reviews, although further optimisation is needed to improve specificity, with executable code for the best workflows available at https://github.com/openbfs/ai-sr-litscreen.",
+      "doi": "10.21203/rs.3.rs-10909832/v1",
+      "source": "openalex",
+      "url": "https://doi.org/10.21203/rs.3.rs-10909832/v1",
+      "open_access": true,
+      "year": 2026,
+      "authors": [
+        "Dimitri Belenki",
+        "Alexander Astanin",
+        "Dan Baaken",
+        "H. A. M. Leymann",
+        "Felix Meyer",
+        "Blanka Pophof",
+        "Evelyn Weiser"
+      ],
+      "venue": "Research Square",
+      "pdf_url": "https://www.researchsquare.com/article/rs-10909832/latest.pdf"
+    },
+    {
+      "id": "W4411506008",
+      "title": "Can generative AI reliably synthesise literature? exploring hallucination issues in ChatGPT",
+      "abstract": "Abstract This study evaluates the capabilities and limitations of generative AI, specifically ChatGPT, in conducting systematic literature reviews. Using the PRISMA methodology, we analysed 124 recent studies, focusing in-depth on a subset of 40 selected through strict inclusion criteria. Findings show that ChatGPT can enhance efficiency, with reported workload reductions averaging around 60–65%, though accuracy varies widely by task and context. In structured domains such as clinical research, title and abstract screening sensitivity ranged from 80.6% to 96.2%, while precision dropped as low as 4.6% in more interpretive tasks. Hallucination rates reached 91%, underscoring the need for careful oversight. Comparative analysis shows that AI matches or exceeds human performance in simple screening but underperforms in nuanced synthesis. To support more reliable integration, we introduce the Systematic Research Processing Framework (SRPF) as a guiding model for hybrid AI–human collaboration in research review workflows.",
+      "doi": "10.1007/s00146-025-02406-7",
+      "source": "openalex",
+      "url": "https://doi.org/10.1007/s00146-025-02406-7",
+      "open_access": true,
+      "year": 2025,
+      "authors": [
+        "Amr Adel",
+        "Noor Haitham Saleem"
+      ],
+      "venue": "AI & Society",
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007/s00146-025-02406-7.pdf"
+    },
+    {
+      "id": "W7165180260",
+      "title": "REFLECTIVE-TIAB: cost-effective prompt optimization for large language model-based title and abstract screening in literature reviews",
+      "abstract": "BACKGROUND: Title and abstract screening is a labor-intensive stage of systematic reviews. Large language models (LLMs) can automate this process, but performance depends heavily on prompt design and model selection, which is typically manual and time-consuming. Our objective was to evaluate whether automated, reflection-driven prompt optimization improves LLM performance during title and abstract screening. RESEARCH DESIGN AND METHODS: REFLECTIVE-TIAB uses the GEPA reflective prompt optimizer to improve prompts under an asymmetric loss penalizing false negatives. Nine LLMs screened 8,520 de-duplicated records from a COPD exacerbation predictor search. A 100-abstract gold standard was constructed from inter-model disagreements and was expert-labeled. The prompt was optimized on Llama 3.3 70B via DSPy/GEPA and evaluated across all nine models. RESULTS: Optimization improved recall across all LLMs (+3.7% to +37.1%). Gemini 3 Flash Preview achieved the highest performance (91% accuracy, F1 81.6%) while costing 25-fold less per abstract than GPT-5.2, which ranked among the lowest-performing models. A prompt optimized on a single open-source model is generalized to all nine without retraining. Total optimization cost was $6.36. CONCLUSIONS: REFLECTIVE-TIAB provides automated, model-transferable prompt optimization for literature screening at negligible cost. Model price did not predict screening performance. The framework could substantially reduce screening workload while preserving comprehensiveness.",
+      "doi": "10.1080/14737167.2026.2691995",
+      "source": "openalex",
+      "url": "https://doi.org/10.1080/14737167.2026.2691995",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Ákos Bernard Jóźwiak",
+        "Attila Imre",
+        "Judit Józwiak‐Hagymásy",
+        "Judit Tittmann",
+        "Ágnes Nagy",
+        "Sándor Kovács",
+        "Przemysław Kardas",
+        "Job F. M. van Boven",
+        "Irene Mommers",
+        "Tamás Ágh"
+      ],
+      "venue": "Expert Review of Pharmacoeconomics & Outcomes Research",
+      "pdf_url": ""
+    },
+    {
+      "id": "W4417479740",
+      "title": "SA18 Calibrating Large Language Model Probabilities to Achieve Target Recall in Systematic Review Screening",
+      "abstract": "",
+      "doi": "10.1016/j.jval.2025.09.2960",
+      "source": "openalex",
+      "url": "https://doi.org/10.1016/j.jval.2025.09.2960",
+      "open_access": false,
+      "year": 2025,
+      "authors": [
+        "Ṣẹ̀yẹ Abògúnr̀in",
+        "Roberto Rey Sieiro",
+        "Marie Lane"
+      ],
+      "venue": "Value in Health",
+      "pdf_url": ""
+    },
+    {
+      "id": "arxiv-2512-11261",
+      "title": "Leveraging LLMs for Title and Abstract Screening for Systematic Review: A Cost-Effective Dynamic Few-Shot Learning Approach",
+      "abstract": "Systematic reviews are a key component of evidence-based medicine, playing a critical role in synthesizing existing research evidence and guiding clinical decisions. However, with the rapid growth of research publications, conducting systematic reviews has become increasingly burdensome, with title and abstract screening being one of the most time-consuming and resource-intensive steps. To mitigate this issue, we designed a two-stage dynamic few-shot learning (DFSL) approach aimed at improving the efficiency and performance of large language models (LLMs) in the title and abstract screening task. Specifically, this approach first uses a low-cost LLM for initial screening, then re-evaluates low-confidence instances using a high-performance LLM, thereby enhancing screening performance while controlling computational costs. We evaluated this approach across 10 systematic reviews, and the results demonstrate its strong generalizability and cost-effectiveness, with potential to reduce manual screening burden and accelerate the systematic review process in practical applications.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2512.11261",
+      "open_access": true,
+      "year": 2025,
+      "authors": [
+        "Yun-Chung Liu",
+        "Rui Yang",
+        "Jonathan Chong Kai Liew",
+        "Ziran Yin",
+        "Henry Foote",
+        "Christopher J. Lindsell",
+        "Chuan Hong"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2512.11261"
+    },
+    {
+      "id": "arxiv-2501-05468",
+      "title": "LatteReview: A Multi-Agent Framework for Systematic Review Automation Using Large Language Models",
+      "abstract": "Systematic literature reviews and meta-analyses are essential for synthesizing research insights, but they remain time-intensive and labor-intensive due to the iterative processes of screening, evaluation, and data extraction. This paper introduces and evaluates LatteReview, a Python-based framework that leverages large language models (LLMs) and multi-agent systems to automate key elements of the systematic review process. Designed to streamline workflows while maintaining rigor, LatteReview utilizes modular agents for tasks such as title and abstract screening, relevance scoring, and structured data extraction. These agents operate within orchestrated workflows, supporting sequential and parallel review rounds, dynamic decision-making, and iterative refinement based on user feedback. LatteReview's architecture integrates LLM providers, enabling compatibility with both cloud-based and locally hosted models. The framework supports features such as Retrieval-Augmented Generation (RAG) for incorporating external context, multimodal reviews, Pydantic-based validation for structured inputs and outputs, and asynchronous programming for handling large-scale datasets. The framework is available on the GitHub repository, with detailed documentation and an installable package.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2501.05468",
+      "open_access": true,
+      "year": 2025,
+      "authors": [
+        "Pouria Rouzrokh",
+        "Bardia Khosravi",
+        "Parsa Rouzrokh",
+        "Moein Shariatnia"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2501.05468"
+    },
+    {
+      "id": "doi-10-1093-jamia-ocaf063",
+      "title": "The emergence of Large Language Models (LLM) as a tool in literature reviews: an LLM automated systematic review",
+      "abstract": "Objective: This study aims to summarize the usage of Large Language Models (LLMs) in the process of creating a scientific review. We look at the range of stages in a review that can be automated and assess the current state-of-the-art research projects in the field. Materials and Methods: The search was conducted in June 2024 in PubMed, Scopus, Dimensions, and Google Scholar databases by human reviewers. Screening and extraction process took place in Covidence with the help of LLM add-on which uses OpenAI gpt-4o model. ChatGPT was used to clean extracted data and generate code for figures in this manuscript, ChatGPT and Scite.ai were used in drafting all components of the manuscript, except the methods and discussion sections. Results: 3,788 articles were retrieved, and 172 studies were deemed eligible for the final review. ChatGPT and GPT-based LLM emerged as the most dominant architecture for review automation (n=126, 73.2%). A significant number of review automation projects were found, but only a limited number of papers (n=26, 15.1%) were actual reviews that used LLM during their creation. Most citations focused on automation of a particular stage of review, such as Searching for publications (n=60, 34.9%), and Data extraction (n=54, 31.4%). When comparing pooled performance of GPT-based and BERT-based models, the former were better in data extraction with mean precision 83.0% (SD=10.4), and recall 86.0% (SD=9.8), while being slightly less accurate in title and abstract screening stage (Maccuracy=77.3%, SD=13.0). Discussion/Conclusion: Our LLM-assisted systematic review revealed a significant number of research projects related to review automation using LLMs. The results looked promising, and we anticipate that LLMs will change in the near future the way the scientific reviews are conducted.",
+      "doi": "10.1093/jamia/ocaf063",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2409.04600",
+      "open_access": true,
+      "year": 2024,
+      "authors": [
+        "Dmitry Scherbakov",
+        "Nina Hubig",
+        "Vinita Jansari",
+        "Alexander Bakumenko",
+        "Leslie A. Lenert"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2409.04600"
+    },
+    {
+      "id": "arxiv-2308-06610",
+      "title": "Bio-SIEVE: Exploring Instruction Tuning Large Language Models for Systematic Review Automation",
+      "abstract": "Medical systematic reviews can be very costly and resource intensive. We explore how Large Language Models (LLMs) can support and be trained to perform literature screening when provided with a detailed set of selection criteria. Specifically, we instruction tune LLaMA and Guanaco models to perform abstract screening for medical systematic reviews. Our best model, Bio-SIEVE, outperforms both ChatGPT and trained traditional approaches, and generalises better across medical domains. However, there remains the challenge of adapting the model to safety-first scenarios. We also explore the impact of multi-task training with Bio-SIEVE-Multi, including tasks such as PICO extraction and exclusion reasoning, but find that it is unable to match single-task Bio-SIEVE's performance. We see Bio-SIEVE as an important step towards specialising LLMs for the biomedical systematic review process and explore its future developmental opportunities. We release our models, code and a list of DOIs to reconstruct our dataset for reproducibility.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2308.06610",
+      "open_access": true,
+      "year": 2023,
+      "authors": [
+        "Ambrose Robinson",
+        "William Thorne",
+        "Ben P. Wu",
+        "Abdullah Pandor",
+        "Munira Essat",
+        "Mark Stevenson",
+        "Xingyi Song"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2308.06610"
+    },
+    {
+      "id": "arxiv-2405-14445",
+      "title": "Exploring the use of a Large Language Model for data extraction in systematic reviews: a rapid feasibility study",
+      "abstract": "This paper describes a rapid feasibility study of using GPT-4, a large language model (LLM), to (semi)automate data extraction in systematic reviews. Despite the recent surge of interest in LLMs there is still a lack of understanding of how to design LLM-based automation tools and how to robustly evaluate their performance. During the 2023 Evidence Synthesis Hackathon we conducted two feasibility studies. Firstly, to automatically extract study characteristics from human clinical, animal, and social science domain studies. We used two studies from each category for prompt-development; and ten for evaluation. Secondly, we used the LLM to predict Participants, Interventions, Controls and Outcomes (PICOs) labelled within 100 abstracts in the EBM-NLP dataset. Overall, results indicated an accuracy of around 80%, with some variability between domains (82% for human clinical, 80% for animal, and 72% for studies of human social sciences). Causal inference methods and study design were the data extraction items with the most errors. In the PICO study, participants and intervention/control showed high accuracy (>80%), outcomes were more challenging. Evaluation was done manually; scoring methods such as BLEU and ROUGE showed limited value. We observed variability in the LLMs predictions and changes in response quality. This paper presents a template for future evaluations of LLMs in the context of data extraction for systematic review automation. Our results show that there might be value in using LLMs, for example as second or third reviewers. However, caution is advised when integrating models such as GPT-4 into tools. Further research on stability and reliability in practical settings is warranted for each type of data that is processed by the LLM.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2405.14445",
+      "open_access": true,
+      "year": 2024,
+      "authors": [
+        "Lena Schmidt",
+        "Kaitlyn Hair",
+        "Sergio Graziosi",
+        "Fiona Campbell",
+        "Claudia Kapp",
+        "Alireza Khanteymoori",
+        "Dawn Craig",
+        "Mark Engelbert",
+        "James Thomas"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2405.14445"
+    },
+    {
+      "id": "arxiv-2608-14551",
+      "title": "Auxiliary uncertainty signals for LLM-assisted systematic review screening: a benchmark across eight Cohen drug-class reviews",
+      "abstract": "Large language models (LLMs) are increasingly used for title-abstract screening in systematic reviews, but their decisions lack calibrated uncertainty. We show that an auxiliary BERT+GCN classifier supplies a structured uncertainty signal that improves LLM screening efficiency, and we identify the prompt-delivery strategy that maximises the benefit-to-cost ratio. We evaluate five LLM prompt-delivery conditions on eight drug-class datasets from the Cohen (2006) benchmark using 3 seeds x 5-fold stratified cross-validation (600 fold-level results). A BERT+GCN model trained per fold classifies each test paper as INCLUDE, EXCLUDE, or MAYBE via two spectral tests (algebraic radical and categorical paradox). Conditions vary information content (none / label / full scores), selectivity (all papers vs. MAYBE only), and timing (proactive vs. reactive two-pass). A cross-model pilot against gpt-4.1-mini on three datasets tests cross-generation transfer. Three findings: (i) Full-context delivery yields significant gains in F1 (+0.011, paired Wilcoxon p=0.008) and WSS@95 (+0.050, p=0.039) at a 1.28x token-cost premium, while preserving recall. (ii) MAYBE-only routing is Pareto-optimal: highest mean recall (0.92) and AUC-ROC (0.54) at only 1.05x baseline cost -- one sixth of full-context overhead. (iii) The two-pass design escalates 22.2% +/- 8.8% of records yet never revises its decision (0% flip rate across all datasets and folds), giving decisive evidence that current instruction-tuned LLMs cannot self-triage. The cross-model pilot shows an identical +0.8% recall uplift for both LLM generations. A per-paper ablation across 20,796 observations shows the dual paradox test reduces empirically to a one-line logit-gap criterion. We release the full pipeline; the 600-run experiment replays in under one hour from cached LLM responses.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2608.14551",
+      "open_access": true,
+      "year": 2026,
+      "authors": [
+        "Arya Rahgozar",
+        "Pouria Mortezaagha"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2608.14551"
+    },
+    {
+      "id": "arxiv-2605-06937",
+      "title": "A Reproducible Optimisation Protocol for Calibrating Prompt-Based Large Language Model Workflows in Evidence Synthesis",
+      "abstract": "This methods article presents a reproducible calibration workflow for prompt-based large language models (LLMs) in structured evidence-synthesis tasks. The method separates the rules that define the scientific task from the mutable prompt harness that frames and applies them. It optimises that harness against labelled or reference examples and an explicit task metric, then preserves the calibrated workflow as an inspectable artefact with its specification, metric, settings, and evaluation traces. The example code instantiates the protocol with DSPy and GEPA tools, but the underlying logic can transfer to other prompt-optimisation frameworks that support structured task definitions, metric-guided search, and artefact reuse. Title and abstract screening is the worked validation case because it provides labelled benchmark data and clear evaluation metrics. The demonstrated workflow uses a smaller student LLM for performing the scientific task execution and a larger reflection LLM to steer the prompt optimisation process during calibration. This work shows compilation, artefact round-tripping, and how optimisation budget affects a smaller student model.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.06937",
+      "open_access": true,
+      "year": 2026,
+      "authors": [
+        "Teo Susnjak"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2605.06937"
+    },
+    {
+      "id": "arxiv-2401-06320",
+      "title": "Zero-shot Generative Large Language Models for Systematic Review Screening Automation",
+      "abstract": "Systematic reviews are crucial for evidence-based medicine as they comprehensively analyse published research findings on specific questions. Conducting such reviews is often resource- and time-intensive, especially in the screening phase, where abstracts of publications are assessed for inclusion in a review. This study investigates the effectiveness of using zero-shot large language models~(LLMs) for automatic screening. We evaluate the effectiveness of eight different LLMs and investigate a calibration technique that uses a predefined recall threshold to determine whether a publication should be included in a systematic review. Our comprehensive evaluation using five standard test collections shows that instruction fine-tuning plays an important role in screening, that calibration renders LLMs practical for achieving a targeted recall, and that combining both with an ensemble of zero-shot models saves significant screening time compared to state-of-the-art approaches.",
+      "doi": "",
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2401.06320",
+      "open_access": true,
+      "year": 2024,
+      "authors": [
+        "Shuai Wang",
+        "Harrisen Scells",
+        "Shengyao Zhuang",
+        "Martin Potthast",
+        "Bevan Koopman",
+        "Guido Zuccon"
+      ],
+      "venue": "arXiv",
+      "pdf_url": "https://arxiv.org/pdf/2401.06320"
+    },
+    {
+      "id": "doi-10-2196-preprints-112353",
+      "title": "A Large Language Model–Based Decision Algorithm for Automated Title–Abstract and Full-Text Screening: A Retrospective Multireview Validation Study (Preprint)",
+      "abstract": "BACKGROUND Screening large bibliographic datasets is resource intensive, and advent of large language models have paved the way for automated screening for literature reviews. However, the LLM based screening requires transparent validation against human decisions. OBJECTIVE To validate the efficacy and reliability of AI-based screening automation in performing the first-pass (FPS) and full-text review (FTR) against human screening decisions. METHODS This retrospective internal validation of LLM-based screening using AccuScreener, a module of SymproAI, included five completed evidence-review datasets. At first step, citation deduplication was performed and compared between AccuScreener and human analysts. Raw AI decisions were compared directly with the corresponding final manual FPS and FTR reference decisions. At FPS, the analysis focused on accuracy, specificity, and negative predictive value (NPV); sensitivity and positive predictive value (PPV) were major assessment parameters at FTR. Replicability of screening decisions and structured reason categories was evaluated at both stages. RESULTS AccuScreener identified a larger number of putative duplicate citations than human analysts across all reviews: 2.53% vs 2.34% in SLR-1, 3.64% vs 3.23% in SLR-2, 4.74% vs 4.34% in SLR-3, 9.11% vs 8.93% in SLR-4, and 5.91% vs 5.63% in the composite TLR, and completed deduplication within 10–30 seconds per project. At FPS, AccuScreener demonstrated 89.3%–98.8% accuracy, 89.4%–99.2% specificity, and 96.1%–99.7% NPV across five completed reviews. In an exploratory analysis of 664 paired FPS records with missing abstracts, sensitivity was 46.0%, specificity was 91.0%, and accuracy was 86.7%. At FTR, sensitivity ranged from 78.9% to 100% and PPV from 58.6% to 90.1%, with two reviews reaching 100% sensitivity. Across three reviews, complete three-run agreement was 98.4% for decisions and 76.3% for structured reason categories at FPS; corresponding FTR agreement was 98.3% and 93.3%, respectively. CONCLUSIONS AccuScreener showed high overall agreement with human-reference decisions across the complete FPS and FTR datasets. The findings support automation-assisted screening with manual-review safeguards particularly when the citation information is insufficient. Prospective validation across additional review types is warranted.",
+      "doi": "10.2196/preprints.112353",
+      "source": "crossref",
+      "url": "https://doi.org/10.2196/preprints.112353",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Sundeep Chaurasia"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-64898-2026-09-25-26364021",
+      "title": "Title and abstract screening for systematic reviews with Jev, a System One model: comparison with generative large language models",
+      "abstract": "Large language models (LLMs) screen titles and abstracts without review-specific training, but generating screening decisions as text takes processing time and incurs API charges. We evaluated Jev, a non-generative model returning classification probabilities, on 4527 records from two systematic reviews of bipolar disorder treatments. We used human reviewers’ decisions to retain records for full-text assessment as the reference standard. In the primary analysis, we asked Jev yes-or-no questions (“Noul”) about whether to retain each record. Records were retained when their retention probability was at least 50%, a cutoff specified before the final evaluation runs. We also evaluated lower retention thresholds. For comparison, we gave Jev explicit include/exclude options (“Choice”) and used the same prompts with GPT-5 mini and GPT-6 Astra; both LLMs used default reasoning. In the primary analysis at 50%, sensitivity and specificity were 99.6% and 98.9% for light therapy and 93.2% and 93.5% for adjunctive pharmacotherapy. Lower cutoffs selected on these data retained all reference-positive records. Compared with assessing every record manually, these cutoffs reduced the number requiring human assessment by 96.9% for light therapy and 61.3% for adjunctive pharmacotherapy. For light therapy and adjunctive pharmacotherapy, sensitivity was 92.3% and 90.0% with Jev using explicit options at 50%, 87.2% and 90.0% with GPT-5 mini, and 92.3% and 80.8% with GPT-6 Astra. Costs for screening all 4527 records once were US$0.20 for Jev using explicit options, US$2.59 for GPT-5 mini, and US$33.45 for GPT-6 Astra. Jev’s probabilities could provide graded information for reviewers assessing titles and abstracts. Highlights What is already known Generative LLMs can screen titles and abstracts using natural-language eligibility criteria, but generating each decision takes time and incurs API charges. What is new Jev screened records without generating text or requiring training on records labeled for each review. In two reviews, screening cost substantially less than with the tested LLM configurations. Potential impact for Research Synthesis Methods readers Rather than providing only an include-or-exclude decision, Jev indicates how strongly the model favors retaining each record. Reviewers could consider this information alongside the title, abstract, and eligibility criteria.",
+      "doi": "10.64898/2026.09.25.26364021",
+      "source": "crossref",
+      "url": "https://doi.org/10.64898/2026.09.25.26364021",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Kentaro Matsui",
+        "Yoshikazu Takaesu"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-7759-cureus-111193",
+      "title": "Benchmarking a Local Schema-Constrained Large Language Model Pipeline for Abstract Screening and Evidence Mapping",
+      "abstract": "",
+      "doi": "10.7759/cureus.111193",
+      "source": "crossref",
+      "url": "https://doi.org/10.7759/cureus.111193",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Alessandro Serretti"
+      ],
+      "venue": "Cureus",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-2139-ssrn-5575851",
+      "title": "Citation by Completion: LLM Writing Aids and the Redistribution of Academic Credits",
+      "abstract": "",
+      "doi": "10.2139/ssrn.5575851",
+      "source": "crossref",
+      "url": "https://doi.org/10.2139/ssrn.5575851",
+      "open_access": false,
+      "year": 2025,
+      "authors": [
+        "Agustin V. Startari"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-2139-ssrn-6135489",
+      "title": "When Citation Becomes a Disqualification Tool: Peer Review Ethics in the LLM Era",
+      "abstract": "Recent years have seen an increasing visibility of manuscript rejections based primarily on citationrelated deficiencies. While such practices may appear operationally rational in an era of escalating submission volumes, their long-term compatibility with the realities of AI-assisted research remains insufficiently examined. This Perspective observes a structural mismatch between contemporary research thinking in the age of large language models (LLMs) and citation practices that continue to assume point-based dependency and responsibility. Rather than proposing immediate policy reforms or addressing any specific conference or editorial decision, the article examines a broader shift in how scholarly ideas are generated and evaluated. It argues that the growing use of citation deficiencies as immediate disqualification criteria risks narrowing the space of legitimate scholarly inquiry in the LLM era. By treating citation primarily as a gatekeeping mechanism rather than a communicative tool, peer review practices may implicitly shape the kinds of research that academic communities are able-or willing-to cultivate.",
+      "doi": "10.2139/ssrn.6135489",
+      "source": "crossref",
+      "url": "https://doi.org/10.2139/ssrn.6135489",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Naoki Nishikimi"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-1021-scimeetings-5c11546",
+      "title": "Dr. Wildlife: LLM-powered drug repurposing for wildlife disease and conservation chemistry via citation mapping",
+      "abstract": "",
+      "doi": "10.1021/scimeetings.5c11546",
+      "source": "crossref",
+      "url": "https://doi.org/10.1021/scimeetings.5c11546",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Tesko Chaganti"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-2196-preprints-104400",
+      "title": "Auditing Citation Grounding in LLM-Generated OCT Reports Using Public Data: Evaluation Framework Study (Preprint)",
+      "abstract": "BACKGROUND Evidence tags and structured schemas are often used to make large language model (LLM)-generated clinical text appear grounded. However, the presence of an evidence tag does not by itself establish that the tagged sentence is supported by the cited evidence. Health AI evaluation therefore needs methods that separate formatting compliance from semantic consistency and clinical truth. OBJECTIVE This study aimed to evaluate a public-data audit framework for citation-grounded optical coherence tomography (OCT) report generation and to test whether schema input adds measurable audit value beyond explicit citation instructions. METHODS Using the first 50 parseable public MORG report excerpts, we derived English evidence schemas and ran a four-arm computational ablation: free text without citation, free text with citation, schema without citation, and schema with citation. A local Gemma 4 model generated reports. A deterministic scrutinizer measured evidence-tag presence, invalid tags, lexical alignment, and evidence-field coverage. Three local LLM judges screened sentence-level semantic consistency, and a distractor test probed scope control. Results were analyzed descriptively. RESULTS Citation-enabled arms achieved complete tag presence, whereas no-citation arms produced no tagged sentences. Schema plus citation improved lexical alignment compared with free text plus citation (0.857 vs 0.617) and improved mean evidence-field coverage (0.996 vs 0.952). The free-text citation arm missed 8 of 157 derived evidence fields, compared with 1 of 157 in the schema-citation arm. Across 226 tagged sentences, exact pairwise judge agreement ranged from 0.942 to 0.978 and Gwet AC1 ranged from 0.941 to 0.977. Distractor uptake was 0/50. CONCLUSIONS Citation instructions drove tag behavior, while schema input improved auditability and completeness checks. The framework should be interpreted as a language-layer health AI evaluation method, not as image-interpretation validation, clinical grounding, or deployment safety evidence.",
+      "doi": "10.2196/preprints.104400",
+      "source": "crossref",
+      "url": "https://doi.org/10.2196/preprints.104400",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Chia-Wei Sun"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-21203-rs-3-rs-8640955-v1",
+      "title": "Deepening Citation Understanding in Scientific Literature via LLM-Powered Context Extraction",
+      "abstract": "Scientific progress relies on the complex, interconnected web of scholarly publications housed within digital libraries. While citations are the core mechanism for linking this knowledge, the simple reference alone fails to capture the intricate context in which the cited work is discussed. This lack of context poses a significant challenge for digital library algorithms seeking to understand scholarly influence. To address this, Citation Context Extraction (CCE) is a foundational task for transforming raw citations into meaningful, semantically rich links that can power advanced bibliometric analysis. This paper presents a novel, two-fold methodology for enhancing the CCE process. We first introduce an improved CCE method that leverages a richer set of textual features to more accurately identify citation context sentences, advancing beyond existing state-of-the-art techniques. Second, we propose an original approach that utilizes Large Language Models (LLMs) and advanced prompt engineering to perform a deeper, more nuanced and explainable semantic interpretation of the extracted contexts. We validate our methods on two distinct scientific corpora: ACL-ARC, a specialized dataset from computational linguistics and SDP-ACT, a more generic dataset spanning multiple disciplines. The results of our comparative analysis against state-of-the-art models demonstrate a significant improvement in CCE quality. Our contributions provide a crucial step toward building more intelligent and interpretable knowledge discovery systems, unlocking the full potential of digital libraries as platforms for understanding and mapping the intellectual lineage of scientific discourse.",
+      "doi": "10.21203/rs.3.rs-8640955/v1",
+      "source": "crossref",
+      "url": "https://doi.org/10.21203/rs.3.rs-8640955/v1",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Thu Huong Nguyen",
+        "Cedric Pruski",
+        "Marcos Da Silveira"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-1101-2023-06-11-23291252",
+      "title": "ChatGPT in Dermatology: A Comprehensive Systematic Review",
+      "abstract": "Background In recent years, the field of dermatology has adopted the latest technologies to enhance patient care and medical education. Mobile technology and social media platforms have revolutionized the delivery of services, and AI-based procedures are poised to become part of dermatologists’ daily routines. There are already numerous papers on the use of the latest conversational AI tool, ChatGPT, in dermatology, and a systematic analysis of these studies can yield valuable insights. Objective To comprehensively evaluate the literature on the various applications of ChatGPT in dermatology and related areas. Methods We searched PubMed, Cochrane Library, EuropePMC, medRxiv, arXiv, bioRxiv, Dimensions AI, Semantic Scholar, and Google Scholar, to obtain articles published up until May 15, 2023. The eligibility criteria focused on studies examining the use of ChatGPT in dermatology-related areas. To address the risks of bias, we employed a meticulous selection process, incorporating diverse information sources, including preprints, in multiple languages. In addition to full text articles, acknowledgments and supplemental material were also examined to ensure a thorough analysis. The synthesis of findings utilized network analysis and thematic synthesis methodologies. Results There was a total of 87 manuscripts that fulfilled eligibility requirements. Over a third of them (36%) acknowledged the assistance of ChatGPT in writing, data analysis or software development. About a quarter (24%) were case reports describing dermatological manifestations and complications. ChatGPT demonstrated successful performance answering questions related to dermatology, ranging from excellent in cancer to barely passable in specialized and lesser-known dermatology areas, although its performance improved with GPT 4. There are advancements in interactive learning, integrations with image-based AI, and enhancing language models for dermatology applications. Conclusions There has been a remarkable surge in the adoption of ChatGPT in areas related to dermatology, especially in writing case reports. As researchers are aware of safety and uncertainty, a continued feedback loop for reporting errors is crucial for the ongoing improvement and training of AI models, ensuring their reliability and effectiveness in the field.",
+      "doi": "10.1101/2023.06.11.23291252",
+      "source": "crossref",
+      "url": "https://doi.org/10.1101/2023.06.11.23291252",
+      "open_access": false,
+      "year": 2023,
+      "authors": [
+        "Irene S. Gabashvili"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-3102-2113309",
+      "title": "What ChatGPT Will Bring to Us: A Systematic Review of Papers on ChatGPT in Education",
+      "abstract": "",
+      "doi": "10.3102/2113309",
+      "source": "crossref",
+      "url": "https://doi.org/10.3102/2113309",
+      "open_access": false,
+      "year": 2024,
+      "authors": [
+        "Shuguang Wang"
+      ],
+      "venue": "Proceedings of the 2024 AERA Annual Meeting",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-3102-ip-25-2186854",
+      "title": "The Application of ChatGPT Across Educational Levels: A Systematic Review",
+      "abstract": "",
+      "doi": "10.3102/ip.25.2186854",
+      "source": "crossref",
+      "url": "https://doi.org/10.3102/ip.25.2186854",
+      "open_access": false,
+      "year": 2025,
+      "authors": [
+        "Jie Gao"
+      ],
+      "venue": "AERA 2025",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-2196-preprints-48979",
+      "title": "ChatGPT in Dermatology: A Comprehensive Systematic Review (Preprint)",
+      "abstract": "BACKGROUND In recent years, the field of dermatology has adopted the latest technologies to enhance patient care and medical education. Mobile technology and social media platforms have revolutionized the delivery of services, and AI-based procedures are poised to become part of dermatologists' daily routines. There are already numerous papers on the use of the latest conversational AI tool, ChatGPT, in dermatology, and a systematic analysis of these studies can yield valuable insights. OBJECTIVE To comprehensively evaluate the literature on the various applications of ChatGPT in dermatology. METHODS We searched PubMed, Cochrane Library, EuropePMC, medRxiv, arXiv, Dimensions AI, Semantic Scholar, and Google Scholar, to obtain articles published up until May 15, 2023. The eligibility criteria focused on studies examining the use of ChatGPT in dermatology-related areas. To address the risks of bias, we employed a meticulous selection process, incorporating diverse information sources, including preprints, in multiple languages. In addition to full-text articles, acknowledgments and supplemental material were also examined to ensure a thorough analysis. The synthesis of findings utilized network analysis and thematic synthesis methodologies. RESULTS There was a total of 87 manuscripts that fulfilled eligibility requirements. Over a third of them (36%) acknowledged the assistance of ChatGPT in writing, data analysis or assisting in software development. About a quarter (24%) were case reports describing dermatological manifestations and complications. ChatGPT demonstrated successful performance answering questions related to dermatology, ranging from excellent in cancer to barely passable in specialized and lesser-known dermatology areas, although its performance improved with GPT 4. There are advancements in interactive learning, integrations with image-based AI, and enhancing language models for dermatology applications. CONCLUSIONS Conclusions: There has been a remarkable surge in the adoption of ChatGPT in areas related to dermatology, especially in writing case reports. As researchers are aware of safety and uncertainty, a continued feedback loop for reporting errors is crucial for the ongoing improvement and training of AI models, ensuring their reliability and effectiveness in the field. CLINICALTRIAL CRD42023417336",
+      "doi": "10.2196/preprints.48979",
+      "source": "crossref",
+      "url": "https://doi.org/10.2196/preprints.48979",
+      "open_access": false,
+      "year": 2023,
+      "authors": [
+        "Irene S. Gabashvili"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-5539-jel-v15n5p564",
+      "title": "What ChatGPT Brings to Us: A Systematic Review on ChatGPT in Education",
+      "abstract": "The emergence of ChatGPT, a generative, pre-trained transformer, has garnered significant attention in various fields, including education. To better understand the implications of this new tool, we sought to investigate the perspectives of practitioners and researchers on its use. A systematic review of the existing literature was conducted using the Web of Science database, and a set of filter criteria was developed to guide the search. We then applied these criteria to the search results for the two years following ChatGPT&rsquo;s appearance, resulting in 65 papers for the first round and 36 papers for the second round. To analyze the 101 selected papers, three computational tools were employed: Latent Dirichlet Allocation (LDA) topic modeling, standardized ChatGPT-based coding, and Python for sentiment analysis. The results indicate that: 1) Early discourse is more concentrated around integrity/reliability concerns, while later discourse becomes more practice-oriented; 2) Researchers generally expressed neutral to positive sentiments towards ChatGPT in both time periods, with a more pronounced positive trend emerging in the second round analysis; 3) Disagreement has not disappeared; rather, it appears in narrower concern categories and more specific implementation scenarios. We would like to recommend: First, institutions need explicit and field-sensitive guidance on acceptable GenAI use, especially for assessment and academic-integrity boundaries. Second, because concerns vary by role (students, instructors, professional programs), governance should be role-specific rather than uniform. Third, evaluation systems should move beyond detection-only responses toward transparent task design, process-based assessment, and accountable AI-use disclosure.",
+      "doi": "10.5539/jel.v15n5p564",
+      "source": "crossref",
+      "url": "https://doi.org/10.5539/jel.v15n5p564",
+      "open_access": false,
+      "year": 2026,
+      "authors": [
+        "Shuguang Wang",
+        "Le Qin"
+      ],
+      "venue": "Journal of Education and Learning",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-20944-preprints202507-0567-v1",
+      "title": "ChatGPT in Higher Education: A Systematic Review of Opportunities, Perceptions, and Challenges",
+      "abstract": "Background: The advent of artificial intelligence (AI) has fundamentally changed how education is delivered and how students perform. Since its launch, ChatGPT, a popular generative AI tool, has generated mixed reactions. Objectives: This research systematically reviews the opportunities, perceptions, and challenges of using ChatGPT among professors and students at higher education levels. Our review identified key themes and patterns in the literature and provided a comprehensive understanding of the different opinions held by students and faculty. Methods: We included peer-reviewed journal articles and conference proceedings from January 1, 2022, to April 27, 2024, taken from APA PsycInfo, CINAHL Ultimate, Education Source Ultimate, ERIC, and Web of Science. From 1046 studies, we selected 58 articles and then conducted thematic content analysis using descriptive statistics to identify key themes and patterns across the literature. The synthesis of the extracted data from the articles included gives the different perceptions of using ChatGPT in higher education. Results and Conclusions: Our review showed that faculty and students have 21 different opinions about ChatGPT’s accuracy and reliability, with a mix of positive and negative views. We also discovered 14 concerns about the ethical issues surrounding its use. We also uncovered 25 opinions on ChatGPT’s future role in higher education. Instructors and students had differing views on using ChatGPT in higher education. Some faculty members believe ChatGPT is a useful tool for teaching and learning, while others have different opinions. We concluded that appropriate measures should be taken to ensure that ChatGPT is used correctly and fairly in higher education.",
+      "doi": "10.20944/preprints202507.0567.v1",
+      "source": "crossref",
+      "url": "https://doi.org/10.20944/preprints202507.0567.v1",
+      "open_access": false,
+      "year": 2025,
+      "authors": [
+        "Olukayode E. Apata"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-47344-sdubnts-v62i1-912",
+      "title": "ARTIFICIAL AI IN TEST AUTOMATION: SOFTWARE TESTINGOPPORTUNITIES WITH OPENAI TECHNOLOGY - CHATGPT",
+      "abstract": "One of the most important and significant stages of the softwaredevelopment life cycle is software testing. Automated testing reduces testing costs and increases productivity, resulting in a high-quality and stable end product. To ensure that software is bug-free and delivers the desired user experience, test automation is critical. As technology advances, test automation becomes more complex. However, advanced AI technologies will soon become commonplace thanks to powerful tools like ChatGPT that, among countless other things, can chat with you and teach you how to read and write code like a human. In this article, we will try to consider the possibilities of automation with chatgpt. Starting with writing test plans, and test scripts by using Python and Selenium WebDriver. How ChatGPT can improve our tasks and make them more feasible. By leveraging the capabilities of ChatGPT, software testing engineers can enhance their skills, improve testing capabilities, and achieve better quality and accuracy of test results. The opportunities presented by ChatGPT can lead to improved efficiency, productivity, and overall performance in the field of software testing engineering.",
+      "doi": "10.47344/sdubnts.v62i1.912",
+      "source": "crossref",
+      "url": "https://doi.org/10.47344/sdubnts.v62i1.912",
+      "open_access": false,
+      "year": 2024,
+      "authors": [
+        "Arailym Talasbek"
+      ],
+      "venue": "Suleyman Demirel University Bulletin Natural and Technical Sciences",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-1101-2023-03-30-23287899",
+      "title": "ChatGPT in Healthcare: A Taxonomy and Systematic Review",
+      "abstract": "The recent release of ChatGPT, a chat bot research project / product of natural language processing (NLP) by OpenAI, stirs up a sensation among both the general public and medical professionals, amassing a phenomenally large user base in a short time. This is a typical example of the ‘productization’ of cutting-edge technologies, which allows the general public without a technical background to gain firsthand experience in artificial intelligence (AI), similar to the AI hype created by AlphaGo (DeepMind Technologies, UK) and self-driving cars (Google, Tesla, etc.). However, it is crucial, especially for healthcare researchers, to remain prudent amidst the hype. This work provides a systematic review of existing publications on the use of ChatGPT in healthcare, elucidating the ‘status quo’ of ChatGPT in medical applications, for general readers, healthcare professionals as well as NLP scientists. The large biomedical literature database PubMed is used to retrieve published works on this topic using the keyword ‘ChatGPT’. An inclusion criterion and a taxonomy are further proposed to filter the search results and categorize the selected publications, respectively. It is found through the review that the current release of ChatGPT has achieved only moderate or ‘passing’ performance in a variety of tests, and is unreliable for actual clinical deployment, since it is not intended for clinical applications by design. We conclude that specialized NLP models trained on (bio)medical datasets still represent the right direction to pursue for critical clinical applications.",
+      "doi": "10.1101/2023.03.30.23287899",
+      "source": "crossref",
+      "url": "https://doi.org/10.1101/2023.03.30.23287899",
+      "open_access": false,
+      "year": 2023,
+      "authors": [
+        "Jianning Li",
+        "Amin Dada",
+        "Jens Kleesiek",
+        "Jan Egger"
+      ],
+      "venue": "",
+      "pdf_url": ""
+    },
+    {
+      "id": "doi-10-1007-978-1-4842-9852-7-1",
+      "title": "New World of Automation",
+      "abstract": "",
+      "doi": "10.1007/978-1-4842-9852-7_1",
+      "source": "crossref",
+      "url": "https://doi.org/10.1007/978-1-4842-9852-7_1",
+      "open_access": false,
+      "year": 2023,
+      "authors": [
+        "Tom Taulli"
+      ],
+      "venue": "ChatGPT and Bard for Business Automation",
+      "pdf_url": ""
+    }
+  ],
+  "found_in": {
+    "W4388718056": [
+      "arxiv",
+      "openalex"
+    ],
+    "W7141008388": [
+      "arxiv",
+      "openalex"
+    ],
+    "W4410813691": [
+      "openalex"
+    ],
+    "W4408354914": [
+      "openalex"
+    ],
+    "W4367368990": [
+      "crossref",
+      "openalex"
+    ],
+    "W4410983776": [
+      "openalex"
+    ],
+    "W7131100690": [
+      "openalex"
+    ],
+    "W4411506008": [
+      "openalex"
+    ],
+    "W7165180260": [
+      "openalex"
+    ],
+    "W4417479740": [
+      "openalex"
+    ],
+    "arxiv-2512-11261": [
+      "arxiv"
+    ],
+    "arxiv-2501-05468": [
+      "arxiv"
+    ],
+    "doi-10-1093-jamia-ocaf063": [
+      "arxiv"
+    ],
+    "arxiv-2308-06610": [
+      "arxiv"
+    ],
+    "arxiv-2405-14445": [
+      "arxiv"
+    ],
+    "arxiv-2608-14551": [
+      "arxiv"
+    ],
+    "arxiv-2605-06937": [
+      "arxiv"
+    ],
+    "arxiv-2401-06320": [
+      "arxiv"
+    ],
+    "doi-10-2196-preprints-112353": [
+      "crossref"
+    ],
+    "doi-10-64898-2026-09-25-26364021": [
+      "crossref"
+    ],
+    "doi-10-7759-cureus-111193": [
+      "crossref"
+    ],
+    "doi-10-2139-ssrn-5575851": [
+      "crossref"
+    ],
+    "doi-10-2139-ssrn-6135489": [
+      "crossref"
+    ],
+    "doi-10-1021-scimeetings-5c11546": [
+      "crossref"
+    ],
+    "doi-10-2196-preprints-104400": [
+      "crossref"
+    ],
+    "doi-10-21203-rs-3-rs-8640955-v1": [
+      "crossref"
+    ],
+    "doi-10-1101-2023-06-11-23291252": [
+      "crossref"
+    ],
+    "doi-10-3102-2113309": [
+      "crossref"
+    ],
+    "doi-10-3102-ip-25-2186854": [
+      "crossref"
+    ],
+    "doi-10-2196-preprints-48979": [
+      "crossref"
+    ],
+    "doi-10-5539-jel-v15n5p564": [
+      "crossref"
+    ],
+    "doi-10-20944-preprints202507-0567-v1": [
+      "crossref"
+    ],
+    "doi-10-47344-sdubnts-v62i1-912": [
+      "crossref"
+    ],
+    "doi-10-1101-2023-03-30-23287899": [
+      "crossref"
+    ],
+    "doi-10-1007-978-1-4842-9852-7-1": [
+      "crossref"
+    ]
+  },
+  "summary": {
+    "per_source": {
+      "openalex": 10,
+      "arxiv": 10,
+      "crossref": 18
+    },
+    "retrieved": 38,
+    "duplicates_removed": 3,
+    "unique": 35,
+    "without_abstract": 8
+  }
+}

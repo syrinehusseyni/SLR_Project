@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2308-06610",
+ "fingerprint": "72f4ce38d7dbe1f9",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude comparative d'évaluation de modèles de sélection d'articles pour les revues systématiques, utilisant des comparaisons zéro-shot, fine-tuning et validation croisée",
+   "chunk_id": "arxiv-2308-06610_p5_c2",
+   "page": 5,
+   "quote": "We evaluate inclusion and exclusion performance through accuracy for an overview of model understanding, and precision and recall for the inclusion class as a more direct evaluation of the model’s real world applicability to SR automation.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "Le jeu de données Instruct Cochrane contient 168 842 échantillons.",
+   "chunk_id": "arxiv-2308-06610_p4_c1",
+   "page": 4,
+   "quote": "Total 168,842 1,001 1,711 108 780",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "rejected",
+   "value": "Modèles évalués : ChatGPT, Guanaco7B, Guanaco13B, Bio-BERT finetuned sur MS MARCO.",
+   "chunk_id": "arxiv-2308-06610_p5_c3",
+   "page": null,
+   "quote": "We query three generic, instruction tuned models: Chat-GPT, Guanaco7B, and Guanaco13B.",
+   "note": "citation absente du chunk cité"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "Guanaco7B (Single) a obtenu 0,82 d’accuracy sur le Test Set, contre 0,6 pour ChatGPT; sur le Subset, il dépasse ChatGPT de 0,26 tout en conservant un rappel d’inclusion de 0,82 (Test) et 0,85 (Subset).",
+   "chunk_id": "arxiv-2308-06610_p5_c5",
+   "page": null,
+   "quote": "Our best performing model, Guanaco7B (Single), achieved 0.82 accuracy on the Test Set. By comparison, ChatGPT achieved 0.6 accuracy. Similarly, for the Subset, Guanaco7b (Single) achieved accuracy 0.26 higher than ChatGPT whilst only reducing inclusion recall by 0.01.",
+   "note": "nombres de la valeur absents de la citation : ['0.85']"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les auteurs signalent des limites liées à la fenêtre de contexte du modèle, empêchant l'inclusion d'exemples few-shot, ainsi qu'à la mauvaise performance de la version multi-tâches pour l'inclusion/exclusion, et aux risques de reproductibilité dus à l'opacité des modèles propriétaires.",
+   "chunk_id": "arxiv-2308-06610_p7_c3",
+   "page": 7,
+   "quote": "the limitations of model context window: the length of each sample makes it difficult to include additional examples in the prompt.",
+   "note": ""
+  }
+ ]
+}

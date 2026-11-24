@@ -1,0 +1,57 @@
+{
+ "paper_id": "doi-10-1093-jamia-ocaf063",
+ "fingerprint": "e37e63635c271021",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "revue systématique utilisant GPT‑4o pour automatiser les processus de revue systématique",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p28_c1",
+   "page": 28,
+   "quote": "Our review utilized approximately 500$ in OpenAI Azure costs for GPT-4o model.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "rejected",
+   "value": "30",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p52_c3",
+   "page": null,
+   "quote": "sample size = 30",
+   "note": "citation trop courte (moins de 20 caractères)"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Les modèles les plus fréquemment mentionnés sont GPT/ChatGPT, BERT, LLaMA/Alpaca, Google Bard/Gemini, Claude, BART, Mistral, Bing, XLNet.",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p13_c1",
+   "page": 13,
+   "quote": "The most frequently mentioned AI model is GPT/ChatGPT, with 126 occurrences (73.3%), showing its widespread use (Supplemental Figure S5). BERT-based models are also notable with 32 mentions (18.6%).",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "GPT‑4 a obtenu une précision de 90,2 %, un rappel de 89,1 % et une spécificité de 90,7 % pour le filtrage titre‑résumé.",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p30_c2",
+   "page": 30,
+   "quote": "ChatGPT4.Title and abstract screening.Accuracy=90.2; ChatGPT4.Title and abstract screening.Recall=89.1; ChatGPT4.Title and abstract screening.Specificity=90.7;",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "rejected",
+   "value": "Les auteurs signalent que certaines catégories d'extraction, notamment les métriques de performance, ont une précision relativement faible, et que le système de notation simplifié peut négliger des aspects clés comme la nouveauté, la robustesse et la pertinence.",
+   "chunk_id": "doi-10-1093-jamia-ocaf063_p16_c1",
+   "page": null,
+   "quote": "Some extraction categories, such as performance metrics, had relatively lower accuracy, so the results of this extraction category should be taken with caution. A further limitation of this work is the simplified scoring system we introduced for research evaluation, which, using arbitrary weightings, may overlook key aspects like the novelty, robustness, and relevance of the studies.",
+   "note": "citation absente du chunk cité"
+  }
+ ]
+}

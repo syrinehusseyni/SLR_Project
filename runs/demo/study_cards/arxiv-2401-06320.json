@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2401-06320",
+ "fingerprint": "2cbe12fd9d303726",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude comparative expérimentale",
+   "chunk_id": "arxiv-2401-06320_p4_c4",
+   "page": 4,
+   "quote": "In our experiments we will ensemble the two most zero-shot effective LLMs and the BERT-based method we use as a comparative baseline.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "39 sujets de revue et plus de 50 000 documents candidats.",
+   "chunk_id": "arxiv-2401-06320_p6_c2",
+   "page": 6,
+   "quote": "The Seed Collection dataset consists of 39 review topics and over 50,000 candidate documents [52].6",
+   "note": "chunk_id corrigé : le LLM citait 'arxiv-2401-06320_p6_c3', la citation est dans arxiv-2401-06320_p6_c2"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Modèles évalués : Alpaca-7b-ins, Guanaco-7b-ins, Falcon-7b-ins, LlaMa2-7b-ins, LlaMa2-13b-ins.",
+   "chunk_id": "arxiv-2401-06320_p5_c4",
+   "page": 5,
+   "quote": "Note that for consistency of the paper, we name all instruction-tuned models with -ins; The original names are: Alpaca-7b-ins: alpaca; Guanaco-7b-ins: guanaco-7b; Falcon-7b-ins: falcon-7b-instruct; LlaMa2-7b-ins: LlaMa2-7b-chat; LlaMa2-13b-ins: LlaMa2-13b-chat;",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "70% des sujets ont atteint un rappel parfait, contre seulement 50% avec l'autre méthode de calibration.",
+   "chunk_id": "arxiv-2401-06320_p10_c3",
+   "page": 10,
+   "quote": "70% of topics achieved perfect recall, compared to only 50% using the other calibration method.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  }
+ ]
+}

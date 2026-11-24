@@ -1,0 +1,495 @@
+{
+ "paper_id": "arxiv-2608-14551",
+ "source_sha256": "1aca7a021b3f96fb262c85a91f1cfd654454de8060bc97f362493a7b1448c880",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 27,
+ "pages_read": 27,
+ "page_chars": [
+  3637,
+  3373,
+  3149,
+  2650,
+  1722,
+  2752,
+  2415,
+  3194,
+  3207,
+  1105,
+  2881,
+  1093,
+  2956,
+  2385,
+  2153,
+  580,
+  3439,
+  2318,
+  3444,
+  3665,
+  3650,
+  3158,
+  3200,
+  2882,
+  1109,
+  1011,
+  1929
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p1_c1",
+   "page": 1,
+   "text": "Auxiliary uncertainty signals for LLM-assisted systematic review\nscreening: a benchmark across eight Cohen drug-class reviews\nArya Rahgozar1,2\nPouria Mortezaagha1,2\n1University of Ottawa, Ottawa, Canada\n2Ottawa Hospital Research Institute, Ottawa, Canada\narahgoza@uottawa.ca\npmort101@uottawa.ca\nAbstract\nBackground. Large language models (LLMs) are increasingly used for title–abstract screening\nin systematic reviews, but their decisions lack calibrated uncertainty, leaving reviewers without a\nprincipled way to route ambiguous records to a human. We show that an auxiliary BERT+GCN\nclassifier can supply a structured uncertainty signal that meaningfully improves LLM screening\nefficiency, and we identify the prompt-delivery strategy that maximises the benefit-to-cost ratio.\nMethods. We evaluate five LLM prompt-delivery conditions on eight drug-class datasets from\nthe Cohen (2006) benchmark collection using 3 seeds × 5-fold stratified cross-validation (600\nfold-level results).\nA hybrid BERT+GCN model is trained per fold and classifies each test\npaper as INCLUDE, EXCLUDE, or MAYBE via two spectral tests (algebraic radical and categorical paradox). The five conditions are: (i) baseline"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p1_c2",
+   "page": 1,
+   "text": "model is trained per fold and classifies each test\npaper as INCLUDE, EXCLUDE, or MAYBE via two spectral tests (algebraic radical and categorical paradox). The five conditions are: (i) baseline (title+abstract only), (ii) full spectral\ncontext (label + scores on every paper), (iii) decision-only (categorical label on every paper),\n(iv) MAYBE-only (spectral context appended only when the BERT+GCN flags the paper as\nuncertain), and (v) two-pass (spectral context appended only when the LLM’s first response\ncontains hedging language).\nA pre-registered cross-model pilot against an earlier-generation\nmodel (gpt-4.1-mini on three datasets) tests whether the spectral benefit transfers across\nLLM generations.\nResults. Three findings shape practical guidance. (i) Full-context delivery yields statistically\nsignificant improvements in F1 (∆= +0.011, paired Wilcoxon p = 0.008) and work-saved-at-\n95%-recall (∆= +0.050, p = 0.039) over the baseline at a 1.28× token-cost premium, while\npreserving recall (p ≥0.12 for all conditions). (ii) MAYBE-only routing is the Pareto-optimal\nconfiguration: it achieves the highest mean recall (0.92, best of all conditions) and the highest\nmean AUC-ROC (0.54) at"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p1_c3",
+   "page": 1,
+   "text": "(p ≥0.12 for all conditions). (ii) MAYBE-only routing is the Pareto-optimal\nconfiguration: it achieves the highest mean recall (0.92, best of all conditions) and the highest\nmean AUC-ROC (0.54) at only 1.05× baseline cost — one sixth of the API overhead of blanket\nfull-context delivery. (iii) The two-pass design escalates on 22.2% ± 8.8% of records yet never\nrevises its initial decision (0% flip rate across all datasets and folds), providing decisive empirical\nevidence that current instruction-tuned LLMs cannot self-triage — a clean negative result that\nrules out an entire class of pipeline designs. The cross-model pilot shows an identical +0.8% recall uplift for both LLM generations, strengthening the interpretation of the BERT+GCN signal\nas a stable auxiliary classifier rather than a capability-dependent crutch. As a methodological\nby-product, a per-paper ablation across 20,796 observations shows that the dual paradox test\nreduces empirically to a one-line logit-gap criterion on this benchmark, simplifying any practitioner reimplementation.\nConclusions.\nAn auxiliary BERT+GCN uncertainty classifier delivers measurable F1 and\nWSS@95 gains when its output is provided to an LLM"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p1_c4",
+   "page": 1,
+   "text": "this benchmark, simplifying any practitioner reimplementation.\nConclusions.\nAn auxiliary BERT+GCN uncertainty classifier delivers measurable F1 and\nWSS@95 gains when its output is provided to an LLM screener, and targeted MAYBE-only\nrouting captures these benefits at near-baseline API cost.\nWe additionally contribute a reproducible 600-run benchmark, a clean negative result that ends the case for two-pass LLM\nself-triage, and a publicly-released pipeline that replays in under one hour from cached LLM\nresponses. All code, prompts, datasets, and raw fold-level results are publicly available.\n1\narXiv:2608.14551v1 [cs.CL] 3 May 2026"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p2_c1",
+   "page": 2,
+   "text": "Keywords: systematic review, literature screening, large language models, uncertainty quantification, BERT+GCN, work saved over sampling, targeted prompting, cost-efficient screening,\nTRIPOD-LLM, reproducible AI\n1\nIntroduction\nSystematic reviews are the gold standard for evidence synthesis in healthcare, yet the screening\nphase—deciding which papers merit full-text review based on title and abstract alone—remains a\nmajor bottleneck. A single review may require screening thousands to tens of thousands of records,\nconsuming hundreds of hours of expert time [Higgins et al., 2019].\nLarge language models (LLMs) have recently shown promise as automated screeners [Guo et al.,\n2024, Wang et al., 2024], achieving competitive recall on benchmark datasets. However, LLMs produce decisions without calibrated confidence: a model that says “INCLUDE” with hedging language\n(“this might be relevant”) is indistinguishable—in terms of downstream action—from one that is certain. This absence of structured uncertainty creates two practical problems: (1) reviewers cannot\neasily identify which LLM decisions deserve human verification, and (2) the LLM has no mechanism\nto request additional evidence when"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p2_c2",
+   "page": 2,
+   "text": "uncertainty creates two practical problems: (1) reviewers cannot\neasily identify which LLM decisions deserve human verification, and (2) the LLM has no mechanism\nto request additional evidence when its own assessment is ambiguous.\nWe address these limitations by providing the LLM with structured uncertainty context derived\nfrom a BERT+GCN spectral analysis pipeline implemented specifically for this study. The pipeline\npre-classifies each paper into INCLUDE, EXCLUDE, or MAYBE, where the MAYBE label signals\nclassifier uncertainty detected via two complementary tests:\n1. Algebraic radical test: The gap between the model’s include and exclude logits falls below\na threshold (|P(Include) −P(Exclude)| < ϵ), indicating the classifier itself is uncertain.\n2. Categorical paradox test: The cosine similarity between the BERT (content) and GCN (relational) embeddings is low, indicating that a paper’s textual content and its citation/similarity\nneighbourhood disagree about its relevance.\nWe investigate five experimental conditions that vary the amount and type of spectral context\nprovided to the LLM:\n1. Baseline: Title and abstract only—no spectral information.\n2. Full spectral: Title,"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p2_c3",
+   "page": 2,
+   "text": "investigate five experimental conditions that vary the amount and type of spectral context\nprovided to the LLM:\n1. Baseline: Title and abstract only—no spectral information.\n2. Full spectral: Title, abstract, and all spectral scores (confidence gap, model confidence,\nparadox type).\n3. Decision only: Title, abstract, and the spectral label (INCLUDE/EXCLUDE/MAYBE)\nwithout numerical scores.\n4. MAYBE only: Full spectral context for papers classified as MAYBE; baseline prompt for\nall others.\n5. Two-pass: Baseline prompt first; if the LLM expresses uncertainty (low confidence or hedging\nlanguage), a second pass provides spectral context.\nThese five conditions create a systematic ablation along three dimensions: information content\n(no context →label →full scores), selectivity (all papers vs. MAYBE only), and timing (proactive\nvs. reactive two-pass).\nContributions.\nThis paper provides a practical, reproducible evaluation of how to use an auxiliary BERT+GCN uncertainty classifier as a tool for LLM-assisted screening, with five contributions:\n• Pareto-optimal delivery strategy. We identify MAYBE-only routing as the recommended\nconfiguration for cost-sensitive deployments: it achieves the"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p2_c4",
+   "page": 2,
+   "text": "for LLM-assisted screening, with five contributions:\n• Pareto-optimal delivery strategy. We identify MAYBE-only routing as the recommended\nconfiguration for cost-sensitive deployments: it achieves the highest mean recall (0.92) and\nAUC-ROC (0.54) of any condition at only 1.05× baseline API cost, capturing the spectral\nbenefit at one sixth of the overhead of full-context delivery.\n2"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p3_c1",
+   "page": 3,
+   "text": "• Quantified benefit of full spectral context. We report statistically significant improvements in F1 (+0.011, paired Wilcoxon p = 0.008) and WSS@95 (+0.050, p = 0.039) when full\nspectral scores are delivered to the LLM, at a well-characterised 1.28× cost premium.\n• Decisive evidence against two-pass LLM self-triage. A two-pass design escalates on\n22% of papers yet flips 0.0% of decisions across all datasets, seeds, and folds. This clean\nnull rules out a class of architectures and saves practitioners the cost of re-discovering the\nlimitation.\n• Cross-generation portability. A pilot comparison finds an identical +0.8% recall uplift for\nboth an earlier-generation and a current LLM, supporting the BERT+GCN signal as a stable,\nmodel-agnostic auxiliary classifier whose benefit does not disappear as base-LLM capability\ngrows.\n• Reproducible open implementation. We release the BERT+GCN pipeline, all prompt\ntemplates, an experiment runner with disk-backed LLM response caching and fold-level resume, a deterministic analyser that emits the exact tables in this paper, and a 130-test suite\nunder a permissive licence. The complete 600-run experiment can be replayed in under one\nhour from the"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p3_c2",
+   "page": 3,
+   "text": "resume, a deterministic analyser that emits the exact tables in this paper, and a 130-test suite\nunder a permissive licence. The complete 600-run experiment can be replayed in under one\nhour from the cached responses.\n2\nRelated Work\n2.1\nLLMs for Systematic Review Screening\nRecent work has explored GPT-4, Claude, and open-source LLMs for title–abstract screening [Guo\net al., 2024, Wang et al., 2024, Alshami et al., 2023, Tran et al., 2024]. These studies demonstrate\ncompetitive recall but frequently report low specificity and lack principled uncertainty handling.\nKhraisha et al. [2024] provide a systematic assessment of LLM screening, finding that prompt\nengineering substantially affects performance, and Tran et al. [2024] report sensitivity/specificity\nranges that overlap with our baseline (∼0.91 recall on Cohen-style benchmarks). Active-learning\nscreeners such as ASReview [van de Schoot et al., 2021] and the extended evaluation in Ferdinands\net al. [2023] provide a complementary, non-LLM baseline. Our work differs in providing the LLM\nwith an external uncertainty signal from a purpose-built classifier and in identifying the cost-optimal\nway to deliver that signal.\n2.2\nUncertainty"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p3_c3",
+   "page": 3,
+   "text": "baseline. Our work differs in providing the LLM\nwith an external uncertainty signal from a purpose-built classifier and in identifying the cost-optimal\nway to deliver that signal.\n2.2\nUncertainty Quantification in LLMs\nCalibration of LLM confidence has been studied through verbalized uncertainty [Xiong et al., 2024],\ntoken-level probabilities [Kadavath et al., 2022], and ensemble approaches [Lakshminarayanan et al.,\n2017]. Most methods require white-box access to model internals. We take a complementary approach: rather than estimating the LLM’s own uncertainty, we provide it with uncertainty estimates\nfrom a separate, purpose-built classification model.\n2.3\nTool-Augmented LLMs\nTool-augmented LLMs [Schick et al., 2023, Qin et al., 2023] leverage external tools to compensate\nfor limitations in the language model itself. Retrieval-augmented generation (RAG) provides factual grounding [Lewis et al., 2020], while chain-of-thought prompting [Wei et al., 2022] encourages\nstructured reasoning. Our spectral context can be viewed as a specialised tool that provides the\nLLM with a structured “second opinion” from a domain-specific model.\n3"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p4_c1",
+   "page": 4,
+   "text": "2.4\nSpectral Methods for Text Classification\nSpectral graph analysis has been applied to text classification through graph neural networks [Kipf\nand Welling, 2017, Yao et al., 2019], including BERT+GCN hybrid architectures [Lin et al., 2021].\nThe use of spectral gaps to detect classification ambiguity draws on algebraic graph theory [Chung,\n1997]. Our contribution in this paper is not a new spectral method but an empirical evaluation\nof how to deploy such a classifier as an auxiliary signal for an LLM screener, with an emphasis on\nbenefit-to-cost trade-offs of alternative prompt-delivery strategies.\n3\nBackground: Spectral Paradox Detection\nThis section summarises the BERT+GCN spectral analysis pipeline that generates the uncertainty\nsignals used as LLM context. The complete implementation, including training scripts, configuration\nfiles, and the classifier ablation used in Section 6.6, is released with this paper (see Availability of\ndata and materials).\n3.1\nBERT+GCN Architecture\nEach paper is represented by a BERT embedding of its title and abstract (using PubMedBERT; Gu\net al., 2021) and a GCN embedding learned over a k-nearest-neighbour similarity graph with optional\ncitation"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p4_c2",
+   "page": 4,
+   "text": "paper is represented by a BERT embedding of its title and abstract (using PubMedBERT; Gu\net al., 2021) and a GCN embedding learned over a k-nearest-neighbour similarity graph with optional\ncitation edges. The architecture uses relational graph convolution (RGCNConv; Schlichtkrull et al.,\n2018) to learn separate weight matrices for similarity and citation edge types. The model is trained\nsemi-supervised: MAYBE and unlabelled papers participate in message passing but are excluded\nfrom the loss.\n3.2\nAlgebraic Radical Test\nLet z ∈R2 be the output logits for a paper, with p = softmax(z). The trace ratio is defined as\nτ = |pinclude −pexclude|. A paper is flagged as algebraically ambiguous when τ < ϵ (default ϵ = 0.15),\nmeaning the classifier cannot confidently distinguish between include and exclude.\n3.3\nCategorical Paradox Test\nLet b and g be the BERT and GCN embeddings, respectively. The categorical paradox is detected\nwhen the cosine similarity cos(b, g) < δ (default δ = 0.0), indicating that the paper’s textual content\nand its relational context (neighbourhood in the similarity/citation graph) encode contradictory\nsignals.\n3.4\nThree-State Classification\nThe spectral engine assigns"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p4_c3",
+   "page": 4,
+   "text": "that the paper’s textual content\nand its relational context (neighbourhood in the similarity/citation graph) encode contradictory\nsignals.\n3.4\nThree-State Classification\nThe spectral engine assigns each paper to one of three states:\n• INCLUDE: High confidence in relevance (no paradox detected).\n• EXCLUDE: High confidence in irrelevance (no paradox detected).\n• MAYBE: One or both paradox tests triggered—the paper requires additional scrutiny.\n4\nMethod\nFigure 1 illustrates the overall pipeline. A BERT+GCN model is trained per (dataset, seed, fold)\nsplit, producing spectral classifications. These are then injected into LLM prompts according to\n4"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p5_c1",
+   "page": 5,
+   "text": "one of five conditions.\nFigure 1: Pipeline overview. Papers are encoded via frozen PubMedBERT embeddings and a 2-\nlayer RGCNConv over a kNN similarity graph. The spectral engine applies two complementary\nuncertainty tests (algebraic radical and categorical paradox) to classify each paper as INCLUDE,\nEXCLUDE, or MAYBE. A condition-dependent delivery strategy determines which spectral information, if any, is injected into the LLM prompt. The five conditions vary along three dimensions:\ninformation content (none, label only, full scores), selectivity (all papers vs. MAYBE only), and\ntiming (proactive vs. reactive two-pass). The LLM screener produces a binary decision with confidence and reasoning.\n4.1\nExperimental Conditions\nWe evaluate five conditions that vary the spectral context provided to the LLM screener. Table 1\nsummarises the conditions.\n4.2\nPrompt Design\nAll conditions share a common system prompt instructing the LLM to act as a systematic review\nscreening assistant. The system prompt specifies the response format (DECISION, CONFIDENCE,\nREASON) and includes dataset-specific screening criteria derived from each benchmark’s metadata\n(e.g., “Drug class review: ACEInhibitors"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p5_c2",
+   "page": 5,
+   "text": "prompt specifies the response format (DECISION, CONFIDENCE,\nREASON) and includes dataset-specific screening criteria derived from each benchmark’s metadata\n(e.g., “Drug class review: ACEInhibitors (2544 records, 41 included)” for the Cohen ACE Inhibitors\ndataset). This ensures the LLM receives domain-appropriate context rather than generic instructions.\nThe baseline user prompt contains only the paper’s title and abstract.\nThe full spectral\nprompt appends a structured block containing four fields:\nthe spectral model’s decision (IN-\nCLUDE/EXCLUDE/MAYBE), the confidence gap (τ, with an explicit note that 0 = uncertain\nand 1 = certain), the model’s overall confidence score, and the paradox type detected (algebraic\n5"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p6_c1",
+   "page": 6,
+   "text": "Table 1: Summary of the five experimental conditions. “Spectral context” indicates what information\nfrom the BERT+GCN pipeline is included in the LLM prompt. “Papers affected” indicates which\npapers receive spectral context.\nCondition\nSpectral context\nPapers affected\nLLM calls\nBaseline\nNone\n—\n1 per paper\nFull spectral\nScores + label + paradox\nAll\n1 per paper\nDecision only\nLabel only (no scores)\nAll\n1 per paper\nMAYBE only\nScores + label + paradox\nMAYBE only\n1 per paper\nTwo-pass\nScores (pass 2 only)\nUncertain\n1–2 per paper\nradical, categorical paradox, or none). An explicit disclaimer states that the LLM “may agree or\ndisagree with the model’s assessment based on your reading of the paper.”\nThe decision only prompt provides only the spectral label (“A separate BERT+GCN classification model suggests this paper should be: [DECISION]”) without numerical scores. This ablation\nisolates the contribution of the categorical label from the continuous uncertainty estimates.\nThe MAYBE only condition selectively applies the full spectral prompt to papers classified\nas MAYBE by the spectral engine, while giving all other papers the baseline prompt. This tests\nwhether targeted context delivery"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p6_c2",
+   "page": 6,
+   "text": "selectively applies the full spectral prompt to papers classified\nas MAYBE by the spectral engine, while giving all other papers the baseline prompt. This tests\nwhether targeted context delivery (only for ambiguous papers) outperforms blanket augmentation.\n4.3\nTwo-Pass Uncertainty Detection\nThe two-pass condition implements a form of LLM self-triage. In pass 1, the LLM receives a baseline\nprompt and produces a decision with a confidence level. The system then analyses the response for\nuncertainty signals using two detection mechanisms:\n• Explicit low confidence: The LLM reports CONFIDENCE as LOW or MEDIUM (rather\nthan HIGH).\n• Hedging language: The reasoning text contains hedging patterns detected via regex matching: might, unclear, borderline, uncertain, not sure, ambiguous, possibly, could be,\ndifficult to determine, hard to say.\nIf either signal is detected, pass 2 re-prompts the LLM with the paper’s title, abstract, the previous\nconfidence level, and full spectral context, explicitly asking the model to “reconsider [its] decision.”\nHigh-confidence pass-1 decisions with no hedging language are accepted without a second call,\nreducing cost.\n4.4\nResponse Parsing\nThe LLM’s"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p6_c3",
+   "page": 6,
+   "text": "explicitly asking the model to “reconsider [its] decision.”\nHigh-confidence pass-1 decisions with no hedging language are accepted without a second call,\nreducing cost.\n4.4\nResponse Parsing\nThe LLM’s free-text response is parsed line by line for three structured fields: DECISION: (mapped\nto INCLUDE if the token “INCLUDE” appears, EXCLUDE otherwise), CONFIDENCE: (HIGH,\nMEDIUM, or LOW), and REASON: (free-text explanation). The parser falls back to EXCLUDE\nwith MEDIUM confidence if the response is unstructured, ensuring robustness against formatting\nvariation.\n4.5\nMetrics\nWe evaluate each condition using five primary metrics:\n• Recall: Fraction of true INCLUDEs correctly identified (on the binary INCLUDE/EXCLUDE\nsubset, excluding MAYBE predictions).\n6"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p7_c1",
+   "page": 7,
+   "text": "• AUC-ROC: Area under the receiver operating characteristic curve, using the LLM’s confidence as the score (HIGH→1.0, MEDIUM→0.5, LOW→0.1).\n• F1: Harmonic mean of precision and recall on the binary INCLUDE/EXCLUDE subset.\n• WSS@95: Work Saved over Sampling at 95% recall, defined following Cohen et al. [2006] as\nWSS@R = (TN +FN )/N −(1−R) — the fraction of records the reviewer can skip (relative to\nrandom screening) while still recovering 95% of true includes. We compute it by ranking papers\nby model confidence (INCLUDE →MAYBE →EXCLUDE) and simulating top-down screening until 95% recall is reached; the formula used in code (lr_spectral/training/evaluation.py)\nis equivalent: WSS@95 = (1 −freviewed) −0.05, floored at zero.\n• Cost: Total token usage (input + output) as a proxy for API cost.\nAdditionally, we report three interaction metrics that characterise how the LLM engages with\nspectral context:\n• Override rate: Fraction of papers where the LLM’s decision disagrees with the spectral\nlabel.\n• Second-pass rate (two-pass only): Fraction of papers triggering a second LLM call due to\ndetected uncertainty.\n• Second-pass flip rate (two-pass only): Fraction of escalated papers whose"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p7_c2",
+   "page": 7,
+   "text": "label.\n• Second-pass rate (two-pass only): Fraction of papers triggering a second LLM call due to\ndetected uncertainty.\n• Second-pass flip rate (two-pass only): Fraction of escalated papers whose decision changes\non the second pass.\n5\nExperimental Setup\n5.1\nDatasets\nWe evaluate on 8 benchmark datasets from the Cohen 2006 drug class systematic review collection\n[Cohen et al., 2006], sourced via the OpenAlex API [Priem et al., 2022]. Table 2 summarises dataset\ncharacteristics.\nTable 2: Benchmark dataset characteristics. Inclusion rate is the fraction of papers labelled as\nINCLUDE in the original review. All datasets are sourced from the ASReview Synergy Dataset\ncollection via OpenAlex.\nDataset\nRecords\nIncluded\nIncl. rate\nACE Inhibitors\n2,544\n41\n1.6%\nADHD\n851\n20\n2.4%\nAntihistamines\n310\n16\n5.2%\nNSAIDs\n393\n41\n10.4%\nOral Hypoglycemics\n503\n136\n27.0%\nProton Pump Inhibitors\n1,333\n51\n3.8%\nTriptans\n671\n24\n3.6%\nUrinary Incontinence\n327\n40\n12.2%\nDataset sizes range from 310 (Antihistamines) to 2,544 (ACE Inhibitors) records, with inclusion rates between 1.6% (ACE Inhibitors) and 27.0% (Oral Hypoglycemics). This diversity tests\nrobustness across class imbalance levels and dataset scale.\n5.2"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p7_c3",
+   "page": 7,
+   "text": "2,544 (ACE Inhibitors) records, with inclusion rates between 1.6% (ACE Inhibitors) and 27.0% (Oral Hypoglycemics). This diversity tests\nrobustness across class imbalance levels and dataset scale.\n5.2\nCross-Validation Protocol\nFor each dataset, we train the BERT+GCN spectral model using 5-fold stratified cross-validation,\nrepeated across 3 random seeds (42, 123, 456). This yields 15 runs per dataset per condition, or\n7"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p8_c1",
+   "page": 8,
+   "text": "8 × 5 × 3 × 5 = 600 total experimental runs. BERT embeddings are pre-computed once per dataset\nusing PubMedBERT and cached to disk, so that only the GCN training varies across seeds and\nfolds.\nWithin each fold, the spectral engine classifies all test papers into INCLUDE, EXCLUDE, or\nMAYBE. These spectral results are then used as context for all five LLM screening conditions on\nthe same test set, ensuring a controlled comparison.\n5.3\nModels\n• BERT encoder: microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext [Gu\net al., 2021], frozen (embeddings pre-computed; 768-dimensional).\n• GCN: 2-layer RGCNConv [Schlichtkrull et al., 2018] with 256 hidden dimensions, dropout\n0.3, trained for up to 100 epochs with early stopping (patience 10). The similarity graph uses\nk = 10 nearest neighbours with cosine threshold 0.5.\n• LLMs: OpenAI gpt-5.4-mini (snapshot accessed January–April 2026) is used as the primary screener across the full matrix; an earlier-generation gpt-4.1-mini (snapshot accessed\nApril 2026) is used only for the cross-model pilot (Section 6.8). Both models run at temperature 0.0 with at most 150 completion tokens. Temperature 0 ensures deterministic outputs for"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p8_c2",
+   "page": 8,
+   "text": "accessed\nApril 2026) is used only for the cross-model pilot (Section 6.8). Both models run at temperature 0.0 with at most 150 completion tokens. Temperature 0 ensures deterministic outputs for\nreproducibility, and all responses are cached by a hash of (paper id, mode, spectral decision,\nmodel name) so that any model deprecation will not invalidate the released results.\n5.4\nSpectral Thresholds\nDefault thresholds from the spectral pipeline configuration: ϵ = 0.15 (trace ratio boundary for the\nalgebraic radical test) and δ = 0.0 (cosine similarity threshold for the categorical paradox test).\nThese are held constant across all datasets; per-dataset tuning is left for future work.\n5.5\nReporting Standards\nThis study evaluates an automated screening tool against gold-standard inclusion labels on retrospective benchmark data; it is not itself a systematic review.\nWhere applicable, we follow\nPRISMA 2020 [Page et al., 2021] reporting practice for the description of the underlying systematicreview benchmarks (number of records, included counts, inclusion rates; Table 2), and we adopt\nthe relevant items from the TRIPOD-LLM extension [Gallifant et al., 2024] for reporting LLMbased prediction"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p8_c3",
+   "page": 8,
+   "text": "benchmarks (number of records, included counts, inclusion rates; Table 2), and we adopt\nthe relevant items from the TRIPOD-LLM extension [Gallifant et al., 2024] for reporting LLMbased prediction studies (model identifiers and snapshot dates, deterministic decoding configuration, prompt templates in Section A, evaluation protocol, cost and resource use). The pre-registered\nanalysis plan, the source code that implements each of these items, and the cached LLM responses\nused to compute every reported metric are all released with this paper (see Availability of data and\nmaterials).\n5.6\nSample Size and Power\nThe eight-dataset corpus follows the established Cohen (2006) benchmark [Cohen et al., 2006]:\npooling additional reviews would introduce a different evaluation distribution and break direct\ncomparability with the prior literature. At n = 8 paired observations, the two-sided paired Wilcoxon\nsigned-rank test has approximately 80% power to detect a paired effect of standardised size d ≈\n1.05 at α = 0.05 [Lehmann, 1975]; this is consistent with the magnitudes we report as significant\n(F1: p = 0.008, WSS@95: p = 0.039) and conservative for the larger uplifts that drive practical\n8"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p9_c1",
+   "page": 9,
+   "text": "recommendations. The classifier-ablation analysis (Section 6.6) uses 20,796 per-paper observations\nand is therefore not power-limited.\n5.7\nScreening Criteria\nEach dataset receives a system prompt with domain-specific screening criteria derived from the\nbenchmark metadata. For example, the ACE Inhibitors dataset prompt states: “Screening criteria:\nDrug class review: ACEInhibitors (2544 records, 41 included).” This ensures the LLM has taskappropriate context without introducing hand-crafted criteria that could vary between datasets.\n5.8\nInfrastructure and Reproducibility\nThe experiment runner implements three resilience mechanisms that together turn the full 600-run\nstudy into a one-hour replay for any reviewer or downstream user:\n1. Disk-backed LLM response cache: Each API response is cached as a JSON blob keyed\nby SHA-256 of (paper id, mode, spectral decision, model name). Identical prompt–context\ncombinations never repeat, and the released cache covers all 600 main-matrix runs plus the\n75 pilot runs — so the entire paper can be regenerated without an OpenAI key.\n2. Incremental CSV output: Results are appended to the output file after each fold, rather\nthan batched at the end,"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p9_c2",
+   "page": 9,
+   "text": "the\n75 pilot runs — so the entire paper can be regenerated without an OpenAI key.\n2. Incremental CSV output: Results are appended to the output file after each fold, rather\nthan batched at the end, enabling crash-safe long runs and immediate partial inspection.\n3. Fold-level resume: On startup, the runner scans existing results and skips (dataset, seed,\nfold) tuples that already have rows for all requested conditions, so re-running after a partial\ncompletion is idempotent.\nThe implementation is covered by a 130-test suite (unit and integration), and the analysis script\n(scripts/analyze_agentic_results.py) is fully deterministic and emits the LaTeX fragments\nused to populate every numerical table in this paper. Re-running the analyser against the released\nCSV reproduces all values reported here to within their last printed decimal.\n6\nResults\nResults below are based on 600 main-matrix runs with gpt-5.4-mini (8 datasets × 5 modes × 3\nseeds × 5 folds), plus 75 cross-model pilot runs with gpt-4.1-mini on three of the datasets.\n6.1\nMain Results\nTable 3 presents the aggregate results across the 8 datasets (mean ± standard deviation over datasetlevel averages, each computed from 3 seeds ×"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p9_c3",
+   "page": 9,
+   "text": "gpt-4.1-mini on three of the datasets.\n6.1\nMain Results\nTable 3 presents the aggregate results across the 8 datasets (mean ± standard deviation over datasetlevel averages, each computed from 3 seeds × 5 folds = 15 runs).\nThree observations frame these results (Figure 2). First, full-context delivery yields statistically significant improvements on the two metrics that matter most for screening efficiency:\nF1 (∆= +0.011, p = 0.008) and WSS@95 (∆= +0.050, p = 0.039). In a screening workflow processing tens of thousands of records, a five-percentage-point reduction in the screening burden at\nfixed 95% recall is operationally meaningful. Decision-only and two-pass also produce significant F1\ngains (p = 0.008). Second, recall is preserved across all conditions (paired Wilcoxon p ≥0.12):\nno spectral condition trades recall for precision in either direction, addressing the primary safety\nconcern of systematic review teams.\nThird, MAYBE-only delivery dominates the cost–quality frontier (Figure 6). It achieves\nthe highest mean recall (0.92, best of any condition) and the highest mean AUC-ROC (0.54) at\nonly 1.05× baseline cost — one sixth of the API overhead of full-context delivery’s 1.28×"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p9_c4",
+   "page": 9,
+   "text": "6). It achieves\nthe highest mean recall (0.92, best of any condition) and the highest mean AUC-ROC (0.54) at\nonly 1.05× baseline cost — one sixth of the API overhead of full-context delivery’s 1.28× premium.\n9"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p10_c1",
+   "page": 10,
+   "text": "Table 3: Aggregate results across 8 datasets (mean ± std over dataset-level averages, each from\n3 seeds × 5 folds = 15 runs). Best value in each metric column is bolded. Superscripts report\ntwo-sided paired Wilcoxon signed-rank p-values across datasets (n = 8) against baseline: ∗p < 0.05,\n† p < 0.10; absence = not significant.\nCondition\nRecall\nAUC-ROC\nF1\nWSS@95\nCost (tok/paper)\nBaseline\n0.91 ± 0.06\n0.53 ± 0.05\n0.20 ± 0.14\n0.47 ± 0.19\n324\nFull spectral\n0.92 ± 0.04\n0.53 ± 0.05\n0.22 ± 0.16∗\n0.52 ± 0.20∗\n416\nDecision only\n0.91 ± 0.07\n0.50 ± 0.03†\n0.22 ± 0.15∗\n0.47 ± 0.18\n363\nMAYBE only\n0.92 ± 0.06\n0.54 ± 0.04\n0.20 ± 0.14\n0.47 ± 0.18\n340\nTwo-pass\n0.90 ± 0.07\n0.51 ± 0.03\n0.22 ± 0.15∗\n0.48 ± 0.18\n323\nRecall\nF1\nWSS@95\n0.0\n0.2\n0.4\n0.6\n0.8\n1.0\nScore\np=0.008\np=0.039\nBaseline\nFull Spectral\nDecision Only\nMAYBE Only\nTwo-Pass\nFigure 2: Aggregate recall, F1, and WSS@95 across the 8 Cohen datasets (mean ± std over\ndataset-level averages). Significance annotations show paired Wilcoxon p-values vs. baseline (n = 8\ndatasets). Only the full-spectral F1 and WSS@95 improvements are statistically significant.\n10"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p11_c1",
+   "page": 11,
+   "text": "Because paired Wilcoxon tests find no metric on which MAYBE-only differs significantly from either\nbaseline or full-context delivery, MAYBE-only is the recommended configuration for cost-sensitive\ndeployments. Decision-only marginally under-performs baseline on AUC-ROC (∆= −0.033, p =\n0.055, marginal at p < 0.10), suggesting that the categorical label without accompanying numerical\ncontext dilutes the signal; this directly motivates either delivering the full scores (full-spectral) or\nrestricting context to flagged papers (MAYBE-only).\n6.2\nPer-Dataset Analysis\nTable 4 and Figure 3 break down recall for each dataset and condition, highlighting cases where\nspectral context helps and where it does not.\nTable 4: Per-dataset recall / AUC-ROC for baseline, full spectral, and two-pass conditions (mean\nover 3 seeds × 5 folds).\nBaseline\nFull Spectral\nTwo-Pass\nDataset\nRec.\nAUC\nRec.\nAUC\nRec.\nAUC\nACEInhibitors\n0.98\n0.52\n0.95\n0.54\n0.96\n0.49\nADHD\n0.84\n0.46\n0.89\n0.49\n0.82\n0.48\nAntihistamines\n0.96\n0.53\n0.94\n0.54\n0.94\n0.55\nNSAIDs\n1.00\n0.60\n1.00\n0.63\n1.00\n0.55\nOralHypoglycemics\n0.85\n0.48\n0.89\n0.51\n0.89\n0.49\nProtonPumpInhibitors\n0.95\n0.58\n0.92\n0.55\n0.93\n0.53\nTriptans\n0.90\n0.53\n0.90\n0.48\n0.86\n0.54"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p11_c2",
+   "page": 11,
+   "text": "0.53\n0.94\n0.54\n0.94\n0.55\nNSAIDs\n1.00\n0.60\n1.00\n0.63\n1.00\n0.55\nOralHypoglycemics\n0.85\n0.48\n0.89\n0.51\n0.89\n0.49\nProtonPumpInhibitors\n0.95\n0.58\n0.92\n0.55\n0.93\n0.53\nTriptans\n0.90\n0.53\n0.90\n0.48\n0.86\n0.54\nUrinaryIncontinence\n0.85\n0.51\n0.87\n0.49\n0.81\n0.50\nFull spectral yields its largest recall improvements on ADHD (+0.05 over baseline) and OralHypoglycemics (+0.04), both datasets with moderate inclusion rates where the baseline LLM does not\nalready achieve perfect recall. On NSAIDs—where baseline recall is already 1.00—spectral context\noffers no recall improvement but does increase AUC-ROC (+0.03). On ACEInhibitors, baseline recall is higher (0.98 vs. 0.96), suggesting that on highly imbalanced datasets (1.6% inclusion rate) the\nspectral context may occasionally cause the LLM to override its correct initial INCLUDE decisions.\n6.3\nAblation: Scores vs. Labels\nComparing full spectral (scores + label) to decision only (label only) isolates the contribution of\nnumerical spectral scores. Paired deltas across 7 datasets show that providing numerical scores\nalongside the categorical label yields a consistent advantage: recall (+0.018 ± 0.034), F1 (+0.004 ±\n0.014), WSS@95 (+0.063 ± 0.042), and"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p11_c3",
+   "page": 11,
+   "text": "deltas across 7 datasets show that providing numerical scores\nalongside the categorical label yields a consistent advantage: recall (+0.018 ± 0.034), F1 (+0.004 ±\n0.014), WSS@95 (+0.063 ± 0.042), and AUC-ROC (+0.033 ± 0.029). Override rates are nearly\nidentical (55.0% vs. 53.8%), suggesting that the additional numerical context does not change how\noften the LLM disagrees with the spectral model, but rather which papers it overrides—and the\nfull-score overrides are marginally more beneficial.\n6.4\nOverride Analysis\nWe define an override as an instance where the LLM’s INCLUDE/EXCLUDE decision disagrees\nwith the spectral model’s label. Table 5 reports override rates by condition.\nOverride rates are above 50% in all conditions, indicating that the LLM treats spectral context as\none input among many rather than deferring to it. This is a desirable property: the spectral model\n11"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p12_c1",
+   "page": 12,
+   "text": "Baseline\nFull Spectral\nDecision Only\nMAYBE Only\nTwo-Pass\nACE Inhibitors\nADHD\nAntihistamines\nNSAIDs\nOral Hypoglycemics\nProton Pump Inhibitors\nTriptans\nUrinary Incontinence\n0.98\n0.95\n0.98\n0.98\n0.96\n0.84\n0.89\n0.84\n0.84\n0.82\n0.96\n0.94\n0.94\n0.97\n0.94\n1.00\n1.00\n1.00\n1.00\n1.00\n0.85\n0.89\n0.88\n0.90\n0.89\n0.95\n0.92\n0.94\n0.95\n0.93\n0.90\n0.90\n0.90\n0.90\n0.86\n0.85\n0.87\n0.79\n0.86\n0.81\n0.75\n0.80\n0.85\n0.90\n0.95\n1.00\nMean Recall\nFigure 3: Per-dataset mean recall across the five prompt-delivery conditions. Darker green indicates\nhigher recall. Full spectral yields its largest gains on datasets where the baseline does not already\nachieve perfect recall (ADHD, Oral Hypoglycemics), while NSAIDs (1.00 baseline) shows no room\nfor improvement.\nTable 5: LLM override behaviour by condition.\nOverride rate is the fraction of papers where\nthe LLM disagrees with the spectral label. MAYBE-only is excluded because its spectral label\nfor augmented papers is always MAYBE, which the LLM cannot output, making the metric noncomparable.\nCondition\nOverride rate\nFull spectral\n55.0%\nDecision only\n53.8%\nTwo-pass\n52.5%\n12"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p13_c1",
+   "page": 13,
+   "text": "is itself imperfect, and a screener that blindly deferred to it would inherit those errors. Override\nrates vary substantially across datasets, from 34.8% (ADHD, full spectral) to 70.8% (NSAIDs, full\nspectral), and correlate with the LLM’s own confidence on the dataset — the LLM overrides more\non datasets where the abstract content is sufficient for a confident decision. This adaptive override\nbehaviour is consistent with the auxiliary- signal interpretation: the LLM uses spectral context as\nadditional evidence rather than as an authoritative label, which is precisely the role we intend.\n6.5\nTwo-Pass Analysis\nThe two-pass condition provides a natural measure of LLM self-assessed uncertainty.\nAcross the 8 completed datasets, 22.2%±8.8% of papers trigger a second pass due to uncertainty\ndetected in the LLM’s initial response. Escalation rates vary substantially: from 6.5% (ADHD) to\n32.7% (NSAIDs), as shown in Table 6 and Figure 4. However, the flip rate—the fraction of escalated\npapers whose decision changes on the second pass—is exactly 0.0% across all datasets and folds.\nThe LLM uniformly re-affirms its first-pass decision, even when presented with full spectral context.\nTable 6:"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p13_c2",
+   "page": 13,
+   "text": "whose decision changes on the second pass—is exactly 0.0% across all datasets and folds.\nThe LLM uniformly re-affirms its first-pass decision, even when presented with full spectral context.\nTable 6: Two-pass escalation rates per dataset. Flip rate is 0.0% for all datasets.\nDataset\nEscalation rate\nADHD\n6.5%\nTriptans\n16.6%\nAntihistamines\n18.8%\nProtonPumpInhibitors\n22.0%\nOralHypoglycemics\n26.1%\nUrinaryIncontinence\n26.8%\nACEInhibitors\n27.6%\nNSAIDs\n32.7%\nThe two-pass condition’s recall (0.90 ± 0.07) is statistically indistinguishable from the baseline\n(0.91 ± 0.06), while its cost ratio (1.00× baseline) reflects the offsetting effect of saving spectral\ncontext tokens on confident first-pass papers. This provides a clean, decisive null on a question of\nimmediate practical relevance: pipelines that rely on instruction-tuned LLMs to recognise their own\nuncertainty and benefit from a targeted second pass do not work at the current model generation,\nand we therefore recommend practitioners use either MAYBE-only routing or a human-in-the-loop\nescalation step in place of LLM self-triage.\n6.6\nClassifier Ablation: What Does the MAYBE Class Actually Detect?\nA natural question for any"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p13_c3",
+   "page": 13,
+   "text": "use either MAYBE-only routing or a human-in-the-loop\nescalation step in place of LLM self-triage.\n6.6\nClassifier Ablation: What Does the MAYBE Class Actually Detect?\nA natural question for any auxiliary-classifier-based uncertainty signal is whether the structure of\nthe classifier matters, or whether a much simpler baseline would produce a comparable MAYBE\nclass. We evaluate this by computing, per test paper, four alternative MAYBE criteria from the\nsame trained BERT+GCN forward pass:\n• Algebraic radical (logit gap): |P(Include) −P(Exclude)| < ϵ, ϵ = 0.15. This is one half of\nthe dual-test described in Section 3.\n• Categorical paradox (cosine): cos(hBERT, hGCN) < δ, δ = 0.0. This is the other half of the\ndual-test.\n• Dual-test: either criterion alone fires (the spectral engine’s default).\n• Softmax entropy: −P\nc pc log pc > τ, τ = 0.9 ln 2 ≈0.624 (90% of the maximum binary\nentropy). This is a widely-used, structure-agnostic uncertainty baseline.\n13"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p14_c1",
+   "page": 14,
+   "text": "0\n5\n10\n15\n20\n25\n30\n35\n40\nEscalation Rate (%)\nADHD\nTriptans\nAntihistamines\nProton Pump Inhibitors\nOral Hypoglycemics\nUrinary Incontinence\nACE Inhibitors\nNSAIDs\n6.5%\n16.6%\n18.8%\n22.0%\n26.1%\n26.8%\n27.6%\n32.7%\nFlip rate: 0.0%\nacross ALL datasets\nand ALL folds\nFigure 4: Two-pass escalation rates by dataset. Despite 6.5–32.7% of papers triggering a second\npass due to detected hedging language, the LLM never revises its initial decision (0% flip rate across\nall datasets and folds), revealing a hard anchoring limit.\nFor each criterion we report the MAYBE rate, the fraction of MAYBE papers whose ground-truth\nlabel is INCLUDE, and the lift over the dataset’s base INCLUDE rate. Table 7 summarises the\nresults across all 20,796 per-paper observations pooled across 8 datasets × 3 seeds × 5 folds (Figure 5\nprovides a visual comparison).\nTable 7: Classifier ablation: four alternative MAYBE criteria computed on the same per-fold\nBERT+GCN forward passes. “Catch rate” is the fraction of ground-truth INCLUDE papers flagged\nas MAYBE; “Precision lift” is P(INCLUDE | MAYBE)/P(INCLUDE). Aggregated over 20,796\nper-paper observations from 8 datasets.\nCriterion\nRate\nP(INCL | MAYBE)\nLift\nCatch rate\nAlgebraic"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p14_c2",
+   "page": 14,
+   "text": "papers flagged\nas MAYBE; “Precision lift” is P(INCLUDE | MAYBE)/P(INCLUDE). Aggregated over 20,796\nper-paper observations from 8 datasets.\nCriterion\nRate\nP(INCL | MAYBE)\nLift\nCatch rate\nAlgebraic radical (logit gap)\n14.5%\n7.77%\n1.46×\n21.1%\nCategorical paradox (cosine)\n0.0%\n—\n—\n0.0%\nDual-test (either fires)\n14.5%\n7.77%\n1.46×\n21.1%\nSoftmax entropy (τ = 0.62)\n42.2%\n6.70%\n1.26×\n53.1%\nTwo observations have direct practical consequences.\nFirst, the dual paradox test reduces empirically to a single logit-gap criterion on\nthis benchmark. The cosine similarity between the BERT text embedding and the GCN graph\nembedding is positive for every labelled paper in the corpus (min 0.05, median 0.91, max 1.00),\nso the categorical-paradox test does not fire at the default threshold of δ = 0.0. This is a useful\nsimplification finding: practitioners reimplementing the spectral engine on this benchmark can use\na one-line logit-gap threshold (|PINCL −PEXCL| < 0.15) and obtain exactly the same MAYBE class\nas the published dual test, with no loss in downstream performance. A percentile-based cosine\nthreshold (δ set to, e.g., the 10th percentile of training-set similarities) would allow the"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p14_c3",
+   "page": 14,
+   "text": "MAYBE class\nas the published dual test, with no loss in downstream performance. A percentile-based cosine\nthreshold (δ set to, e.g., the 10th percentile of training-set similarities) would allow the categoricalparadox test to contribute additional coverage; this adaptive variant is a natural follow-up study.\nSecond, softmax entropy is a viable alternative MAYBE criterion at a different op-\n14"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p15_c1",
+   "page": 15,
+   "text": "Logit Gap\nCosine\nDual-Test\nEntropy\n0\n10\n20\n30\n40\n50\nPercentage (%)\n14%\n21%\n14%\n21%\n42%\n53%\n(a) MAYBE & Catch Rates\nMAYBE Rate (%)\nCatch Rate (%)\n0\n10\n20\n30\n40\n50\nMAYBE Rate (%)\n0\n10\n20\n30\n40\n50\n60\nCatch Rate (%)\nLogit Gap\nCosine\nDual-Test\nEntropy\n(b) Rate vs. Catch Tradeoff\nFigure 5: Classifier ablation: (a) MAYBE rate (solid bars) and catch rate for ground-truth IN-\nCLUDEs (faded bars) for each criterion; (b) the rate–catch tradeoff. The cosine test never fires (0%\nMAYBE rate), making the dual-test identical to the logit-gap test. Softmax entropy catches more\nINCLUDEs at the cost of a higher MAYBE rate.\nerating point. At τ = 0.624 it flags 42% of papers as MAYBE and catches 53% of true INCLUDE\npapers, versus 14.5% and 21% for the logit-gap criterion. Softmax entropy has lower precision lift\n(1.26× vs. 1.46×) but higher catch rate. Every logit-gap MAYBE paper is also a softmax-entropy\nMAYBE paper (strict containment), so the two criteria sit on the same precision–recall curve at\ndifferent thresholds. Practitioners can therefore tune MAYBE coverage to their human-reviewer\ncapacity by sliding along this curve — a useful degree of freedom for deployment.\nThese ablation findings do"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p15_c2",
+   "page": 15,
+   "text": "thresholds. Practitioners can therefore tune MAYBE coverage to their human-reviewer\ncapacity by sliding along this curve — a useful degree of freedom for deployment.\nThese ablation findings do not change the main results (Table 3), because the MAYBE-only\nLLM condition uses the dual-test MAYBE flag by construction. They do offer practitioners two\ncleanly characterised alternative implementations (single logit-gap; tunable softmax entropy) of the\nauxiliary classifier, both of which are simpler than the published dual-test spectral engine.\n6.7\nCost–Benefit Analysis\nTable 8 compares the token usage across conditions, providing a cost proxy for API-based LLM\nscreening.\nTable 8: Token usage across conditions (mean per paper, averaged over 8 completed datasets).\nCondition\nInput tok.\nOutput tok.\nTotal tok.\nRelative cost\nBaseline\n264\n60\n324\n1.00×\nFull spectral\n352\n64\n416\n1.28×\nDecision only\n299\n64\n363\n1.12×\nMAYBE only\n280\n60\n340\n1.05×\nTwo-pass\n262\n62\n323\n1.00×\nFull spectral incurs a 28% cost premium due to the additional spectral context appended to every\nprompt. MAYBE-only is the most cost-efficient augmentation, adding only 5% overhead\n15"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p16_c1",
+   "page": 16,
+   "text": "0.95\n1.00\n1.05\n1.10\n1.15\n1.20\n1.25\n1.30\n1.35\nRelative Token Cost (vs. Baseline)\n0.0000\n0.0025\n0.0050\n0.0075\n0.0100\n0.0125\n0.0150\n0.0175\n0.0200\nF1 (vs. Baseline)\nBaseline\nFull Spectral\nDecision Only\nMAYBE Only\nTwo-Pass\nFigure 6: Cost–benefit frontier: each condition is plotted by its relative token cost (x-axis) and\nF1 improvement over baseline (y-axis). MAYBE-only sits near the origin—minimal cost increase,\ntop-of-table recall and AUC-ROC—while full spectral and decision-only pay 1.12–1.28× more for\nthe statistically significant F1 and WSS@95 gains documented in Table 3.\n16"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p17_c1",
+   "page": 17,
+   "text": "while achieving the highest mean recall and AUC-ROC of any condition. Two-pass is effectively\ncost-neutral (1.00×) because the escalated papers (22%) incur a second call but the non-escalated\nmajority saves the spectral context tokens; this cost neutrality reflects offsetting savings rather than\nadded benefit, consistent with the 0% flip rate documented in Section 6.5.\n6.8\nCross-Model Comparison\nGiven the spectral uplift on gpt-5.4-mini (+0.6% recall on the full eight-dataset matrix), a natural\nquestion is whether the spectral context is specific to a modern LLM screener, or whether the same\nsignal also benefits an earlier-generation model. To test portability across LLM generations, we\nrepeated a pilot subset of conditions using the smaller gpt-4.1-mini on the three datasets whose\nsizes allowed a full single-seed, 5-fold sweep within the cost budget (Antihistamines, Triptans,\nUrinaryIncontinence). Table 9 and Figure 7 report the paired results.\nTable 9: Cross-model pilot: paired baseline vs. full-spectral recall for two OpenAI models on the\nthree common pilot datasets (Antihistamines, Triptans, Urinary Incontinence) at a single shared\nseed (seed=42). Reported ± values are"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p17_c2",
+   "page": 17,
+   "text": "baseline vs. full-spectral recall for two OpenAI models on the\nthree common pilot datasets (Antihistamines, Triptans, Urinary Incontinence) at a single shared\nseed (seed=42). Reported ± values are between-dataset standard deviations across the three pilot\ndatasets, not within-seed standard errors. ∆is the per-model spectral uplift (full spectral minus\nbaseline, averaged over the three datasets). Both models show an identical average uplift of +0.8%\nrecall from full spectral context, supporting the interpretation of the BERT+GCN signal as a stable\nauxiliary input that transfers across LLM generations rather than a capability-dependent booster.\nModel\nBaseline\nFull spectral\n∆full\nMAYBE only\n∆MAYBE\ngpt-4.1-mini\n0.91±0.03\n0.92±0.02\n+0.008\n0.91±0.03\n+0.000\ngpt-5.4-mini\n0.89±0.07\n0.89±0.06\n+0.008\n0.89±0.06\n+0.008\nTwo recall-uplift quantities appear in this paper and refer to different subsets, so we make the\ndistinction explicit. On the full eight-dataset main matrix (3 seeds, 5 folds), the gpt-5.4-mini\nfull-spectral uplift over baseline is +0.6% recall (0.914 →0.920), as reported in Table 3. On the\nthree-dataset pilot subset (Antihistamines, Triptans, Urinary Incontinence) at a single"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p17_c3",
+   "page": 17,
+   "text": "gpt-5.4-mini\nfull-spectral uplift over baseline is +0.6% recall (0.914 →0.920), as reported in Table 3. On the\nthree-dataset pilot subset (Antihistamines, Triptans, Urinary Incontinence) at a single shared seed,\nboth models show an identical average recall uplift of +0.8% from full spectral context (Table 9).\nThe cross-model comparison is reported on a single seed to constrain API cost, and dataset-level\nstandard deviations in Table 9 are therefore between-dataset variability on a three-dataset sample.\nWith that caveat, the data are most consistent with the model-scale invariant reading: paired on\nthe same three datasets at the same seed, both models show the same +0.8% uplift, well within one\nbetween-dataset standard deviation. The pilot therefore does not support the capability-equalizer\nhypothesis: the earlier-generation model is not meaningfully weaker than the current one on these\nCohen drug-class datasets, and adding spectral context provides a consistent uplift for both rather\nthan a disproportionately larger uplift for the weaker model. This is consistent with interpreting\nthe BERT+GCN spectral signal as an auxiliary classifier whose output is a stable external input—"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p17_c4",
+   "page": 17,
+   "text": "than a disproportionately larger uplift for the weaker model. This is consistent with interpreting\nthe BERT+GCN spectral signal as an auxiliary classifier whose output is a stable external input—\nuseful as a targeted prompt augmentation, but not as a substitute for LLM reasoning capacity. A\nfollow-up full-matrix evaluation (3 seeds × 5 folds × 8 datasets for both models) would be needed\nto test this reading with adequate statistical power.\n17"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p18_c1",
+   "page": 18,
+   "text": "Baseline\nFull Spectral\nMAYBE Only\n0.800\n0.825\n0.850\n0.875\n0.900\n0.925\n0.950\n0.975\n1.000\nMean Recall\nCross-Model Pilot (3 datasets, seed=42)\ngpt-4.1-mini\ngpt-5.4-mini\nFigure 7: Cross-model pilot: mean recall (± dataset-level std) for gpt-4.1-mini and gpt-5.4-mini\nacross baseline, full spectral, and MAYBE-only conditions on three shared datasets. Both models\nshow similar absolute performance and similar spectral uplift, consistent with the auxiliary-signal\nreading.\n7\nDiscussion\n7.1\nWhen Does Spectral Context Help?\nThe benefit of spectral context concentrates predictably on the datasets where it should: those\nwhere the LLM has room to improve. Full spectral yields its largest recall improvement on ADHD\n(+0.05 over baseline) and OralHypoglycemics (+0.04), both datasets where the spectral model’s\nMAYBE rate is moderate and the baseline LLM does not already achieve perfect recall. On NSAIDs\n— where baseline recall is already 1.00 — spectral context cannot improve recall but does increase\nAUC-ROC (+0.03), reflecting better-calibrated confidence on borderline papers.\nThis datasetby- dataset pattern is consistent with the auxiliary-signal interpretation developed in Section 6.8:\nspectral"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p18_c2",
+   "page": 18,
+   "text": "AUC-ROC (+0.03), reflecting better-calibrated confidence on borderline papers.\nThis datasetby- dataset pattern is consistent with the auxiliary-signal interpretation developed in Section 6.8:\nspectral context helps where the LLM is genuinely uncertain and is harmless where the LLM is\nalready confident.\nOn ACEInhibitors — the most extreme inclusion-rate dataset at 1.6% — baseline recall (0.98)\nmarginally exceeds full-spectral recall (0.95), suggesting that adaptive thresholds tuned for severe\nclass imbalance could improve the spectral signal further; this direction is left for future work and\nis the motivating use case for the percentile-based cosine threshold proposed in Section 8.\n7.2\nScores vs. Labels: Information Granularity\nThe ablation results (Section 6.3) show that full spectral consistently outperforms decision-only,\nwith a paired delta of +0.018 recall and +0.063 WSS@95 across the eight datasets. This confirms\nthat LLMs do extract additional signal from numerical uncertainty estimates beyond what the\ncategorical label alone provides — and the WSS@95 gain in particular is operationally relevant for\nscreening efficiency. One mechanistic explanation is that mid-size"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p18_c3",
+   "page": 18,
+   "text": "estimates beyond what the\ncategorical label alone provides — and the WSS@95 gain in particular is operationally relevant for\nscreening efficiency. One mechanistic explanation is that mid-size instruction-tuned models have\nlimited numerical reasoning depth: they may treat “confidence gap: 0.03” as roughly equivalent to\n18"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p19_c1",
+   "page": 19,
+   "text": "“confidence gap: 0.12” despite their very different implications for the spectral model. Larger models\nwith stronger numerical reasoning may exploit this information channel more fully, a direction the\ncross-model pilot (Section 6.8) begins to probe.\n7.3\nThe MAYBE-Only Efficiency Advantage\nThe MAYBE-only condition achieves the highest mean recall (0.92, best of any condition) and the\nhighest mean AUC-ROC (0.54) at only 1.05× baseline cost, compared to 1.28× for full spectral.\nThis Pareto-optimality has a clear mechanistic explanation: the performance benefit of spectral\ncontext is concentrated on the papers the spectral engine itself flags as ambiguous.\nProviding\nspectral context on confident INCLUDE/EXCLUDE papers adds cost without meaningful benefit,\nbecause the LLM’s decision on those papers is already anchored by the title and abstract. Restricting\ncontext delivery to the MAYBE subset both removes that wasted overhead and concentrates LLM\nattention where the auxiliary signal is most informative.\nThe practical recommendation is unambiguous: a deployment using MAYBE-only augmentation\ncaptures the spectral benefit at near- baseline API cost and is the recommended default for"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p19_c2",
+   "page": 19,
+   "text": "is most informative.\nThe practical recommendation is unambiguous: a deployment using MAYBE-only augmentation\ncaptures the spectral benefit at near- baseline API cost and is the recommended default for costsensitive screening workflows.\n7.4\nPractical Recommendations for Systematic Review Teams\nBased on our findings, we offer four practical recommendations for teams using LLM screeners with\nauxiliary uncertainty classifiers:\n1. Use selective context delivery. Route the auxiliary classifier’s context only to papers the\nclassifier itself flags as uncertain (MAYBE-only). This captures the recall benefit at roughly\none sixth of the full-context API cost.\n2. Do not rely on LLM self-triage for re-screening. Two-pass architectures in which the\nLLM re-examines its own hedging responses do not yield decision revisions. Use a human-inthe-loop escalation step instead.\n3. Treat the auxiliary classifier as a signal, not a decision. LLMs override the classifier on\nmore than half of papers. Pipelines that defer all classifier MAYBE papers to humans directly\n(bypassing the LLM) may be more robust than pipelines that use the LLM as a second-opinion\nover the classifier.\n4. Choose your auxiliary model"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p19_c3",
+   "page": 19,
+   "text": "that defer all classifier MAYBE papers to humans directly\n(bypassing the LLM) may be more robust than pipelines that use the LLM as a second-opinion\nover the classifier.\n4. Choose your auxiliary model for cost, not ceiling. The cross-model pilot suggests that\nthe uplift from auxiliary context is of similar magnitude for different LLM generations. There\nis no clear reason to prefer the most expensive available LLM for the role of “spectral context\nconsumer”.\n5. A logit-gap threshold is sufficient to produce the MAYBE class on this benchmark.\nThe classifier ablation (Section 6.6) shows that the MAYBE class used throughout this paper\ncan be replicated exactly by a one-line logit-gap threshold; the BERT/GCN cosine-paradox\ntest does not fire at its default threshold. Simpler implementations of the auxiliary classifier\nare therefore an option for deployments that do not need the full spectral pipeline.\n7.5\nLLM Self-Triage via Two-Pass Screening\nThe two-pass design assumes LLMs can self-triage: recognise their own uncertainty in a first pass,\nthen benefit from additional context on a targeted second pass. Our results challenge this assumption. While the escalation rate (22% average)"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p19_c4",
+   "page": 19,
+   "text": "recognise their own uncertainty in a first pass,\nthen benefit from additional context on a targeted second pass. Our results challenge this assumption. While the escalation rate (22% average) suggests the hedging detector successfully identifies\nsome uncertain responses, the zero flip rate reveals that the LLM does not meaningfully revise its\ndecisions when given spectral context after expressing uncertainty. This may reflect a limitation of\n19"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p20_c1",
+   "page": 20,
+   "text": "instruction-tuned models: once committed to a decision with accompanying reasoning, the model\nanchors on its prior output even when new evidence is introduced.\nInterestingly, the hedging-based escalation rate does not correlate with the spectral model’s\nMAYBE rate. The LLM’s self-assessed uncertainty and the spectral model’s detected ambiguity\nappear to measure different dimensions of paper difficulty, supporting the hypothesis that hybrid\nhuman-AI pipelines benefit from multiple independent uncertainty signals rather than relying on\nany single indicator.\nThe escalation rate does correlate with dataset inclusion rate: NSAIDs (10.4% inclusion, 32.7%\nescalation) triggers far more second-pass calls than ADHD (2.4% inclusion, 6.5% escalation). Datasets\nwith more balanced classes may produce more papers whose relevance is genuinely ambiguous from\nthe abstract alone, leading to more hedging language in the LLM’s initial response.\n7.6\nThe Spectral Context Acts as an Auxiliary Signal\nThe cross-model pilot (Section 6.8) was designed to distinguish two plausible mechanisms for the\nspectral uplift. Under a reasoning-gap account, the role of spectral context is to shore up weaker\nbase"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p20_c2",
+   "page": 20,
+   "text": "The cross-model pilot (Section 6.8) was designed to distinguish two plausible mechanisms for the\nspectral uplift. Under a reasoning-gap account, the role of spectral context is to shore up weaker\nbase reasoning, so the uplift ∆should be larger for the weaker model and vanish as the base model\nimproves. Under an auxiliary-signal account, spectral labels are an independent classifier whose\ninformation is orthogonal to what the LLM can extract from the abstract alone; the uplift should\nthen be of similar magnitude regardless of LLM capacity, because both models are integrating the\nsame external signal into their decision.\nThe data are most consistent with the auxiliary-signal account. Paired on the three pilot datasets\nat the same seed, both models receive an identical average recall uplift of +0.8% from full spectral\ncontext, and the direction of the per-dataset delta is not systematically different between the two\nmodels. The gpt-4.1-mini baseline is in fact modestly higher than gpt-5.4-mini’s on this subset\n(0.91 vs. 0.89), which is the opposite direction from what a capability-gap account would predict.\nThis suggests that the spectral context functions as a stable second-opinion"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p20_c3",
+   "page": 20,
+   "text": "on this subset\n(0.91 vs. 0.89), which is the opposite direction from what a capability-gap account would predict.\nThis suggests that the spectral context functions as a stable second-opinion signal rather than as a\nreasoning enhancer; it is the classifier doing the work, not a weakness in the LLM that the classifier\nis propping up.\nA practical consequence of this reading is that upgrading to a more capable LLM does not obviate\nthe need for the auxiliary classifier, because the benefit comes from an orthogonal information\nchannel rather than a reasoning gap. Conversely, cheaper LLMs do not lose the benefit: this is\nreassuring for cost-sensitive deployments considering which generation of model to use as their\nscreener.\n7.7\nLimitations\nWe note the following scope conditions on our findings:\n• LLM coverage: The main matrix evaluates gpt-5.4-mini across 8 datasets, with a 3-dataset\nsingle-seed pilot for gpt-4.1-mini (Section 6.8). Results may differ for larger frontier models\n(GPT-4o, Claude 4 Sonnet) or open-source alternatives (Llama 3, Mistral). Larger models\nwith stronger numerical reasoning may better exploit continuous spectral scores.\n• Binary LLM output: The LLM produces"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p20_c4",
+   "page": 20,
+   "text": "Claude 4 Sonnet) or open-source alternatives (Llama 3, Mistral). Larger models\nwith stronger numerical reasoning may better exploit continuous spectral scores.\n• Binary LLM output: The LLM produces INCLUDE/EXCLUDE decisions; it cannot output\nMAYBE, limiting the hybrid system’s ability to defer uncertain cases to human review.\n• Fixed thresholds: The spectral thresholds (ϵ = 0.15, δ = 0.0) are not tuned per dataset.\nAdaptive thresholds may improve the quality of the MAYBE signal.\n• Drug class reviews: While the 8 datasets span different drug classes with varying inclusion\nrates and sizes, all are within the biomedical domain.\nGeneralisation to other systematic\n20"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p21_c1",
+   "page": 21,
+   "text": "review domains (social sciences, environmental science) is untested.\n• No human-in-the-loop evaluation: We evaluate against ground-truth labels, not against\nhuman reviewer decisions under time pressure. The practical utility of spectral context may\ndiffer when a human is the final arbiter.\n• Deterministic LLM: Temperature 0 produces deterministic outputs, preventing analysis\nof inter-run variance in LLM decisions. Stochastic sampling might interact differently with\nspectral context.\n• Benchmark scope: All eight datasets are drug class reviews from the Cohen (2006) collection, covering inclusion rates from 1.6% to 27% and dataset sizes from 310 to 2,544 records.\nThis covers the main variability axes of the benchmark but not newer systematic review\ndomains.\n• Degenerate cosine test at the published threshold: The categorical paradox test (cos <\nδ = 0.0) does not fire on any paper in the 8-dataset corpus, as the BERT/GCN cosine\nsimilarities are empirically positive throughout. The dual-test framing collapses to the logitgap test alone in practice. A more permissive or training-set-adaptive threshold would be\nneeded to make the cosine test informative.\n8\nConclusion\nWe evaluated how an"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p21_c2",
+   "page": 21,
+   "text": "framing collapses to the logitgap test alone in practice. A more permissive or training-set-adaptive threshold would be\nneeded to make the cosine test informative.\n8\nConclusion\nWe evaluated how an auxiliary BERT+GCN uncertainty classifier should be delivered to an LLM\nscreener to maximise the benefit-to-cost ratio in systematic-review screening.\nAcross eight Cohen (2006) benchmark datasets, five prompt-delivery conditions, and 600 fold-level runs, together\nwith a cross-model pilot on three datasets, three findings have direct operational implications for\nsystematic-review teams.\nFirst, auxiliary spectral context produces statistically significant gains in screening\nefficiency. Full-context delivery yields a +0.050 improvement in WSS@95 (paired Wilcoxon p =\n0.039) and a +0.011 improvement in F1 (p = 0.008) over the baseline, at a 1.28× token-cost\npremium. In a workflow processing tens of thousands of records, a five-percentage-point reduction\nin the screening burden at fixed 95% recall is operationally meaningful. Recall is preserved across\nall five conditions (p ≥0.12), so these efficiency gains come at no safety cost.\nSecond, targeted MAYBE-only routing is Pareto-optimal. Routing"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p21_c3",
+   "page": 21,
+   "text": "is operationally meaningful. Recall is preserved across\nall five conditions (p ≥0.12), so these efficiency gains come at no safety cost.\nSecond, targeted MAYBE-only routing is Pareto-optimal. Routing the auxiliary context\nonly to papers the classifier itself flags as uncertain achieves the highest mean recall (0.92, best of\nany condition) and the highest mean AUC-ROC (0.54) at only 1.05× baseline cost — one sixth of\nthe API overhead of blanket full-context delivery. For cost-sensitive deployments, MAYBE-only is\ntherefore the recommended configuration.\nThird, the data provide a decisive answer to a workflow question. Although the LLM\nsignals uncertainty through hedging language on roughly 22% of records, it never revises its decision\nwhen given the auxiliary context on a second pass (0% flip rate across all datasets, seeds, and folds).\nThis clean null rules out two-pass LLM self-triage as a viable architecture for instruction-tuned\nmodels at the current generation, and saves practitioners the cost of re-discovering the limitation. As\na methodological by-product, our per-paper ablation (Section 6.6) shows that the dual paradox test\nreduces empirically to a one-line logit-gap"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p21_c4",
+   "page": 21,
+   "text": "the cost of re-discovering the limitation. As\na methodological by-product, our per-paper ablation (Section 6.6) shows that the dual paradox test\nreduces empirically to a one-line logit-gap criterion on this benchmark, simplifying any practitioner\nreimplementation.\nFuture work should explore: (1) adaptive spectral thresholds tuned per dataset, including a\npercentile-based cosine threshold that would allow the categorical paradox test to fire and contribute additional MAYBE coverage; (2) allowing the LLM to output MAYBE directly, enabling\ntrue three-way triage; (3) a multi-seed cross-model extension across all benchmarks to confirm the\n21"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p22_c1",
+   "page": 22,
+   "text": "cross-generation invariance of the spectral uplift with adequate statistical power; (4) evaluating\nlarger models (GPT-4o, Claude 4 Sonnet) whose stronger numerical reasoning may better leverage\ncontinuous uncertainty signals; (5) human-in-the-loop studies measuring screener time savings in\nreal workflows; and (6) extending to non-biomedical systematic-review domains.\nAll code, prompt templates, experiment configurations, the cached LLM responses, and a deterministic analyser that regenerates every table in this paper are available at https://github.com/\nrahgoar/LR-Spectral-BERTGCN-Topological-Undecidability-in-Clinical-AI.\nCode and Data Availability\nAll source code, prompt templates, experiment configurations, and raw fold-level results (CSV) generated during this study are available in the GitHub repository at https://github.com/rahgoar/\nLR-Spectral-BERTGCN-Topological-Undecidability-in-Clinical-AI under a permissive opensource licence. The Cohen (2006) benchmark datasets are redistributed by the ASReview Synergy\nproject [van de Schoot et al., 2021] and are fetched at runtime via the OpenAlex API [Priem et al.,\n2022]. The preprocessed benchmark fetchers, LLM response cache, and"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p22_c2",
+   "page": 22,
+   "text": "by the ASReview Synergy\nproject [van de Schoot et al., 2021] and are fetched at runtime via the OpenAlex API [Priem et al.,\n2022]. The preprocessed benchmark fetchers, LLM response cache, and analysis script (used to\ngenerate all tables and the capability-gap comparison) are included in the repository.\nAcknowledgements\nWe thank the ASReview team for maintaining the Synergy benchmark collection, and the OpenAlex\nproject for providing open access to scholarly metadata. We also thank the Ottawa Hospital Research Institute for computational infrastructure. The authors declare no competing interests. This\nwork received no external funding; API costs for LLM screening calls were borne by the authors’\ninstitutional research account.\nReferences\nAhmad Alshami, Moustafa Elsayed, Eslam Ali, Abdelrahman E E Eltoukhy, and Tarek Zayed.\nHarnessing the power of ChatGPT for automating systematic review process: Methodology, case\nstudy, limitations, and future directions. Systems, 11(7):351, 2023. doi: 10.3390/systems11070351.\nFan R K Chung.\nSpectral Graph Theory.\nNumber 92 in CBMS Regional Conference Series in\nMathematics. American Mathematical Society, 1997.\nAaron M Cohen, William R Hersh, Kim"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p22_c3",
+   "page": 22,
+   "text": "10.3390/systems11070351.\nFan R K Chung.\nSpectral Graph Theory.\nNumber 92 in CBMS Regional Conference Series in\nMathematics. American Mathematical Society, 1997.\nAaron M Cohen, William R Hersh, Kim Peterson, and Po-Yin Yen. Reducing workload in systematic\nreview preparation using automated citation classification.\nJournal of the American Medical\nInformatics Association, 13(2):206–219, 2006. doi: 10.1197/jamia.M1929.\nGerbrich Ferdinands, Raoul Schram, Jonathan de Bruin, Ayoub Bagheri, Daniel L Oberski, Lars\nTummers, Jelle Jasper Teijema, and Rens van de Schoot. Performance of active learning models\nfor screening prioritization in systematic reviews: A simulation study into the Average Time to\nDiscover relevant records. Systematic Reviews, 12:100, 2023. doi: 10.1186/s13643-023-02257-7.\nJack Gallifant, Majid Afshar, Saleem Ameen, Yindalon Aphinyanaphongs, Shan Chen, Giovanni\nCacciamani, Dina Demner-Fushman, Dmitriy Dligach, Roxana Daneshjou, Chrystinne Fernandes,\nLasse Hyldig Hansen, Adam Landman, Lisa Soleymani Lehmann, Liam G McCoy, Timothy Miller,\nAmy Moreno, Nikolaj Munch, David Restrepo, Guergana Savova, Renato Umeton, Judy Wawira\n22"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p23_c1",
+   "page": 23,
+   "text": "Gichoya, Gary S Collins, Karel G M Moons, Leo Anthony Celi, and Danielle S Bitterman. The\nTRIPOD-LLM reporting guideline for studies using large language models. Nature Medicine,\n2024. doi: 10.1038/s41591-024-03425-5. arXiv:2407.16851.\nYu Gu, Robert Tinn, Hao Cheng, Michael Lucas, Naoto Usuyama, Xiaodong Liu, Tristan Naumann,\nJianfeng Gao, and Hoifung Poon. Domain-specific language model pretraining for biomedical\nnatural language processing. ACM Transactions on Computing for Healthcare, 3(1):1–23, 2021.\ndoi: 10.1145/3458754.\nEddie Guo, Mehul Gupta, Jiawen Deng, Ye-Jean Park, Michael Paget, and Christopher Naugler.\nAutomated paper screening for clinical reviews using large language models: Data analysis study.\nJournal of Medical Internet Research, 26:e48996, 2024. doi: 10.2196/48996.\nJulian P T Higgins, James Thomas, Jacqueline Chandler, Miranda Cumpston, Tianjing Li,\nMatthew J Page, and Vivian A Welch. Cochrane Handbook for Systematic Reviews of Interventions. Wiley, 2 edition, 2019. doi: 10.1002/9781119536604.\nSaurav Kadavath, Tom Conerly, Amanda Askell, Tom Henighan, Dawn Drain, Ethan Perez,\nNicholas Schiefer, Zac Hatfield-Dodds, Nova DasSarma, Eli Tran-Johnson, et al. Language"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p23_c2",
+   "page": 23,
+   "text": "doi: 10.1002/9781119536604.\nSaurav Kadavath, Tom Conerly, Amanda Askell, Tom Henighan, Dawn Drain, Ethan Perez,\nNicholas Schiefer, Zac Hatfield-Dodds, Nova DasSarma, Eli Tran-Johnson, et al. Language models\n(mostly) know what they know. arXiv preprint arXiv:2207.05221, 2022.\nQusai Khraisha, Sophie Put, Johanna Kappenberg, Azza Warraitch, and Kristin Hadfield. Can large\nlanguage models replace humans in systematic reviews? evaluating GPT-4’s efficacy in screening\nand extracting data from peer-reviewed and grey literature in multiple languages.\nResearch\nSynthesis Methods, 15(4):616–626, 2024. doi: 10.1002/jrsm.1715.\nThomas N Kipf and Max Welling. Semi-supervised classification with graph convolutional networks.\nIn International Conference on Learning Representations (ICLR), 2017.\nBalaji Lakshminarayanan, Alexander Pritzel, and Charles Blundell. Simple and scalable predictive\nuncertainty estimation using deep ensembles.\nIn Advances in Neural Information Processing\nSystems (NeurIPS), 2017.\nErich L Lehmann. Nonparametrics: Statistical Methods Based on Ranks. Holden-Day, San Francisco,\n1975.\nPatrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal,"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p23_c3",
+   "page": 23,
+   "text": "Erich L Lehmann. Nonparametrics: Statistical Methods Based on Ranks. Holden-Day, San Francisco,\n1975.\nPatrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal,\nHeinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, and Douwe\nKiela. Retrieval-augmented generation for knowledge-intensive NLP tasks. In Advances in Neural\nInformation Processing Systems (NeurIPS), 2020.\nYuxiao Lin, Yuxian Meng, Xiaofei Sun, Qinghong Han, Kun Kuang, Jiwei Li, and Fei Wu. BertGCN:\nTransductive text classification by combining GCN and BERT. In Findings of the Association for\nComputational Linguistics: ACL, pages 1456–1462, 2021. doi: 10.18653/v1/2021.findings-acl.126.\nMatthew J Page, Joanne E McKenzie, Patrick M Bossuyt, Isabelle Boutron, Tammy C Hoffmann,\nCynthia D Mulrow, Larissa Shamseer, Jennifer M Tetzlaff, Elie A Akl, Sue E Brennan, et al. The\nPRISMA 2020 statement: An updated guideline for reporting systematic reviews. BMJ, 372:n71,\n2021. doi: 10.1136/bmj.n71.\nJason Priem, Heather Piwowar, and Richard Orr. OpenAlex: A fully-open index of scholarly works,\nauthors, venues, institutions, and concepts. arXiv preprint arXiv:2205.01833, 2022.\n23"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p24_c1",
+   "page": 24,
+   "text": "Yujia Qin, Shengding Hu, Yankai Lin, Weize Chen, Ning Ding, Ganqu Cui, Zheni Zeng, Yufei\nHuang, Chaojun Xiao, Chi Han, Yi Ren Fung, et al. Tool learning with foundation models. arXiv\npreprint arXiv:2304.08354, 2023.\nTimo Schick, Jane Dwivedi-Yu, Roberto Dessì, Roberta Raileanu, Maria Lomeli, Eric Hambro, Luke\nZettlemoyer, Nicola Cancedda, and Thomas Scialom. Toolformer: Language models can teach\nthemselves to use tools. In Advances in Neural Information Processing Systems (NeurIPS), 2023.\narXiv:2302.04761.\nMichael Schlichtkrull, Thomas N Kipf, Peter Bloem, Rianne van den Berg, Ivan Titov, and Max\nWelling. Modeling relational data with graph convolutional networks. In European Semantic Web\nConference (ESWC), pages 593–607, 2018. doi: 10.1007/978-3-319-93417-4_38.\nViet-Thi Tran, Gerald Gartlehner, Sally Yaacoub, Isabelle Boutron, Lukas Schwingshackl, Julia\nStadelmaier, Isolde Sommer, Farzaneh Alebouyeh, Sivem Afach, Joerg J Meerpohl, and Philippe\nRavaud. Sensitivity and specificity of using GPT-3.5 turbo models for title and abstract screening\nin systematic reviews and meta-analyses. Annals of Internal Medicine, 177(6):791–799, 2024. doi:\n10.7326/M23-3389.\nRens van de Schoot,"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p24_c2",
+   "page": 24,
+   "text": "of using GPT-3.5 turbo models for title and abstract screening\nin systematic reviews and meta-analyses. Annals of Internal Medicine, 177(6):791–799, 2024. doi:\n10.7326/M23-3389.\nRens van de Schoot, Jonathan de Bruin, Raoul Schram, Parisa Zahedi, Jan de Boer, Felix Weijdema,\nBianca Kramer, Martijn Huijts, Maarten Hoogerwerf, Gerbrich Ferdinands, Albert Harkema,\nJoukje Willemsen, Yongchao Ma, Qixiang Fang, Sybren Hindriks, Lars Tummers, and Daniel L\nOberski. An open source machine learning framework for efficient and transparent systematic\nreviews. Nature Machine Intelligence, 3:125–133, 2021. doi: 10.1038/s42256-020-00287-7.\nShuai Wang, Harrisen Scells, Bevan Koopman, and Guido Zuccon.\nZero-shot generative large\nlanguage models for systematic review screening automation.\nIn Advances in Information\nRetrieval (ECIR 2024), Lecture Notes in Computer Science. Springer, 2024.\ndoi:\n10.1007/\n978-3-031-56066-8_32. arXiv:2401.06320.\nJason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H Chi,\nQuoc V Le, and Denny Zhou. Chain-of-thought prompting elicits reasoning in large language\nmodels. In Advances in Neural Information Processing Systems (NeurIPS), 2022.\nMiao"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p24_c3",
+   "page": 24,
+   "text": "Ichter, Fei Xia, Ed H Chi,\nQuoc V Le, and Denny Zhou. Chain-of-thought prompting elicits reasoning in large language\nmodels. In Advances in Neural Information Processing Systems (NeurIPS), 2022.\nMiao Xiong, Zhiyuan Hu, Xinyang Lu, Yifei Li, Jie Fu, Junxian He, and Bryan Hooi. Can LLMs\nexpress their uncertainty? an empirical evaluation of confidence elicitation in LLMs. In International Conference on Learning Representations (ICLR), 2024. arXiv:2306.13063.\nLiang Yao, Chengsheng Mao, and Yuan Luo. Graph convolutional networks for text classification.\nIn AAAI Conference on Artificial Intelligence, volume 33, pages 7370–7377, 2019. doi: 10.1609/\naaai.v33i01.33017370.\nA\nPrompt Templates\nA.1\nSystem Prompt\nYou are a systematic review screening assistant\nfor clinical research literature. Your task is to\ndecide whether a paper should be INCLUDED or EXCLUDED\nfrom a systematic review.\n24"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p25_c1",
+   "page": 25,
+   "text": "Screening criteria:\n[per-dataset criteria, e.g., \"Drug class review:\nACEInhibitors (2544 records, 41 included)\"]\nRespond in exactly this format:\nDECISION: INCLUDE or EXCLUDE\nCONFIDENCE: HIGH, MEDIUM, or LOW\nREASON: Your 1-2 sentence explanation\nA.2\nBaseline User Prompt (Condition 1)\nTitle: [paper title]\nAbstract: [paper abstract]\nA.3\nFull Spectral Context Block (Condition 2)\nTitle: [paper title]\nAbstract: [paper abstract]\n--- Spectral Analysis (from a BERT+GCN\nclassification model) ---\nModel decision: [INCLUDE/EXCLUDE/MAYBE]\nConfidence gap: [0.000] (0=uncertain, 1=certain;\nthreshold=0.15)\nModel confidence: [0.000]\nParadox detected: [algebraic_radical/\ncategorical_paradox/none]\nNote: This analysis is provided as additional context.\nYou may agree or disagree with the model’s assessment\nbased on your reading of the paper.\nA.4\nDecision Only Prompt (Condition 3)\nTitle: [paper title]\nAbstract: [paper abstract]\n--- Model Analysis ---\nA separate BERT+GCN classification model suggests\nthis paper should be: [INCLUDE/EXCLUDE/MAYBE]\nYou may agree or disagree with this suggestion\nbased on your reading.\n25"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p26_c1",
+   "page": 26,
+   "text": "A.5\nTwo-Pass Follow-Up Prompt (Condition 5, Pass 2)\nYou previously assessed this paper with [CONFIDENCE]\nconfidence. Here is additional analysis from a\nclassification model:\nTitle: [paper title]\nAbstract: [paper abstract]\n--- Spectral Analysis ---\nModel decision: [INCLUDE/EXCLUDE/MAYBE]\nConfidence gap: [0.000] (0=uncertain, 1=certain;\nthreshold=0.15)\nModel confidence: [0.000]\nParadox detected: [algebraic_radical/\ncategorical_paradox/none]\nGiven this additional context, please reconsider\nyour decision.\nDECISION: INCLUDE or EXCLUDE\nCONFIDENCE: HIGH, MEDIUM, or LOW\nREASON: Your 1-2 sentence explanation\nB\nHedging Language Patterns\nThe two-pass uncertainty detector uses the following regex pattern to identify hedging language in\nLLM responses:\n\\b(might|unclear|borderline|uncertain|not sure|\nambiguous|possibly|could be|difficult to determine|\nhard to say)\\b\nBoth the explicit confidence check (LOW or MEDIUM) and the hedging pattern match trigger\nescalation to a second pass.\nC\nFull Per-Dataset Results\n26"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p27_c1",
+   "page": 27,
+   "text": "Table 10: Full per-dataset results: mean over 3 seeds × 5 folds for all five conditions and primary\nmetrics.\nDataset\nCondition\nPrecision Recall\nF1\nAUC-ROC WSS@95\nACEInhibitors\nBaseline\n0.025\n0.976\n0.049\n0.521\n0.464\nFull spectral\n0.025\n0.951\n0.049\n0.540\n0.497\nDecision only\n0.026\n0.976\n0.051\n0.469\n0.457\nMAYBE only\n0.024\n0.976\n0.047\n0.546\n0.466\nTwo-pass\n0.026\n0.959\n0.051\n0.488\n0.446\nADHD\nBaseline\n0.118\n0.840\n0.207\n0.457\n0.781\nFull spectral\n0.140\n0.890\n0.242\n0.490\n0.880\nDecision only\n0.126\n0.840\n0.219\n0.479\n0.780\nMAYBE only\n0.117\n0.840\n0.205\n0.480\n0.779\nTwo-pass\n0.130\n0.824\n0.224\n0.481\n0.789\nAntihistamines\nBaseline\n0.069\n0.957\n0.129\n0.527\n0.544\nFull spectral\n0.073\n0.943\n0.135\n0.540\n0.597\nDecision only\n0.073\n0.943\n0.135\n0.489\n0.522\nMAYBE only\n0.070\n0.970\n0.130\n0.525\n0.545\nTwo-pass\n0.075\n0.943\n0.138\n0.547\n0.581\nNSAIDs\nBaseline\n0.120\n1.000\n0.214\n0.602\n0.361\nFull spectral\n0.126\n1.000\n0.224\n0.631\n0.446\nDecision only\n0.137\n1.000\n0.241\n0.552\n0.409\nMAYBE only\n0.119\n1.000\n0.213\n0.607\n0.375\nTwo-pass\n0.143\n1.000\n0.251\n0.548\n0.400\nOralHypoglycemics\nBaseline\n0.317\n0.850\n0.462\n0.480\n0.116\nFull spectral\n0.326\n0.889\n0.476\n0.507\n0.164\nDecision only\n0.331\n0.880\n0.481\n0.486\n0.131\nMAYBE only\n0.315\n0.898"
+  },
+  {
+   "paper_id": "arxiv-2608-14551",
+   "chunk_id": "arxiv-2608-14551_p27_c2",
+   "page": 27,
+   "text": "0.143\n1.000\n0.251\n0.548\n0.400\nOralHypoglycemics\nBaseline\n0.317\n0.850\n0.462\n0.480\n0.116\nFull spectral\n0.326\n0.889\n0.476\n0.507\n0.164\nDecision only\n0.331\n0.880\n0.481\n0.486\n0.131\nMAYBE only\n0.315\n0.898\n0.467\n0.510\n0.145\nTwo-pass\n0.322\n0.890\n0.473\n0.489\n0.159\nProtonPumpInhibitors Baseline\n0.054\n0.947\n0.103\n0.582\n0.434\nFull spectral\n0.061\n0.921\n0.115\n0.554\n0.473\nDecision only\n0.062\n0.941\n0.115\n0.556\n0.474\nMAYBE only\n0.055\n0.954\n0.104\n0.576\n0.431\nTwo-pass\n0.064\n0.934\n0.119\n0.527\n0.440\nTriptans\nBaseline\n0.051\n0.897\n0.096\n0.528\n0.560\nFull spectral\n0.055\n0.897\n0.103\n0.480\n0.512\nDecision only\n0.055\n0.897\n0.103\n0.468\n0.499\nMAYBE only\n0.051\n0.897\n0.096\n0.520\n0.521\nTwo-pass\n0.054\n0.858\n0.102\n0.538\n0.527\nUrinaryIncontinence\nBaseline\n0.230\n0.845\n0.360\n0.513\n0.513\nFull spectral\n0.288\n0.872\n0.429\n0.490\n0.604\nDecision only\n0.275\n0.787\n0.405\n0.495\n0.463\nMAYBE only\n0.229\n0.859\n0.361\n0.519\n0.512\nTwo-pass\n0.278\n0.809\n0.412\n0.495\n0.495\n27"
+  }
+ ]
+}

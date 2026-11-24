@@ -1,0 +1,493 @@
+{
+ "paper_id": "arxiv-2501-05468",
+ "source_sha256": "a975fccb26392d59f05bb32403a6f72a3cf43129b397db27b481db953a71b8b6",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 31,
+ "pages_read": 31,
+ "page_chars": [
+  1988,
+  3018,
+  2457,
+  2362,
+  2242,
+  1918,
+  1838,
+  1708,
+  2266,
+  2515,
+  2180,
+  3520,
+  2745,
+  2140,
+  2958,
+  2691,
+  1996,
+  2847,
+  3051,
+  2950,
+  1095,
+  2926,
+  1255,
+  1022,
+  1797,
+  1582,
+  1656,
+  1840,
+  1504,
+  1627,
+  481
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p1_c1",
+   "page": 1,
+   "text": "LatteReview☕️\nA Multi-Agent Framework for Systematic Review Automation ​\nUsing Large Language Models​\n\n(A Technical Report)\n\nPouria Rouzrokh1,2,*, Bardia Khosravi1,2, Parsa Rouzrokh2, Moein Shariatnia3​\n\n(1) Department of Radiology & Biomedical Imaging, Yale School of Medicine, Yale University, CT, USA (2) Mayo Clinic AI Laboratory,\nMayo Clinic, MN, USA (3) Tehran University of Medical Sciences, Tehran, Iran\n(*) Please address all correspondence to pouria.rouzrokh@yale.edu.\n\nFigure 1. An example multiagent review workflow for title and abstract screening with two junior reviewer agents\n(round A) followed by concept extraction by a senior and more powerful reviewer agent (round B).\n\nAbstract\nSystematic literature reviews and meta-analyses are essential for synthesizing research insights, but they\nremain time-intensive and labor-intensive due to the iterative processes of screening, evaluation, and data\nextraction. This paper introduces and evaluates LatteReview, a Python-based framework that leverages large\nlanguage models (LLMs) and multi-agent systems to automate key elements of the systematic review\nprocess. Designed to streamline workflows while maintaining rigor, LatteReview"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p1_c2",
+   "page": 1,
+   "text": "that leverages large\nlanguage models (LLMs) and multi-agent systems to automate key elements of the systematic review\nprocess. Designed to streamline workflows while maintaining rigor, LatteReview utilizes modular agents for\ntasks such as title and abstract screening, relevance scoring, and structured data extraction. These agents\noperate within orchestrated workflows, supporting sequential and parallel review rounds, dynamic\ndecision-making, and iterative refinement based on user feedback. LatteReview's architecture integrates\nLLM providers, enabling compatibility with both cloud-based and locally hosted models. The framework\nsupports features such as Retrieval-Augmented Generation (RAG) for incorporating external context,\nmultimodal reviews, Pydantic-based validation for structured inputs and outputs, and asynchronous\nprogramming for handling large-scale datasets. The framework is available on the GitHub repository, with\ndetailed documentation and an installable package."
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p2_c1",
+   "page": 2,
+   "text": "1. Background\nAcademic literature reviews are foundational to advancing knowledge in any discipline, providing insights that guide\nresearch, policy, and practice (1). However, conducting systematic reviews or meta-analyses is an inherently\ncomplex and time-intensive process (2,3). Researchers and reviewers must meticulously find, read, and evaluate\nnumerous articles—often titles, abstracts, and full texts—in multiple iterative rounds. Each round serves distinct\npurposes, such as relevance screening, quality assessment, or data extraction, frequently involving multiple\nreviewers to ensure reliability and mitigate bias. The need for such rigor, combined with the ever-growing volume of\nscientific publications, has made literature reviews dauntingly labor-intensive.\nCompounding this challenge is the dynamic nature of systematic review protocols. Slight changes in the study\ndesign, such as updated inclusion criteria or expanded search strategies, often necessitate redoing or augmenting\nprior reviews. Such revisions can exponentially increase the effort required, making these studies resource-intensive\nand, at times, prohibitive. This is especially significant in fields like medicine,"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p2_c2",
+   "page": 2,
+   "text": "reviews. Such revisions can exponentially increase the effort required, making these studies resource-intensive\nand, at times, prohibitive. This is especially significant in fields like medicine, where systematic reviews often\nunderpin evidence-based guidelines and decision-making. Hence, there is an urgent need for tools that not only\naccelerate these processes but also enhance their efficiency and reliability.\n1.2. Purpose of the Package\nLatteReview is a Python-based framework designed to address these challenges by automating key elements of the\nacademic and systematic review process using advanced large language models (LLMs). Its name symbolizes the\nvision of transforming the traditionally arduous task of academic reviewing into an efficient and even enjoyable\nexperience—as quick and satisfying as savoring a latte. By integrating multi-agent systems powered by LLMs,\nLatteReview enables researchers to perform complex review tasks with minimal effort while maintaining high\nstandards of rigor and transparency.\nThe package leverages LLMs’ capabilities to analyze and synthesize textual and visual data, making it possible to\nautomate tasks like relevance scoring, conceptual"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p2_c3",
+   "page": 2,
+   "text": "standards of rigor and transparency.\nThe package leverages LLMs’ capabilities to analyze and synthesize textual and visual data, making it possible to\nautomate tasks like relevance scoring, conceptual abstraction, and structured data extraction. These tasks,\ntraditionally performed by human reviewers, are accelerated and systematized using AI agents. Moreover,\nLatteReview’s modular design supports workflows involving sequential or parallel review rounds, dynamic\ndecision-making, and the ability to incorporate reviewer feedback for iterative refinement.\n1.3. Audience and Use Cases\nLatteReview is intended for a broad audience spanning academia, industry, and beyond. Its primary users are\nresearchers, systematic reviewers, and data scientists who seek to streamline their literature review processes. Key\nuse cases include:\n●​ Systematic Reviews and Meta-Analyses: Automating title and abstract screening, checking against inclusion\nand exclusion criteria, relevance scoring, and data abstraction for large datasets.\n2"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p3_c1",
+   "page": 3,
+   "text": "●​ Rapid Reviews: Enabling quick assessments of recent literature, such as understanding the new trends in\nresearch or collecting new clinical guidelines or policy briefs.\n●​ Preliminary Screening: Filtering articles based on defined criteria before conducting in-depth analyses.\n●​ Interdisciplinary Collaborations: Facilitating reviews in emerging or interdisciplinary fields where traditional\nexpertise may be limited.\nLatteReview supports a wide array of inputs, including article titles, abstracts, and multimodal data (e.g., images). Its\ncompatibility with various LLM providers ensures users can tailor the framework to their specific needs, from\nleveraging state-of-the-art cloud-based models to employing locally hosted solutions. With features such as\nRetrieval-Augmented Generation (RAG) for context integration (4), LatteReview enhances both the efficiency and\ndepth of systematic review, setting a new standard for how research synthesis is conducted.\n2. System Architecture and Design\n2.1. High-Level Overview\nThe LatteReview framework is built around a multi-agent architecture designed to streamline systematic review\nworkflows. At its core, the system integrates large language"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p3_c2",
+   "page": 3,
+   "text": "2.1. High-Level Overview\nThe LatteReview framework is built around a multi-agent architecture designed to streamline systematic review\nworkflows. At its core, the system integrates large language models (LLMs) with a structured workflow engine to\nprovide an end-to-end solution for literature review tasks. The architecture is modular, enabling extensibility and\ncustomization to meet the unique demands of various research contexts.\nThe system comprises three primary components:\n1.​ Providers: These interface with different LLM Application Programming Interface (APIs), including\nOpenAI, Ollama, and LiteLLM. Providers abstract the complexities of API interactions, ensuring uniformity\nand reliability across diverse model architectures.\n2.​ Reviewer Agents: Representing the core review units, reviewer agents encapsulate different roles and\nexpertise levels. They perform tasks such as relevance scoring, abstraction, and customized reviews based on\nuser-defined schemas.\n3.​ Workflows: This module orchestrates multi-round reviews, allowing agents to interact and process data\nsequentially or in parallel. Workflows manage dependencies, facilitate dynamic decision-making, and ensure"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p3_c3",
+   "page": 3,
+   "text": "This module orchestrates multi-round reviews, allowing agents to interact and process data\nsequentially or in parallel. Workflows manage dependencies, facilitate dynamic decision-making, and ensure\nstructured output.\nA high-level flow diagram illustrating the relationships between these components is provided below in Figure 1.\n2.2. Core Modules\n2.2.1. Providers\nThe Provider module acts as the bridge between the LatteReview framework and LLM APIs. It includes:\n3"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p4_c1",
+   "page": 4,
+   "text": "●​ BaseProvider: An abstract class defining the core interface for all providers. It ensures consistent error\nhandling, type safety, and API interaction.\n●​ OpenAIProvider: Facilitates integration with OpenAI and Gemini models, supporting text and multimodal\ninputs.\n●​ OllamaProvider: Optimized for local LLMs, enabling efficient processing without reliance on cloud\nservices.\n●​ LiteLLMProvider: A unified interface supporting multiple model providers, including OpenAI and\nAnthropic.\n2.2.2. Agents\nAgents are specialized units within the framework responsible for executing review tasks. The following agent types\nare implemented:\n1.​ BaseReviewer: A generic class that provides foundational capabilities for all agents, such as prompt\nhandling, input validation, and output formatting.\n2.​ ScoringReviewer: Designed for scoring-based evaluations, this agent generates structured outputs with\nscores, reasoning, and certainty metrics.\n3.​ TitleAbstractReviewer: Mimics the ScoringReviewer agent but is specialized for reviewing input items\n(typically, titles and abstracts of some articles) against a provided inclusion and exclusion criteria.\n4.​ AbstractionReviewer: Extracts structured data"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p4_c2",
+   "page": 4,
+   "text": "but is specialized for reviewing input items\n(typically, titles and abstracts of some articles) against a provided inclusion and exclusion criteria.\n4.​ AbstractionReviewer: Extracts structured data from unstructured inputs, leveraging predefined keys and\ndetailed task-specific instructions.\n5.​ CustomReviewer: A flexible template allowing users to define agents tailored to their unique requirements.\nEach agent is instantiated with a specific provider, ensuring compatibility with the underlying LLM APIs. Agents\nuse Pydantic-based validation to guarantee structured inputs and outputs, improving reliability and interpretability.\n2.2.3. Workflows\nThe Workflow module manages the orchestration of review tasks across agents and rounds. A review workflow\naccepts an input Pandas dataframe including the raw data to be reviewed, and returns an enhanced version of that\ndataframe with all review results added as new columns. Key features include:\n●​ Concept of Rounds: Each round represents a stage in the review process, such as initial screening or expert\nvalidation.\n●​ Chaining Reviews: Outputs from all agents in one round can serve as inputs to agents in subsequent rounds,\nenabling complex,"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p4_c3",
+   "page": 4,
+   "text": "in the review process, such as initial screening or expert\nvalidation.\n●​ Chaining Reviews: Outputs from all agents in one round can serve as inputs to agents in subsequent rounds,\nenabling complex, multi-step analyses.\n●​ Parallel Reviews: Allows multiple agents to operate concurrently in a single round, significantly improving\nthroughput for large datasets.\n4"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p5_c1",
+   "page": 5,
+   "text": "●​ Dynamic Filters: Enables conditional processing, such as reviewing only items with conflicting scores from\nprevious rounds.\n2.3. Key Design Decisions\nLatteReview is designed to seamlessly integrate its components, providing a scalable and efficient platform for\nacademic literature reviews. The following key design principles guide the framework's architecture:\n1.​ Code Simplicity: By leveraging Pydantic for input validation and structured output, the framework ensures\nease of use and extensibility while maintaining robust error handling.\n2.​ Structured Outputs: Outputs are formatted as standardized JSON, enhancing interpretability and integration\nwith downstream workflows.\n3.​ Extensibility: Users can define custom agents and workflows, ensuring the framework adapts to evolving\nresearch needs.\n4.​ Compatibility: Broad support for popular LLM APIs, including cloud-based and locally hosted models,\nensures flexibility.\n5.​ Multimodal Support: The architecture accommodates diverse input types, such as text and images, enabling\ncomprehensive analyses.\n6.​ Retrieval-Augmented Generation (RAG): Incorporates support for dynamic context retrieval to enhance\naccuracy and relevance.\n7.​"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p5_c2",
+   "page": 5,
+   "text": "types, such as text and images, enabling\ncomprehensive analyses.\n6.​ Retrieval-Augmented Generation (RAG): Incorporates support for dynamic context retrieval to enhance\naccuracy and relevance.\n7.​ Asynchronous Operations: The use of asynchronous programming improves processing speed, enabling\nefficient handling of large-scale datasets.\nThese design principles collectively contribute to LatteReview's effectiveness in automating and accelerating\nsystematic review processes while maintaining the rigor and adaptability required in diverse research contexts.\n3. Core Functionalities\nThe LatteReview package provides a robust set of functionalities that empower users to conduct complex review\nworkflows leveraging AI-driven multi-agent systems. These core functionalities are designed to maximize flexibility,\naccuracy, and scalability in processing various types of inputs, including text and images. Below, we outline the\nprimary features and capabilities of LatteReview.\n3.1. Scoring Reviews\nScoring reviews are one of the foundational capabilities of LatteReview. With the ScoringReviewer class, users can\nconfigure AI agents to assess and assign scores to input items based on predefined"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p5_c3",
+   "page": 5,
+   "text": "Scoring reviews are one of the foundational capabilities of LatteReview. With the ScoringReviewer class, users can\nconfigure AI agents to assess and assign scores to input items based on predefined criteria. Each scoring review is\ngoverned by:\n5"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p6_c1",
+   "page": 6,
+   "text": "●​ Scoring Task: A descriptive goal that the reviewer must accomplish (e.g., \"Evaluate relevance to AI in\nradiology\").\n●​ Scoring Set: A defined range of allowable scores, ensuring consistency in evaluations (e.g., [1, 2, 3, 4, 5]).\n●​ Scoring Rules: Specific guidelines to ensure consistency and reliability in evaluations (e.g., a scale of 1 to\n5).\n●​ Reasoning Transparency: The agent provides reasoning for its decisions, which can be configured to be\nbrief or detailed depending on the ReasoningType selected. The reasoning cannot be None for the\nScoringReviewer. It defaults to \"brief\" if not provided.\n●​ Certainty Scores: The agent outputs a certainty score, quantifying the confidence in its assessment. These\nscores can later be used for calibration of agents, e.g., through conformal prediction setups, to improve trust\nin agent outputs.\n●​ Additional Context: Users can provide additional context to enhance the input for the agent. This can be a\nstring or a function dynamically called on every input to retrieve or generate context, such as integrating data\nfrom a retrieval-augmented generation (RAG) pipeline.\nThis functionality is ideal for tasks such as quality assessments,"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p6_c2",
+   "page": 6,
+   "text": "called on every input to retrieve or generate context, such as integrating data\nfrom a retrieval-augmented generation (RAG) pipeline.\nThis functionality is ideal for tasks such as quality assessments, relevance scoring, or prioritization of items.\n\nFigure 2. An example workflow for systematic review of some articles using the TitleAbstractReviewer agents.\n3.2. Title and Abstract Reviews\nThe Title and Abstract Review functionality is a specialized extension of the ScoringReviewer class. While\nleveraging the core scoring mechanisms, it focuses specifically on evaluating titles and abstracts of research items\nbased on predefined inclusion and exclusion criteria. This functionality provides a structured and efficient approach\nfor screening research documents, ensuring that only the most relevant items are included in downstream workflows\n(Figure 2). The key elements of Title and Abstract Reviews are outlined below:\n6"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p7_c1",
+   "page": 7,
+   "text": "Inclusion and Exclusion Criteria:\n●​ Users define clear inclusion and exclusion criteria to guide the review process.\n●​ The agent assesses whether the provided title and abstract meet all inclusion criteria and violate none of the\nexclusion criteria.\nCategorized Scoring Rules:\n●​ Scoring rules are categorized into inclusion and exclusion criteria, ensuring consistency and clarity in\nevaluations.\n●​ Scores are assigned on a 5-point scale:\n○​ 1: Absolutely exclude.\n○​ 2: Better to exclude.\n○​ 3: Not sure (ambiguous).\n○​ 4: Better to include.\n○​ 5: Absolutely include.\nReasoning Transparency:\n●​ The agent provides reasoning for its decisions, which could be \"brief\" or \"cot\", where the former means the\nagent should return a brief reasoning in 1 - 2 sentences, and the latter means a more detailed step-by-step\nreasoning is expected in the Chain-of-thought format.\n●​ Similar to ScoringAgent, the reasoning cannot be None for the TitleAbstractReviewer. It defaults to \"brief\" if\nnot provided.\nCustomizable Prompts:\n●​ Users can provide additional context or examples to tailor the evaluation process to their specific needs.\nThis functionality is particularly well-suited for systematic"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p7_c2",
+   "page": 7,
+   "text": "Customizable Prompts:\n●​ Users can provide additional context or examples to tailor the evaluation process to their specific needs.\nThis functionality is particularly well-suited for systematic literature reviews, meta-analyses, and other research\nworkflows that require efficient and consistent screening of large datasets. By ensuring rigorous adherence to\ninclusion and exclusion criteria, the Title and Abstract Review feature enhances the reliability and accuracy of\nresearch workflows, paving the way for more focused and impactful analyses.\n3.3. Abstraction Reviews\nThe AbstractionReviewer class is another reviewer class tailored for structured information extraction. By defining\nabstraction keys and corresponding descriptions, users can instruct the AI to extract specific data points from\ncomplex inputs. Key features include:\n7"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p8_c1",
+   "page": 8,
+   "text": "●​ Key-Value Pair Extraction: Extract data in a structured format, ensuring consistency and reliability.\n●​ Custom Instructions: Provide detailed guidance for each abstraction key, enabling nuanced extraction\ntailored to user needs.\n●​ Contextual Support: Include additional contextual information to refine the extraction process.\n●​ Additional Context: Similar to scoring reviews, users can provide additional context as a string or function,\ndynamically enhancing inputs with external data.\nThis functionality is particularly useful for tasks like summarizing research papers, analyzing trends in the literature,\nextracting metadata, or generating structured abstracts from text (Figure 3).\n\nFigure 3. (A) A review workflow for screening titles and abstracts from a dataset created by querying PubMed for\ncase report articles on complications of COVID-19 vaccines. The workflow consists of two agents that detect relevant\narticles and a third agent that abstracts the complications mentioned in those articles into a list. (B and C) A\nknowledge graph of complications extracted by the reviewers, where each node represents a complication. The size of\nthe nodes correlates with the number of"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p8_c2",
+   "page": 8,
+   "text": "in those articles into a list. (B and C) A\nknowledge graph of complications extracted by the reviewers, where each node represents a complication. The size of\nthe nodes correlates with the number of articles mentioning that complication, with larger and darker nodes indicating\nhigher mention counts.\n3.4. Multi-Reviewer Workflows\nLatteReview excels in orchestrating workflows involving multiple AI reviewers. The ReviewWorkflow class allows\nusers to define multi-stage review processes with:\n●​ Sequential Rounds: Execute reviews in predefined stages, where the output of one stage can feed into the\nnext.\n●​ Parallel Reviews: Assign multiple reviewers to independently assess the same inputs in a given stage.\n8"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p9_c1",
+   "page": 9,
+   "text": "●​ Conditional Filtering: Define filters to determine which items proceed to subsequent rounds, enabling\ntargeted and efficient workflows.\n●​ Output Aggregation: Combine results from multiple reviewers, supporting advanced use cases like\nconsensus-building or conflict resolution.\nThe multi-reviewer workflow capability is ideal for hierarchical decision-making processes and collaborative\nreviews.\n3.5. Multimodal Review Support\nLatteReview supports multimodal inputs, allowing reviewers to analyze both text and image data. This capability\nenables:\n●​ Text and Image Integration: Reviewers can consider text descriptions alongside associated images, such as\nfigures or charts.\n●​ Validation: Ensure all image inputs meet format and existence requirements before processing.\n●​ Unified Outputs: Combine insights from text and image reviews into a cohesive result.\nThis feature is particularly beneficial for domains like medical imaging or research where visual data complements\ntextual information.\n3.6. Retrieval-Augmented Generation (RAG) Integration\nLatteReview integrates seamlessly with retrieval-augmented generation workflows, enabling reviewers to:\n●​ Leverage External Knowledge: Fetch"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p9_c2",
+   "page": 9,
+   "text": "3.6. Retrieval-Augmented Generation (RAG) Integration\nLatteReview integrates seamlessly with retrieval-augmented generation workflows, enabling reviewers to:\n●​ Leverage External Knowledge: Fetch relevant information dynamically to enhance review accuracy.\n●​ Dynamic Context Addition: Automatically incorporate retrieved data for each input item into the review\nprocess, improving relevance and grounding.\n●​ Customizable Retrieval Functions: Support for user-defined functions to tailor retrieval logic to specific\nuse cases.\nRAG integration is especially powerful for tasks requiring dynamic knowledge updates, such as literature reviews or\npolicy compliance checks.\n3.7. Custom Agents\nLast but not least, LatteReview’s extensible architecture allows users to define custom reviewer agents by\nsubclassing the BasicReviewer. This enables:\n●​ Tailored Prompts: Create specialized prompts that address unique review requirements.\n●​ Custom Logic: Override default behaviors to implement domain-specific functionality.\n●​ Dynamic Adaptability: Integrate novel data formats or workflows seamlessly.\n●​ Additional Context: Like other agents, custom agents can utilize additional context to enhance"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p9_c3",
+   "page": 9,
+   "text": "functionality.\n●​ Dynamic Adaptability: Integrate novel data formats or workflows seamlessly.\n●​ Additional Context: Like other agents, custom agents can utilize additional context to enhance their\nperformance, using either static strings or dynamic functions.\n9"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p10_c1",
+   "page": 10,
+   "text": "Examples of custom agents include sentiment analysis reviewers, compliance checkers, or creative text generators.\n4. Evaluation\nEvaluating LatteReview presents unique challenges due to the framework's inherent flexibility and the virtually\ninfinite possibilities for constructing review workflows. Given a specific review task, users can implement vastly\ndifferent approaches—from deploying a single reviewer agent to orchestrating complex workflows involving\nmultiple agents working in parallel or series. For instance, when screening titles and abstracts from a dataset, one\nresearcher might opt for a straightforward single-agent approach, while another might design an intricate workflow\nwith five or six reviewer agents collaborating in various configurations. These different approaches inevitably yield\nvarying performance metrics and computational costs. Furthermore, since LatteReview allows users to choose from\na wide range of LLMs as the core engines for reviewer agents, evaluating the framework's performance becomes\nintertwined with assessing the capabilities of these underlying models in scientific review tasks. The evaluation of\nLLMs themselves remains a complex challenge in the"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p10_c2",
+   "page": 10,
+   "text": "framework's performance becomes\nintertwined with assessing the capabilities of these underlying models in scientific review tasks. The evaluation of\nLLMs themselves remains a complex challenge in the field, with ongoing debates about appropriate benchmarks and\nmetrics—a comprehensive discussion of which lies beyond the scope of this technical report.\nArticle\nAbbreviation\nInclusion Criteria\nExclusion Criteria\nAppenzeller-Herz\nog_2019 (5)\n- Patients with Wilson's Disease of any age or stage​\n- Study drug has to be one of four established therapies,\nnamely DPen, trientine, TTM or Zn.​\n- Control could be placebo, no treatment or any other\ntreatment that does not include the respective study drug​\n- Concomitant therapies had to be identical in the\ncompared treatment arms​\n- Combination therapy regimens that include the\nrespective monotherapy drug are not considered​\n- Prospective or retrospective studies reported​\n- Randomized, non-randomized controlled trials and\ncomparative observational studies\n- Animal studies, case reports, case\nseries, cross-sectional studies,\nbefore-after studies, reviews, letters,\nabstract-only publications, editorials,\ndiagnostic or other testing studies and"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p10_c3",
+   "page": 10,
+   "text": "studies\n- Animal studies, case reports, case\nseries, cross-sectional studies,\nbefore-after studies, reviews, letters,\nabstract-only publications, editorials,\ndiagnostic or other testing studies and\nnon-controlled studies\nDonners_2021\n(6)\n- Emicizumab studies providing:​\n1. Data on humans​\n2. Original PK data or modeled PK data or PK/PD\nrelationships​\n3. Access to the abstract and the full text in English​\n- In the event of doubt regarding eligibility, the records or\narticles should be included.\nNot specified\n10"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p11_c1",
+   "page": 11,
+   "text": "Jeyaraman_2020\n(7)\n- Studies are included if they meet the following PICOS\ncriteria:​\nPopulation: Patients with knee osteoarthritis​\nIntervention: MSC therapy​\nComparator: Usual care​\nOutcomes: Visual Analog Score (VAS) for Pain, Western\nOntario McMaster Universities Osteoarthritis Index\n(WOMAC), Lysholm Knee Scale (Lysholm),\nWhole-Organ Magnetic Resonance Imaging Score\n(WORMS), Knee Osteoarthritis Outcome Score (KOOS),\nand adverse events​\nStudy Design: Randomized controlled trials\n- Observational studies and\ninterventional studies without a\ncomparator group​\n- Animal studies involving stem cell\ntherapy for knee osteoarthritis models​\n- Reviews\nMeijboom_2021\n(8)\n- Articles are included if they meet the following criteria:​\n1. Study involved transitioning from a TNF-alpha\ninhibitor (including etanercept, infliximab, and\nadalimumab) originator to a biosimilar​\n2. The number of patients who retransitioned is reported\nor can be calculated​\n3. The article is an original research article published in a\npeer-reviewed journal​\n4. The article included baseline characteristics of the\npatients who transitioned​\n5. The article is written in English​\n- Transitioning is defined as patients in"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p11_c2",
+   "page": 11,
+   "text": "published in a\npeer-reviewed journal​\n4. The article included baseline characteristics of the\npatients who transitioned​\n5. The article is written in English​\n- Transitioning is defined as patients in whom the\nbiosimilar was introduced after the originator, without\ntreatment with other drugs in between. Retransitioning is\ndefined as restarting the originator directly after\ndiscontinuing a biosimilar, without treatment with other\ndrugs in between.​\n- Both transitioning and retransitioning involve changes\nwith the same active biological substance.\nNot specified\nMuthu_2021 (9)\n- To be included, a study should meet the following\ncriteria:​\n1. The study should be an RCT with 1:1 parallel two-arm\ndesign​\n2. The study must be related to spine surgery involving\npreoperative or intraoperative or postoperative variables​\n3. The study must have a dichotomous primary or\nsecondary outcome.\n- Studies not involving human\nsubjects​\n- Studies with continuous variable\noutcomes like pain scores, Oswestry\nDisability Index scores, time to union\nwithout predefined clinical success\ncriteria​\n- Studies that did not report a\nstatistically significant primary or\nsecondary outcome measure\n11"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p12_c1",
+   "page": 12,
+   "text": "Oud_2018(10)\n- Randomized controlled trials (RCT)s on four specialized\npsychotherapies (DBT: dialectic behavior therapy, MBT:\nmentalization-based treatment, TFP: transference-focused\ntherapy and ST: schema therapy) for adults (18 years and\nolder) with Borderline personality disorder (BPD), which\nincludes an individual psychotherapy component and had\na duration of 16 weeks or more.​\n- Eligible comparison groups are other protocolized and\nspecialized psychotherapies, or control groups, for\nexample, treatment as usual (TAU), waiting list, attention\ncontrol or community treatment by experts (CTBE).\n- Studies are excluded with a cut-off\nof <66% of the participants having\nBPD, unless disaggregated data are\nprovided.​\n- Studies are excluded that tested\nincomplete versions of specialized\ntreatment, for example, studies that\ninvestigated only skills training\ninstead of the full DBT program.\nTable 1. Inclusion and exclusion criteria documented for six of the articles used to evaluate LatteReview from the\nSynergy collection of datasets.\nDespite these methodological challenges, we aim to demonstrate LatteReview's practical utility in systematic review\napplications through two distinct"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p12_c2",
+   "page": 12,
+   "text": "from the\nSynergy collection of datasets.\nDespite these methodological challenges, we aim to demonstrate LatteReview's practical utility in systematic review\napplications through two distinct evaluation approaches. First, we evaluate the framework using the SYNERGY\ncollection, a comprehensive pool of article datasets compiled from previous systematic reviews, complete with their\noriginal inclusion and exclusion criteria. This dataset collection, generously assembled by De Bruin al.(11), provides\na standardized benchmark for assessing systematic review automation tools. Second, we evaluate LatteReview on a\ncustom dataset derived from two of our previously published scoping reviews on AI applications in cardiothoracic\nimaging (12,13). This second evaluation addresses a limitation we observed in the SYNERGY collection: the\nheterogeneity and occasional ambiguity in how inclusion and exclusion criteria were defined across its constituent\ndatasets. While these criteria remain interpretable to human reviewers, they often lack the precision and structure\nthat would optimize them for LLM comprehension. By including this custom dataset with carefully crafted prompts,\nwe demonstrate"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p12_c3",
+   "page": 12,
+   "text": "to human reviewers, they often lack the precision and structure\nthat would optimize them for LLM comprehension. By including this custom dataset with carefully crafted prompts,\nwe demonstrate LatteReview's performance under more idealized conditions.\nFor both evaluations, we implement a representative workflow utilizing the TitleAbstractReviewer agent from the\nLatteReview package. While not claiming to be optimal, this workflow serves as a practical starting point for\nacademic reviews. The workflow comprises two junior reviewers—one powered by Google's Gemini-1.5-flash and\nanother by OpenAI's GPT-4O-mini—both selected for their balance of performance and cost-effectiveness. A senior\nreviewer agent, utilizing OpenAI's GPT-4O, intervenes only in cases of disagreement between the junior reviewers to\nmake final inclusion decisions. We note that alternative high-performance models such as OpenAI’s O1, Claude 3.5\nSonnet, or Gemini 1.5 Pro could also serve effectively in the senior reviewer role.\nThe TitleAbstractReviewer agents in our workflow employ a 5-point Likert scale for article assessment, where a\nscore of 1 indicates \"absolutely exclude\" and 5 indicates \"absolutely include.\" For"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p12_c4",
+   "page": 12,
+   "text": "role.\nThe TitleAbstractReviewer agents in our workflow employ a 5-point Likert scale for article assessment, where a\nscore of 1 indicates \"absolutely exclude\" and 5 indicates \"absolutely include.\" For aggregating reviewer decisions,\nwe implemented a hierarchical decision-making process: when the junior reviewers' scores differ or both assign a\nscore of 3, the senior reviewer's assessment is sought and becomes definitive. In all other cases, we average the\njunior reviewers' scores to determine the final assessment.\n12"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p13_c1",
+   "page": 13,
+   "text": "Dataset\nNumber of Articles\n(% Reported Relevant)\nSensitive Mode\n(T = 1.5)\nSpecific Mode\n(T = 3.0)\nBalanced Mode\n(T = 4.5)\nAUC\nOud\n2018\n952 (2.1)\nAccuracy=0.63,\nRecall=1.0,\nPrecision=0.05\nAccuracy=0.96,\nRecall=0.5,\nPrecision=0.28\nAccuracy=0.93,\nRecall=0.8,\nPrecision=0.21\n0.95\nAppenzeller-Herzog\n2019\n2873 (0.9)\nAccuracy=0.72,\nRecall=0.85,\nPrecision=0.03\nAccuracy=0.98,\nRecall=0.23,\nPrecision=0.12\nAccuracy=0.96,\nRecall=0.31,\nPrecision=0.07\n0.85\nMuthu\n2021\n2719 (12.36)\nAccuracy=0.42,\nRecall=0.96,\nPrecision=0.17\nAccuracy=0.84,\nRecall=0.18,\nPrecision=0.27\nAccuracy=0.83,\nRecall=0.24,\nPrecision=0.28\n0.73\nMeijboom\n2021\n882 (4.2)\nAccuracy=0.45,\nRecall=0.97,\nPrecision=0.07\nAccuracy=0.89,\nRecall=0.84,\nPrecision=0.26\nAccuracy=0.88,\nRecall=0.84,\nPrecision=0.24\n0.90\nJeyaraman\n2020\n1175 (8.17)\nAccuracy=0.85,\nRecall=0.5,\nPrecision=0.27\nAccuracy=0.92,\nRecall=0.02,\nPrecision=0.67\nAccuracy=0.92,\nRecall=0.02,\nPrecision=0.67\n0.71\nDonners\n2021\n258 (5.81)\nAccuracy=0.13,\nRecall=1.0,\nPrecision=0.06\nAccuracy=0.72,\nRecall=0.67,\nPrecision=0.13\nAccuracy=0.68,\nRecall=0.73,\nPrecision=0.12\n0.77\nTable 2. The performance of Review Workflow on six datasets from the Synergy Collection; AUC: Area Under the\nReceiver"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p13_c2",
+   "page": 13,
+   "text": "Recall=0.67,\nPrecision=0.13\nAccuracy=0.68,\nRecall=0.73,\nPrecision=0.12\n0.77\nTable 2. The performance of Review Workflow on six datasets from the Synergy Collection; AUC: Area Under the\nReceiver operating characteristic Curvel; T: Threshold\nTo comprehensively evaluate the framework's performance, we established three distinct decision thresholds, each\nrepresenting different review strategies:\n1.​ Sensitive Strategy (threshold = 1.5): Designed to maximize recall, this threshold includes articles with\naccumulated scores of 1.5 or higher, ensuring high sensitivity in capturing potentially relevant articles.\n2.​ Specific Strategy (threshold = 4.5): Optimized for precision, this conservative threshold only includes\narticles that received very high eligibility scores, prioritizing specificity over sensitivity.\n3.​ Balanced Strategy (threshold = 3.0): Represents a middle-ground approach, neither overly sensitive nor\nspecific, aiming to balance precision and recall in article selection.\nIn the following sections, we present the framework's performance across both the SYNERGY dataset collection and\ncustom dataset under each of these three review strategies, providing a comprehensive"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p13_c3",
+   "page": 13,
+   "text": "In the following sections, we present the framework's performance across both the SYNERGY dataset collection and\ncustom dataset under each of these three review strategies, providing a comprehensive assessment of LatteReview's\ncapabilities in systematic review automation.\n4.1. Evaluation on SYNERGY Dataset Collection\nTable 1 presents a comprehensive summary of the datasets from the SYNERGY dataset collection utilized in our\nfirst evaluation, along with their respective inclusion and exclusion criteria. The performance metrics of our defined\nreview workflow across these datasets are summarized in Table 2. A receiver operating characteristic (ROC) curve\nand a sensitivity-specificity plot for the performance are also visualized in Figure 4.\n13"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p14_c1",
+   "page": 14,
+   "text": "The review workflow demonstrated substantial discriminative capability, achieving Area Under the Curve (AUC)\nvalues ranging from 0.77 to 0.95 across the six different article collections from the SYNERGY dataset collection.\nHowever, despite these relatively high AUC values, we observed significant variation in performance across\ndatasets. This variability can be attributed to several key factors:\nFigure 4. The performance of Review Workflow on six datasets from the Synergy Collection. The left plot shows the\nReceiver operating characteristic Curve for each dataset and the right plot demonstrates sensitivity vs. specificity of the\nReview Workflow in each performance mode.\n1.​ Task Heterogeneity: The datasets encompass diverse review tasks, each with distinct inclusion and exclusion\ncriteria that vary considerably in content, structure, clarity, and specificity. This heterogeneity in criteria\ndefinition directly impacts the LLMs' ability to interpret and apply the screening rules consistently.\n2.​ Dataset Characteristics: The datasets exhibit substantial heterogeneity in both size and inclusion rates.\nParticularly noteworthy is the wide range in inclusion percentages, spanning from"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p14_c2",
+   "page": 14,
+   "text": "2.​ Dataset Characteristics: The datasets exhibit substantial heterogeneity in both size and inclusion rates.\nParticularly noteworthy is the wide range in inclusion percentages, spanning from less than 1% to 12.36% of\nthe total articles. In datasets with very low inclusion rates, the inclusion and exclusion criteria must be\nexceptionally specific and clearly articulated for LLMs to accurately identify the small subset of relevant\narticles.\n3.​ Threshold Sensitivity: As illustrated in Figure 4, the choice of decision threshold significantly impacts the\nreview workflow's performance. This threshold sensitivity highlights the importance of carefully calibrating\nthe decision-making process based on the specific characteristics of each review task and the desired balance\nbetween precision and recall.We will further explore these performance dynamics in the subsequent section,\nwhere we discuss the value of validating the review workflow on a carefully selected subset of the datasets.\nThis focused analysis provides additional insights into optimizing LatteReview's performance across\ndifferent systematic review contexts.\n14"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p15_c1",
+   "page": 15,
+   "text": "Search Strategy\nInclusion criteria\nExclusion criteria\nStrategy 1\n1. The study must involve CT scans. If\nmultiple modalities are involved, CT scans\nshould be among them.\n1. The study must not include PET scans as one\nof its modalities.\nStrategy 2\n1. The study must involve CT scans. If\nmultiple modalities are involved, CT scans\nshould be among them.\n2. The study should introduce, develop, or\ndiscuss a deep learning-baseed classifier.\n1. The study must not include PET scans as one\nof its modalities.\n2. Studies focusing on cardiovascular organs or\nlung vasculature must be excluded.\nStrategy 3\n1. The study must involve CT scans. If\nmultiple modalities are involved, CT scans\nshould be among them.\n2. The study should introduce, develop, or\ndiscuss a deep learning-baseed classifier.\n3. The clinical application or model in the\nstudy must focus on diagnosis.\n1. The study must not include PET scans as one\nof its modalities.\n2. Studies focusing on cardiovascular organs or\nlung vasculature must be excluded.\n3. All studies that did not have an external test\nset in addition to their internal test set must be\nexcluded.\nTable 3. The three different search strategies put together for evaluating the"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p15_c2",
+   "page": 15,
+   "text": "excluded.\n3. All studies that did not have an external test\nset in addition to their internal test set must be\nexcluded.\nTable 3. The three different search strategies put together for evaluating the Review Workflow on the custom dataset.\nThe strategies get more complicated as we go from strategy 1 to 3.\n4.2. Evaluation on Custom Dataset\nIn contrast to our first evaluation, which examined six distinct datasets from the SYNERGY collection, our second\nevaluation focuses on a single custom dataset derived from our previous publications. While utilizing a single\ndataset, we systematically assessed the LatteReview workflow's performance against three progressively complex\npairs of inclusion and exclusion criteria. These criteria sets were designed to present increasing levels of complexity\nand comprehensiveness from pair 1 to pair 3.\nTable 3 presents these three distinct sets of inclusion and exclusion criteria, along with the number of eligible\narticles identified by human annotators under each criterion set. The performance metrics of the LatteReview\nworkflow against these criteria sets are detailed in Table 4 and visualized in Figure 5.\nThe analysis reveals several key insights:\n1.​"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p15_c3",
+   "page": 15,
+   "text": "each criterion set. The performance metrics of the LatteReview\nworkflow against these criteria sets are detailed in Table 4 and visualized in Figure 5.\nThe analysis reveals several key insights:\n1.​ Performance Range: The Area Under the Curve (AUC) for correctly identifying articles ranges from 0.79 for\nthe most complex inclusion/exclusion criteria to 0.94 for the simplest criteria. While this range parallels that\nobserved in our SYNERGY dataset collection evaluation, we note important qualitative differences in\nperformance characteristics.\n2.​ Decision Strategy Convergence: Notably, the balanced and specific review strategies yield similar\nperformance metrics across all three reviewer configurations. This convergence suggests that the reviewer\nagents demonstrate high confidence in their scoring decisions, likely attributable to the clear and specific\nnature of the prompts derived from our carefully crafted inclusion and exclusion criteria.\n15"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p16_c1",
+   "page": 16,
+   "text": "3.​ Robust Performance Floor: Even in the most challenging configuration, the workflow maintains respectable\nperformance metrics, with both sensitivity and specificity stabilizing around 0.7 when using the balanced\nthreshold strategy. This performance stability is achieved without requiring extensive threshold validation or\noptimization, suggesting robust generalization capabilities.\nIt is worth noting that the workflow's performance could potentially be enhanced by employing more powerful\nLLMs for any of the three reviewer roles. The current results, achieved with relatively modest model configurations,\ndemonstrate the framework's effectiveness when provided with well-structured, clear criteria—even when handling\ncomplex review tasks. On a separate note, the cost and time required for a review workflow can vary significantly\ndepending on the selected base large language models and the tier of usage associated with each provider. However,\nin our experiments, a review workflow consisting of two junior reviewers using Gemini 1.5 Flash and OpenAI\nGPT-4O-mini with Tier 4 usage on OpenAI providers took, on average, about one minute to review 1,000 pairs of\ntitles and abstracts, at a"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p16_c2",
+   "page": 16,
+   "text": "of two junior reviewers using Gemini 1.5 Flash and OpenAI\nGPT-4O-mini with Tier 4 usage on OpenAI providers took, on average, about one minute to review 1,000 pairs of\ntitles and abstracts, at a cost of $1.20.\nFor readers interested in reproducing these evaluations or examining the implementation details, we encourage\naccessing our package's GitHub repository1, which contains the complete datasets, evaluation code, and workflow\nconfigurations used in these analyses.\n\nSearch strategy\n% Reported\nRelevant\nSensitive Mode\n(Threshold = 1.5)\nSpecific Mode\n(Threshold = 3.0)\nBalanced Mode\n(Threshold = 4.5)\nAUC\nStrategy 1\n5.62\nAccuracy=0.17,\nRecall=0.96,\nPrecision=0.06\nAccuracy=0.7,\nRecall=0.78,\nPrecision=0.13\nAccuracy=0.69,\nRecall=0.78,\nPrecision=0.13\n0.79\nStrategy 2\n37.53\nAccuracy=0.45,\nRecall=0.99,\nPrecision=0.4\nAccuracy=0.78,\nRecall=0.83,\nPrecision=0.67\nAccuracy=0.78,\nRecall=0.84,\nPrecision=0.66\n0.82\nStrategy 3\n71.27\nAccuracy=0.91,\nRecall=0.94,\nPrecision=0.93\nAccuracy=0.91,\nRecall=0.9,\nPrecision=0.97\nAccuracy=0.92,\nRecall=0.92,\nPrecision=0.97\n0.94\nTable 4. The performance of Review Workflow on the custom dataset with three different search strategies (i.e., three\ndifferent sets of"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p16_c3",
+   "page": 16,
+   "text": "Precision=0.97\nAccuracy=0.92,\nRecall=0.92,\nPrecision=0.97\n0.94\nTable 4. The performance of Review Workflow on the custom dataset with three different search strategies (i.e., three\ndifferent sets of inclusion and exclusion criteria that get more complicated from strategy 1 to 3); AUC: Area Under\nthe Receiver operating characteristic Curve\n5. Practical Tips\nReflecting on the evaluation results of LatteReview, we would like to provide users with some practical tips on how\nto effectively utilize this package and its functionalities. The following subsections outline key considerations and\nstrategies for optimizing your use of LatteReview.\n1 https://github.com/PouriaRouzrokh/LatteReview\n16"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p17_c1",
+   "page": 17,
+   "text": "5.1. Design Review Workflows Thoughtfully\nBuilding an ideal review workflow with LatteReview is akin to constructing a Lego masterpiece. LatteReview\nprovides a set of core functionalities that researchers can combine to create optimal review workflows tailored to\ntheir specific use cases. Just as you would carefully design a review workflow with human reviewers, considering\nfactors such as the number and roles of reviewers and the sequence of review rounds, apply the same principles\nwhen configuring LatteReview agents.\nAsk yourself key questions: How many reviewers are needed for this task? What mix of junior and senior reviewers\nis optimal? At which stages should senior reviewers intervene? How will results from parallel junior reviewers be\naggregated? By thoughtfully mapping out your review process as you would with human reviewers, you can\neffectively translate that design into a LatteReview workflow.\nFigure 5. The performance of Review Workflow on the custom dataset with three different search strategies. The left\nplot shows the Receiver operating characteristic Curve for each search and the right plot demonstrates sensitivity vs.\nspecificity of the Review Workflow in each"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p17_c2",
+   "page": 17,
+   "text": "different search strategies. The left\nplot shows the Receiver operating characteristic Curve for each search and the right plot demonstrates sensitivity vs.\nspecificity of the Review Workflow in each performance mode.\n5.2. Provide Clear Review Criteria and Instructions\nAlways define clear rules, instructions, or criteria for your review before configuring LatteReview agents. Providing\nvague or insufficient guidance will lead to suboptimal results, just as it would with human reviewers. This is\nespecially critical for LLM-based reviewers, as these models rely on the prompts you provide to predict the most\nprobable and relevant outputs.\nThe quality of your inclusion criteria, exclusion criteria, and other instructions directly impacts the performance of\nLatteReview agents. Invest time in carefully crafting comprehensive and unambiguous guidance to set your\nreviewers up for success. Well-defined prompts are the foundation upon which LLMs can generate accurate and\nuseful review outputs.\n17"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p18_c1",
+   "page": 18,
+   "text": "5.3. Select Appropriate Reviewer Models\nLatteReview allows you to initialize reviewer agents with different underlying LLM models, each with its own\nstrengths, weaknesses, and costs. Always strive to match the right reviewer model to the right review task. Using an\noverly powerful and expensive model for a straightforward review is inefficient, while deploying an undersized\nmodel for a complex, nuanced review will yield poor results.\nLatteReview offers access to a wide range of models from various LLM providers. Take advantage of this flexibility\nto create cost-effective workflows that pair the right models with the right tasks. For example, you might use smaller,\nmore affordable models from the Gemini family for junior reviewers, a locally-hosted model for another junior\nreviewer, and a high-end OpenAI model with inference-time reasoning for your expert reviewer.\nThe optimal combination and hierarchy of reviewers depend on your specific use case. As a general heuristic,\nreserve more powerful and costly models for senior reviewer agents that are invoked when junior reviewers\nencounter difficulties or disagree. This allows you to deploy your LLM resources strategically and"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p18_c2",
+   "page": 18,
+   "text": "more powerful and costly models for senior reviewer agents that are invoked when junior reviewers\nencounter difficulties or disagree. This allows you to deploy your LLM resources strategically and economically.\n5.4. Enhance Reviewers with Examples and Context\nView each reviewer agent as an LLM adapted for a specific review use case. Just as you would employ techniques to\noptimize the performance of LLMs in other applications, you can use similar approaches to enhance your\nLatteReview agents.\nTwo key strategies are providing examples and additional context to reviewer agents. By including a few illustrative\nexamples of challenging review items and your expected outputs, you create a few-shot learning environment that\nprimes the model to handle the full breadth and nuance of the review task. This is analogous to training human\nreviewers with sample cases.\nSimilarly, equipping reviewers with additional context can significantly improve their performance. This context\nmight be task-specific, such as reference documents, or dynamically retrieved for each review item using techniques\nlike Retrieval-Augmented Generation (RAG). LatteReview allows you to provide this context as a text"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p18_c3",
+   "page": 18,
+   "text": "such as reference documents, or dynamically retrieved for each review item using techniques\nlike Retrieval-Augmented Generation (RAG). LatteReview allows you to provide this context as a text input or a\nfunction, offering flexibility in how you augment your reviewers' knowledge and capabilities.\n5.5. Align Reviewer Types with Review Tasks\nLatteReview provides three default reviewer agent types, each suited for different review scenarios. The\nTitleAbstractReviewer is designed for screening articles based on their titles and abstracts against inclusion and\nexclusion criteria. The ScoringReviewer is appropriate when you need more nuanced scoring than a 5-point Likert\nscale include/exclude decision, offering configurable score ranges and review rules. The AbstractionReviewer is\nbuilt for extracting structured information from review items.\n18"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p19_c1",
+   "page": 19,
+   "text": "If your review task does not fit neatly into these categories, LatteReview allows you to define custom reviewer\nclasses that inherit from the BasicReviewer agent. This flexibility empowers you to create bespoke agents with input\narguments and outputs tailored to your specific use case.\nYou can also design creative review workflows that combine multiple reviewer types. For example, you might use\nTitleAbstractReviewers or ScoringReviewers for initial screening, followed by AbstractionReviewers to extract\nstructured data from the selected items. Aligning the right reviewer types with each stage of your review process is\nkey to an efficient and effective workflow.\n5.6. Optimize Database Search Queries\nBefore implementing LatteReview workflows, it is crucial to develop well-crafted search queries when retrieving\narticles from bibliographic databases. Many screening tasks that might initially seem to require sophisticated\nAI-based review can actually be handled efficiently through careful query construction and database filtering. For\ninstance, in our evaluation of the SYNERGY dataset collection, we observed that certain inclusion criteria, such as\nrestricting to English-language"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p19_c2",
+   "page": 19,
+   "text": "query construction and database filtering. For\ninstance, in our evaluation of the SYNERGY dataset collection, we observed that certain inclusion criteria, such as\nrestricting to English-language publications, could be entirely addressed through database filters rather than\nrequiring LLM-based screening.\nEven more sophisticated filtering requirements, such as distinguishing between human and animal studies or\nidentifying specific study designs, can often be accomplished using the advanced search features and controlled\nvocabularies (e.g., MeSH terms in MEDLINE) available in scientific databases like PubMed, Scopus, or Web of\nScience. By leveraging these built-in filtering capabilities, researchers can significantly reduce the complexity of the\nsubsequent review task and allow LatteReview agents to focus on more nuanced aspects of the screening process that\ngenuinely require AI-based decision making.\n5.7. Validate Workflows on Small Sample Sets\nWhen applying LatteReview to large-scale review tasks, we strongly recommend first validating the workflow on a\nsmaller, randomly selected subset of the data. This preliminary validation serves multiple crucial purposes:\n1.​ Criteria"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p19_c3",
+   "page": 19,
+   "text": "review tasks, we strongly recommend first validating the workflow on a\nsmaller, randomly selected subset of the data. This preliminary validation serves multiple crucial purposes:\n1.​ Criteria Assessment: By manually reviewing a sample of articles against your inclusion/exclusion criteria,\nyou can assess the clarity and applicability of these criteria from a reviewer's perspective. If you encounter\ndifficulties interpreting or applying certain criteria, it's likely that LLM-based reviewers will face similar or\ngreater challenges. This insight can be invaluable for refining criteria before scaling up to the full dataset.\n2.​ Threshold Calibration: As demonstrated in our evaluation results, when inclusion/exclusion criteria are\nwell-defined and clear, reviewer agents tend to provide more consistent and confident scores. In such cases,\nselecting an appropriate decision threshold becomes more straightforward, often eliminating the need for\nextensive threshold optimization. However, if you find that a simple threshold (e.g., 3.0 for balanced\n19"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p20_c1",
+   "page": 20,
+   "text": "strategy) does not yield satisfactory results on your validation sample, you can use this smaller dataset to\ncalibrate the optimal threshold before proceeding with the full review.\n3.​ Example Collection: Manual review of a sample provides real-world examples of borderline or challenging\ncases. These examples can be incorporated into reviewer agents' prompts, enhancing their understanding of\nthe nuanced decisions required for your specific review task. Well-chosen examples are particularly valuable\nfor helping LLMs understand edge cases and subtle distinctions in your inclusion/exclusion criteria.\n4.​ Performance Estimation: The validation sample provides an early indication of the workflow's expected\nperformance on your full dataset. This allows you to make informed decisions about whether to proceed with\nthe current configuration or make adjustments to the workflow, such as employing more powerful LLMs or\nrefining the criteria definitions.\nThis validation approach embodies the principle of \"fail fast, learn quickly\" in systematic review automation. By\ninvesting time in thorough validation on a small scale, researchers can significantly improve the efficiency and\nreliability of"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p20_c2",
+   "page": 20,
+   "text": "of \"fail fast, learn quickly\" in systematic review automation. By\ninvesting time in thorough validation on a small scale, researchers can significantly improve the efficiency and\nreliability of their full-scale review process.\n5.8. Integrate Human Oversight\nWhile LatteReview offers powerful automation capabilities, it's essential to recognize the limitations inherent in any\nAI-based system. Even the most advanced LLMs can struggle with certain review items due to factors like\nambiguity, lack of context, or insufficient instructions.\nTherefore, it's crucial to design your LatteReview workflows with human oversight in mind. Rather than aiming for\na fully automated end-to-end process, consider breaking your review into stages punctuated by manual review.\nHuman reviewers can assess the outputs of each automated stage, provide feedback to refine the model prompts, and\nhandle edge cases that the AI struggles with.\nOne effective approach is to configure your initial reviewer agents to be highly sensitive, aiming to exclude as many\nirrelevant items as possible. Human reviewers can then focus their efforts on the more ambiguous or challenging\nitems that remain. This hybrid workflow"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p20_c3",
+   "page": 20,
+   "text": "be highly sensitive, aiming to exclude as many\nirrelevant items as possible. Human reviewers can then focus their efforts on the more ambiguous or challenging\nitems that remain. This hybrid workflow leverages the efficiency of AI while preserving the nuance and domain\nexpertise of human judgment.\nBy thoughtfully integrating human and AI reviewers, you can create a review process that achieves the best of both\nworlds - the speed and scale of automation with the adaptability and insight of human intelligence. LatteReview\nprovides the building blocks, but it's up to you as the researcher to architect a system that leverages those capabilities\nmost effectively for your specific review needs.\n6. Conclusions and Future Directions\nLatteReview provides a meaningful step toward enhancing the academic literature review process through the\napplication of AI. By enabling customizable multi-agent workflows and supporting various data modalities, the\n20"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p21_c1",
+   "page": 21,
+   "text": "package aims to simplify and streamline review tasks while maintaining flexibility for diverse use cases. Its\nintegration with multiple LLM providers and support for Retrieval Augmented Generation highlights a thoughtful\napproach to incorporating advanced AI capabilities. While the system demonstrates significant promise in reducing\nthe time and effort required for complex reviews, it remains focused on offering tools that align with the practical\nneeds of its users.\nFuture development will focus on expanding LatteReview’s capabilities and accessibility. Priorities include\nsupporting a broader range of language models, facilitating improved collaboration between agents and users, and\nenhancing memory and context management to refine decision-making processes. Simplifying usability through a\nno-code interface and providing more advanced validation tools are also key areas of interest. By pursuing these\nenhancements, LatteReview aspires to evolve into a widely applicable tool that balances innovation with usability,\ncontinuing to assist researchers in their academic endeavors.\n\n21"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p22_c1",
+   "page": 22,
+   "text": "7. References\n1. ​ Siddaway AP, Wood AM, Hedges LV. How to do a systematic review: A best practice guide for conducting and\nreporting narrative reviews, meta-analyses, and meta-syntheses. Annu Rev Psychol. Annual Reviews;\n2019;70(1):747–770.\n2. ​ Carver JC, Hassler E, Hernandes E, Kraft NA. Identifying barriers to the systematic literature review process. 2013\nACM / IEEE International Symposium on Empirical Software Engineering and Measurement. IEEE; 2013. doi:\n10.1109/esem.2013.28.\n3. ​ Thomas CG. The Literature Review. Research Methodology and Scientific Writing. Cham: Springer International\nPublishing; 2021. p. 263–274.\n4. ​ Amugongo LM, Mascheroni P, Brooks SG, Doering S, Seidel J. Retrieval augmented generation for large Language\nModels in healthcare: A systematic review. Preprints. 2024. doi: 10.20944/preprints202407.0876.v1.\n5. ​ Appenzeller-Herzog C, Mathes T, Heeres MLS, Weiss KH, Houwen RHJ, Ewald H. Comparative effectiveness of\ncommon therapies for Wilson disease: A systematic review and meta-analysis of controlled studies. Liver Int. Wiley;\n2019;39(11):2136–2152.\n6. ​ Donners AAMT, Rademaker CMA, Bevers LAH, et al. Pharmacokinetics and associated efficacy of emicizumab"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p22_c2",
+   "page": 22,
+   "text": "review and meta-analysis of controlled studies. Liver Int. Wiley;\n2019;39(11):2136–2152.\n6. ​ Donners AAMT, Rademaker CMA, Bevers LAH, et al. Pharmacokinetics and associated efficacy of emicizumab in\nhumans: A systematic review. Clin Pharmacokinet. Springer Science and Business Media LLC;\n2021;60(11):1395–1406.\n7. ​ Jeyaraman M, Muthu S, Ganie PA. Does the source of mesenchymal stem cell have an effect in the management of\nosteoarthritis of the knee? Meta-analysis of randomized controlled trials. Cartilage. SAGE Publications;\n2021;13(1_suppl):1532S – 1547S.\n8. ​ Meijboom RW, Gardarsdottir H, Egberts TCG, Giezen TJ. Patients retransitioning from biosimilar TNFα inhibitor to\nthe corresponding originator after initial transitioning to the biosimilar: A systematic review. BioDrugs. Springer\nScience and Business Media LLC; 2022;36(1):27–39.\n9. ​ Muthu S, Ramakrishnan E. Fragility analysis of statistically significant outcomes of randomized control trials in\nspine surgery: A systematic review: A systematic review. Spine (Phila Pa 1976). Ovid Technologies (Wolters Kluwer\nHealth); 2021;46(3):198–208.\n10. ​ Oud M, Arntz A, Hermens ML, Verhoef R, Kendall T. Specialized psychotherapies for"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p22_c3",
+   "page": 22,
+   "text": "A systematic review. Spine (Phila Pa 1976). Ovid Technologies (Wolters Kluwer\nHealth); 2021;46(3):198–208.\n10. ​ Oud M, Arntz A, Hermens ML, Verhoef R, Kendall T. Specialized psychotherapies for adults with borderline\npersonality disorder: A systematic review and meta-analysis. Aust N Z J Psychiatry. SAGE Publications;\n2018;52(10):949–961.\n11. ​ De Bruin J, Ma Y, Ferdinands G, Teijema J, Van de Schoot R. SYNERGY - Open machine learning dataset on study\nselection in systematic reviews. DataverseNL; 2023. doi: 10.34894/HE6NAQ.\n12. ​ Khosravi B, Rouzrokh P, Faghani S, et al. Machine learning and deep learning in cardiothoracic imaging: A scoping\nreview. Diagnostics (Basel). MDPI AG; 2022;12(10):2512.\n13. ​ Rouzrokh P, Khosravi B, Vahdati S, et al. Machine learning in cardiovascular imaging: A scoping review of\npublished literature. Curr Radiol Rep. Springer Science and Business Media LLC; 2023;11(2):34–45.\n\n22"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p23_c1",
+   "page": 23,
+   "text": "Supplements\n8. Installation and Dependencies\n8.1. Installation\nLatteReview is designed to be straightforward to install, ensuring accessibility for both researchers and developers.\nThe package is available on PyPI and can be installed using the following command:\npip install lattereview\nFor users requiring additional functionalities, LatteReview provides optional extras:\n●​ Development tools:\n· ​\npip install \"lattereview[dev]\"\n●​ Documentation tools:\n· ​\npip install \"lattereview[docs]\"\n●​ All extras (includes development and documentation tools):\n· ​\npip install \"lattereview[all]\"\nFor users who wish to explore the latest features or contribute to development, LatteReview can be installed directly\nfrom the source code:\ngit clone https://github.com/PouriaRouzrokh/LatteReview.git​\ncd LatteReview​\npip install .\nFor development setups with all optional dependencies:\npip install -e \".[all]\"\nTo verify the installation:\nimport lattereview​\nprint(lattereview.__version__)\n8.2. Dependencies\nLatteReview relies on a carefully selected set of Python libraries to ensure robust functionality and seamless\nintegration with external APIs. The table below summarizes the dependencies, their versions,"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p23_c2",
+   "page": 23,
+   "text": "relies on a carefully selected set of Python libraries to ensure robust functionality and seamless\nintegration with external APIs. The table below summarizes the dependencies, their versions, and their relevance to\ndifferent installation types:\n\n23"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p24_c1",
+   "page": 24,
+   "text": "Dependency\nVersion\nMain\nInstallation\nDevelopment\nTools\nDocumentation\nTools\nlitellm\n>=1.55.2\n✓\n\nopenai\n>=1.57.4\n✓\n\npandas\n>=2.2.3\n✓\n\npydantic\n>=2.10.3\n✓\n\npython-dotenv\n>=1.0.1\n✓\n\ntokencost\n>=0.1.17\n✓\n\ntqdm\n>=4.67.1\n✓\n\nopenpyxl\n>=3.1.5\n✓\n\nblack\n>=24.10.0\n\n✓\n\nflake8\n>=7.1.1\n\n✓\n\nipykernel\n>=6.29.5\n\n✓\n\nmatplotlib\n>=3.9.4\n\n✓\n\nnetworkx\n>=3.2.1\n\n✓\n\npyvis\n>=0.3.2\n\n✓\n\nscikit-learn\n>=1.6.0\n\n✓\n\nmkdocs\n>=1.5.0\n\n✓\nmkdocs-material\n>=9.0.0\n\n✓\nmkdocstrings\n>=0.24.0\n\n✓\nmkdocstrings-python\n>=1.7.0\n\n✓\n8.3. Environment Configuration\nLatteReview requires API keys for accessing LLM providers. These keys can be configured using environment\nvariables. The recommended approach is to use a .env file in the project directory:\nOPENAI_API_KEY = \"...\"​\nANTHROPIC_API_KEY = \"...\"​\nGEMINI_API_KEY = \"...\"​\nGROQ_API_KEY = \"...\"​\n...\nThen, you should load the environment variables in your script:\nfrom dotenv import load_dotenv​\nload_dotenv()\nAlternatively, you can set environment variables directly using the export command in your terminal:\n24"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p25_c1",
+   "page": 25,
+   "text": "export OPENAI_API_KEY=\"your_openai_key\"​\nexport ANTHROPIC_API_KEY=\"your_openai_key\"\nThis method sets the variables for the current session. To make them persistent across sessions, add the export\ncommands to your shell configuration file (e.g., .bashrc or .zshrc) and reload the shell:\nsource ~/.bashrc\nThis configuration ensures seamless integration with external APIs, enabling out-of-the-box functionality for all\nsupported models.\n5. Usage Examples and Tutorials for LatteReview\nHere, we will provide three examples of how LatteReview could be applied in systematic review with basic,\nintermediate, and advanced levels of complexity. For more examples, please visit our tutorial page.\n5.1. Basic Example: Single Reviewer Workflow\nThis example demonstrates how to use LatteReview to conduct a basic review using a single AI reviewer. The\nreview process evaluates how relevant a research article is to artificial intelligence in radiology.\nfrom lattereview.providers import LiteLLMProvider​\nfrom lattereview.agents import ScoringReviewer​\nfrom lattereview.workflows import ReviewWorkflow​\nimport pandas as pd​\nimport asyncio​\nfrom dotenv import load_dotenv​\n​\n# Load environment variables from"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p25_c2",
+   "page": 25,
+   "text": "lattereview.agents import ScoringReviewer​\nfrom lattereview.workflows import ReviewWorkflow​\nimport pandas as pd​\nimport asyncio​\nfrom dotenv import load_dotenv​\n​\n# Load environment variables from .env file​\nload_dotenv()​\n​\n# Create a single reviewer​\nreviewer = ScoringReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gpt-4o-mini\"),​\n​\nname=\"Reviewer1\",​\n​\nbackstory=\"A radiologist with expertise in AI applications\",​\n​\nscoring_task=\"Evaluate relevance of the article to AI in radiology\",​\n​\nscoring_set=[1, 2, 3, 4, 5],​\n​\nscoring_rules=\"Rate relevance on a scale of 1 (not relevant) to 5 (highly relevant).\",​\n​\nmodel_args={\"temperature\": 0.2}​\n)​\n​\n# Define a workflow with the single reviewer​\nworkflow = ReviewWorkflow(​\n​\nworkflow_schema=[​\n​\n{​\n​\n\"round\": 'A',​\n​\n\"reviewers\": [reviewer],​\n25"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p26_c1",
+   "page": 26,
+   "text": "​\n\"text_inputs\": [\"title\", \"abstract\"]​\n​\n}​\n​\n]​\n)​\n​\n# Load data​\ndata = pd.DataFrame({​\n​\n'title': ['Advances in AI'],​\n​\n'abstract': ['A comprehensive review of recent developments in AI applications for\nradiology.']​\n})​\n​\n# Run the workflow​\nresults = asyncio.run(workflow(data))​\n​\n# Save results​\nresults.to_csv(\"basic_review_results.csv\", index=False)​\nAlternative Code Implementation​\nFor simpler use cases, reviewers can directly process input strings without defining workflows:​\n# Directly use the reviewer for a list of inputs​\ninputs = [​\n​\n\"Advances in AI in Radiology\",​\n​\n\"AI in Cardiology: A review of applications.\"​\n]​\n​\n# Review items​\nresults, costs = asyncio.run(reviewer.review_items(inputs))​\n​\n# Display results​\nfor input_text, result in zip(inputs, results):​\n​\nprint(f\"Input: {input_text}\\nScore: {result['score']}\\nReasoning:\n{result['reasoning']}\\n\")\nExplanation:\n1.​ Provider Configuration: LiteLLMProvider is used to access the GPT-4 model.\n2.​ Reviewer Creation: The ScoringReviewer is configured with specific rules for rating relevance.\n3.​ Workflow Definition: A single-round workflow is created where the reviewer evaluates the relevance of\ntitles and"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p26_c2",
+   "page": 26,
+   "text": "The ScoringReviewer is configured with specific rules for rating relevance.\n3.​ Workflow Definition: A single-round workflow is created where the reviewer evaluates the relevance of\ntitles and abstracts.\n4.​ Direct Use: Reviewers can also directly process text lists for quick analyses.\n5.2. Intermediate Example: Two Junior Reviewers and a Senior Reviewer\nIn this example, we introduce a second round where a senior reviewer resolves conflicts between two junior\nreviewers.\n# Define junior reviewers​\nreviewer1 = ScoringReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gpt-4o-mini\"),​\n26"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p27_c1",
+   "page": 27,
+   "text": "​\nname=\"Alice\",​\n​\nbackstory=\"A radiologist focusing on systematic reviews\",​\n​\nscoring_task=\"Evaluate relevance of the article to AI in radiology\",​\n​\nscoring_set=[1, 2, 3, 4, 5],​\n​\nscoring_rules=\"Rate relevance from 1 (not relevant) to 5 (highly relevant).\",​\n​\nmodel_args={\"temperature\": 0.1}​\n)​\n​\nreviewer2 = ScoringReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gemini/gemini-1.5-flash\"),​\n​\nname=\"Bob\",​\n​\nbackstory=\"A computer scientist specializing in AI for medicine\",​\n​\nscoring_task=\"Evaluate relevance of the article to AI in radiology\",​\n​\nscoring_set=[1, 2, 3, 4, 5],​\n​\nscoring_rules=\"Rate relevance from 1 (not relevant) to 5 (highly relevant).\",​\n​\nmodel_args={\"temperature\": 0.8}​\n)​\n​\n# Define senior reviewer​\nexpert = ScoringReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gpt-4o\"),​\n​\nname=\"Carol\",​\n​\nbackstory=\"A professor of AI in medical imaging\",​\n​\nscoring_task=\"Resolve disagreements between Alice and Bob\",​\n​\nscoring_set=[1, 2],​\n​\nscoring_rules=\"Score 1 if agreeing with Alice, 2 if agreeing with Bob\",​\n​\nmodel_args={\"temperature\": 0.2}​\n)​\n​\n# Define workflow​\nworkflow = ReviewWorkflow(​\n​\nworkflow_schema=[​\n​\n{​\n​\n\"round\": 'A',​\n​\n\"reviewers\": [reviewer1,"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p27_c2",
+   "page": 27,
+   "text": "with Alice, 2 if agreeing with Bob\",​\n​\nmodel_args={\"temperature\": 0.2}​\n)​\n​\n# Define workflow​\nworkflow = ReviewWorkflow(​\n​\nworkflow_schema=[​\n​\n{​\n​\n\"round\": 'A',​\n​\n\"reviewers\": [reviewer1, reviewer2],​\n​\n\"text_inputs\": [\"title\", \"abstract\"]​\n​\n},​\n​\n{​\n​\n\"round\": 'B',​\n​\n\"reviewers\": [expert],​\n​\n\"text_inputs\": [\"title\", \"abstract\", \"round-A_Alice_output\", \"round-A_Bob_output\"],​\n​\n\"filter\": lambda row: row[\"round-A_Alice_score\"] != row[\"round-A_Bob_score\"]​\n​\n}​\n​\n]​\n)​\n​\n# Load and run data​\ndata = pd.read_excel(\"articles.xlsx\")​\nresults = asyncio.run(workflow(data))​\nresults.to_csv(\"intermediate_review_results.csv\", index=False)\nExplanation:\n27"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p28_c1",
+   "page": 28,
+   "text": "1.​ Conflict Resolution: Disagreements between junior reviewers are filtered for expert review in round B.\n2.​ Parallel Reviews: Two reviewers operate concurrently in round A.\n3.​ Filtering: The filter function identifies cases where the junior reviewers disagreed.\n4.​ Output Columns: Results include outputs from all reviewers, enabling traceability of decisions.\n\n5.3. Advanced Example: Retrieval Augmented Generation (RAG) with Custom Reviewer\nThis advanced example demonstrates the usage of LatteReview for integrating Retrieval Augmented Generation\n(RAG) into a multi-agent workflow, including a custom reviewer agent. The goal is to perform a comprehensive\nreview of academic articles, utilizing additional context fetched dynamically from an external database and\ncombining it with structured input processing.\nfrom lattereview.providers import LiteLLMProvider​\nfrom lattereview.agents import ScoringReviewer, AbstractionReviewer, BasicReviewer​\nfrom lattereview.workflows import ReviewWorkflow​\nimport pandas as pd​\nimport asyncio​\nfrom dotenv import load_dotenv​\n​\n# Load environment variables​\nload_dotenv()​\n​\n# Define a function to provide additional context dynamically (RAG)​\ndef"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p28_c2",
+   "page": 28,
+   "text": "import pandas as pd​\nimport asyncio​\nfrom dotenv import load_dotenv​\n​\n# Load environment variables​\nload_dotenv()​\n​\n# Define a function to provide additional context dynamically (RAG)​\ndef retrieve_context(input_text):​\n​\n# Simulate a database or API call to fetch context​\n​\nreturn f\"Additional insights about '{input_text}' fetched from external sources using\nRAG.\"​\n​\n# Custom Reviewer: Context-Aware Reviewer​\nclass ContextAwareReviewer(BasicReviewer):​\n​\ngeneric_prompt = \"\"\"​\n​\n**Analyze the input text with the following context:**​\n​\n<<${additional_context}$>>​\n​\n​\n**Input Text:**​\n​\n<<${item}$>>​\n​\n​\n**Task:**​\n​\n1. Provide a brief summary.​\n​\n2. Assess the relevance to artificial intelligence in radiology.​\n​\n​\n**Output Format:**​\n​\n- `summary`: str​\n​\n- `relevance_score`: int (1 to 5)​\n​\n\"\"\"​\n​\nresponse_format = {​\n28"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p29_c1",
+   "page": 29,
+   "text": "​\n\"summary\": str,​\n​\n\"relevance_score\": int​\n​\n}​\n​\ninput_description = \"academic text with external context\"​\n​\n​\ndef model_post_init(self, __context):​\n​\ntry:​\n​\nself.setup()​\n​\nexcept Exception as e:​\n​\nraise Exception(f\"Error initializing ContextAwareReviewer: {e}\")​\n​\n# Initialize Reviewers​\nscoring_reviewer_1 = ScoringReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gpt-4o-mini\"),​\n​\nname=\"ScoringAgent1\",​\n​\nscoring_task=\"Evaluate the relevance to AI in radiology\",​\n​\nscoring_set=[1, 2, 3, 4, 5],​\n​\nscoring_rules=\"Rate relevance on a scale of 1 (low) to 5 (high).\",​\n​\nmodel_args={\"temperature\": 0.1}​\n)​\n​\nscoring_reviewer_2 = ScoringReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gemini/gemini-1.5-flash\"),​\n​\nname=\"ScoringAgent2\",​\n​\nscoring_task=\"Evaluate the relevance to AI in radiology\",​\n​\nscoring_set=[1, 2, 3, 4, 5],​\n​\nscoring_rules=\"Rate relevance on a scale of 1 (low) to 5 (high).\",​\n​\nmodel_args={\"temperature\": 0.8}​\n)​\n​\nabstraction_reviewer = AbstractionReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gpt-4o\"),​\n​\nabstraction_keys={\"title\": str, \"abstract\": str},​\n​\nkey_descriptions={​\n​\n\"title\": \"Extract the article title.\",​\n​\n\"abstract\": \"Extract the article abstract.\"​\n​"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p29_c2",
+   "page": 29,
+   "text": "​\nabstraction_keys={\"title\": str, \"abstract\": str},​\n​\nkey_descriptions={​\n​\n\"title\": \"Extract the article title.\",​\n​\n\"abstract\": \"Extract the article abstract.\"​\n​\n}​\n)​\n​\ncontext_aware_reviewer = ContextAwareReviewer(​\n​\nprovider=LiteLLMProvider(model=\"gpt-4o\"),​\n​\nname=\"ContextReviewer\",​\n​\nadditional_context=retrieve_context​\n)​\n​\n# Define Workflow​\nworkflow = ReviewWorkflow(​\n​\nworkflow_schema=[​\n​\n{​\n​\n\"round\": 'A',​\n​\n\"reviewers\": [abstraction_reviewer],​\n29"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p30_c1",
+   "page": 30,
+   "text": "​\n\"text_inputs\": [\"raw_text\"]​\n​\n},​\n​\n{​\n​\n\"round\": 'B',​\n​\n\"reviewers\": [scoring_reviewer_1, scoring_reviewer_2],​\n​\n\"text_inputs\": [\"round-A_AbstractionReviewer_output\"]​\n​\n},​\n​\n{​\n​\n\"round\": 'C',​\n​\n\"reviewers\": [context_aware_reviewer],​\n​\n\"text_inputs\": [\"round-B_ScoringAgent1_output\", \"round-B_ScoringAgent2_output\"],​\n​\n\"filter\": lambda row: row[\"round-B_ScoringAgent1_score\"] > 3 and\nrow[\"round-B_ScoringAgent2_score\"] > 3​\n​\n}​\n​\n]​\n)​\n​\n# Sample Data​\ndata = pd.DataFrame({​\n​\n'raw_text': [​\n​\n\"Exploring the role of AI in detecting lung cancer from radiographs.\",​\n​\n\"A systematic review of machine learning in cardiac imaging.\",​\n​\n\"The intersection of AI and pathology: Challenges and opportunities.\"​\n​\n]​\n})​\n​\n# Run the Workflow​\nresults = asyncio.run(workflow(data))​\n​\n# Save Results​\nresults.to_csv(\"advanced_review_results.csv\", index=False)\nExplanation:\n1.​ Custom Reviewer Integration:\n○​ The ContextAwareReviewer demonstrates extensibility by integrating external context dynamically\nfetched through a custom function.\n○​ Its generic_prompt is designed to combine the input text and the fetched context for comprehensive\nanalysis.\n2.​ Workflow Configuration:\n○​ Round A:"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p30_c2",
+   "page": 30,
+   "text": "dynamically\nfetched through a custom function.\n○​ Its generic_prompt is designed to combine the input text and the fetched context for comprehensive\nanalysis.\n2.​ Workflow Configuration:\n○​ Round A: The AbstractionReviewer extracts the title and abstract from the raw text.\n○​ Round B: Two ScoringReviewers independently evaluate the relevance of the extracted text to AI in\nradiology.\n○​ Round C: The ContextAwareReviewer uses both the outputs from Round B and additional context to\nprovide a refined summary and relevance score.\n○​ Filtering: Round C processes only those articles which both Round B reviewers rated above 3.\n30"
+  },
+  {
+   "paper_id": "arxiv-2501-05468",
+   "chunk_id": "arxiv-2501-05468_p31_c1",
+   "page": 31,
+   "text": "3.​ RAG Integration:\n○​ The fetch_context function simulates a Retrieval Augmented Generation approach, dynamically\naugmenting the input with external insights.\n4.​ Result Management:\n○​ Outputs from each round are systematically stored in columns, ensuring traceability and\ntransparency.\n○​ The results DataFrame includes:\n■​ Extracted titles and abstracts (Round A).\n■​ Relevance scores and reasoning (Round B).\n■​ Context-aware summaries and relevance reassessment (Round C).\n31"
+  }
+ ]
+}

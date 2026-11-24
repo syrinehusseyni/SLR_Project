@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2401-06320",
+ "fingerprint": "e67d2e3e98c15883",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude comparative expérimentale",
+   "chunk_id": "arxiv-2401-06320_p4_c4",
+   "page": 4,
+   "quote": "In particular, in our experiments we will ensemble the two most zero-shot effective LLMs and the BERT-based method we use as a comparative baseline.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "CLEF TAR datasets et Seed Collection dataset.",
+   "chunk_id": "arxiv-2401-06320_p6_c2",
+   "page": 6,
+   "quote": "We experiment on the CLEF TAR datasets and the Seed Collection dataset.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Les auteurs ont utilisé une série de modèles LLM zéro‑shot pour évaluer leur efficacité dans le dépistage automatique des documents de revue systématique.",
+   "chunk_id": "arxiv-2401-06320_p5_c1",
+   "page": 5,
+   "quote": "We employ an array of zero-shot generative LLMs that differ in architecture, training steps, and size (model parameters) to extensively evaluate their effectiveness for automatic systematic review document screening.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "LlaMa2-7b-ins consistently obtains higher recall: 70% of topics achieved perfect recall, compared to only 50% using the other calibration method.",
+   "chunk_id": "arxiv-2401-06320_p10_c3",
+   "page": 10,
+   "quote": "LlaMa2-7b-ins consistently obtains higher recall: 70% of topics achieved perfect recall, compared to only 50% using the other calibration method.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  }
+ ]
+}

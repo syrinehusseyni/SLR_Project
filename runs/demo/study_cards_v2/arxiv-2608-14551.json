@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2608-14551",
+ "fingerprint": "0761b930fc8b5437",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude expérimentale évaluant cinq conditions",
+   "chunk_id": "arxiv-2608-14551_p5_c1",
+   "page": 5,
+   "quote": "We evaluate five conditions that vary the spectral context provided to the LLM screener.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "8 jeux de données dans le domaine biomédical",
+   "chunk_id": "arxiv-2608-14551_p20_c4",
+   "page": 20,
+   "quote": "While the 8 datasets span different drug classes with varying inclusion rates and sizes, all are within the biomedical domain.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "gpt-5.4-mini et gpt-4.1-mini",
+   "chunk_id": "arxiv-2608-14551_p20_c3",
+   "page": 20,
+   "quote": "The main matrix evaluates gpt-5.4-mini across 8 datasets, with a 3-dataset single-seed pilot for gpt-4.1-mini",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "Amélioration statistiquement significative de F1 (+0,011, p=0,008) et de WSS@95 (+0,050, p=0,039).",
+   "chunk_id": "arxiv-2608-14551_p9_c3",
+   "page": null,
+   "quote": "Full-context delivery yields statistically significant improvements on the two metrics that matter most for screening efficiency: F1 (∆= +0.011, p = 0.008) and WSS@95 (∆= +0.050, p = 0.039).",
+   "note": "nombres de la valeur absents de la citation : ['0', '0008', '0011', '0039', '0050', '008', '011', '039', '050']"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  }
+ ]
+}

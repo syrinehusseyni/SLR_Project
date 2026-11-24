@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2605-06937",
+ "fingerprint": "48991ab62d2a7b36",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "revue systématique",
+   "chunk_id": "arxiv-2605-06937_p21_c2",
+   "page": 21,
+   "quote": "whether a paper is relevant for a narrow systematic review that collects primary, peer-reviewed empirical studies that build, evaluate, or compare machine-learning models for predicting software defects/bugs/faults/failures.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "GEPA, optimisation de prompt, et fine-tuning sont mentionnés.",
+   "chunk_id": "arxiv-2605-06937_p10_c3",
+   "page": 10,
+   "quote": "GEPA is used here because the protocol requires feedback-rich revision of the prompt harness, not only selection or bootstrapping of few-shot examples.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "Le modèle structuré a obtenu une précision de 0,788 ± 0,004 et un F1 de 0,840 ± 0,004 ; la meilleure balance (max_eval = 12) a donné une précision de 0,797 ± 0,023, un F1 de 0,848 ± 0,011 et une utilité de 0,855 ± 0,007.",
+   "chunk_id": "arxiv-2605-06937_p15_c2",
+   "page": null,
+   "quote": "The structured baseline achieved accuracy 0.788 ± 0.004 and F1 = 0.840 ± 0.004, with recall 0.896 ± 0.006 and precision 0.791 ± 0.003 for the include class. The most balanced setting in this validation was max_eval = 12, with accuracy 0.797 ± 0.023, F1 = 0.848 ± 0.011, and label‑level utility 0.855 ± 0.007.",
+   "note": "citation absente du chunk cité"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les limites incluent l'absence de remplacement du jugement expert, la nécessité de supervision humaine pour les décisions borderline, la dépendance à la qualité des exemples, et la possibilité de sur-spécialisation avec de petits ensembles de validation.",
+   "chunk_id": "arxiv-2605-06937_p15_c3",
+   "page": 15,
+   "quote": "This method calibrates a model to apply a documented task contract; it does not replace expert judgement in evidence synthesis. Borderline eligibility decisions, ambiguous extracted fields, risk-ofbias judgements, and final synthesis decisions should remain under human oversight.",
+   "note": ""
+  }
+ ]
+}

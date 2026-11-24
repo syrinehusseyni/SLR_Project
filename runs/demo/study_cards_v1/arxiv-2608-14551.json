@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2608-14551",
+ "fingerprint": "03dc3a6c9141fa73",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "rejected",
+   "value": "Étude expérimentale comparative : pipeline BERT+GCN pour tri de revues systématiques, cinq conditions comparées.",
+   "chunk_id": "arxiv-2608-14551_p5_c1",
+   "page": null,
+   "quote": "Papers are encoded via frozen PubMedBERT embeddings and a 2-layer RGCNConv over a kNN similarity graph. The spectral engine applies two complementary uncertainty tests (algebraic radical and categorical paradox) to classify each paper as INCLUDE, EXCLUDE, or MAYBE.",
+   "note": "citation absente du chunk cité"
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "8 jeux de données, domaine biomédical",
+   "chunk_id": "arxiv-2608-14551_p20_c4",
+   "page": 20,
+   "quote": "While the 8 datasets span different drug classes with varying inclusion rates and sizes, all are within the biomedical domain.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Les modèles évalués incluent GPT‑5.4‑mini, GPT‑4.1‑mini, GPT‑4o, Claude 4 Sonnet, Llama 3 et Mistral.",
+   "chunk_id": "arxiv-2608-14551_p20_c3",
+   "page": 20,
+   "quote": "The main matrix evaluates gpt-5.4-mini across 8 datasets, with a 3-dataset single-seed pilot for gpt-4.1-mini (Section 6.8). Results may differ for larger frontier models (GPT-4o, Claude 4 Sonnet) or open-source alternatives (Llama 3, Mistral).",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "Les résultats montrent que la livraison full‑context améliore significativement F1 de +0,011 (p=0,008) et WSS@95 de +0,050 (p=0,039), tout en conservant le rappel. La stratégie MAYBE‑only obtient le meilleur rappel moyen (0,92) et AUC‑ROC (0,54) à un coût 1,05× celui de baseline.",
+   "chunk_id": "arxiv-2608-14551_p9_c3",
+   "page": null,
+   "quote": "Full-context delivery yields statistically significant improvements on the two metrics that matter most for screening efficiency: F1 (∆= +0.011, p = 0.008) and WSS@95 (∆= +0.050, p = 0.039). In a screening workflow processing tens of thousands of records, a five-percentage-point reduction in the screening burden at fixed 95% recall is operationally meaningful. Decision-only and two-pass also produce significant F1 gains (p = 0.008).",
+   "note": "citation trop longue (plus de 400 caractères)"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "not_reported",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": ""
+  }
+ ]
+}

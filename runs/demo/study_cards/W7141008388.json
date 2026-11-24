@@ -1,0 +1,57 @@
+{
+ "paper_id": "W7141008388",
+ "fingerprint": "5b6f16ff707dc5f5",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude expérimentale comparative évaluant l’impact du fine‑tuning d’un petit LLM sur la performance de l’écran de titres et résumés d’une revue systématique",
+   "chunk_id": "W7141008388_p2_c2",
+   "page": 2,
+   "quote": "The purpose of this study was to explore how fine-tuning a small LLM can impact its performance during LLM-based screening of titles and abstracts for an individual systematic review.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "8 694 études, titres et résumés, domaine de l'éducation en informatique de premier cycle, influence des technologies d'IA générative.",
+   "chunk_id": "W7141008388_p3_c1",
+   "page": 3,
+   "quote": "The dataset consisted of the titles and abstracts from 8,694 studies that were located as part of a systematic review on the influence of generative artificial intelligence technologies in undergraduate computer science education.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Fine-tuning d'un LLM de 1,2 milliard de paramètres pour le dépistage d'études systématiques.",
+   "chunk_id": "W7141008388_p1_c1",
+   "page": 1,
+   "quote": "We fine-tune a small 1.2 billion parameter open-weight LLM specifically for study screening in the context of a systematic review in which humans rated more than 8500 titles and abstracts for potential inclusion.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "80.79% d'exactitude globale, 99.96% de précision, 86.38% de rappel et 92.67% de F1 pour la classe Exclude.",
+   "chunk_id": "W7141008388_p9_c1",
+   "page": 9,
+   "quote": "80.79%. Per-class results show that the majority class dominates aggregate performance Exclude class, which achieves 99.96% precision, 86.38% recall, and 92.67% F1 (Table 4).",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Limite liée au choix du modèle LLM à fine-tuner.",
+   "chunk_id": "W7141008388_p12_c2",
+   "page": 12,
+   "quote": "The selection of which LLM to fine-tune is not a trivial task.",
+   "note": ""
+  }
+ ]
+}

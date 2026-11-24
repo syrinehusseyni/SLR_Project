@@ -1,0 +1,883 @@
+{
+ "paper_id": "W7131100690",
+ "source_sha256": "e8e25612d8a90ac126db0a2023734ef67d3930d1e9335df7d48a03a68fbe0fa5",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 67,
+ "pages_read": 67,
+ "page_chars": [
+  1249,
+  1288,
+  1463,
+  1882,
+  1953,
+  1824,
+  1570,
+  1500,
+  1198,
+  1244,
+  1516,
+  1699,
+  1872,
+  1656,
+  1798,
+  1756,
+  1737,
+  1574,
+  1663,
+  1532,
+  1462,
+  1328,
+  1611,
+  1736,
+  1619,
+  1468,
+  1319,
+  887,
+  1765,
+  752,
+  1961,
+  1974,
+  1795,
+  1892,
+  817,
+  1799,
+  1827,
+  766,
+  1974,
+  1920,
+  1805,
+  1929,
+  924,
+  1541,
+  1554,
+  1245,
+  1935,
+  1838,
+  617,
+  4512,
+  1850,
+  1989,
+  2031,
+  1938,
+  1983,
+  2068,
+  1988,
+  1722,
+  2362,
+  3280,
+  3444,
+  3437,
+  1116,
+  562,
+  1535,
+  261,
+  213
+ ],
+ "repeated_lines": [],
+ "chunks": [
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p1_c1",
+   "page": 1,
+   "text": "Cost-Efficient Large Language Model-Assisted\nTitle and Abstract Screening for Systematic\nReviews: Method Evaluation and Validation\nDimitri Belenki\nFederal Office for Radiation Protection https://orcid.org/0000-0002-9004-9849\nAlexander Astanin\nFederal Office for Radiation Protection https://orcid.org/0009-0001-6935-5526\nDan Baaken\nFederal Office for Radiation Protection https://orcid.org/0000-0003-4498-2352\nHeinrich A. M. Leymann\nFederal Office for Radiation Protection https://orcid.org/0000-0002-4320-1799\nFelix Meyer\nFederal Office for Radiation Protection https://orcid.org/0009-0005-2530-3803\nBlanka Pophof\nFederal Office for Radiation Protection https://orcid.org/0000-0001-7344-6175\nEvelyn Weiser\nFederal Office for Radiation Protection https://orcid.org/0000-0003-3392-0869\nMethod Article\nKeywords: artificial intelligence, large language models, evidence synthesis, literature screening, title and\nabstract screening, systematic reviews, automation, workload reduction\nPosted Date: September 4th, 2026\nDOI: https://doi.org/10.21203/rs.3.rs-10909832/v1\nLicense:   This work is licensed under a Creative Commons Attribution 4.0 International License.\nRead Full License\nAdditional"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p1_c2",
+   "page": 1,
+   "text": "September 4th, 2026\nDOI: https://doi.org/10.21203/rs.3.rs-10909832/v1\nLicense:   This work is licensed under a Creative Commons Attribution 4.0 International License.\nRead Full License\nAdditional Declarations: The authors declare no competing interests."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p2_c1",
+   "page": 2,
+   "text": "1\n\nCost-Efficient Large Language Model-Assisted\n1\nTitle and Abstract Screening for Systematic Reviews:\n2\nMethod Evaluation and Validation\n3\nDimitri Belenkia*, Alexander Astanina, Dan Baakena, Heinrich A. M. Leymanna,\n4\nFelix Meyera, Blanka Pophofa, Evelyn Weisera\n5\na Competence Centre for Electromagnetic Fields, Federal Office for Radiation Protection, Karl-\n6\nLiebknecht-Straße 33, 03046 Cottbus, Germany\n7\n* Corresponding author: Dimitri Belenki (ORCID ID 0000-0002-9004-9849), e-mail: dbelenki@bfs.de\n8\n\n9\n\n10\n\n11\n\n12\nAbstract\n13\nBackground: The yearly number of publications in many fields, including research on\n14\npotential health effects of electromagnetic fields (EMF), has steadily risen, making\n15\nsystematic reviews (SRs) increasingly laborious. Automating the title and abstract\n16\nscreening phase using large language models (LLMs) is a promising solution. However,\n17\nprior studies have underexplored structured LLM workflows, including explicit reasoning\n18\noutputs, few-shot prompting, and task-decomposition.\n19\nMethods: We systematically devised and evaluated multiple LLM-based workflows using\n20\nboth open-source and proprietary models. The most promising workflows were"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p2_c2",
+   "page": 2,
+   "text": "prompting, and task-decomposition.\n19\nMethods: We systematically devised and evaluated multiple LLM-based workflows using\n20\nboth open-source and proprietary models. The most promising workflows were validated\n21\non eight independent SR datasets, focusing on EMF and non-EMF research domains.\n22"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p3_c1",
+   "page": 3,
+   "text": "2\n\nWorkflows were designed to elicit PECOS-wise decisions with explicit reasoning, and\n23\nrecord-level verdicts were derived using deterministic decision rules.\n24\nResults: Three workflows, one based on an open-source (llama3.3:70b) and two based\n25\non proprietary LLMs, achieved high sensitivity while substantially reducing manual\n26\nscreening effort. The proprietary LLM gpt-4.1-mini embedded in a few-shot workflow with\n27\nPECOS-wise reasoning, reached a pooled sensitivity of 96.4% (95% CI: 94.8%–97.6%)\n28\nwith a workload reduction of 80.4% (95% CI: 63.7%–90.5%) at an approximate batch API\n29\ncost of $1.0 per 1,000 records. Overall, small “mini” models performed competitively,\n30\ndemonstrating cost-efficient and resource-friendly applicability.\n31\nConclusions: Carefully selected LLM workflows implementing few-shot prompting and\n32\nexplicit PECOS-wise reasoning can achieve near-human sensitivity while substantially\n33\nreducing manual screening effort. These findings provide a transparent and versatile\n34\nframework for AI-assisted literature screening in systematic reviews, although further\n35\noptimisation is needed to improve specificity, with executable code for the best workflows"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p3_c2",
+   "page": 3,
+   "text": "and versatile\n34\nframework for AI-assisted literature screening in systematic reviews, although further\n35\noptimisation is needed to improve specificity, with executable code for the best workflows\n36\navailable at https://github.com/openbfs/ai-sr-litscreen.\n37\nKeywords\n38\nartificial intelligence, large language models, evidence synthesis, literature screening,\n39\ntitle and abstract screening, systematic reviews, automation, workload reduction\n40\n\n41\n\n42\n\n43"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p4_c1",
+   "page": 4,
+   "text": "3\n\nBackground\n44\nSystematic reviews (SRs) are the gold standard for evidence synthesis and are widely\n45\nused to assess the effectiveness of interventions or the association between exposures\n46\nand specific outcomes. To formulate a focused research question and define eligibility\n47\ncriteria, SRs typically rely on structured frameworks such as P(opulation)-I(ntervention)-\n48\nC(omparator)-O(outcome)-S(tudy type) or, for exposure-focused reviews, PE(xposure)-\n49\nCOS [1]. These frameworks operationalise inclusion and exclusion decisions and\n50\ntherefore directly govern the literature screening process.\n51\nIn the multi-stage SR workflow, potentially relevant records are first retrieved from\n52\nbibliographic databases using deliberately broad search strategies designed to maximise\n53\ncoverage of the underlying PE/ICOS question (hereafter referred to as PECO[S]). Titles\n54\nand abstracts (TiAb) are then screened, usually independently by two human reviewers,\n55\nto assess compliance with predefined eligibility criteria, with discrepancies in decisions\n56\nresolved through discussion, or, if needed, adjudication by a third reviewer. Records\n57\npassing this initial stage undergo full-text"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p4_c2",
+   "page": 4,
+   "text": "eligibility criteria, with discrepancies in decisions\n56\nresolved through discussion, or, if needed, adjudication by a third reviewer. Records\n57\npassing this initial stage undergo full-text retrieval and a second eligibility assessment\n58\nbefore inclusion in the final evidence base. Subsequent steps include risk-of-bias\n59\nassessment, data extraction, evidence synthesis, and certainty evaluation. While, in\n60\nprinciple, several of these stages could be supported by artificial intelligence (AI), the TiAb\n61\nscreening phase is widely regarded as the most promising target for automation, offering\n62\nsubstantial potential workload reduction without compromising methodological rigour [2].\n63\nWhether AI can fully replace human reviewers at any stage of the SR process remains\n64\ndebated and is likely to depend on future methodological and technological advances [3].\n65"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p5_c1",
+   "page": 5,
+   "text": "4\n\nAt a minimum, however, AI-based tools have demonstrated considerable potential to\n66\nmeaningfully reduce human screening effort [4].\n67\nOver the past two years, numerous studies have investigated the application of\n68\ngenerative pre-trained transformer (GPT)-based large language models (LLMs) to TiAb\n69\nand full-text screening tasks. Across this literature, the central challenge has consistently\n70\nbeen achieving an acceptable trade-off between sensitivity and specificity, and thereby\n71\nmeaningful workload reduction. While some studies report very high sensitivity and\n72\nspecificity for selected SR datasets, performance often degrades for other datasets,\n73\nwhere high sensitivity can only be achieved at the expense of specificity and limited\n74\nworkload savings [5-7]. In addition, performance gains in some studies rely on dataset-\n75\nspecific prompt refinement or decision-threshold tuning (e.g., Tran et al. [6]), highlighting\n76\npotential challenges in achieving consistent performance across heterogeneous\n77\nsystematic reviews. Although post hoc optimisation of prompts, decision rules, or\n78\ninclusion thresholds has been shown to improve performance retrospectively, robust\n79"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p5_c2",
+   "page": 5,
+   "text": "across heterogeneous\n77\nsystematic reviews. Although post hoc optimisation of prompts, decision rules, or\n78\ninclusion thresholds has been shown to improve performance retrospectively, robust\n79\ndemonstrations of stable performance across independent datasets and diverse research\n80\nquestions remain limited [6-10].\n81\nRegarding workflow design, many previous studies have relied on instructive zero-shot\n82\nprompts that require the LLM to return a single overall verdict, typically “accept/include”\n83\nor “reject/exclude”, and in some cases an additional “unknown” option, based on review-\n84\nspecific eligibility criteria provided in the prompt [6, 8, 9, 11, 12]. Some studies additionally\n85\nrequired the model to provide a brief justification for its decision [6, 10].\n86\nBeyond a single overall decision, several approaches instead elicited PECO-wise\n87\njudgements. These were obtained either through parallel queries, resulting in multiple\n88"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p6_c1",
+   "page": 6,
+   "text": "5\n\nLLM calls per record [6], or jointly within a single call [13-16]. Other studies moved away\n89\nfrom binary decisions altogether and required the LLM to output numerical relevance\n90\nscores (e.g., 1–5, 1–10, or 1–100), enabling post hoc adjustment of recall–specificity\n91\ntrade-offs via threshold tuning [5, 7, 17].\n92\nThe most frequently explored variable across prior work has been the choice of the\n93\nunderlying LLM. Both proprietary and open-source models have been evaluated,\n94\nsometimes in direct comparison [5, 7, 9, 10, 12, 13], with GPT-4o (OpenAI) achieving the\n95\nstrongest performance in most studies, with one notable exception [12]. Additional\n96\nstrategies explored the inclusion of majority voting across multiple LLMs [7] and\n97\ncollaborative reviewer–adjudicator setups involving multiple LLM instances [10]. Overall,\n98\nLLM-based approaches have consistently outperformed traditional machine-learning\n99\nclassifiers for TiAb screening [10, 13].\n100\nDespite the rapid pace of model development, relatively few studies in biomedical and\n101\nclinical SR automation have evaluated LLMs released after GPT-4o. Moreover, although\n102\nChain-of-Thought–invoking prompt modifications"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p6_c2",
+   "page": 6,
+   "text": "model development, relatively few studies in biomedical and\n101\nclinical SR automation have evaluated LLMs released after GPT-4o. Moreover, although\n102\nChain-of-Thought–invoking prompt modifications have been explored in some studies [8,\n103\n10], and requesting explicit rationales has potentially served as an analogous mechanism\n104\nto improve performance [6, 10, 13, 15], reasoning models that natively perform such\n105\nreasoning have not yet been systematically examined in this context.\n106\nTaken together, the reviewed literature reveals several gaps in the systematic evaluation\n107\nof workflow design choices for LLM-based title/abstract screening:\n108\n• Although employed in individual studies, the performance impact of PECOS-\n109\nwise splitting of LLM calls (i.e., prompt partitioning or PECO-parallelisation,\n110"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p7_c1",
+   "page": 7,
+   "text": "6\n\ne.g., Tran et al. [6]) has not been formally evaluated against single-call\n111\napproaches that require PECO-level judgements within one prompt (e.g., Li et\n112\nal., 2024 [13]).\n113\n• The effect of requiring explicit reasoning for each PECOS decision, compared\n114\nwith providing PECOS judgements without reasoning, has not been\n115\nsystematically assessed.\n116\n• Few-shot prompting has been explored in only a limited number of studies, and\n117\nsystematic performance comparisons between few-shot and zero-shot\n118\nprompting strategies are scarce.\n119\n• While inclusion thresholds based on numerical relevance scores have been\n120\nexplored [5, 7, 17], more flexible and deterministic decision rules based on\n121\nPECO-wise LLM judgements [13] have not been systematically tested for their\n122\npotential to optimise the trade-off between sensitivity and workload reduction.\n123\n• Variants of prompt chaining—where a task is decomposed into two or more\n124\nsequential subtasks—remain underexplored, with only a small number of\n125\nstudies implicitly applying such strategies [10, 11] and even fewer directly\n126\nbenchmarking them against single-prompt approaches [9].\n127\n• Tool-calling and agentic"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p7_c2",
+   "page": 7,
+   "text": "with only a small number of\n125\nstudies implicitly applying such strategies [10, 11] and even fewer directly\n126\nbenchmarking them against single-prompt approaches [9].\n127\n• Tool-calling and agentic capabilities, such as incorporating external knowledge\n128\nsources (e.g., web or Wikipedia searches), have not been investigated as\n129\npotential means to augment domain-specific knowledge during screening.\n130\n• The use of synthetic title–abstract records during workflow development and\n131\nprompt optimisation has not been leveraged to enable systematic testing of\n132"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p8_c1",
+   "page": 8,
+   "text": "7\n\nmultiple workflow variants while minimizing the risk of overfitting and external\n133\nvalidation data leakage.\n134\nIn this work, we address these gaps by systematically devising and comparing LLM-\n135\nbased TiAb-screening workflows using the LangChain Python framework, testing models\n136\nof varying sizes from both open-source providers via Ollama and from a proprietary\n137\nsource (OpenAI). We use a balanced set of 100 synthetic abstracts during a development\n138\nphase – analogous to a development set in machine learning – to select the most\n139\nFigure 1 | Three-phase evaluation framework for large-language-model–based title/abstract\nscreening workflows.\n(i) Development phase: a wide range of programmed large language model (LLM) workflows is tested\non 100 synthetic title/abstract (TiAb) records and narrowed down to candidates with favourable\nsensitivity, specificity and runtime/cost. (ii) Internal evaluation phase: shortlisted workflows are\nevaluated on three real-world SR datasets (SR1, SR6, SR9) previously conducted by our research team,\nand workflows with superior performance are selected as contenders. (iii) External validation phase: the\ncontender workflows are finally"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p8_c2",
+   "page": 8,
+   "text": "(SR1, SR6, SR9) previously conducted by our research team,\nand workflows with superior performance are selected as contenders. (iii) External validation phase: the\ncontender workflows are finally assessed on eight independent SR datasets from EMF and clinical\ntopics to quantify generalisability and derive recommendations.\nROC-AUC: area under the receiver-operating-characteristic curve. SR1, SR6 and SR9 denote\nWHO-commissioned systematic reviews on potential health effects of RF-EMF exposure [23]."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p9_c1",
+   "page": 9,
+   "text": "8\n\npromising workflows. The selected candidate workflows are then evaluated on three\n140\ncomplete, fully labelled SR datasets on potential health effects of radiofrequency\n141\nelectromagnetic fields (RF-EMF), previously lead- or co-authored by our research team,\n142\nin an internal evaluation phase (analogous to a test set). Finally, one to two best-\n143\nperforming workflows per model type are validated on external SR datasets, including\n144\nEMF and other research areas, serving as a hold-out set to assess generalisability\n145\n(Fig. 1).\n146\nOur primary aim is to maximise sensitivity for records ultimately included in the SR (i.e.,\n147\nafter passing the full-text screening stage), minimizing the risk of missing relevant studies,\n148\nwhile allowing the exclusion of records that would have been discarded at full-text\n149\nscreening. By separating inference from final decision-making, we provide tuneable\n150\ncontrol over workflow outcomes.\n151\nThus, our goal is to provide a reliable, reproducible, cost-efficient, and transparent\n152\nautomation workflow that substantially reduces human screening workload while\n153\nmaintaining high scientific rigour [18, 19].\n154\n\n155\n\n156\n\n157\n\n158\n\n159"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p10_c1",
+   "page": 10,
+   "text": "9\n\nMethods\n160\nAdditional methodological details can be found in the Supplementary Information.\n161\nSoftware, Models and Datasets\n162\nComputing resources\n163\nTo operate open-source LLMs, we locally ran the open-source Ollama Server (v 0.6.6,\n164\nhttps://github.com/ollama/ollama)\nwithin\na\nDocker\ncontainer\nbased\non\nthe\n165\nnvidia/cuda:12.8.0-runtime-ubuntu24.04 image on a Windows 11 Pro workstation\n166\nequipped with 96 GB RAM and two NVIDIA RTX 6000 Ada graphics processing units\n167\n(GPUs) (48 GB GDDR6 VRAM each).\n168\nOpen-source models\n169\nBased on our experience and machine capacity we pulled three Ollama-accessible\n170\nmodels of different sizes (labelled S, M and L for convenient use hereafter) for testing in\n171\nTiAb screening (Table 1).\n172\nProprietary models\n173\nTo operate proprietary OpenAI models, we used OpenAI API’s \"/v1/chat/completions\"\n174\nendpoint and programmed batch API task jobs via the OpenAI Python library\n175\n(https://github.com/openai/openai-python).\n176\nSince our goal was to test many different workflows against each other, resulting in high\n177\ntotal token numbers, we chose cost-efficient models (for convenient use hereafter labelled\n178\nS1, S2, M and L, based"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p10_c2",
+   "page": 10,
+   "text": "was to test many different workflows against each other, resulting in high\n177\ntotal token numbers, we chose cost-efficient models (for convenient use hereafter labelled\n178\nS1, S2, M and L, based on price range) for this work (Table 1).\n179"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p11_c1",
+   "page": 11,
+   "text": "10\n\nIn additional exploratory and post hoc analyses during internal evaluation, we also tested\n180\nfull-sized, and gpt-5 family models released during the course of this work (Table 1).\n181\nTable 1 | Large language models used in this study and their key characteristics.\n182\nWorkflow programming\n183\nTo program LLM-based workflows, one requirement was to handle queries to and\n184\nresponses from LLM calls as modules that can be processed in parallel or concatenated\n185\nfor multi-step workflows. We used Python (v 3.12.3, https://www.python.org/) code in the\n186\nLangChain software framework (v 0.3.7, https://github.com/langchain-ai/langchain) of\n187\ntools for interacting with LLMs and for programming LLM pipelines (chains), using\n188\nRunnable() primitives and LangChain’s pipe logic.\n189\nLLM id\nProvider Release\ndate\nBatch cost\n(input, $/M\ntokens)\nBatch cost\n(output,\n$/M\ntokens)\nShort\nlabel\nNotes\nllama3.1:8b\nMeta\nDecember\n2024\n(updated\nrelease)\n–\n–\nS\nOpen-source,\nOllamaaccessible\nmistralnemo:12b\nMistral AI\nJuly 2024\n–\n–\nM\nllama3.3:70b\nMeta\nDecember\n2024\n–\n–\nL\ngpt-4.1-nano\nOpenAI\n\nApril 14,\n2025\n0.05\n0.20\nS1\n–\ngpt-4o-mini\nJuly 18,\n2024\n0.075\n0.30\nS2\n–\ngpt-4.1-mini\nApril 14,\n2025\n0.20"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p11_c2",
+   "page": 11,
+   "text": "Mistral AI\nJuly 2024\n–\n–\nM\nllama3.3:70b\nMeta\nDecember\n2024\n–\n–\nL\ngpt-4.1-nano\nOpenAI\n\nApril 14,\n2025\n0.05\n0.20\nS1\n–\ngpt-4o-mini\nJuly 18,\n2024\n0.075\n0.30\nS2\n–\ngpt-4.1-mini\nApril 14,\n2025\n0.20\n0.80\nM\n–\no3-mini\nJanuary 31,\n2025\n0.55\n2.20\nL\nreasoning\neffort = “high”\ngpt-4.1\nOpenAI\n\nApril 14,\n2025\n1.00\n4.00\n–\npost hoc\nanalyses,\no3: reasoning\neffort = “high\no3\nApril 16,\n2025\n1.00\n4.00\n–\ngpt-5-nano\nAugust 07,\n2025\n0.025\n0.20\n–\nexploratory\nanalyses,\nreasoning\neffort = “high”\ngpt-5-mini\nAugust 07,\n2025\n0.125\n1.00\n–"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p12_c1",
+   "page": 12,
+   "text": "11\n\nFor small open-source LLM (llama3.1:8b) we used the LangChain batch_as_completed()\n190\nfunction with “max_concurrency” set to 5 to enable simultaneous processing of up to five\n191\nTiAb records.\n192\nTo maximise reproducibility and to be able to trace the impact of prompt changes during\n193\ndevelopment, we set temperature = 0 for all models where available. For OpenAI\n194\nreasoning models (o3-mini, o3, gpt-5-nano, gpt-5-mini), temperature is not a supported\n195\nparameter; max_tokens was increased from the default of 512 up to 16,000 to\n196\naccommodate the token demand of reasoning. For Ollama models, we set\n197\nnum_predict = 1024 tokens, and additionally set top_k = 1, which restricts next-token\n198\nsampling to the k most probable candidates. For open-source models, the Ollama context\n199\nwindow parameter num_ctx was set to 8192 tokens to accommodate all instructions,\n200\nincluding few-shot examples, the title and abstract to be classified, and the model output.\n201\nAll other parameters were left at their respective API/model defaults.\n202\nInternal evaluation dataset\n203\nWe used three WHO-commissioned SRs on associations between RF-EMF exposure\n204\nand health outcomes that were"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p12_c2",
+   "page": 12,
+   "text": "were left at their respective API/model defaults.\n202\nInternal evaluation dataset\n203\nWe used three WHO-commissioned SRs on associations between RF-EMF exposure\n204\nand health outcomes that were lead- or co-authored by our department [20-22] (Table 2).\n205\nFor each SR, we had access to the full set of retrieved title/abstract (TiAb) records and\n206\nthe corresponding screening decisions at TiAb and full-text stages. These decisions\n207\nserved as the reference standard (“ground truth”) for evaluating LLM workflow\n208\nperformance, with final inclusion in the SR defining the positive class. These datasets are\n209\nreferred to by their short handles SR1, SR6, and SR9 (Table 2; [23]).\n210\n\n211"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p13_c1",
+   "page": 13,
+   "text": "12\n\nExternal validation dataset\n212\nTo assess generalisability beyond SRs conducted within our department, we validated\n213\nselected workflows on external SR datasets from (i) EMF research and (ii) unrelated\n214\nclinical areas.\n215\nFor EMF validation, we obtained TiAb records and TiAb/full-text screening decisions for\n216\ntwo SRs—from the same series of WHO-commissioned reviews [23]—as EndNote\n217\ndatabases from the authors [23-25]. In addition, for one SR on low-frequency EMF and\n218\ncancer [26], we re-ran the original literature search and used the SR’s full-text screening\n219\noutcomes as the reference labels (Table 2).\n220\nTable 2 | Systematic review datasets used for evaluation in this study (post-processing counts).\n221\nStage\nReferenc\ne\nPubli\ncatio\nn\nyear\nShort\nID\nTopic of SR research\nquestion\nN total\nrecord\ns\nscreen\ned\nN\nfull‑tex\nt only\nN\ninclu\nded\n% of\ntitle‑on\nly\nrecord\ns\nInternal\nevaluation\nKaripidis\net al.\n2024\nSR1\nRF‑EMF and cancer in\nhuman\nobservational\nstudies\n3907\n492\n146\n13.0\nPophof et\nal.\n2024\nSR6\nRF‑EMF\nand\nhuman\ncognition trials\n5000\n165\n80\n3.6\nMeyer et\nal.\n2024\nSR9\nRF‑EMF\nand\noxidative\nstress in vitro, in vivo and ex\nvivo\n5000\n500\n56\n5.0\nExternal\nvalidation"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p13_c2",
+   "page": 13,
+   "text": "146\n13.0\nPophof et\nal.\n2024\nSR6\nRF‑EMF\nand\nhuman\ncognition trials\n5000\n165\n80\n3.6\nMeyer et\nal.\n2024\nSR9\nRF‑EMF\nand\noxidative\nstress in vitro, in vivo and ex\nvivo\n5000\n500\n56\n5.0\nExternal\nvalidation\nCordelli\net al.\n2024\nSR4\nRF-EMF and male fertility in\nanimals\n1326\n206\n117\n6.0\nRöösli et\nal.\n2024\nSR7\nRF-EMF\nand\nunspecific\nsymptoms\nin\nhuman\nobservational studies\n3887\n243\n13\n1.0\nLuukkon\nen et al.\n2025\nLu2025\nLow‑frequency EMF and\ncancer in animals\n985\n–\n53\n2.9\nAppenzel\nler‑Herzo\ng et al.\n2019\nAZ2019 Wilson’s disease treatment\n3447\n148\n26\n31.7\nvan Dis et\nal.\n2020\nvD2020 Cognitive\nbehavioural\ntherapy\n5000\n500\n73\n11.9\nLeenaars\net al.\n2020\nLe2020\nRheumatoid\narthritis\ntreatment\n5000\n500\n500\n4.1\nSandner\net al.\n2024\nSa_Co\nvid\nCOVID‑19\npharmacologic\ntreatment\n(SSRIs,\nivermectin, LPV/r)\n4794\n88\n46\n0\nSandner\net al.\n2024\nSa_Ra\nynauds\nAcupuncture for Raynaud’s\nsyndrome\n849\n4\n2\n0"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p14_c1",
+   "page": 14,
+   "text": "13\n\nFor unrelated research areas, we included three SRs featured in the SYNERGY collection\n222\n(https://github.com/asreview/synergy-dataset)\n(Wilson’s\nliver\ndisease\ntreatment,\n223\ncognitive behavioural therapy, and rheumatoid arthritis treatment) with clearly formulated\n224\neligibility criteria and publicly available search results and screening labels [27-29]. We\n225\nalso included four SR datasets, each from an overlapping author group, which were\n226\ncurated by Sandner et al. [17]. Three of these addressed pharmacological treatments of\n227\nCOVID-19 [30-32]. To avoid overweighting this author collective and clinical context,\n228\nrecord-level predictions were generated separately for each of these three SRs, and then\n229\nconcatenated along with the reference labels into a single combined COVID-19 dataset\n230\nfor analysis. The fourth SR dataset curated by Sandner et al. [17] addressed acupuncture\n231\nfor Raynaud’s syndrome [33] (Table 2). In clinical SRs, we treated the I(ntervention)\n232\ncomponent of the PICOS framework analogously to the (E)exposure component used in\n233\nEMF-related SRs.\n234\nDevelopment\n235\nEligibility criteria\n236\nTo develop prompts and test workflows, we used a"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p14_c2",
+   "page": 14,
+   "text": "232\ncomponent of the PICOS framework analogously to the (E)exposure component used in\n233\nEMF-related SRs.\n234\nDevelopment\n235\nEligibility criteria\n236\nTo develop prompts and test workflows, we used a single set of eligibility criteria adapted\n237\nfrom SR1 [22] (Table 1 in that reference). Because SR1 addressed three related review\n238\nquestions, we expressed the overall inclusion logic as a set of OR-combined criteria\n239\nmatching the review’s search results. We reformulated these criteria in a compact form\n240\n(Supplementary File 1) and stored them in a YAML file to enable variable interpolation in\n241\nprompt templates.\n242\nSynthetic abstracts\n243"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p15_c1",
+   "page": 15,
+   "text": "14\n\nWe used synthetic abstracts to keep the internal evaluation datasets untouched during\n244\nworkflow development. Because eligible studies are typically rare, using real SR records\n245\nduring optimisation would reduce the number of eligible records available for subsequent\n246\nevaluation and lower statistical precision.\n247\nTo generate synthetic abstracts, we used the SR1 eligibility criteria and prompted gpt-4o\n248\n(ChatGPT app) on March 24, 2025, to generate 25 eligible and 25 ineligible abstracts.\n249\nAmong the ineligible abstracts, 10 were intended to fail three PECOS elements, 10 to fail\n250\ntwo elements, and 5 to fail one element. To diversify writing style and content, we\n251\nrepeated the procedure with Gemini 2.5 Pro Preview 03-25 (Google AI Studio) on April 6,\n252\n2025 and generated an additional 50 abstracts using the same PECOS-failure distribution\n253\n(prompts in Supplementary File 1). This yielded 100 synthetic abstracts with a 1:1\n254\neligible:ineligible ratio (Supplementary File 1).\n255\nWe ran three replicate analyses on the same 100 synthetic abstracts to assess the\n256\nstability of workflow outputs. Despite temperature = 0 (where supported), minor run-to-\n257"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p15_c2",
+   "page": 15,
+   "text": "File 1).\n255\nWe ran three replicate analyses on the same 100 synthetic abstracts to assess the\n256\nstability of workflow outputs. Despite temperature = 0 (where supported), minor run-to-\n257\nrun variation can occur in practice in multi-component LLM pipelines, and replicates\n258\nallowed us to assess this susceptibility.\n259\nOutput constraints\n260\nTo obtain consistent, parsable and fully comparable responses from all models, we\n261\nconstrained output format by employing Pydantic BaseModel schemas and converting\n262\nthem to JSON-style functions that can be attached to the LLMs as callable tools.\n263\nThe standard output for a single-step workflow consisted of PECOS-wise reasoning and\n264\ndecisions, i.e., a separate free-text reasoning field and a resulting decision for each of the\n265"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p16_c1",
+   "page": 16,
+   "text": "15\n\nfive PECOS elements (10 fields in total). For each PECOS decision, the LLM could return\n266\nTrue (include), False (exclude) or NotEvaluable (unsure) (Fig. 2). We introduced the\n267\nNotEvaluable option to capture records with too little or inadequate information for\n268\nevaluation (e.g., title-only records) or other issues (including technical/formatting failures).\n269\nThe rationale was that records marked with one or more NotEvaluable decisions could\n270\nbe flagged for manual review.\n271\nVariations of the standard output were reasoning-less schemas (five PECOS decisions\n272\nonly; five fields total). A separate schema was used for two-step workflows: the first step\n273\nperformed PECOS extraction (five extracted fields corresponding to the five PECOS\n274\nelements), and the second step applied the standard PECOS-wise reasoning-and-\n275\ndecision schema (Supplementary File 1).\n276\nZero-shot prompts\n277\nIn our workflow nomenclature, workflow variants and ablations are separated by hyphens,\n278\nwith the model identifier always appearing last (e.g., Zs-NR-M) (Supplementary File 1).\n279\nDuring development, we iteratively refined prompt wording and output-schema\n280\ndescriptions at the"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p16_c2",
+   "page": 16,
+   "text": "278\nwith the model identifier always appearing last (e.g., Zs-NR-M) (Supplementary File 1).\n279\nDuring development, we iteratively refined prompt wording and output-schema\n280\ndescriptions at the workflow-class level (i.e., shared across similar workflow variants) to\n281\nreduce formatting errors and increase response consistency, using a small subset of\n282\nsynthetic abstracts.\n283\nThe standard prompt was a zero-shot (Zs) prompt describing the TiAb screening task,\n284\nproviding the eligibility criteria, and instructing the model to assess each PECOS element\n285\nand justify its decisions (Fig. 2, Supplementary File 1). We also tested (i) a variant that\n286\nbriefly defined each PECOS element (Zs-Explicit) and (ii) a no-reasoning variant that\n287"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p17_c1",
+   "page": 17,
+   "text": "16\n\nomitted the instruction to output justifications (Zs-NR). Because output tokens affect cost\n288\nand throughput, Zs-NR was evaluated as a cost-saving alternative. To mitigate potential\n289\nperformance loss without requiring explicit justifications, Zs-NR prompts included the\n290\ninstruction “Apply thorough reasoning before you respond with your decision”, to stimulate\n291\ninternal Chain-of-Thought (CoT) reasoning.\n292\nSince LLMs might perform better when presented with a more manageable task [34, 35],\n293\nwe additionally tested prompt partitioning into five separate prompts, one per PECOS\n294\nelement, resulting in five parallel LLM calls per record (Zs-PECOwise) (Fig. 2,\n295\nSupplementary File 1).\n296\nFinally, we evaluated an agentic workflow (Ag) allowing web and Wikipedia search tool\n297\nuse to look up unfamiliar terms (Supplementary File 1).\n298\nFew-shot prompts\n299\nAnother crucial prompt modification is the few-shot variation (Fs), which injects TiAb\n300\nexamples with ideal PECOS evaluations in the target output format (Fig. 2). This provides\n301\nin-context demonstrations that may improve task performance. Selecting adequate\n302\nexamples is challenging because they can"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p17_c2",
+   "page": 17,
+   "text": "PECOS evaluations in the target output format (Fig. 2). This provides\n301\nin-context demonstrations that may improve task performance. Selecting adequate\n302\nexamples is challenging because they can substantially increase input tokens (and cost),\n303\ncompete with task instructions for attention, and must cover a representative range of\n304\nstudy types and PECOS patterns.\n305\nWe injected four examples per SR topic: at least one that was eligible for all PECOS\n306\nelements, and at least one that failed most if not all PECOS elements. Whenever possible,\n307\nwe identified examples in PubMed that were published after the literature search date of\n308\nthe respective SR. When this was not possible and examples had to be drawn from the\n309"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p18_c1",
+   "page": 18,
+   "text": "17\n\ndataset itself, those records were excluded from the subsequent screening/evaluation for\n310\nthat SR to avoid overlap between few-shot examples and evaluated records. In some\n311\ncases, we used synthetic TiAb as examples. All few-shot examples are provided in\n312\nSupplementary File 1.\n313\nTwo-step prompt-chaining\n314\nIn our workflow nomenclature, two-step workflows are indicated by an underscore-\n315\nsurrounded ampersand (“_&_”) between the two steps.\n316\nReviewer paradigm\n317\nAs an extension of the single-step workflow, we evaluated “reviewer” designs in which an\n318\nLLM reviews and may revise a primary LLM’s initial output (Fig. 2). The reviewer could\n319\nbe the same model or a larger model. We implemented reviewer workflows (R) in three\n320\nvariants: the same primary output produced by the smallest model (S), together with the\n321\ncorresponding TiAb record, was reviewed by models of size S, M, or L, which could either\n322\nconfirm or modify the original PECOS-wise decisions.\n323\nTask-decomposition paradigm\n324\nWe treated simultaneous extraction of PECOS elements from a TiAb and evaluation\n325\nagainst eligibility criteria as a compound task that may be decomposed into simpler"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p18_c2",
+   "page": 18,
+   "text": "Task-decomposition paradigm\n324\nWe treated simultaneous extraction of PECOS elements from a TiAb and evaluation\n325\nagainst eligibility criteria as a compound task that may be decomposed into simpler steps.\n326\nWe implemented a two-step workflow in which the first step extracts study features\n327\ncorresponding to each PECOS element from the TiAb (extraction step, X), producing a\n328\nlist of extracted features per element. In the second step, the model evaluates whether\n329\nthe extracted features meet the corresponding eligibility criteria. This evaluation step was\n330"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p19_c1",
+   "page": 19,
+   "text": "18\n\nimplemented either as five separate PECOS-wise parallel calls (E) or as a single joint call\n331\nover all five elements (EJ) (Fig. 2).\n332\nBecause the evaluation step may lack context when only extracted features are provided,\n333\nwe also tested variants in which the original TiAb was supplied together with the extracted\n334\nfeatures (E-Ab and EJ-Ab). We further evaluated few-shot variants applied at the\n335\nextraction step (X-Fs), the evaluation step (E-Fs), or both (e.g., X-Fs_&_E-Fs).\n336\nFinally, we tested workflow variants with enabled agentic web and Wikipedia search tool\n337\nuse (Ag), allowing the model to look up unfamiliar terms that might otherwise limit\n338\nevaluation.\n339\nHarmonisation of workflow outputs\n340\nBecause we devised a total of 36 open-source and 38 OpenAI workflows with differing\n341\noutput schemas (Fig. 2, Supplementary File 1), we harmonised all workflow outputs into\n342\na unified structure for downstream processing. The target object had the following\n343\nstructure (illustrative):\n344\n{'evaluations':\n345\n{'population_evaluation':\n346\n{'decision': 'True/False/NotEvaluable',\n347\n'reason': 'Free-text. Empty if reasoning not requested.'},\n348"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p19_c2",
+   "page": 19,
+   "text": "following\n343\nstructure (illustrative):\n344\n{'evaluations':\n345\n{'population_evaluation':\n346\n{'decision': 'True/False/NotEvaluable',\n347\n'reason': 'Free-text. Empty if reasoning not requested.'},\n348\n'exposure_evaluation':\n349\n{'decision': ‘True/False/NotEvaluable’,\n\n350\n'reason': 'Free-text. Empty if reasoning not requested.'},\n351\n'comparison_evaluation':\n352\n{'decision': ‘True/False/NotEvaluable’,\n353\n'reason': 'Free-text. Empty if reasoning not requested.'},\n354\n'outcome_evaluation':\n355\n{'decision': ‘True/False/NotEvaluable’,\n356\n'reason': 'Free-text. Empty if reasoning not requested.'},\n357\n'study_type_evaluation':\n358\n{'decision': ‘True/False/NotEvaluable’,\n359"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p20_c1",
+   "page": 20,
+   "text": "19\n\n'reason': 'Free-text. Empty if reasoning not requested.'}},\n360\n\n361\n'summary': {'True': n_True , 'False': n_False, 'NotEvaluable': n_NotEvaluable },\n362\n\n363\n'PECOS': { 'comparison': [‘…’],\n364\n'exposure': [‘…’],\n365\n'outcome': [‘…’],\n366\n'population': [‘…’],\n367\n'study_type': [‘…']} }\n368\n\n369\nThe summary fields were computed from the evaluation decisions and always summed\n370\nto 5. The PECOS field was only populated for task-decomposition workflows in which an\n371\nexplicit extraction step was performed.\n372\nDecision rules\n373\nTo\nderive\na\nfinal\nrecord-level\nscreening\naction\n(“include”,\n“exclude”,\nor\n374\n“MANUAL_CHECK”), we applied six deterministic decision rules (R1–R6) to the summary\n375\ncounts of the output object for each record. Rules were ordered from most specificity-\n376\noriented (R1) to most sensitivity-oriented (R6), enabling selection of an operating point\n377\nwith an appropriate sensitivity–specificity trade-off.\n378\nLet T denote the number of PECOS elements scored True, F the number scored False,\n379\nand N the number scored NotEvaluable (T+F+N=5). The rules were implemented as\n380\nordered conditional statements evaluated sequentially in the order listed"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p20_c2",
+   "page": 20,
+   "text": "scored True, F the number scored False,\n379\nand N the number scored NotEvaluable (T+F+N=5). The rules were implemented as\n380\nordered conditional statements evaluated sequentially in the order listed (if–elif–else),\n381\nwith the first satisfied condition determining the final action:\n382\n•\nR1: include if T=5; MANUAL_CHECK if N≥4; otherwise exclude.\n383\n•\nR2: include if T=5 or (T=4 and N=1); MANUAL_CHECK if N≥4; otherwise exclude.\n384\n•\nR3: include if T=5 or (T=4 and N=1); MANUAL_CHECK if (T=3 and N=2) or N≥4;\n385\notherwise exclude.\n386"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p21_c1",
+   "page": 21,
+   "text": "20\n\n•\nR4: include if T≥4; MANUAL_CHECK if (T=3 and N=2) or N≥4; otherwise exclude.\n387\n•\nR5: exclude if F≥2; include if T≥3 (i.e., if [F<2 and T≥3]); MANUAL_CHECK if N≥4;\n388\notherwise exclude.\n389\n•\nR6: include if T≥3; exclude if (T<3 and F≥2); MANUAL_CHECK if N≥2.\n390\nPerformance metrics\n391\nFor each decision rule, the resulting labels (“include”, “exclude”, or “MANUAL_CHECK”)\n392\nwere compared against the ground truth to identify true positives (TP), true negatives\n393\n(TN), false positives (FP) and false negatives (FN). Records marked for manual review\n394\n(“MANUAL_CHECK”) were treated as included (TP or FP), since they would be further\n395\nassessed by human reviewers and therefore would not be lost to the review process. We\n396\ntracked the number of records routed to manual review. We used confusion matrices to\n397\nvisually assess workflow performance in conjunction with the decision rules.\n398\nWe primarily focused on sensitivity and specificity, calculated as:\n399 ܵ݁݊\nݏ݅ݐ݅ݒ݅ݐݕ=்\n௉்\n௉+ிே\n(1)\n400 ܵ\n݌݂݁ܿ݅݅ܿ݅\nݐݕ=்\nே்\nே+ி௉\n(2)\n401\nWe also computed overall accuracy, balanced accuracy, precision and F1-score (positive\n402\nclass:\n“included”)\nusing\nthe\nscikit-learn\nfunctions"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p21_c2",
+   "page": 21,
+   "text": "௉்\n௉+ிே\n(1)\n400 ܵ\n݌݂݁ܿ݅݅ܿ݅\nݐݕ=்\nே்\nே+ி௉\n(2)\n401\nWe also computed overall accuracy, balanced accuracy, precision and F1-score (positive\n402\nclass:\n“included”)\nusing\nthe\nscikit-learn\nfunctions\naccuracy_score(),\n403\nbalanced_accuracy_score(), precision_score() and f1_score() [36]. These metrics are\n404\navailable in Supplemental File 2 for each phase of this work.\n405\nܣܿܿ\nݑݎܽܿ\nݕ=்\n௉+ ்ே்\n௉+்ே+ி௉+ிே\n(3)\n406\nܤ݈ܽܽ݊ܿ݁݀\nܣܿܿ\nݑݎܽܿ\nݕ= 0.5 ∗(்\n௉்\n௉+ிே+ ்\nே்\nே+ி௉)\n(4)\n407"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p22_c1",
+   "page": 22,
+   "text": "21\n\nPrecision =்\n௉்\n௉+ி௉\n(5)\n408\nF1 =\n2∗்௉\n2∗ ்௉+ி௉+ிே\n(6)\n409\nReceiver operating characteristic curve and area under curve\n410\nFor each workflow, we constructed a receiver operating characteristic (ROC) curve from\n411\nthe six operating points defined by the six decision rules, using sensitivity (y-axis) and\n412\n1−specificity (x-axis). We computed the corresponding area under this curve (AUC) by\n413\nadding anchor points (0,0) and (1,1) and applying the trapezoidal rule as implemented in\n414\nscikit-learn’s auc() [36].\n415\nComputational cost\n416\nFor open-source models, we recorded the wall-clock time required to process each\n417\ndataset, and normalised it as hours per 1,000 TiAb records. For proprietary models, we\n418\nrecorded total API costs (input + output tokens) per dataset, and normalised them as USD\n419\nper 1,000 TiAb records.\n420\nHeatmaps\n421\nFor visual comparison, we constructed heatmaps for each metric with decision rule on\n422\nthe y-axis and workflow on the x-axis.\n423\nAggregation\n424\nWe ran the experiment on the 100 synthetic abstracts in triplicate. Although temperature\n425\nwas set to 0, small run-to-run variations occurred. For each metric, we computed the\n426\nmean"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p22_c2",
+   "page": 22,
+   "text": "424\nWe ran the experiment on the 100 synthetic abstracts in triplicate. Although temperature\n425\nwas set to 0, small run-to-run variations occurred. For each metric, we computed the\n426\nmean across the three replicates. For AUC and computational cost, we additionally report\n427\nthe standard deviation across replicates.\n428"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p23_c1",
+   "page": 23,
+   "text": "22\n\nWorkflow selection\n429\nSince it was not feasible to run all implemented workflows on full SR datasets with\n430\nthousands of records each, the goal of the development phase was to select 8–10\n431\nworkflows balancing cost, sensitivity, specificity and uncertainty (i.e., items tagged for\n432\nmanual review), while retaining a diverse set of workflow concepts.\n433\nWorkflow selection followed a two-stage procedure. First, workflows were ranked by AUC\n434\n(computed from the six decision-rule operating points). Second, we iterated through this\n435\nranked list and selected workflows that met pre-defined feasibility and operating\n436\nconstraints (computational cost on 100 TiAb records: <10 minutes for open-\n437\nsource/Ollama or <$0.50 for OpenAI; and <10 records routed to MANUAL_CHECK). If a\n438\nhigh-AUC workflow did not achieve acceptable sensitivity/specificity behaviour across the\n439\ndecision rules (sensitivity ≥90% and specificity ≥75% for multiple rules), it was skipped\n440\nand the next-ranked workflow was considered, until 8–10 workflows were selected. In\n441\naddition, a pre-specified zero-shot small-model workflow (S) was included as a reference\n442\nregardless of rank"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p23_c2",
+   "page": 23,
+   "text": "and the next-ranked workflow was considered, until 8–10 workflows were selected. In\n441\naddition, a pre-specified zero-shot small-model workflow (S) was included as a reference\n442\nregardless of rank (Supplementary File 2).\n443\nInternal evaluation\n444\nCandidate workflows selected as in the section on Workflow selection were assessed on\n445\nthree RF-EMF systematic review datasets (SR1, SR6 and SR9; see Methods section\n446\nFor small open-source LLM (llama3.1:8b) we used the LangChain batch_as_completed()\n447\nfunction with “max_concurrency” set to 5 to enable simultaneous processing of up to five\n448\nTiAb records.\n449"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p24_c1",
+   "page": 24,
+   "text": "23\n\nTo maximise reproducibility and to be able to trace the impact of prompt changes during\n450\ndevelopment, we set temperature = 0 for all models where available. For OpenAI\n451\nreasoning models (o3-mini, o3, gpt-5-nano, gpt-5-mini), temperature is not a supported\n452\nparameter; max_tokens was increased from the default of 512 up to 16,000 to\n453\naccommodate the token demand of reasoning. For Ollama models, we set\n454\nnum_predict = 1024 tokens, and additionally set top_k = 1, which restricts next-token\n455\nsampling to the k most probable candidates. For open-source models, the Ollama context\n456\nwindow parameter num_ctx was set to 8192 tokens to accommodate all instructions,\n457\nincluding few-shot examples, the title and abstract to be classified, and the model output.\n458\nAll other parameters were left at their respective API/model defaults.\n459\nInternal evaluation dataset, Table 2 and Supplementary Methods).\n460\nEligibility criteria for SR6 and SR9 were formalised based on the corresponding protocols\n461\nand final reviews, assisted by ChatGPT, and then manually verified for correctness\n462\n(Supplementary File 1).\n463\nPerformance metrics\n464\nWe used the same metrics as in the"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p24_c2",
+   "page": 24,
+   "text": "protocols\n461\nand final reviews, assisted by ChatGPT, and then manually verified for correctness\n462\n(Supplementary File 1).\n463\nPerformance metrics\n464\nWe used the same metrics as in the Development section Performance metrics. In\n465\naddition, we defined workload reduction as the proportion of records that would not\n466\nrequire human TiAb screening if the AI workflow were applied first to exclude records:\n467 ܹ\n݋ݎ݈݇\n݋ܴܽ݀݁݀\nݑܿݐ݅݋݊\n=்\nே+ிே்\n௉+்ே+ி௉+ிே\n(7)\n468\nHere, ܶܰ\n+ ܨܰ corresponds to records labelled “exclude” by the workflow (with FN\n469\nreflecting eligible studies incorrectly excluded). Records labelled “MANUAL_CHECK”\n470\nwere treated as included (i.e., routed to human review) and therefore count as TP or FP\n471"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p25_c1",
+   "page": 25,
+   "text": "24\n\nand do not contribute to workload reduction. Only in an exploratory analysis,\n472\n“MANUAL_CHECK” labelled records counted as TN or FN.\n473\nSynthetic abstracts used during development were idealised and typically contained\n474\ninformation for all PECOS elements. In real-world SR datasets, TiAb records often omit\n475\none or more PECOS elements, and some records provide a title only without an abstract,\n476\nwhich can limit adjudication. We therefore additionally evaluated performance after\n477\nexcluding title-only records (i.e., restricting analysis to records with an abstract). We also\n478\nassessed performance under an alternative target definition in which records labelled as\n479\n“full-text”, i.e., as “include for full-text screening”, were treated as eligible, enabling direct\n480\ncomparison to TiAb-stage human screening behaviour.\n481\nPECOS–based ranking score\n482\nIn addition to decision-rule–based classifications, we computed a continuous ranking\n483\nscore per record based on PECOS-level decisions. For record ݅, we defined:\n484 ܵܿ\n݋ݎ݁௜= (#ܶݎݑ݁௜∗ +1) + (#ܨ݈ܽ\nݏ݁௜∗−1) + (#ܰ݋ݐܧݒ݈ܽ\nݑܾ݈ܽ݁\n௜∗0)\n(8)\n485\nWith five PECOS elements, scores range from −5 (all False) to +5 (all True)."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p25_c2",
+   "page": 25,
+   "text": "PECOS-level decisions. For record ݅, we defined:\n484 ܵܿ\n݋ݎ݁௜= (#ܶݎݑ݁௜∗ +1) + (#ܨ݈ܽ\nݏ݁௜∗−1) + (#ܰ݋ݐܧݒ݈ܽ\nݑܾ݈ܽ݁\n௜∗0)\n(8)\n485\nWith five PECOS elements, scores range from −5 (all False) to +5 (all True). Records\n486\nwere ranked in descending order, and resulting ties were broken at random using a fixed\n487\nseed (numpy.random.default_rng(seed=42)). Based on this ranking, we computed two\n488\nsupplementary, effort-oriented metrics: (i) screening effort to reach 90% recall (% of\n489\nrecords screened) and (ii) TiAb needed to be screened (K, i.e., the number of records)\n490\nper eligible study at 90% recall.\n491\nAggregation\n492"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p26_c1",
+   "page": 26,
+   "text": "25\n\nWe treated the three SR datasets as independent units and summarised performance by\n493\nreporting per-dataset metrics and their mean (with standard error across datasets).\n494\nWorkflow selection\n495\nOne to two workflows per model type (open-source and proprietary) were selected for\n496\nexternal validation. Workflows with higher average AUC were prioritised, but selection\n497\nalso considered the maximum sensitivity achievable while retaining acceptable\n498\nspecificity, performance under more specificity-oriented decision rules, workload\n499\nreduction, and the proportion of records routed to MANUAL_CHECK. As a practical\n500\nrobustness check, workflows that achieved high sensitivity under the most sensitive rule\n501\n(R6) but performed poorly under more specific rules or produced high MANUAL_CHECK\n502\nrates were deprioritised.\n503\nExternal validation\n504\nThe workflows selected in the internal evaluation stage were assessed on external SR\n505\ndatasets not used during development or internal evaluation: SR4, SR7, Luukkonen 2025\n506\n(Lu2025), Appenzeller‑Herzog 2019 (AZ2019), van Dis 2020 (vD2020) and Leenaars\n507\n2020 (Le2020), as well as two datasets derived from Sandner et al."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p26_c2",
+   "page": 26,
+   "text": "internal evaluation: SR4, SR7, Luukkonen 2025\n506\n(Lu2025), Appenzeller‑Herzog 2019 (AZ2019), van Dis 2020 (vD2020) and Leenaars\n507\n2020 (Le2020), as well as two datasets derived from Sandner et al. [17] (Table 2,\n508\nSupplementary Methods).\n509\nEligibility criteria for these SRs were formalised from protocols (if available) and/or final\n510\nreviews, assisted by ChatGPT, and manually verified for correctness (see Supplementary\n511\nFile 1).\n512\nPerformance metrics\n513"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p27_c1",
+   "page": 27,
+   "text": "26\n\nPerformance metrics were computed as in Development section Performance metrics\n514\nand Internal evaluation section Performance metrics. For external validation, sensitivity\n515\nand workload reduction at decision rule R6 were treated as primary outcomes. Effort-at-\n516\n90%-recall metrics were reported descriptively.\n517\nStatistical analysis\n518\nTo construct 95% confidence intervals (95% CI) for sensitivity, specificity and workload\n519\nreduction, Wilson score intervals for proportions were calculated.\n520\nTo obtain summary estimates across external SR datasets, we conducted random-effects\n521\nmeta-analyses of single proportions using meta::metaprop [37] in R (v 4.3.0), applying a\n522\nlogit transformation and inverse-variance weighting.\n523\nIn addition, we reported dataset-size–weighted estimates, obtained by aggregating\n524\nnumerators and denominators across datasets (i.e., weighting each dataset by its number\n525\nof TiAb records), and computed Wilson score confidence intervals for the resulting\n526\naggregated proportions.\n527\nTo compare workflows on sensitivity, we used McNemar’s exact test on paired outcomes\n528\nrestricted to ground-truth eligible records (finally included"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p27_c2",
+   "page": 27,
+   "text": "for the resulting\n526\naggregated proportions.\n527\nTo compare workflows on sensitivity, we used McNemar’s exact test on paired outcomes\n528\nrestricted to ground-truth eligible records (finally included studies). Each workflow was\n529\nbinarised per eligible record as captured (“include” or “MANUAL_CHECK”) versus missed\n530"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p28_c1",
+   "page": 28,
+   "text": "27\n\n(“exclude”). Exact McNemar p-values were computed from 2×2 captured/missed tables\n531\nfor each workflow pair using statsmodels in Python.\n532\n\n533\nFigure 2 | LLM workflow design – reference, extension, and ablation variants.\nSchematic overview of single- and two-step LLM workflow implementations evaluated during\ndevelopment. Only a subset advanced to internal evaluation based on development performance, and\none to two workflows per model family (open-source or proprietary) were retained for external validation.\nDashed outlines indicate workflow extensions or ablations, as well as supplementary evaluation metrics.\nZs: zero-shot; Fs: few-shot; Ag: agentic search tools; NR: no reasoning in output; X: LLM extracting\nstudy features corresponding to PECOS; E: evaluator LLM; EJ: evaluator LLM in a single joint call; R:\nreviewer; Ab: TiAb provided at E/EJ; R1–R6: decision rules."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p29_c1",
+   "page": 29,
+   "text": "28\n\nResults\n534\nDevelopment phase\n535\nFig. 2 illustrates the implemented workflow designs. Briefly, for each title/abstract (TiAb)\n536\nrecord, the workflow receives three main inputs: a standardised instruction prompt, the\n537\nPECOS eligibility criteria for the specific review, and a single TiAb to be evaluated, and\n538\nin some variants, a set of four annotated examples specific to the PECOS of that review.\n539\nThe LLM, either in a single call, in PECOS-wise parallel calls, or as a sequence of calls\n540\nin two‑step designs, evaluates, for each PECOS element, whether the TiAb satisfies the\n541\ncorresponding criterion. These element‑wise judgements are subsequently mapped, via\n542\npre-defined deterministic rules (see Methods section Decision rules), to a record‑level\n543\ndecision of “include”, “exclude”, or “manual check”.\n544\nThe ability to discriminate between eligible and ineligible TiAb records by different LLM\n545\nworkflows (Fig. 2, Supplementary File 1) was evaluated on the dataset of 100 synthetic\n546\nTiAb, generated at a 1:1 ratio of eligible to ineligible records according to the eligibility\n547\ncriteria of the SR on RF-EMF and epidemiology of cancer (short handle – SR1"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p29_c2",
+   "page": 29,
+   "text": "of 100 synthetic\n546\nTiAb, generated at a 1:1 ratio of eligible to ineligible records according to the eligibility\n547\ncriteria of the SR on RF-EMF and epidemiology of cancer (short handle – SR1 [22])\n548\n(Fig. 1). Performance of each workflow was quantified in terms of sensitivity and\n549\nspecificity across six deterministic decision rules for processing LLM responses (R1–R6),\n550\nordered from most specific (R1) to most sensitive (R6) (Fig. 3a,b and Fig. 4a,b).\n551\nOpen-source workflows\n552\n16 out of 36 open-source LLM workflows achieved 100% sensitivity under the most\n553\nsensitive decision rule R6. Only three workflows, all based on llama3.3:70b (Zs-L, Fs-L,\n554\nand Fs-NR-L), detected all eligible records even under the most specific rule R1 (Fig.\n555"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p30_c1",
+   "page": 30,
+   "text": "29\n\n3a,b). However, both Zs-L and Fs-L exceeded our pre-defined computational constraint\n556\nFigure 3 | Performance of open-source LLM workflows on 100 synthetic abstracts.\na, b Heatmap of average sensitivity (a) and specificity (b) across workflows (x-axis) and\ndecision rules (y-axis) computed from three replicate runs. Workflows highlighted in bold were\nadvanced to internal evaluation. Colour scale shown on the right.\nc Average ROC–AUC values ± s.d. (n = 3) across workflows, sorted from highest (left) to lowest\n(right). ROC curves were constructed from six operating points (sensitivity vs. 1–specificity)\ncorresponding to decision rules R1–R6 in a and b.\nModel names and sizes indicated by S: llama3.1:8b; M: mistral-nemo:12b; L: llama3.3:70b."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p31_c1",
+   "page": 31,
+   "text": "30\n\nof a maximum runtime of 10 minutes (Supplementary Fig. S1). Therefore, only Fs-NR-L\n557\nwas selected for the internal evaluation phase. Fs-NR-L omits explicit reasoning in the\n558\noutput (“No Reasoning”), substantially reducing output token generation and resulting in\n559\na processing time of approximately 6 minutes.\n560\nIn terms of AUC scores (Fig. 3c), workflows based on the large llama3.3:70b model also\n561\nranked among the top performers. Due to its high overall sensitivity (100% under R4–\n562\nR6), acceptable specificity (>75% under R1–R5), and moderate computation time (5.3\n563\nminutes), we also advanced Zs-NR-L to the internal evaluation phase. This enabled direct\n564\ncomparison with Fs-NR-L and a more rigorous assessment of the impact of few-shot\n565\nexamples on screening performance.\n566\nAmong llama3.3:70b workflows with acceptable computation time, the agentic zero-shot\n567\nvariant without explicit output reasoning (Zs-Ag-NR-L; AUC mean ± SD: 0.957 ± 0.000)\n568\nperformed similarly to its non-agentic counterpart (Zs-NR-L; AUC: 0.976 ± 0.000) and\n569\nwas also advanced to the next phase. This agentic workflow executed Wikipedia\n570\nsearches for four ineligible TiAb"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p31_c2",
+   "page": 31,
+   "text": "similarly to its non-agentic counterpart (Zs-NR-L; AUC: 0.976 ± 0.000) and\n569\nwas also advanced to the next phase. This agentic workflow executed Wikipedia\n570\nsearches for four ineligible TiAb records. This resulted in misclassification for three of\n571\nthese four ineligible TiAb at R6. Interestingly, incorporating agentic search led to fewer\n572\nmisclassifications at R1-R4 for the small llama3.1:8b model (Zs-Ag-S; AUC: 0.968 ±\n573\n0.011) compared with the corresponding non-agentic zero-shot workflow (Zs-S; AUC:\n574\n0.928 ± 0.018), although the model did not initiate any searches. This may indicate that\n575\nthe performance difference was not driven by search results, but may be associated with\n576\nthe inclusion of agentic tool-calling as an available option in the prompt.\n577\nWorkflow extensions of the Zs-S reference workflow that exhibited markedly lower\n578\nrecovery of eligible TiAb records included the prompt-partitioned, parallel-call Zs-\n579"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p32_c1",
+   "page": 32,
+   "text": "31\n\nPECOwise-S (AUC: 0.949 ± 0.003) and the “no-reasoning-in-the-output” workflows Zs-\n580\nAg-NR-S (AUC: 0.908 ± 0.018) and Zs-NR-S (AUC: 0.888 ± 0.010) (Fig. 3a,c). This\n581\npattern suggests that explicit reasoning in the output is an important requirement for zero-\n582\nshot screening performance of the small llama3.1:8b model and cannot be solely\n583\ncompensated for by an instruction to “apply thorough reasoning” embedded in the prompt\n584\nof NR-workflows. In contrast, few-shot prompting (Fs-S; AUC: 0.949 ± 0.014) and the\n585\nexplicit explanation of the general PECOS concept in the prompt (Zs-Explicit-S; AUC:\n586\n0.955 ± 0.009) led to slight changes in the sensitivity/specificity trade-off (Fig. 3a-c). To\n587\nexplore the potential benefits of these modifications on real-world datasets, these two\n588\nworkflows and the agentic zero-shot workflow (Zs-Ag-S) were advanced to the internal\n589\nevaluation stage.\n590\nAmong prompt chaining workflows, two reviewer paradigm (Zs-S_&_R-Zs-S, Zs-S_&_R-\n591\nZs-M) resulted in deteriorated performance relative to the Zs-S reference (Fig. 3).\n592\nAlthough Zs-S_&_R-Zs-L exhibited the highest AUC (0.981 ± 0.005), it produced more\n593"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p32_c2",
+   "page": 32,
+   "text": "Zs-S_&_R-\n591\nZs-M) resulted in deteriorated performance relative to the Zs-S reference (Fig. 3).\n592\nAlthough Zs-S_&_R-Zs-L exhibited the highest AUC (0.981 ± 0.005), it produced more\n593\nmisclassifications than Zs-L alone, while requiring double the computation time (Fig. 3,\n594\nSupplementary Fig. 1). This workflow design was therefore abandoned at this phase.\n595\nThe task-decomposition paradigm using the small llama3.1:8b LLM showed\n596\nheterogeneous performance, with generally low sensitivity at the specificity-focused rules\n597\nR1-R3. An exception to this pattern were the X-Zs_&_EJ-Zs-Ab (AUC: 0.964 ± 0.000)\n598\nand X-Zs_&_EJ-Zs-Ab workflows (AUC: 0.963 ± 0.000) which combined a zero- or few-\n599\nshot extraction step with joint, single-call PECOS assessment and inclusion of TiAb\n600\ncontext at the evaluation stage. Inclusion of the TiAb text during evaluation appeared\n601\nnecessary to achieve this performance, as shown by the reduced AUC of a corresponding\n602"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p33_c1",
+   "page": 33,
+   "text": "32\n\nworkflow without TiAb contextualisation (X-Zs_&_EJ-Zs; AUC: 0.914 ± 0.000). This result\n603\nfurther indicates that joint PECOS evaluation outperforms PECOS-wise partitioning\n604\n(compare to X-Zs_&_E-Zs-Ab; AUC: 0.946 ± 0.015, Fig. 3), likely due to improved\n605\ncontextual integration of eligibility criteria. X-Zs_&_EJ-Zs-Ab was prioritized for the\n606\ninternal evaluation stage over X-Fs_&_EJ-Zs-Ab due to its slightly better recovery of\n607\neligible studies at R2-R5, achieving 100% sensitivity already at R4.\n608\nIn addition, X-Fs_&_E-Fs-Ab-Ag (AUC: 0.970 ± 0.005) and X-Zs_&_E-Fs-Ab (AUC: 0.955\n609\n± 0.007) were advanced due to their relatively high AUC and favourable sensitivities at\n610\nR4–R5 or R6 (Fig. 3a,b) (for selection criteria, see Development Methods section on\n611\nWorkflow selection and Supplementary File 2).\n612\nOverall, task decomposition did not consistently improve performance. In terms of\n613\nsensitivity, the single-step Zs-S reference workflow outperformed most such workflows\n614\nemploying PECOS partitioning during the evaluation step, and was only challenged by\n615\nthe two aforementioned two-step workflows (X-Zs/Fs_&_EJ-Zs-Ab) that performed joint\n616\nPECOS"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p33_c2",
+   "page": 33,
+   "text": "such workflows\n614\nemploying PECOS partitioning during the evaluation step, and was only challenged by\n615\nthe two aforementioned two-step workflows (X-Zs/Fs_&_EJ-Zs-Ab) that performed joint\n616\nPECOS evaluation (Fig. 3).\n617\nProviding the TiAb text within the evaluation-step prompt tended to improve performance\n618\nacross several workflow variants compared with less contextualised counterparts (X-\n619\nZs_&_E-Zs-Ab, AUC: 0.946 ± 0.015 vs. X-Zs_&_E-Zs, AUC: 0.913 ± 0.020; X-Fs-\n620\nAg_&_E-Fs-Ab-Ag, AUC: 0.955 ± 0.014 vs. X-Fs-Ag_&_E-Fs-Ag, AUC: 0.944 ± 0.011),\n621\nalthough in other cases, there was rather a shift towards improved specificity at the\n622\nexpense of sensitivity upon inclusion of the TiAb text (e.g., X-Fs_&_E-Fs-Ab, AUC: 0.952\n623\n± 0.002 vs. X-Fs_&_E-Fs, AUC 0.946 ± 0.011)\n624"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p34_c1",
+   "page": 34,
+   "text": "33\n\nIncorporation of an agentic search function at the evaluation stage also tended to improve\n625\nperformance (X-Zs_&_E-Zs-Ag, AUC: 0.943 ± 0.007 vs. X-Zs_&_E-Zs, AUC: 0.913 ±\n626\n0.020), with up to about 125 search requests issued across 500 evaluation stage calls,\n627\nalthough actual search activity was not always required to yield a performance difference\n628\n(X-Fs_&_E-Fs-Ab-Ag, AUC: 0.970 ± 0.005 vs. X-Fs_&_E-Fs-Ab, AUC: 0.952 ± 0.002),\n629\nwith provision of few-shot examples appearing to suppress search tool calls.\n630\nThe impact of few-shot example injection was variable across task-decomposition\n631\nworkflows, and tended to improve sensitivity at the expense of specificity (e.g., X-Fs_&_E-\n632\nFs, AUC: 0.946 ± 0.011 vs. X-Zs_&_E-Zs, AUC: 0.913 ± 0.020; X-Fs-Ag_&_E-Fs-Ag,\n633\nAUC: 0.944 ± 0.011 vs. X-Zs-Ag_&_E-Zs-Ag, AUC: 0.919 ± 0.020; Fig. 3).\n634\nProprietary LLM workflows\n635\nOverall, OpenAI-based LLM workflows were more sensitive but less specific than the\n636\nllama-based workflows (cf. Fig. 3 and Fig. 4). 23 out of 38 OpenAI LLM-based workflows\n637\nachieved 100% sensitivity when applying the most sensitive decision rule R6, while four\n638\nworkflows still detected all"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p34_c2",
+   "page": 34,
+   "text": "workflows (cf. Fig. 3 and Fig. 4). 23 out of 38 OpenAI LLM-based workflows\n637\nachieved 100% sensitivity when applying the most sensitive decision rule R6, while four\n638\nworkflows still detected all truly eligible TiAb at the most specific decision rule R1 (Fig.\n639\n4a,b). Three of these were based on o3-mini with high reasoning effort (Zs-L, Zs-NR-L,\n640\nFs-NR-L), and one was based on gpt-4o-mini (Fs-NR-S2). The cost of running Fs-NR-L\n641\nexceeded $0.50, with Zs-L just at this limit. Providing explicit reasoning text in the output\n642\nof a reasoning model that already generates substantial reasoning tokens appeared\n643\nredundant. Consequently, Zs-L was not advanced to the next stage. The agentic\n644\nextension Zs-NR-Ag-L (AUC: 0.983 ± 0.006) showed performance very similar to its non-\n645\nagentic reference Zs-NR-L (AUC: 0.980 ± 0.000), effectively resulting in a tie. This was\n646"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p35_c1",
+   "page": 35,
+   "text": "34\n\nresolved by prioritizing the agentic variant for further exploration on real datasets in the\n647\nFigure 4 | Performance of proprietary OpenAI LLM workflows on 100 synthetic abstracts.\na,b Heatmap of average sensitivity (a) and specificity (b) across workflows (x-axis) and\ndecision rules (y-axis), computed from three replicate runs. Workflows highlighted in bold were\nadvanced to internal evaluation. Colour scale shown on the right.\nc Average ROC–AUC values ± s.d. (n = 3) across workflows, sorted from highest (left) to lowest\n(right). ROC curves were constructed from six operating points (sensitivity vs. 1–specificity)\ncorresponding to decision rules R1–R6 in a and b.\nModel names and presumed (based on per-token cost) sizes indicated by S1: gpt-4.1-nano; S2:\ngpt-4o-mini; M: gpt-4.1-mini; L: o3-mini-high."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p36_c1",
+   "page": 36,
+   "text": "35\n\ninternal evaluation phase.\n648\nNotably, despite its low cost (Supplementary Fig. S1), Fs-NR-S2, based on gpt-4o-mini\n649\nwith few-shot examples and no requirement for reasoning in the output, showed the best\n650\noverall performance among all workflows (AUC: 0.980 ± 0.000). Its specificities at\n651\ndecision rules R4–R6 exceeded those of the o3-mini-high–based workflows, and it was\n652\ntherefore advanced to the internal evaluation phase (Fig. 4a-c). The corresponding\n653\nreference workflow with reasoning output, Fs-S2 (AUC: 0.973 ± 0.012), exhibited lower\n654\nspecificities and was not pursued further.\n655\nIn terms of AUC scores (Fig. 3c), beside o3-mini-high based workflows, task-\n656\ndecomposition workflows based on gpt-4.1-mini ranked among the top performers.\n657\nHowever, they did not clearly outperform the single-step reference workflow Zs-M with\n658\nrespect to sensitivity and specificity. Three task-decomposition workflows – X-Zs-M_&_E-\n659\nZs-Ab-M, X-Zs-M_&_EJ-Zs-Ab-M and X-Zs-Ag-M_&_E-Zs-Ab-Ag-M – were nevertheless\n660\nadvanced, as they exhibited more favourable specificities with comparable sensitivities at\n661\nR4–R6 relative to other high-AUC candidates. Their inclusion"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p36_c2",
+   "page": 36,
+   "text": "– were nevertheless\n660\nadvanced, as they exhibited more favourable specificities with comparable sensitivities at\n661\nR4–R6 relative to other high-AUC candidates. Their inclusion in the internal evaluation\n662\nphase allows conclusions regarding the added value of task decomposition, joint PECOS\n663\nevaluation, and agentic extensions when applied to medium-sized proprietary models.\n664\nWe additionally included Fs-M (AUC: 0.973 ± 0.006), and a gpt-4o-mini based two-step\n665\nworkflow with few-shot prompts and agentic search (X-Fs-Ag-S2_&_E-Fs-Ag-S2, AUC:\n666\n0.971 ± 0.005) to enable comparison with the default reference workflow Zs-S2 (AUC:\n667\n0.969 ± 0.006) (for selection criteria, see Development Methods section on Workflow\n668\nselection and Supplementary File 2).\n669"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p37_c1",
+   "page": 37,
+   "text": "36\n\nNotably, prompt partitioning with PECOS-wise parallel calls substantially increased\n670\nspecificity and reduced sensitivity at R1-R3 (“S1” and “S2” models, Fig. 4a,b). Few-shot\n671\nprompting with gpt-4.1-nano (“S1”) led to a modest specificity improvement without\n672\nsensitivity decay (Fig. 4a,b). In contrast to the open-source LLM-based workflows, explicit\n673\nexplanation of the general PECOS concept in the prompt did not improve performance\n674\n(Zs-Explicit-S1, AUC: 0.734 ± 0.005 vs. Zs-S1, AUC: 0.750 ± 0.001; Zs-Explicit-S2, AUC:\n675\n0.959 ± 0.013 vs. Zs-S2, AUC: 0.969 ± 0.006). Moreover, the absence of reasoning text\n676\nin the output did not erode sensitivity as markedly as observed for the llama3.1:8b–based\n677\nworkflows.\n678\nFinally, during the preparation of the present work, OpenAI released the gpt-5 family of\n679\nmodels with tuneable reasoning effort. We therefore included zero-shot workflows based\n680\non gpt-5-nano and gpt-5-mini, both with reasoning effort set to “high” (Zs-gpt5nano and\n681\nZs-gpt5mini, respectively), as an exploratory extension to the eight workflows originally\n682\nselected based on our development-phase rationale.\n683\nInternal evaluation\n684\nSR1"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p37_c2",
+   "page": 37,
+   "text": "(Zs-gpt5nano and\n681\nZs-gpt5mini, respectively), as an exploratory extension to the eight workflows originally\n682\nselected based on our development-phase rationale.\n683\nInternal evaluation\n684\nSR1\n685\nThe ability to discriminate between eligible and ineligible TiAb by ten candidate open-\n686\nsource- and eight OpenAI-LLM-based workflows was evaluated on 3,907 TiAb from SR1\n687\n[22]. Among open-source workflows, Fs-NR-L achieved the most favourable sensitivity–\n688\nspecificity (94.5% and 74.9%, respectively) trade-off, and the highest AUC (0.886) when\n689\nevaluated at decision rule R6 (Fig. 5a,b, Supplementary File 2), being very closely\n690\nfollowed by Fs-S (AUC: 0.879). Among proprietary workflows, Zs-NR-Ag-L achieved the\n691\nhighest AUC (0.921), as well as a relatively high sensitivity (93.8%) and specificity\n692"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p38_c1",
+   "page": 38,
+   "text": "37\n\n(77.5%) (Fig. 5c,d, Supplementary File 2). These results contrasted with the 100%\n693\nFigure 5 | Internal evaluation of candidate workflows on full SR datasets.\na, ROC curves for each workflow under six decision rules on the SR1 dataset for open-source LLM\nworkflows. Dashed line indicates random performance.\nb, ROC–AUC values on SR1, SR6 and SR9 datasets for open-source LLM workflows. Bars show\nmean ± s.e.m. Workflows shown in bold were selected for external validation.\nc, As in a, but for proprietary (OpenAI) workflows.\nd As in b, but for proprietary (OpenAI) workflows.\ne,f ROC curves averaged across SR1, SR6 and SR9 datasets for open-source LLM workflows (e)\nand proprietary workflows (f). Workflows shown in bold were selected for external validation."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p39_c1",
+   "page": 39,
+   "text": "38\n\nsensitivity observed on synthetic abstracts in the prior phase.\n694\nThis discrepancy could not be explained by the presence of title-only records without\n695\nabstracts (13.0% of the dataset), which accounted for only three missed studies among\n696\nthese best-performing workflows (e.g., “The authors respond” and “Social and economic\n697\npatterning in the Interphone study”). Instead, inspection of the remaining false negatives\n698\nat R6 showed that most corresponded to complementary evidence studies (e.g. dose-\n699\nmodelling or bias studies) retrieved to inform exposure assessment or bias evaluation in\n700\nSR1 (Supplementary File 3). Such studies were excluded by the LLMs, as they typically\n701\ndo not meet standard population, outcome, or comparator criteria, an interpretation\n702\nsupported by inspection of exclusion rationales by the Fs-M workflow. Consequently, the\n703\noriginal eligibility formulation implicitly predisposed the LLMs to exclusion errors for\n704\ncomplementary evidence.\n705\nTo investigate whether the observed false negatives reflected ambiguity in the initial\n706\neligibility formulation, we conducted post hoc analyses using: a structurally clarified\n707"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p39_c2",
+   "page": 39,
+   "text": "evidence.\n705\nTo investigate whether the observed false negatives reflected ambiguity in the initial\n706\neligibility formulation, we conducted post hoc analyses using: a structurally clarified\n707\nformulation with explicit “include” and “exclude” statements, as well as an override rule\n708\ninstructing inclusion of complementary evidence regardless of other PECOS elements; a\n709\nconservative formulation additionally instructing retention of records with unclear PECOS\n710\nelements for full-text review; and an extended source-informed formulation based on the\n711\neligibility descriptions in the SR publication by Karipidis et al. [22] and the preceding SR\n712\nprotocol [38] (Supplementary File 1).\n713\nAcross these analyses using the open-source Fs-NR-L, proprietary Fs-M (gpt-4.1-mini),\n714\nand exploratory Zs-gpt5mini workflows (Supplementary Fig. S2a,b, Supplementary Files\n715\n2, 3), the structurally clarified eligibility formulation (“posthoc”) had workflow-dependent\n716"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p40_c1",
+   "page": 40,
+   "text": "39\n\neffects. At R6, sensitivity for finally eligible TiAb changed by −2.1, +4.1 and +2.1\n717\npercentage points for Fs-NR-L, Fs-M and Zs-gpt5mini, respectively, relative to the original\n718\nformulation, accompanied by specificity reductions of 1.3, 3.8 and 5.2 percentage points.\n719\nSimilar workflow-dependent patterns were observed when TiAb human-labelled for full-\n720\ntext retrieval were considered as the reference standard (Supplementary Fig. S2c,d,\n721\nSupplementary File 2).\n722\nFor Fs-NR-L and Fs-M, the conservative formulation (“extra rule”) increased sensitivity\n723\nrelative to the “posthoc” formulation by 1.4 and 0.7 percentage points, respectively, for\n724\nfinally eligible TiAb, but reduced specificity by a further 1.7 and 2.2 percentage points.\n725\nConversely, the extended source-informed formulation (“fullpaper”) increased specificity\n726\nfor both workflows. For finally eligible TiAb, it preserved the baseline sensitivity of Fs-NR-\n727\nL and increased that of Fs-M by 0.7 percentage points, while improving specificity by 4.0\n728\nand 1.3 percentage points, respectively (Supplementary Fig. S2a–d). Given the limited\n729\nnumber of finally eligible TiAb in SR1, sensitivity"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p40_c2",
+   "page": 40,
+   "text": "percentage points, while improving specificity by 4.0\n728\nand 1.3 percentage points, respectively (Supplementary Fig. S2a–d). Given the limited\n729\nnumber of finally eligible TiAb in SR1, sensitivity differences between eligibility\n730\nformulations should be interpreted cautiously.\n731\nAlthough some additionally retained records were correctly identified as complementary\n732\nevidence, the instructed precedence of study type over other PECOS elements was\n733\nconsistently applied only by gpt5-mini as inferred from the model-generated reasoning\n734\n(Supplementary File 3). This finding illustrates the difficulty of reliably implementing\n735\ncomplex conditional logic through prompt-based instructions within the current workflows.\n736\nGiven these workflow- and target-dependent trade-offs, subsequent SR datasets used\n737\nstructured eligibility instructions operationalised from the relevant eligibility descriptions\n738"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p41_c1",
+   "page": 41,
+   "text": "40\n\nin the corresponding SR publication and, where available, its protocol (Supplementary\n739\nFile 1).\n740\nFinally, we assessed whether more computationally intensive LLMs or inference\n741\nstrategies could improve performance using the original eligibility formulation. Neither did\n742\nthe Zs-L (llama3.3:70b) workflow with explicit reasoning output clearly outperform its\n743\nworkflow ablation (Zs-NR-L) nor did zero-shot workflows based on the full gpt-4.1 or o3\n744\nmodels outperform smaller “mini” models (Supplementary Fig. S2a–b) – gpt-4.1 achieved\n745\nonly 87.0% sensitivity at R6, while o3 (as Zs-NR-o3) flagged over twice as many records\n746\nfor manual review at R6 (>10% of TiAb) than Zs-Ag-NR-L (Supplementary File 2).\n747\nNotably, despite a higher per-token price, o3 was overall less costly than o3-mini due to\n748\nsubstantially lower reasoning-token generation.\n749\nAssessment of candidate performance on three SRs\n750\nThe ten candidate open-source- and the eight-plus-two OpenAI-based LLM workflows\n751\nwere subsequently applied to the SR6 and SR9 datasets (Table 2), and performance\n752\nmetrics were averaged across SR1, SR6 and SR9. Among open-source LLM-based\n753\nworkflows, the"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p41_c2",
+   "page": 41,
+   "text": "LLM workflows\n751\nwere subsequently applied to the SR6 and SR9 datasets (Table 2), and performance\n752\nmetrics were averaged across SR1, SR6 and SR9. Among open-source LLM-based\n753\nworkflows, the default llama3.1:8b-based Zs-S workflow was not inferior to the various\n754\nextension and task-decomposition workflows evaluated (Fig. 5b,e, Supplementary Fig.\n755\nS3a,b). However, it was outperformed by the llama3.3:70b-based Fs-NR-L workflow,\n756\nwhich achieved the highest average sensitivity (98.2%) at decision rule R6 and the\n757\nhighest overall AUC (0.946) (Fig. 5b). This superior performance was also reflected in a\n758\ncomparatively low screening effort and favourable K per eligible study at recall90 (i.e.,\n759\nsensitivity of 90%; see Methods section PECOS–based ranking score) (Supplementary\n760"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p42_c1",
+   "page": 42,
+   "text": "41\n\nFig. S4a,b). Based on these results, Fs-NR-L was advanced to the external validation\n761\nstage.\n762\nAmong proprietary LLM-based workflows, the o3-mini-based Zs-Ag-NR-L workflow\n763\nachieved the most favourable sensitivity–specificity balance at R6 (97.9% and 85.9%,\n764\nrespectively). It was surpassed in average sensitivity only by gpt-5-mini (98.2% and\n765\n82.9%) and the least specific gpt-5-nano (98.6% and 76.4%). The few-shot gpt-4.1-mini\n766\nworkflow Fs-M and the non-reasoning gpt4o-mini workflow Fs-NR-S2 also showed\n767\ncompetitive performance, with average sensitivity/specificity values of 97.3%/82.8% and\n768\n96.8%/85.4%, respectively (Fig. 5d,f, Supplementary Fig. S3c,d). Considering their\n769\nfavourable ROC–AUC values (Fig. 5d), screening effort and K-fold metrics at recall90\n770\n(Supplementary Fig. S4c,d), Zs-Ag-NR-L and Fs-M were advanced to the external\n771\nvalidation stage. Together, these workflows represent distinct design choices: one\n772\nreasoning-model-based and one conventional LLM on the one hand, and an agentic zero-\n773\nshot workflow and another few-shot workflow on the other hand.\n774\nAs the reasoning model gpt-5-mini demonstrated excellent sensitivity at"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p42_c2",
+   "page": 42,
+   "text": "conventional LLM on the one hand, and an agentic zero-\n773\nshot workflow and another few-shot workflow on the other hand.\n774\nAs the reasoning model gpt-5-mini demonstrated excellent sensitivity at R6, but\n775\ncomparatively poor performance at R1 in the SR6 and SR9 datasets, we conducted a\n776\npost hoc analysis (with the operationally clarified “posthoc” eligibility criteria for SR1, cf.\n777\nSupplementary Fig. S2b,d, Supplementary File 1) using the workflow extensions Fs-\n778\ngpt5mini and Fs-NR-gpt5mini for evaluation. Average sensitivity at both R1 and R2\n779\nimproved substantially (from 50.3% to 69.7 and 69.6% at R1, and from 71.5% to 86.0%\n780\nand 84.7% at R2, respectively), while sensitivity at R6 increased to 99.7% in the Fs-NR-\n781\ngpt5mini workflow (from 98.9% in Zs-gpt5mini), at the expense of 1.3 percentage point\n782\nreduction in average specificity (Supplementary Fig. S2e, Supplementary File 2). These\n783"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p43_c1",
+   "page": 43,
+   "text": "42\n\nfindings highlight the impact of few-shot prompt extensions and indicate the potential of\n784\ngpt-5-mini–based workflows for automated screening.\n785\nHowever, as the performance gains of gpt-5-mini were driven primarily by results from\n786\nSR1 (Fig. 5d) and the alternative workflow extensions were introduced post hoc, we\n787\nproceeded with Fs-M, which demonstrated a competitive average sensitivity and\n788\nspecificity at R6 (98.6% and 81.6%, respectively) in this post hoc, SR1 eligibility-criteria-\n789\nclarified analysis.\n790\nTo ensure maximal sensitivity, performance during external validation of the open-source\n791\nFs-NR-L (hereafter denoted as Fs-NR-L(os)) workflow and the proprietary Fs-M and Zs-\n792\nAg-NR-L workflows was primarily assessed at the most sensitive decision rule (R6). The\n793\nperformance metrics for these workflows at R6 on the three SRs evaluated thus far are\n794\nsummarised in Table 3.\n795"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p44_c1",
+   "page": 44,
+   "text": "43\n\nTable 3 | Internal evaluation performance of workflows selected for external validation across three systematic reviews against fully eligible records as reference\n796\nlabels (decision rule R6).\n797\nData\nset\nTotal\nReco\nrds\nTotal\nPosit\nives\nTotal\nNega\ntives\nWorkflow\nID\nsource\nLLM\nTP\nFN\nTN\nFP\nSensitivity [95%\nCI] / %\nSpecificity [95%\nCI] / %\nWorkload\nreduction\n[95% CI] / %\n% to\nscreen at\nrecall90\nK per\neligible\nat\nrecall90\nSR1\n3907\n146\n3761\nFs-NR-L\nopensource\nllama3.3:70b\n138\n8\n2816\n945\n94.5 [89.6 – 97.2]\n74.8 [73.4 – 76.2]\n72.3 [70.9 –\n73.9]\n20.1\n5.4\nFs-M\nOpenAI\ngpt-4.1-mini\n134\n12\n2740\n1021\n91.8 [86.2 – 95.2]\n72.9 [71.4 – 74.3]\n70.4 [69.0 –\n71.9]\n25.2\n6.7\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n137\n9\n2913\n848\n93.8 [88.7 – 96.7]\n77.5 [76.1 – 78.8]\n74.8 [73.4 –\n76.1]\n21.1\n5.6\nSR6\n5000\n80\n4920\nFs-NR-L\nopensource\nllama3.3:70b\n80\n0\n4505\n415\n100.0 [95.4 –\n100.0]\n91.2 [90.4 – 91.9]\n89.7 [88.9 –\n90.5]\n2.4\n1.5\nFs-M\nOpenAI\ngpt-4.1-mini\n80\n0\n4682\n238\n100.0 [95.4 –\n100.0]\n95.2 [94.5 – 95.7]\n93.6 [92.9 –\n94.3]\n2.1\n1.3\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n80\n0\n4718\n202\n100.0 [95.4 –\n100.0]\n95.9 [95.3 – 96.4]\n94.4 [93.7 –\n95]\n2.1\n1.3\nSR9\n5000\n56\n4944\nFs-NR-L\nopensource\nllama3.3:70b\n56\n0\n3962\n982\n100.0"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p44_c2",
+   "page": 44,
+   "text": "[92.9 –\n94.3]\n2.1\n1.3\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n80\n0\n4718\n202\n100.0 [95.4 –\n100.0]\n95.9 [95.3 – 96.4]\n94.4 [93.7 –\n95]\n2.1\n1.3\nSR9\n5000\n56\n4944\nFs-NR-L\nopensource\nllama3.3:70b\n56\n0\n3962\n982\n100.0 [93.6 –\n100.0]\n80.7 [79.6 – 81.8]\n79.8 [78.7 –\n80.9]\n7.2\n6.4\nFs-M\nOpenAI\ngpt-4.1-mini\n56\n0\n3980\n964\n100.0 [93.6 –\n100.0]\n80.5 [79.4 – 81.6]\n79.6 [78.5 –\n80.7]\n3.4\n3.0\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n56\n0\n4172\n772\n100.0 [93.6 –\n100.0]\n84.4 [83.4 – 85.4]\n83.4 [82.4 –\n84.4]\n5.3\n4.7\nWilson score intervals shown as 95% confidence intervals (CIs).\n798"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p45_c1",
+   "page": 45,
+   "text": "44\n\nExternal validation\n799\nPerformance of the three contender workflows (Fs-NR-L(os), Fs-M, Zs-Ag-NR-L) was\n800\nevaluated on eight SR datasets independent of those used in the internal evaluation\n801\nphase. Three SRs addressed EMF-related research questions [24-26], and five datasets\n802\ncovered unrelated clinical research areas [17, 27-29].\n803\nAt decision rule R6, sensitivity ranged from 88.5% to 100%, with all three workflows\n804\nachieving 100% sensitivity for the Luukkonen 2025 and both Sandner 2024 (Raynaud’s\n805\nand Covid) datasets. Specificity ranged from 57.6% to 96.7%, with both extremes\n806\nobserved for Fs-M (Table 4, Fig. 6, Supplementary File 2).\n807\nPooled estimates of sensitivity and specificity were obtained via meta-analysis of single\n808\nproportions across all eight external validation datasets (Supplementary Fig. S5a), and\n809\nare shown along with individual study estimates and their Wilson score 95% confidence\n810\nintervals (CI) in Fig. 6 and Table 4.\n811\nFs-M achieved the highest pooled sensitivity at 96.4% (95% CI: 94.8%–97.6%) and a\n812\nworkload reduction of 80.4% (95% CI: 63.7%–90.5%). Fs-NR-L(os) showed a lower\n813\npooled sensitivity at 94.3% (95% CI:"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p45_c2",
+   "page": 45,
+   "text": "achieved the highest pooled sensitivity at 96.4% (95% CI: 94.8%–97.6%) and a\n812\nworkload reduction of 80.4% (95% CI: 63.7%–90.5%). Fs-NR-L(os) showed a lower\n813\npooled sensitivity at 94.3% (95% CI: 91.7%–96.2%) and the highest pooled workload\n814\nreduction at 81.5% (95% CI: 71.2%–88.6%). Variability between workflows was also\n815\nreflected in comparisons of ROC–AUC values across decision rules R1–R6 in a SR\n816\ndataset-specific manner, as well as in screening effort and K per eligible study at recall90\n817\n(Supplementary Fig. S5b-d, Table 4).\n818\n\n819"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p46_c1",
+   "page": 46,
+   "text": "45\n\nAt decision rule R6, Fs-M consistently achieved the highest sensitivity among the three\n820\ncontender workflows (Table 4). In a pooled, record-level analysis of all eligible studies\n821\nacross the eight external validation datasets using McNemar’s paired test, Fs-M\n822\ndemonstrated statistically significantly better detection of eligible studies than Fs-NR-\n823\nL(os) (p = 0.0115) and Zs-Ag-NR-L (p < 0.0001), while the latter two workflows did not\n824\ndiffer significantly from each other (p = 0.3409) (Supplementary File 3).\n825\nFigure 6 | Validation of contender workflows on eight external SR datasets.\nSensitivity versus False Positive Rate (1 – Specificity) for one open-source (os) and two\nproprietary (OpenAI) LLM–based workflows on the indicated SR datasets with fully eligible TiAb\nas the reference. Points show per-dataset estimates with 95% Wilson score CIs. Hexagons\nshow pooled estimates with 95% CIs across the eight datasets from a meta-analysis of single\nproportions (Supplementary Fig. 5a).\nFs-NR-L(os): Llama3.3:70b with a few-shot prompt and no reasoning in the output; Fs-M: gpt-\n4.1-mini with a few-shot prompt; Zs-Ag-NR-L: o3-mini-high with a zero-shot prompt, agentic"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p46_c2",
+   "page": 46,
+   "text": "Fig. 5a).\nFs-NR-L(os): Llama3.3:70b with a few-shot prompt and no reasoning in the output; Fs-M: gpt-\n4.1-mini with a few-shot prompt; Zs-Ag-NR-L: o3-mini-high with a zero-shot prompt, agentic\nsearch enabled, and no reasoning in the output."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p47_c1",
+   "page": 47,
+   "text": "46\n\nTo assess the suitability of the proposed workflows for automated TiAb screening, we\n826\nconducted an error analysis of eligible studies missed by the three contender workflows\n827\n(Supplementary File 3).\n828\nAcross external validation datasets, a substantial proportion of missed records were\n829\nattributable to ambiguous or low-information TiAb, most commonly title-only items lacking\n830\nsufficient detail on exposure, outcome, comparator, or study type. In several cases,\n831\nexclusions by the workflows appeared justifiable when applying the original SR eligibility\n832\ncriteria, as operationalised at the TiAb stage, for example due to ineligible populations,\n833\noutcomes, or explicitly ineligible study types such as reviews or commentaries. These\n834\npatterns were observed across multiple datasets and workflows.\n835\nIn the AZ2019 and vD2020 datasets, several missed records either described cohort\n836\nreferences rather than primary studies used in evidence synthesis, or lacked sufficient\n837\nabstract information to support confident inclusion at the TiAb stage. Similarly, in SR4,\n838\nrecords missed by Fs-NR-L(os) and Zs-Ag-NR-L included studies with populations that\n839\ncould"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p47_c2",
+   "page": 47,
+   "text": "837\nabstract information to support confident inclusion at the TiAb stage. Similarly, in SR4,\n838\nrecords missed by Fs-NR-L(os) and Zs-Ag-NR-L included studies with populations that\n839\ncould reasonably be interpreted as ineligible by an automated system (Supplementary\n840\nFile 3).\n841\nThe largest contribution to apparent misclassification originated from the Le2020 dataset,\n842\nwhich comprised 500 TiAb labelled as eligible. Among records missed by Fs-M, the\n843\nmajority were title-only items with insufficient information to assess eligibility, while\n844\nseveral others were reviews (ineligible under the applied criteria) or studies with arguably\n845\nineligible outcomes. Fs-NR-L(os) and Zs-Ag-NR-L similarly missed multiple records that\n846\nwere either explicitly ineligible by study type or difficult to assess without domain-specific\n847\nexpertise, alongside a smaller number of clear misclassifications. Zs-Ag-NR-L\n848"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p48_c1",
+   "page": 48,
+   "text": "47\n\nadditionally produced a higher number of false exclusions of clearly eligible studies\n849\ncompared with the other workflows.\n850\nTaken together, these findings indicate that limitations and inconsistencies in the\n851\nunderlying ground truth, particularly for datasets with large numbers of include-labelled\n852\nTiAb and a high prevalence of title-only records, likely led to underestimation of pooled\n853\nsensitivity, especially given the high weighting of the Le2020 dataset in the meta-analysis\n854\n(Supplementary Fig. S5a). Overall, the Fs-M workflow, based on few-shot prompting and\n855\nthe gpt4.1-mini LLM with reasoning in the output, demonstrated the most convincing\n856\nperformance across external validation datasets.\n857\nLastly, we examined the impact of decisions flagging TiAb for manual review. Across\n858\nworkflows and datasets, the “manual check” subset contained a markedly lower fraction\n859\nof truly eligible records than the corresponding dataset baseline (Supplementary Fig.\n860\nS6a), indicating that most flagged items were ultimately ineligible. Consistent with this,\n861\nexcluding “manual check” records increased workload reduction, with sensitivity\n862\ndecreasing"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p48_c2",
+   "page": 48,
+   "text": "Fig.\n860\nS6a), indicating that most flagged items were ultimately ineligible. Consistent with this,\n861\nexcluding “manual check” records increased workload reduction, with sensitivity\n862\ndecreasing materially in only a subset of datasets (SR1, AZ2019 and vD2020;\n863\nSupplementary Table S1).\n864\nAfter excluding “manual check” records and recomputing pooled estimates by meta-\n865\nanalysis, contender workflows showed very similar sensitivities, while Fs-M obtained the\n866\nhighest specificity and workload reduction (Supplementary Fig. S6b; Supplementary\n867\nTable 1). The higher sensitivity of Fs‑M in the standard analysis was mostly explained by\n868\nits more frequent use of the “manual check” label, which captured additional truly eligible\n869\nrecords: across the eight external validation datasets, 17 of 830 eligible records (2.0%)\n870"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p49_c1",
+   "page": 49,
+   "text": "48\n\nwere flagged as “manual check” by Fs-M, most of them representing title-only items\n871\n(Supplementary Fig. 6a, Supplementary Table 1).\n872\nAdditionally, inspection of TiAb characteristics suggested that “manual check” decisions\n873\nwere driven primarily by title-only records, which were overrepresented among “manual\n874\ncheck” items relative to their proportion in the full datasets (Supplementary Fig. S6c).\n875\nConversely, a substantial but variable fraction of title-only records were flagged for\n876\nmanual review (Supplementary Fig. S6d), indicating a substantial overlap between these\n877\ntwo subsets.\n878"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p50_c1",
+   "page": 50,
+   "text": "49\n\nTable 4 | External validation performance of contender workflows across eight systematic review datasets against fully eligible records as reference labels (decision\n879\nrule R6).\n880\nDataset\nTotal\nRecords\nTotal\nPositi\nves\nTotal\nNegati\nves\nWorkflow\nID\nsource\nLLM\nTP\nFN\nTN\nFP\nSensitivity\n[95% CI] / %\nSpecificity\n[95% CI] / %\nWorkload reduction\n[95% CI] / %\n% to screen\nat recall90\nK per\neligible\nat\nrecall90\nSR4\n(RF-EMF and male\nanimal fertility)\n1326\n117\n1209\nFs-NR-L\nopen-source\nllama3.3:70b\n115\n2\n779\n430\n98.3 [94 – 99.5]\n64.4 [61.7 – 67.1]\n59.0 [56.2 – 61.5]\n21.9\n2.5\nFs-M\nOpenAI\ngpt-4.1-mini\n117\n0\n736\n473\n100.0 [96.8 – 100.0]\n60.9 [58.1 – 63.6]\n55.5 [52.8 – 58.2]\n22.1\n2.5\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n115\n2\n771\n438\n98.3 [94 – 99.5]\n63.8 [61.0 – 66.4]\n58.3 [55.6 – 60.9]\n30.2\n3.4\nSR7\n(RF-EMF and\nunspecific\nsymptoms in\nhumans)\n3887\n13\n3874\nFs-NR-L\nopen-source\nllama3.3:70b\n12\n1\n3391\n483\n92.3 [66.7 – 98.6]\n87.5 [86.5 – 88.5]\n87.3 [86.2 – 88.3]\n4.2\n12.5\nFs-M\nOpenAI\ngpt-4.1-mini\n13\n0\n3622\n252\n100.0 [77.2 – 100.0]\n93.5 [92.7 – 94.2]\n93.2 [92.4 – 93.9]\n1.4\n4.2\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n13\n0\n3538\n336\n100.0 [77.2 – 100.0]\n91.3 [90.4 – 92.2]\n91.0 [90.1 – 91.9]\n1.7\n5.1\nLuukkonen"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p50_c2",
+   "page": 50,
+   "text": "0\n3622\n252\n100.0 [77.2 – 100.0]\n93.5 [92.7 – 94.2]\n93.2 [92.4 – 93.9]\n1.4\n4.2\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n13\n0\n3538\n336\n100.0 [77.2 – 100.0]\n91.3 [90.4 – 92.2]\n91.0 [90.1 – 91.9]\n1.7\n5.1\nLuukkonen\n(LF-EMF and\ncancer in animals)\n985\n53\n932\nFs-NR-L\nopen-source\nllama3.3:70b\n53\n0\n764\n168\n100.0 [93.2 – 100.0]\n82.0 [79.4 – 84.3]\n77.6 [74.9 – 80.1]\n7.8\n1.5\nFs-M\nOpenAI\ngpt-4.1-mini\n53\n0\n759\n173\n100.0 [93.2 – 100.0]\n81.4 [78.8 – 83.8]\n77.1 [74.3 – 79.6]\n7.3\n1.4\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n53\n0\n696\n236\n100.0 [93.2 – 100.0]\n74.7 [71.8 – 77.4]\n70.7 [67.7 – 73.4]\n6.4\n1.2\nAppenzeller-Herzog\n(Wilson’s disease\ntreatment)\n3447\n26\n3421\nFs-NR-L\nopen-source\nllama3.3:70b\n24\n2\n2704\n717\n92.3 [75.9 – 97.9]\n79.0 [77.7 – 80.4]\n78.5 [77.1 – 79.8]\n29.6\n39.3\nFs-M\nOpenAI\ngpt-4.1-mini\n25\n1\n1970\n1451\n96.2 [81.1 – 99.3]\n57.6 [55.9 – 59.2]\n57.2 [55.5 – 58.8]\n41.3\n54.7\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n23\n3\n2179\n1242\n88.5 [71.0 – 96.0]\n63.7 [62.1 – 65.3]\n63.3 [61.7 – 64.9]\n41.6\n55.2\nLeenaars\n(Rheumatoid\narthritis\nmethotrexate\ntreatment)\n5000\n500\n4500\nFs-NR-L\nopen-source\nllama3.3:70b\n472\n28\n3520\n980\n94.4 [92.0 – 96.1]\n78.2 [77.0 – 79.4]\n71.0 [69.7 – 72.2]\n24.8\n2.5\nFs-M\nOpenAI\ngpt-4.1-mini\n480\n20\n2681\n1819\n96.0"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p50_c3",
+   "page": 50,
+   "text": "methotrexate\ntreatment)\n5000\n500\n4500\nFs-NR-L\nopen-source\nllama3.3:70b\n472\n28\n3520\n980\n94.4 [92.0 – 96.1]\n78.2 [77.0 – 79.4]\n71.0 [69.7 – 72.2]\n24.8\n2.5\nFs-M\nOpenAI\ngpt-4.1-mini\n480\n20\n2681\n1819\n96.0 [93.9 – 97.4]\n59.6 [58.1 – 61.0]\n54.0 [52.6 – 55.4]\n27.9\n2.8\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n459\n41\n2975\n1525\n91.8 [89.1 – 93.9]\n66.1 [64.7 – 67.5]\n60.3 [59.0 – 61.7]\n36.4\n3.6\nSandner_Covid\n(Covid-19\ntreatment)\n4794\n46\n4748\nFs-NR-L\nopen-source\nllama3.3:70b\n46\n0\n4533\n215\n100.0 [92.3 – 100.0]\n95.5 [94. – 96.0]\n94.6 [93.9 – 95.2]\n2.4\n2.5\nFs-M\nOpenAI\ngpt-4.1-mini\n46\n0\n4410\n338\n100.0 [92.3 – 100.0]\n92.9 [92.1 – 93.6]\n92.0 [91.2 – 92.7]\n2.9\n3.0\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n46\n0\n4234\n514\n100.0 [92.3 – 100.0]\n89.2 [88.3 – 90.0]\n88.3 [87.4 – 89.2]\n2.0\n2.1\nSandner_Raynauds\n(Acupuncture in\nRaynaud’s)\n849\n2\n847\nFs-NR-L\nopen-source\nllama3.3:70b\n2\n0\n775\n72\n100.0 [34.2 – 100.0]\n91.5 [89.4 – 93.2]\n91.3 [89.2 – 93.0]\n0.4\n1.5\nFs-M\nOpenAI\ngpt-4.1-mini\n2\n0\n819\n28\n100.0 [34.2 – 100.0]\n96.7 [95.3 – 97.7]\n96.5 [95.0 – 97.5]\n0.4\n1.5\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n2\n0\n775\n72\n100.0 [34.2 – 100.0]\n91.5 [89.4 – 93.2]\n91.3 [89.2 – 93.0]\n0.4\n1.5\nvanDis\n(Cognitive\nbehavioural\ntherapy)\n5000\n73\n4927\nFs-NR-L"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p50_c4",
+   "page": 50,
+   "text": "96.5 [95.0 – 97.5]\n0.4\n1.5\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n2\n0\n775\n72\n100.0 [34.2 – 100.0]\n91.5 [89.4 – 93.2]\n91.3 [89.2 – 93.0]\n0.4\n1.5\nvanDis\n(Cognitive\nbehavioural\ntherapy)\n5000\n73\n4927\nFs-NR-L\nopen-source\nllama3.3:70b\n66\n7\n3590\n1337\n90.4 [81.5 – 95.3]\n72.9 [71.6 – 74.1]\n71.9 [70.7 – 73.2]\n26.5\n18.1\nFs-M\nOpenAI\ngpt-4.1-mini\n71\n2\n3717\n1210\n97.3 [90.6 – 99.3]\n75.4 [74.2 – 76.6]\n74.4 [73.2 – 75.6]\n19.5\n13.4\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n71\n2\n3670\n1257\n97.3 [90.6 – 99.3]\n74.5 [73.3 – 75.7]\n73.4 [72.2 – 74.7]\n16.9\n11.6\nweighted estimate\n(pooleddenominator)\n25288\n830\n24458\nFs-NR-L\nopen-source\nllama3.3:70b\n790\n40\n20056\n4402\n95.2 [93.6 – 96.5]\n82.0 [81.5 – 82.5]\n79.5 [79.0 – 80.0]\n–\n–\nFs-M\nOpenAI\ngpt-4.1-mini\n807\n23\n18714\n5744\n97.2 [95.9 – 98.1]\n76.5 [76.0 – 77.0]\n74.1 [73.6 – 74.6]\n–\n–\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n782\n48\n18838\n5620\n94.2 [92.4 – 95.6]\n77.0 [76.5 – 77.5]\n74.7 [74.1 – 75.2]\n–\n–\nmeta-analysis –\npooled estimate\nFs-NR-L\nopen-source\nllama3.3:70b\n790\n40\n20056\n4402\n94.3 [91.7 – 96.2]\n83.6 [74.7 – 89.8]\n81.5 [71.2 – 88.6]\n–\n–\nFs-M\nOpenAI\ngpt-4.1-mini\n807\n23\n18714\n5744\n96.4 [94.8 – 97.6]\n82.3 [67.2 – 91.4]\n80.4 [63.7 – 90.5]\n–\n–\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n782\n48\n18838\n5620"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p50_c5",
+   "page": 50,
+   "text": "96.2]\n83.6 [74.7 – 89.8]\n81.5 [71.2 – 88.6]\n–\n–\nFs-M\nOpenAI\ngpt-4.1-mini\n807\n23\n18714\n5744\n96.4 [94.8 – 97.6]\n82.3 [67.2 – 91.4]\n80.4 [63.7 – 90.5]\n–\n–\nZs-Ag-NR-L\nOpenAI\no3-mini-high\n782\n48\n18838\n5620\n95.4 [90.8 – 97.7]\n79.3 [68.8 – 87.0]\n77.4 [65.5 – 86.1]\n–\n–\nWilson score intervals are shown as 95% confidence intervals (CIs), except for meta-analytic pooled estimates which are accompanied by 95% CIs derived from\n881\nrandom-effects meta-analyses of single proportions (logit transformation, inverse-variance weighting).\n882"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p51_c1",
+   "page": 51,
+   "text": "50\n\nDiscussion\n883\nConducting systematic reviews is a rigorous and often resource-intensive process that\n884\ncan be substantially alleviated through the incorporation of automation systems based on\n885\nlarge language models (LLMs). However, such systems must ensure high scientific rigour\n886\nand near-complete coverage of relevant evidence to reliably inform clinical or\n887\nenvironmental policy decisions. Accordingly, a sensitivity (recall) threshold of at least 95%\n888\nis commonly regarded as a minimum benchmark for the deployment of automated\n889\nscreening systems [39].\n890\nOur external validation across eight largely independent SR datasets (830 eligible studies\n891\nout of 25,288 records) indicates that a few-shot prompting strategy with explicit PECOS-\n892\nwise reasoning, implemented using OpenAI’s gpt-4.1-mini and combined with the\n893\nsensitive R6 decision rule, meets this benchmark. The pooled sensitivity at 96.4% (95%\n894\nCI: 94.8%–97.6%) was likely conservative given several inconsistencies in the reference\n895\nground truths. This level of sensitivity was attained alongside a pooled workload reduction\n896\nof 80.4% (95% CI: 63.7%–90.5%) and acquired at an average batch API"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p51_c2",
+   "page": 51,
+   "text": "inconsistencies in the reference\n895\nground truths. This level of sensitivity was attained alongside a pooled workload reduction\n896\nof 80.4% (95% CI: 63.7%–90.5%) and acquired at an average batch API cost of\n897\napproximately $1.0 per 1,000 TiAb records. In practical terms, applying the Fs-M workflow\n898\nas an initial filtering step would reduce the proportion of records requiring manual\n899\nscreening to an approximate average of 19.6% of the original retrieval, representing a\n900\nsubstantial reduction in human screening effort. Nevertheless, further optimisation will be\n901\nrequired to improve specificity without compromising sensitivity. The achieved sensitivity\n902\nclosely matches the sensitivity of single human reviewers, reported at a median of 95%\n903\n[40], and of human dual-review at 97.5% (95% CI: 95.1%–98.8%; [41]). Given that\n904"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p52_c1",
+   "page": 52,
+   "text": "51\n\napproximately one hour is needed for a human to screen 100 TiAb [42], the proposed\n905\nLLM workflows could save up to 80 hours of human work for a block of 5,000 search\n906\nresults and two human screeners.\n907\nNotably, the final workflow was derived through systematic evaluation of multiple workflow\n908\nablations, extensions, and task-decomposition strategies. We deliberately used short\n909\nprompts and emphasised systematic workflow design over intensive prompt optimisation,\n910\nfixing prompts early in the development phase to ensure consistency and comparability\n911\nacross workflows. Following an initial screening phase using 100 synthetic TiAb records,\n912\nthe most promising candidates were further assessed on three systematic reviews (282\n913\neligible studies out of 13,907 records) distinct from those used for external validation.\n914\nAcross these first two selection stages, we consistently observed that the evaluated LLMs\n915\n(llama3.1:8b, gpt-4o-mini, and gpt-4.1-mini) derived little to no benefit from task-\n916\ndecomposition (Fig. 3,4,5, Supplementary Fig. S3a-d). This indicates that title/abstract\n917\nscreening can be handled effectively within a single inference call,"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p52_c2",
+   "page": 52,
+   "text": "little to no benefit from task-\n916\ndecomposition (Fig. 3,4,5, Supplementary Fig. S3a-d). This indicates that title/abstract\n917\nscreening can be handled effectively within a single inference call, even by relatively small\n918\nmodels, reducing computational cost, latency, and implementation complexity. In this\n919\nrespect, our findings are consistent with previous reports favouring single-call screening\n920\napproaches [5, 10, 13, 14].\n921\nA further observation that was consistent across models and workflow variants was that\n922\nPECOS-wise prompt partitioning, requiring five separate inference calls per record, as\n923\nproposed by Tran et al. [6], resulted in systematically lower sensitivity compared with joint\n924\nsingle-call approaches. These findings suggest that decomposing PECOS decisions\n925\nacross independent calls may disrupt cross-element contextual reasoning. On this basis,\n926\nwe discourage the use of PECOS-wise prompt partitioning for automated TiAb screening.\n927"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p53_c1",
+   "page": 53,
+   "text": "52\n\nOn the other hand, we deliberately elicited LLM decisions in the output for each PECOS\n928\nelement separately, rather than requesting a single binary or Likert-scale verdict as done\n929\nin previous studies [5, 8, 12, 17]. This design enables observability and flexible post-LLM-\n930\nresponse decision-making, for example via deterministic decision rules or ranking-based\n931\napproaches, depending on the screening objective. It would also allow differential\n932\nweighting of PECOS elements if required. We did not explicitly evaluate whether PECOS-\n933\nwise output instructions outperform simpler output formats, but requiring structured\n934\nreasoning for each element may promote contextualisation and more careful evaluation\n935\nby the LLM.\n936\nA more subtle effect, consistently observed only in llama3.1:8b-based workflows, was that\n937\nprompts, which required explicit reasoning in the output, outperformed “NR” prompts, in\n938\nwhich this requirement was replaced by a Chain-of-Thought cue, intended to elicit internal\n939\nreasoning [43]. The latter setup is comparable to the approach used by Oami et al. [8],\n940\nwhere responses were constrained to binary “Include/Exclude” decisions. In"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p53_c2",
+   "page": 53,
+   "text": "intended to elicit internal\n939\nreasoning [43]. The latter setup is comparable to the approach used by Oami et al. [8],\n940\nwhere responses were constrained to binary “Include/Exclude” decisions. In contrast, gpt-\n941\nfamily models appeared less susceptible to the NR ablation, and few-shot NR approaches\n942\nusing gpt-4o-mini showed competitive performance during evaluation on three full SRs\n943\n(Fig. 5d,f, Supplementary Fig. 3c,d). These findings suggest that eliciting internal\n944\nreasoning can substitute for explicit reasoning token generation in proprietary models\n945\nsuch as gpt-4o-mini, but also that the benefit of explicit reasoning in the output is model-\n946\ndependent and should be empirically assessed for each LLM, particularly since NR\n947\napproaches reduce output token costs. Nevertheless, we generally recommend erring on\n948\nthe side of output reasoning, as it improves observability of LLM behaviour and did not\n949\nclearly deteriorate performance. In fact, during pre-screening, the llama3.3:70b-based\n950"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p54_c1",
+   "page": 54,
+   "text": "53\n\nfew-shot workflow with reasoning showed slightly improved specificity compared to its NR\n951\nablation. Due to computational constraints, this workflow could not be advanced, but its\n952\nevaluation on complete SR datasets would be of interest.\n953\nFor few-shot prompts, we used four examples per SR question, covering eligible and\n954\nineligible TiAb with PECOS-wise reasoning. We did not explore larger numbers of\n955\nexamples, as these may clutter the context window, increase computational cost, and\n956\ndivert attention from the task, although other studies have used up to ten examples [44].\n957\nWe fixed examples prior to carrying out internal evaluation and external validation and\n958\ndid not assess sensitivity to example choice. Example selection is likely a critical\n959\ndeterminant of performance and remains time-intensive when dealing with multiple sets\n960\nof PECOS criteria. Nevertheless, annotating PECOS eligibility examples can be\n961\nsubstantially accelerated using LLM assistance (Supplementary File 1), and the SR\n962\nplanning phase provides a natural opportunity to refine eligibility criteria using known\n963\ncornerstone studies that can then serve as few-shot examples."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p54_c2",
+   "page": 54,
+   "text": "(Supplementary File 1), and the SR\n962\nplanning phase provides a natural opportunity to refine eligibility criteria using known\n963\ncornerstone studies that can then serve as few-shot examples. In several tested\n964\nconfigurations, few-shot prompting improved sensitivity (Fig. 3-5, Supplementary Fig.\n965\nS2e, Supplementary Fig. S3), supporting its use in automated TiAb screening.\n966\nAn additional insight from our study is that OpenAI “mini” models (gpt-4o-mini, gpt-4.1-\n967\nmini, o3-mini, gpt-5-mini) demonstrated competitive performance, even when tested post\n968\nhoc against larger counterparts. While flagship models were commonly used in prior work,\n969\nour results suggest that these smaller models are well suited for TiAb screening tasks,\n970\nwhich can be framed as multi-label (five PECOS elements), multi-class classification\n971\nproblems, operating at five‑fold lower token costs in the case of gpt‑4.1‑mini versus\n972"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p55_c1",
+   "page": 55,
+   "text": "54\n\nfull‑sized gpt‑4.1 (Table 1). This finding is particularly relevant for cost-constrained\n973\nresearch settings, including low- and middle-income countries.\n974\nWe also explored agentic search tool use but found no clear benefit. Although an agentic\n975\nzero-shot workflow based on the reasoning model o3-mini showed no detrimental effects\n976\nduring development, search tools were only invoked sporadically during external\n977\nvalidation (1–7 TiAb across 6 of 11 SR datasets), indicating limited practical impact in this\n978\ncontext.\n979\nA challenge we encountered was the variable and sometimes high prevalence of title-\n980\nonly records in the original datasets, ranging from 1.0% to 31.7%, often providing\n981\ninsufficient information for reliable eligibility assessment. Potential mitigation strategies\n982\ninclude incorporating few-shot examples explicitly addressing title-only records,\n983\nintroducing conservative override rules, or routing all title-only records to manual\n984\nscreening. The latter, however, would substantially reduce achievable workload reduction\n985\nin datasets with a high proportion of such records. Our post hoc analyses of TiAb labelled\n986\nfor manual review"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p55_c2",
+   "page": 55,
+   "text": "The latter, however, would substantially reduce achievable workload reduction\n985\nin datasets with a high proportion of such records. Our post hoc analyses of TiAb labelled\n986\nfor manual review indicate that this subset is strongly enriched for title-only records and\n987\ncan be excluded or deprioritised depending on the screening objective, as exclusion did\n988\nnot affect sensitivity in most evaluated SR datasets (Supplementary Fig. 6a,b). However,\n989\nin some cases, sensitivity decreased substantially, by up to approximately 10%\n990\n(Supplementary Table 1). Accordingly, this strategy may be most appropriate for rapid or\n991\nscoping reviews, where missing up to 10% of eligible records may be acceptable.\n992\nA pragmatic compromise could be to screen only the title-only records within the “manual\n993\ncheck” subset, as these contained most of the otherwise missed eligible TiAb\n994\n(Supplementary Fig. S6a; Supplementary Table 1), while representing only a fraction of\n995"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p56_c1",
+   "page": 56,
+   "text": "55\n\nall “manual check” labels (Supplementary Fig. S6c). This approach would retain some of\n996\nthe achievable workload reduction while limiting the associated loss in sensitivity.\n997\nAlthough the present work included an overrepresentation of systematic reviews on\n998\nenvironmental RF-EMF exposure, with five out of eleven SR datasets drawn from this\n999\ndomain, only two out of eight such datasets were included in the external validation phase.\n1000\nImportantly, these two external validation SRs addressed substantially different PECOS\n1001\nquestions beyond exposure, namely male fertility in experimental animals and unspecific\n1002\nsymptoms in observational studies in humans [24, 25]. The five external validation SRs\n1003\nnot related to EMF covered a diverse set of clinical research questions across different\n1004\ndomains. Therefore, while workflow development was informed by SRs on RF-EMF that\n1005\nused a standardised methodology [45], the external validation results suggest that the\n1006\nproposed workflows may generalise to a broad range of systematic review topics.\n1007\nThis study has several limitations. The evaluations relied on eligibility decisions from\n1008\npreviously"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p56_c2",
+   "page": 56,
+   "text": "the\n1006\nproposed workflows may generalise to a broad range of systematic review topics.\n1007\nThis study has several limitations. The evaluations relied on eligibility decisions from\n1008\npreviously published systematic reviews, and labels were not human-generated in parallel\n1009\nwith the application of the LLM workflows. Although targeted error analyses were\n1010\nperformed, ground truth labels were not systematically re-verified. Moreover, despite\n1011\nevaluating frozen workflows on a diverse and independent set of previously unseen SRs,\n1012\nprospective studies with parallel human screening and LLM-based annotation would be\n1013\nthe gold standard to confirm real-world validity.\n1014\nWhen comparing automation results against records that progressed to full-text screening\n1015\nbut were subsequently excluded, we generally observed lower sensitivity for this subset\n1016\n(cf. Fig. 5e,f and Supplementary Fig. S3e,f). This pattern suggests that LLMs may identify\n1017\nsubtler exclusion-relevant signals already at the title/abstract stage, leading to earlier\n1018"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p57_c1",
+   "page": 57,
+   "text": "56\n\nexclusion of records that human reviewers initially advance to full-text assessment,\n1019\nalthough this effect may also reflect the need for human reviewers to obtain a broader\n1020\nview of the research domain during early screening. Importantly, the workflows\n1021\ndemonstrated consistently high sensitivity for records ultimately deemed eligible,\n1022\nindicating robust detection of truly relevant studies.\n1023\nA further limitation is that we did not exhaustively evaluate all possible workflow\n1024\npermutations, or large flagship models used in previous studies [10, 12]. Our conclusions\n1025\nare therefore restricted to the “mini” LLMs assessed and the specific TiAb screening task\n1026\naddressed here. Other LLMs and tasks may exhibit different behaviour, and their\n1027\nresponses to alternative workflow strategies should be tested through targeted head-to-\n1028\nhead comparisons. Nevertheless, we delineate key dimensions of workflow ablations and\n1029\nextensions along which LLM behaviour can be systematically assessed in future work.\n1030\nFinally, the sensitive decision rule R6 prioritised recall at the expense of specificity,\n1031\nresulting in more false positives. Future work"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p57_c2",
+   "page": 57,
+   "text": "can be systematically assessed in future work.\n1030\nFinally, the sensitive decision rule R6 prioritised recall at the expense of specificity,\n1031\nresulting in more false positives. Future work should aim to maintain high sensitivity under\n1032\nmore specificity-oriented decision rules. Notably, our deterministic, PECOS-based\n1033\ndecision framework allows flexible downstream strategies, including alternate decision\n1034\nschemes (e.g., as in Trad et al. [42]), or staged screening. For example, high-confidence\n1035\nrecords could be prioritised for review, followed by iterative refinement of few-shot\n1036\nexamples and eligibility criteria before reprocessing remaining records. Alternatively,\n1037\nrecords flagged for manual review could be excluded, effectively applying a stricter variant\n1038\nof rule R6 in which TiAb are included only when at least three PECOS components are\n1039\njudged eligible and all remaining records are excluded. This could reduce sensitivity, but\n1040"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p58_c1",
+   "page": 58,
+   "text": "57\n\nmay be justifiable when manageable workload and screening speed are prioritized over\n1041\ncomplete coverage, e.g., in rapid reviews [40].\n1042\nBeyond title/abstract screening, systematic reviews proceed to full-text screening, and it\n1043\nwill be of interest to investigate whether the insights gained in this study translate to\n1044\nautomation of this subsequent stage. Full-text screening poses distinct challenges, but\n1045\nmay also benefit from similar principles of structured reasoning, post-LLM-response\n1046\ndecision rules, and few-shot calibration.\n1047\nOverall, our results demonstrate that purpose-designed and carefully selected LLM\n1048\nworkflows implementing cost-effective LLMs, combining few-shot prompting with explicit\n1049\nPECOS-wise reasoning and sensitive decision rules, can achieve near-human sensitivity\n1050\nwhile substantially reducing manual screening effort. This approach enables efficient,\n1051\ntransparent, and resource-friendly literature screening, making it accessible even in\n1052\nresource-limited research settings.\n1053\nIn line with recent guidance on responsible AI use in evidence synthesis, our workflows\n1054\nwere developed and evaluated using clearly"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p58_c2",
+   "page": 58,
+   "text": "accessible even in\n1052\nresource-limited research settings.\n1053\nIn line with recent guidance on responsible AI use in evidence synthesis, our workflows\n1054\nwere developed and evaluated using clearly separated development / internal‑evaluation\n1055\nand external‑validation datasets, with full reporting of methods, performance metrics and\n1056\nlimitations to support critical appraisal and reuse [18, 19]. They are intended to function\n1057\nas human‑in‑the‑loop decision‑support tools rather than autonomous replacements for\n1058\nreviewers, consistent with current recommendations that emphasise human oversight,\n1059\ntransparency and rigorous validation of AI tools before routine deployment in evidence\n1060\nsynthesis.\n1061"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p59_c1",
+   "page": 59,
+   "text": "58\n\nConclusion\n1062\nLLM-based workflows using few-shot prompting with explicit PECOS-wise reasoning can\n1063\nachieve near-human sensitivity for title/abstract screening while substantially reducing\n1064\nmanual effort. Cost-efficient “mini” models proved suitable, highlighting the feasibility of\n1065\nautomated screening in resource-constrained settings and more sustainable AI use.\n1066\nWorkflow design, including output reasoning, single-call inference, and targeted few-shot\n1067\nexamples, strongly influences performance. Future work should validate these\n1068\napproaches prospectively and refine decision rules to further optimise specificity without\n1069\ncompromising sensitivity. For immediate, resource‑friendly use in a human‑in‑the‑loop\n1070\nsetting, we provide an out‑of‑the‑box implementation of the best‑performing workflows at\n1071\nhttps://github.com/openbfs/ai-sr-litscreen.\n1072\nReferences\n1073\n1.\nMorgan RL, Whaley P, Thayer KA, Schunemann HJ. Identifying the PECO: A\n1074\nframework for formulating good questions to explore the association of environmental\n1075\nand other exposures with health outcomes. Environ Int. 2018;121(Pt 1):1027-31. doi:\n1076\n10.1016/j.envint.2018.07.015."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p59_c2",
+   "page": 59,
+   "text": "for formulating good questions to explore the association of environmental\n1075\nand other exposures with health outcomes. Environ Int. 2018;121(Pt 1):1027-31. doi:\n1076\n10.1016/j.envint.2018.07.015.\n1077\n2.\nLieberum JL, Toews M, Metzendorf MI, Heilmeyer F, Siemens W, Haverkamp C,\n1078\net al. Large language models for conducting systematic reviews: on the rise, but not yet\n1079\nready for use-a scoping review. J Clin Epidemiol. 2025;181:111746. doi:\n1080\n10.1016/j.jclinepi.2025.111746.\n1081\n3.\nClark J, Barton B, Albarqouni L, Byambasuren O, Jowsey T, Keogh J, et al.\n1082\nGenerative artificial intelligence use in evidence synthesis: A systematic review. Res\n1083\nSynth Methods. 2025. doi: 10.1017/rsm.2025.16.\n1084\n4.\nGalli C, Gavrilova AV, Calciolari E. Large Language Models in Systematic\n1085\nReview Screening: Opportunities, Challenges, and Methodological Considerations.\n1086\nInformation. 2025;16(5):378. doi.\n1087\n5.\nDennstadt F, Zink J, Putora PM, Hastings J, Cihoric N. Title and abstract\n1088\nscreening for literature reviews using large language models: an exploratory study in the\n1089\nbiomedical domain. Syst Rev. 2024;13(1):158. doi: 10.1186/s13643-024-02575-4.\n1090\n6.\nTran VT,"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p59_c3",
+   "page": 59,
+   "text": "1088\nscreening for literature reviews using large language models: an exploratory study in the\n1089\nbiomedical domain. Syst Rev. 2024;13(1):158. doi: 10.1186/s13643-024-02575-4.\n1090\n6.\nTran VT, Gartlehner G, Yaacoub S, Boutron I, Schwingshackl L, Stadelmaier J,\n1091\net al. Sensitivity and Specificity of Using GPT-3.5 Turbo Models for Title and Abstract\n1092"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p60_c1",
+   "page": 60,
+   "text": "59\n\nScreening in Systematic Reviews and Meta-analyses. Ann Intern Med.\n1093\n2024;177(6):791-9. doi: 10.7326/M23-3389.\n1094\n7.\nSciurti A, Migliara G, Siena LM, Isonne C, De Blasiis MR, Sinopoli A, et al.\n1095\nCompact large language models for title and abstract screening in systematic reviews:\n1096\nAn assessment of feasibility, accuracy, and workload reduction. Res Synth Methods.\n1097\n2025. doi: 10.1017/rsm.2025.10044.\n1098\n8.\nOami T, Okada Y, Nakada TA. Performance of a Large Language Model in\n1099\nScreening Citations. JAMA Netw Open. 2024;7(7):e2420496. doi:\n1100\n10.1001/jamanetworkopen.2024.20496.\n1101\n9.\nColangelo MT, Guizzardi S, Meleti M, Calciolari E, Galli C. Performance\n1102\nComparison of Large Language Models for Efficient Literature Screening.\n1103\nBiomedinformatics. 2025;5(2). doi: 10.3390/biomedinformatics5020025.\n1104\n10.\nDai ZY, Wang FQ, Shen C, Ji YL, Li ZY, Wang Y, et al. Accuracy of Large\n1105\nLanguage Models for Literature Screening in Thoracic Surgery: Diagnostic Study. J Med\n1106\nInternet Res. 2025;27:e67488. doi: 10.2196/67488.\n1107\n11.\nMatsui K, Utsumi T, Aoki Y, Maruki T, Takeshima M, Takaesu Y. Human-\n1108\nComparable Sensitivity of Large Language Models in"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p60_c2",
+   "page": 60,
+   "text": "J Med\n1106\nInternet Res. 2025;27:e67488. doi: 10.2196/67488.\n1107\n11.\nMatsui K, Utsumi T, Aoki Y, Maruki T, Takeshima M, Takaesu Y. Human-\n1108\nComparable Sensitivity of Large Language Models in Identifying Eligible Studies\n1109\nThrough Title and Abstract Screening: 3-Layer Strategy Using GPT-3.5 and GPT-4 for\n1110\nSystematic Reviews. J Med Internet Res. 2024;26:e52758. doi: 10.2196/52758.\n1111\n12.\nOami T, Okada Y, Nakada TA. Optimal large language models to screen\n1112\ncitations for systematic reviews. Res Synth Methods. 2025. doi:\n1113\n10.1017/rsm.2025.10014.\n1114\n13.\nLi M, Sun J, Tan X. Evaluating the effectiveness of large language models in\n1115\nabstract screening: a comparative analysis. Syst Rev. 2024;13(1):219. doi:\n1116\n10.1186/s13643-024-02609-x.\n1117\n14.\nHomiar A, Thomas J, Ostinelli EG, Kennett J, Friedrich C, Cuijpers P, et al.\n1118\nDevelopment and evaluation of prompts for a large language model to screen titles and\n1119\nabstracts in a living systematic review. BMJ Ment Health. 2025;28(1). doi:\n1120\n10.1136/bmjment-2025-301762.\n1121\n15.\nLi Y, Datta S, Rastegar-Mojarad M, Lee K, Paek H, Glasgow J, et al. Enhancing\n1122\nsystematic literature reviews with generative"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p60_c3",
+   "page": 60,
+   "text": "Health. 2025;28(1). doi:\n1120\n10.1136/bmjment-2025-301762.\n1121\n15.\nLi Y, Datta S, Rastegar-Mojarad M, Lee K, Paek H, Glasgow J, et al. Enhancing\n1122\nsystematic literature reviews with generative artificial intelligence: development,\n1123\napplications, and performance evaluation. J Am Med Inform Assoc. 2025;32(4):616-25.\n1124\ndoi: 10.1093/jamia/ocaf030.\n1125\n16.\nWang Z, Cao L, Danek B, Jin Q, Lu Z, Sun J. Accelerating clinical evidence\n1126\nsynthesis with large language models. NPJ Digit Med. 2025;8(1):509. doi:\n1127\n10.1038/s41746-025-01840-7.\n1128\n17.\nSandner E, Hu B, Simiceanu A, Fontana L, Jakovljevic I, Henriques A, et al.,\n1129\neditors. Screening Automation for Systematic Reviews: A 5-Tier Prompting Approach\n1130\nMeeting Cochrane’s Sensitivity Requirement. 2024 2nd International Conference on\n1131\nFoundation and Large Language Models (FLLM); 2024 26-29 Nov. 2024. doi:\n1132\n10.1109/FLLM63129.2024.10852425.\n1133\n18.\nFlemyng E, Noel-Storr A, Macura B, Gartlehner G, Thomas J, Meerpohl JJ, et al.\n1134\nPosition Statement on Artificial Intelligence (AI) Use in Evidence Synthesis Across\n1135\nCochrane, the Campbell Collaboration, JBI, and the Collaboration for Environmental\n1136"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p60_c4",
+   "page": 60,
+   "text": "JJ, et al.\n1134\nPosition Statement on Artificial Intelligence (AI) Use in Evidence Synthesis Across\n1135\nCochrane, the Campbell Collaboration, JBI, and the Collaboration for Environmental\n1136\nEvidence 2025. Campbell Syst Rev. 2025;21(4):e70074. doi: 10.1002/cl2.70074.\n1137"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p61_c1",
+   "page": 61,
+   "text": "60\n\n19.\nThomas J, Flemyng E, Noel-Storr A, al. e. Responsible AI in Evidence SynthEsis\n1138\n(RAISE): guidance and recommendations2025 2026 January 29. doi:\n1139\n10.17605/OSF.IO/FWAUD Available from: https://osf.io/fwaud/.\n1140\n20.\nMeyer F, Bitsch A, Forman HJ, Fragoulis A, Ghezzi P, Henschenmacher B, et al.\n1141\nThe effects of radiofrequency electromagnetic field exposure on biomarkers of oxidative\n1142\nstress in vivo and in vitro: A systematic review of experimental studies. Environ Int.\n1143\n2024;194:108940. doi: 10.1016/j.envint.2024.108940.\n1144\n21.\nPophof B, Kuhne J, Schmid G, Weiser E, Dorn H, Henschenmacher B, et al. The\n1145\neffect of exposure to radiofrequency electromagnetic fields on cognitive performance in\n1146\nhuman experimental studies: Systematic review and meta-analyses. Environ Int.\n1147\n2024;191:108899. doi: 10.1016/j.envint.2024.108899.\n1148\n22.\nKaripidis K, Baaken D, Loney T, Blettner M, Brzozek C, Elwood M, et al. The\n1149\neffect of exposure to radiofrequency fields on cancer risk in the general and working\n1150\npopulation: A systematic review of human observational studies - Part I: Most\n1151\nresearched outcomes. Environ Int. 2024;191:108983. doi:\n1152"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p61_c2",
+   "page": 61,
+   "text": "fields on cancer risk in the general and working\n1150\npopulation: A systematic review of human observational studies - Part I: Most\n1151\nresearched outcomes. Environ Int. 2024;191:108983. doi:\n1152\n10.1016/j.envint.2024.108983.\n1153\n23.\nWorld Health O. Call for expressions of interest for systematic reviews (2019):\n1154\nWorld Health Organization; 2019 [updated 2019-09-09. Available from:\n1155\nhttps://www.who.int/news-room/articles-detail/call-for-expressions-of-interest-for-\n1156\nsystematic-reviews-%282019%29.\n1157\n24.\nCordelli E, Ardoino L, Benassi B, Consales C, Eleuteri P, Marino C, et al. Effects\n1158\nof radiofrequency electromagnetic field (RF-EMF) exposure on male fertility: A\n1159\nsystematic review of experimental studies on non-human mammals and human sperm\n1160\nin vitro. Environ Int. 2024;185:108509. doi: 10.1016/j.envint.2024.108509.\n1161\n25.\nRoosli M, Dongus S, Jalilian H, Eyers J, Esu E, Oringanje CM, et al. The effects\n1162\nof radiofrequency electromagnetic fields exposure on tinnitus, migraine and non-specific\n1163\nsymptoms in the general and working population: A systematic review and meta-\n1164\nanalysis on human observational studies. Environ Int. 2024;183:108338."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p61_c3",
+   "page": 61,
+   "text": "on tinnitus, migraine and non-specific\n1163\nsymptoms in the general and working population: A systematic review and meta-\n1164\nanalysis on human observational studies. Environ Int. 2024;183:108338. doi:\n1165\n10.1016/j.envint.2023.108338.\n1166\n26.\nLuukkonen J, Roivainen P, Nieminen V, Naarala J, Mustafa E, Juutilainen J.\n1167\nCarcinogenicity of extremely low-frequency magnetic fields: A systematic review of\n1168\nanimal studies. Environ Res. 2025;279(Pt 2):121819. doi:\n1169\n10.1016/j.envres.2025.121819.\n1170\n27.\nAppenzeller-Herzog C, Mathes T, Heeres MLS, Weiss KH, Houwen RHJ, Ewald\n1171\nH. Comparative effectiveness of common therapies for Wilson disease: A systematic\n1172\nreview and meta-analysis of controlled studies. Liver Int. 2019;39(11):2136-52. doi:\n1173\n10.1111/liv.14179.\n1174\n28.\nvan Dis EAM, van Veen SC, Hagenaars MA, Batelaan NM, Bockting CLH, van\n1175\nden Heuvel RM, et al. Long-term Outcomes of Cognitive Behavioral Therapy for\n1176\nAnxiety-Related Disorders: A Systematic Review and Meta-analysis. JAMA Psychiatry.\n1177\n2020;77(3):265-73. doi: 10.1001/jamapsychiatry.2019.3986.\n1178\n29.\nLeenaars C, Stafleu F, de Jong D, van Berlo M, Geurts T, Coenen-de Roo T, et\n1179\nal. A"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p61_c4",
+   "page": 61,
+   "text": "and Meta-analysis. JAMA Psychiatry.\n1177\n2020;77(3):265-73. doi: 10.1001/jamapsychiatry.2019.3986.\n1178\n29.\nLeenaars C, Stafleu F, de Jong D, van Berlo M, Geurts T, Coenen-de Roo T, et\n1179\nal. A Systematic Review Comparing Experimental Design of Animal and Human\n1180\nMethotrexate Efficacy Studies for Rheumatoid Arthritis: Lessons for the Translational\n1181\nValue of Animal Studies. Animals (Basel). 2020;10(6). doi: 10.3390/ani10061047.\n1182"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p62_c1",
+   "page": 62,
+   "text": "61\n\n30.\nDeng J, Zhou F, Ali S, Heybati K, Hou W, Huang E, et al. Efficacy and safety of\n1183\nivermectin for the treatment of COVID-19: a systematic review and meta-analysis. QJM.\n1184\n2021;114(10):721-32. doi: 10.1093/qjmed/hcab247.\n1185\n31.\nDeng J, Zhou F, Hou W, Heybati K, Ali S, Chang O, et al. Efficacy of lopinavir-\n1186\nritonavir combination therapy for the treatment of hospitalized COVID-19 patients: a\n1187\nmeta-analysis. Future Virol. 2021. doi: 10.2217/fvl-2021-0066.\n1188\n32.\nDeng J, Rayner D, Ramaraju HB, Abbas U, Garcia C, Heybati K, et al. Efficacy\n1189\nand safety of selective serotonin reuptake inhibitors in COVID-19 management: a\n1190\nsystematic review and meta-analysis. Clin Microbiol Infect. 2023;29(5):578-86. doi:\n1191\n10.1016/j.cmi.2023.01.010.\n1192\n33.\nZhou F, Huang E, Zheng E, Deng J. The use of acupuncture in patients with\n1193\nRaynaud's syndrome: a systematic review and meta-analysis of randomized controlled\n1194\ntrials. Acupunct Med. 2023;41(2):63-72. doi: 10.1177/09645284221076504.\n1195\n34.\nBelcak P, Heinrich G, Diao S, Fu Y, Dong X, Muralidharan S, et al. Small\n1196\nLanguage Models are the Future of Agentic AI. arXiv.\n1197\n2025;arXiv:2506.02153(2506.02153)."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p62_c2",
+   "page": 62,
+   "text": "1195\n34.\nBelcak P, Heinrich G, Diao S, Fu Y, Dong X, Muralidharan S, et al. Small\n1196\nLanguage Models are the Future of Agentic AI. arXiv.\n1197\n2025;arXiv:2506.02153(2506.02153). doi: 10.48550/arXiv.2506.02153.\n1198\n35.\nZhou T, Xu J, Liu G, Liu J, Wang H, Wu E. An approach for systematic\n1199\ndecomposition of complex LLM tasks. arXiv. 2026(2510.07772). doi:\n1200\n10.48550/arXiv.2510.07772.\n1201\n36.\nPedregosa F, Varoquaux G, Gramfort A, Michel V, Thirion B, Grisel O, et al.\n1202\nScikit-learn: Machine learning in Python. the Journal of machine Learning research.\n1203\n2011;12:2825-30. doi.\n1204\n37.\nBalduzzi S, Rucker G, Schwarzer G. How to perform a meta-analysis with R: a\n1205\npractical tutorial. Evid Based Ment Health. 2019;22(4):153-60. doi: 10.1136/ebmental-\n1206\n2019-300117.\n1207\n38.\nLagorio S, Blettner M, Baaken D, Feychting M, Karipidis K, Loney T, et al. The\n1208\neffect of exposure to radiofrequency fields on cancer risk in the general and working\n1209\npopulation: A protocol for a systematic review of human observational studies. Environ\n1210\nInt. 2021;157:106828. doi: 10.1016/j.envint.2021.106828.\n1211\n39.\nFeng Y, Liang S, Zhang Y, Chen S, Wang Q, Huang T, et al. Automated"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p62_c3",
+   "page": 62,
+   "text": "a systematic review of human observational studies. Environ\n1210\nInt. 2021;157:106828. doi: 10.1016/j.envint.2021.106828.\n1211\n39.\nFeng Y, Liang S, Zhang Y, Chen S, Wang Q, Huang T, et al. Automated medical\n1212\nliterature screening using artificial intelligence: a systematic review and meta-analysis. J\n1213\nAm Med Inform Assoc. 2022;29(8):1425-32. doi: 10.1093/jamia/ocac066.\n1214\n40.\nWaffenschmidt S, Knelangen M, Sieben W, Buhn S, Pieper D. Single screening\n1215\nversus conventional double screening for study selection in systematic reviews: a\n1216\nmethodological systematic review. BMC Med Res Methodol. 2019;19(1):132. doi:\n1217\n10.1186/s12874-019-0782-0.\n1218\n41.\nGartlehner G, Affengruber L, Titscher V, Noel-Storr A, Dooley G, Ballarini N, et\n1219\nal. Single-reviewer abstract screening missed 13 percent of relevant studies: a crowd-\n1220\nbased, randomized controlled trial. J Clin Epidemiol. 2020;121:20-8. doi:\n1221\n10.1016/j.jclinepi.2020.01.005.\n1222\n42.\nTrad F, Yammine R, Charafeddine J, Chakhtoura M, Rahme M, El-Hajj Fuleihan\n1223\nG, et al. Streamlining systematic reviews with large language models using prompt\n1224\nengineering and retrieval augmented generation. BMC Med Res"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p62_c4",
+   "page": 62,
+   "text": "J, Chakhtoura M, Rahme M, El-Hajj Fuleihan\n1223\nG, et al. Streamlining systematic reviews with large language models using prompt\n1224\nengineering and retrieval augmented generation. BMC Med Res Methodol.\n1225\n2025;25(1):130. doi: 10.1186/s12874-025-02583-5.\n1226\n43.\nKojima T, Gu SS, Reid M, Matsuo Y, Iwasawa Y. Large Language Models are\n1227\nZero-Shot Reasoners. arXiv. 2023. doi: 10.48550/arXiv.2205.11916.\n1228"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p63_c1",
+   "page": 63,
+   "text": "62\n\n44.\nCao C, Sang J, Arora R, Chen D, Kloosterman R, Cecere M, et al. Development\n1229\nof Prompt Templates for Large Language Model–Driven Screening in Systematic\n1230\nReviews. Annals of Internal Medicine. 2025;178(3):389-401. doi: 10.7326/ANNALS-24-\n1231\n02189.\n1232\n45.\nVerbeek J, Zeeb H, van Deventer E, Ijaz S, Dore JF, Driessen S, et al.\n1233\nSystematic reviews and meta-analyses for the WHO assessment of health effects of\n1234\nexposure to radiofrequency electromagnetic fields, an introduction. Environ Int.\n1235\n2025;203:109751. doi: 10.1016/j.envint.2025.109751.\n1236\n\n1237\nList of abbreviations\n1238\nAb: Abstract\n1239\nAg: Agentic\n1240\nAI: Artificial intelligence\n1241\nAPI: Application programming interface\n1242\nAUC: Area under curve\n1243\nCoT: Chain-of-thought\n1244\nCI: Confidence interval\n1245\nE: Evaluator PECOS-wise\n1246\nEJ: Evaluator of all PECOS jointly\n1247\nEMF: Electromagnetic fields\n1248\nFN: False negative\n1249\nFP: False positive\n1250\nFs: Few-shot\n1251\nGPT: Generative pre-trained transformer\n1252\nLLM: Large language model\n1253\nNR: No reasoning provided in the output\n1254\nos: open-source\n1255"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p64_c1",
+   "page": 64,
+   "text": "63\n\nPECOS: Population, exposure, comparator, outcome, study type\n1256\nR: Reviewer\n1257\nR1-R6: Decision rules R1-R6\n1258\nRF: Radiofrequency\n1259\nROC: Receiver operating characteristic\n1260\nSR: Systematic review\n1261\nTiAb: Title/Abstract\n1262\nTN: True negative\n1263\nTP: True positive\n1264\nX: Extractor of study features\n1265\nWHO: World Health Organization\n1266\nZs: Zero-shot\n1267\nDeclarations\n1268\nClinical Trial Number\n1269\nNot applicable.\n1270\nEthics approval and consent to participate\n1271\nNot applicable.\n1272\nConsent for publication\n1273\nNot applicable.\n1274"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p65_c1",
+   "page": 65,
+   "text": "64\n\nAvailability of data and materials\n1275\nCode\nfor\nexecuting\nFs-M\nand\nFs-NR-L(os)\nis\navailable\nfrom\n1276\nhttps://github.com/OpenBfS/ai-sr-litscreen. Code and key data supporting this work are\n1277\navailable in the Supplementary files and from https://zenodo.org/uploads/18734064 .\n1278\nCompeting interests\n1279\nThe authors declare that they have no known competing financial interests or personal\n1280\nrelationships that could have appeared to influence the work reported in this paper. The\n1281\nauthors are employed by the German Federal Office for Radiation Protection where as\n1282\npart of their employment they advise German authorities and the general public on\n1283\npotential risks and health effects of exposure to non-ionising radiation. Dan Baaken is\n1284\nscientific secretary of the International Commission on Non-Ionizing Radiation Protection\n1285\nwhere he contributes to the development and dissemination of science-based advice on\n1286\nlimiting exposure to non-ionizing radiation.\n1287\nFunding\n1288\nNone.\n1289\nAuthors’ contributions (CRediT)\n1290\nDBe: Writing – original draft, Conceptualization, Formal analysis, Investigation,\n1291\nMethodology, Software, Validation, Visualization."
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p65_c2",
+   "page": 65,
+   "text": "Funding\n1288\nNone.\n1289\nAuthors’ contributions (CRediT)\n1290\nDBe: Writing – original draft, Conceptualization, Formal analysis, Investigation,\n1291\nMethodology, Software, Validation, Visualization. AA: Conceptualization, Methodology,\n1292\nWriting – review and editing. DBa: Data Curation, Writing – review and editing. HAML:\n1293\nValidation, Writing – review and editing. FM: Data Curation, Writing – review and editing.\n1294\nBP: Data Curation, Writing – review and editing. EW: Data Curation, Writing – review and\n1295\nediting.\n1296"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p66_c1",
+   "page": 66,
+   "text": "65\n\nAcknowledgements\n1297\nWe thank Eugenia Cordelli and Stefan Dongus for helping us validate our approach by\n1298\nproviding labelled literature search results of the systematic reviews by Cordelli et al.\n1299\n(2024) and Roosli et al. (2024), respectively.\n1300"
+  },
+  {
+   "paper_id": "W7131100690",
+   "chunk_id": "W7131100690_p67_c1",
+   "page": 67,
+   "text": "Supplementary Files\nThis is a list of supplementary files associated with this preprint. Click to download.\nSupplementaryInformationv2.1.docx\nSupplementaryFile1.xlsx\nSupplementaryFile2.xlsx\nSupplementaryFile3.xlsx"
+  }
+ ]
+}

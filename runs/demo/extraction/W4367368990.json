@@ -1,0 +1,145 @@
+{
+ "paper_id": "W4367368990",
+ "source_sha256": "741f5ca3bd02dde08b097d72bde24560686bdfcff1125016f32b4b8ac63778b3",
+ "params": {
+  "chunk_size": 1200,
+  "chunk_overlap": 200,
+  "max_pages": null,
+  "min_chars_per_page": 50.0,
+  "cleaning": "1"
+ },
+ "total_pages": 4,
+ "pages_read": 4,
+ "page_chars": [
+  4627,
+  5475,
+  5577,
+  3056
+ ],
+ "repeated_lines": [
+  "Qureshi et al. Systematic Reviews (#) #:#",
+  "Page # of #"
+ ],
+ "chunks": [
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p1_c1",
+   "page": 1,
+   "text": "Qureshi et al. Systematic Reviews (2023) 12:72\nhttps://doi.org/10.1186/s13643-023-02243-z\nCOMMENTARY\nOpen Access\n© The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which\npermits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the\noriginal author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or\nother third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line\nto the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory\nregulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this\nlicence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​\nmmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p1_c2",
+   "page": 1,
+   "text": "Creative Commons Public Domain Dedication waiver (http://​creat​iveco​\nmmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.\nSystematic Reviews\nAre ChatGPT and large language models\n“the answer” to bringing us closer to systematic\nreview automation?\nRiaz Qureshi1,2*   , Daniel Shaughnessy1, Kayden A. R. Gill2,3, Karen A. Robinson2,4, Tianjing Li1,2 and Eitan Agai2\nAbstract\nIn this commentary, we discuss ChatGPT and our perspectives on its utility to systematic reviews (SRs) through the\nappropriateness and applicability of its responses to SR related prompts. The advancement of artificial intelligence\n(AI)-assisted technologies leave many wondering about the current capabilities, limitations, and opportunities for\nintegration AI into scientific endeavors. Large language models (LLM)—such as ChatGPT, designed by OpenAI—have\nrecently gained widespread attention with their ability to respond to various prompts in a natural-sounding way.\nSystematic reviews (SRs) utilize secondary data and often require many months and substantial financial resources\nto complete, making them attractive grounds"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p1_c3",
+   "page": 1,
+   "text": "various prompts in a natural-sounding way.\nSystematic reviews (SRs) utilize secondary data and often require many months and substantial financial resources\nto complete, making them attractive grounds for developing AI-assistive technologies. On February 6, 2023, PICO\nPortal developers hosted a webinar to explore ChatGPT’s responses to tasks related to SR methodology. Our experience from exploring the responses of ChatGPT suggest that while ChatGPT and LLMs show some promise for aiding\nin SR-related tasks, the technology is in its infancy and needs much development for such applications. Furthermore,\nwe advise that great caution should be taken by non-content experts in using these tools due to much of the output\nappearing, at a high level, to be valid, while much is erroneous and in need of active vetting.\nKeywords  Artificial intelligence, Large language models, Systematic review, Methodology\nIn this commentary, we discuss ChatGPT and our perspectives on its utility to systematic reviews through the\nappropriateness and applicability of its responses to systematic review tasks and prompts. ChatGPT is a large\nlanguage model (LLM) and artificial intelligence (AI)\nsystem designed by"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p1_c4",
+   "page": 1,
+   "text": "through the\nappropriateness and applicability of its responses to systematic review tasks and prompts. ChatGPT is a large\nlanguage model (LLM) and artificial intelligence (AI)\nsystem designed by OpenAI (https://​openai.​com/​blog/​\nchatg​pt/) to interact with people in a natural and conversational way [1]. Standard machine-learning (ML)\nalgorithms are trained to provide responses or to make\nclassifications or predictions given a specific input using\nlarge sets of data that have already been, or are actively,\ncategorized by users [2, 3]. Likewise, LLMs are trained to\npredict language and writing based on large datasets of\nwritten language, thereby learning contextual clues and\nwhat might be expected or predicted following a set of\nwords (i.e., a prompt) [3–5]. For example, OpenAI’s GPT-\n3.5 was trained on approximately 570 GB of text and is\nthe original basis for ChatGPT [1, 6]. Depending on the\nprompt, LLMs can produce many different types of outputs. This has produced an explosion in the use of LLMs\nand ChatGPT, as well as creating controversy surrounding their applications [6].\nConducting a systematic review is a complex and arduous process that takes a great deal of expertise"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p1_c5",
+   "page": 1,
+   "text": "in the use of LLMs\nand ChatGPT, as well as creating controversy surrounding their applications [6].\nConducting a systematic review is a complex and arduous process that takes a great deal of expertise and time.\nIt is not uncommon for reviews to take over 12 months to\ncomplete and require upwards of $100,000 in effort when\nconsidering the time spent on searching (by information\n*Correspondence:\nRiaz Qureshi\nriaz.qureshi@cuanschutz.edu\n1 University of Colorado Anschutz Medical Campus, Aurora, CO, USA\n2 PICO Portal, New York, NY, USA\n3 University of Pittsburgh, Pittsburgh, PA, USA\n4 Johns Hopkins University, Baltimore, MD, USA"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p2_c1",
+   "page": 2,
+   "text": "Page 2 of 4\nQureshi et al. Systematic Reviews (2023) 12:72\nspecialists), screening, data extraction, analysis, interpretation, and writing by methodologists and content\nexperts [7–9]. There are areas where ML and AI have\nalready been introduced in the systematic review process\nwith great success [10–13]. Given the recent attention\naround LLMs, like ChatGPT, and the resource burden\nof conducting a systematic review, we wanted to explore\nand critique the responses of ChatGPT to systematic\nreview tasks. On February 6, 2023, developers of PICO\nPortal—an AI-assisted systematic review platform [10]—\nhosted a webinar to demonstrate a variety of tasks and\nelicit feedback on the ChatGPT output.\nWe “tested” ChatGPT by asking it to complete systematic-review tasks with a focus on tasks relevant to interpretation of language and not test whether ChatGPT\ncould perform a task that is more data-specific, such as\ndata extraction [14]. Other biomedical uses for LLMs\nhave been suggested, including for data and text mining, particularly of clinical records, and aiding in medical education and clinical decision making [15, 16]. Our\nintent was to see whether this kind of language model\ncould be used"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p2_c2",
+   "page": 2,
+   "text": "data and text mining, particularly of clinical records, and aiding in medical education and clinical decision making [15, 16]. Our\nintent was to see whether this kind of language model\ncould be used by someone who may wish to plan a systematic review, further develop a review question, or\nget help in drafting the search or analysis methods. A\ndetailed description of our experience and a link to the\nwebinar recording can be found in the SUPPLEMENT.\nWe found that ChatGPT could complete some systematic review tasks well, while others had clear room for\nimprovement:\n• In formulating a structured review question, creating\neligibility criteria, and screening titles for relevance,\nChatGPT’s output suggested the interpretation and\ncontextualization of the prompt was appropriate. We\nfelt the proposed criteria and selected articles could\nserve as a starting point for refinement depending on\nthe complexity of the question.\n• Having a ChatGPT generated PubMed search strategy, or an initial version, would be helpful to those\nwho may not have access to an informationist in their\nresources. However, the proposed search strategy\nwas unusable with multiple issues, including fabricating controlled"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p2_c3",
+   "page": 2,
+   "text": "would be helpful to those\nwho may not have access to an informationist in their\nresources. However, the proposed search strategy\nwas unusable with multiple issues, including fabricating controlled vocabulary, that would not be apparent without expertise in search construction.\n• ChatGPT is able to produce code in various programming languages and was able to create an outline of code for conducting a meta-analysis in Python\nand R. However, as with the search strategy, there\nwere coding errors that required troubleshooting\nfrom a user with methodologic expertise.\n• Synthesis and summary of multiple studies is a challenge but ultimately the most essential product of a\nsystematic review. The time required to pick relevant\ninformation and create a summary is substantial, but\nthere is potential for tools like ChatGPT to help begin\nthese processes for reviewers. We found promise in\nthe ability of the system to identify and summarize\nrelevant information from a set of three abstracts.\nHowever, there were errors that suggest the technology is not yet ready for such a task.\nIn its current form, ChatGPT presents as an “uncanny\nvalley” in research and information sciences: from a distance,"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p2_c4",
+   "page": 2,
+   "text": "there were errors that suggest the technology is not yet ready for such a task.\nIn its current form, ChatGPT presents as an “uncanny\nvalley” in research and information sciences: from a distance, the output mimics and passes as authentic; however, on closer inspection, it becomes apparent that it is\nnot expertly formed material based on a depth of understanding of the systematic review process. A particularly\nstrong limitation of the system is the lack of referencing\nappropriate and verifiable sources when asked for factual\ninformation. When we asked for references, we could not\nverify what it presented to us. This is a common occurrence as LLMs are designed to build a response using\npredictions and not by looking through literature to\nfind real sources [17]. Indeed, when asked where it finds\ninformation and to search bibliographic databases, Chat-\nGPT responds only that it cannot conduct any real literature retrieval.\nWith the model’s current capabilities, we anticipate\nthat anyone attempting to use ChatGPT for providing\nverifiable and content/context-specific research will find\nthat the recipient must have expertise in the subject matter. Unfortunately, this pre-requisite"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p2_c5",
+   "page": 2,
+   "text": "attempting to use ChatGPT for providing\nverifiable and content/context-specific research will find\nthat the recipient must have expertise in the subject matter. Unfortunately, this pre-requisite defeats the purpose\nof having an “intelligent” automation help with the tasks.\nIt should be noted that other LLMs are being developed\nand entering the public domain, so ChatGPT may not\nperfectly reflect all LLMs. On March 15, 2023, GPT-4.0\nwas released for testing among OpenAI’s paid subscribers [18]. This new model purports to be more powerful\nthan GPT-3.5 and better at recognizing and producing\nlanguage and contextual cues in writing [18]. It should be\nnoted that some minor testing of GPT-4.0 with similar\nquestions showed a mild improvement in the summarization of three abstracts, but no additional improvements\nin systematic review task completion as far as we could\ndiscern. Additionally, there may be other systematic\nreview tasks and use cases that we have not conceived\nand may elicit a more trustworthy and usable response\nfrom ChatGPT or other such systems. Furthermore, for\nbetter or worse, since generating a response in an LLM is\nnot deterministic, the response will not be identical"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p2_c6",
+   "page": 2,
+   "text": "trustworthy and usable response\nfrom ChatGPT or other such systems. Furthermore, for\nbetter or worse, since generating a response in an LLM is\nnot deterministic, the response will not be identical each\ntime the same question is asked. We expect that there\nwill be further advancements in the capabilities of these\nsystems.\nWe know that the broader scientific community\nhas concerns with the use of LLMs in research, and\nfrom our experience, we believe the systematic review"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p3_c1",
+   "page": 3,
+   "text": "Page 3 of 4\nQureshi et al. Systematic Reviews (2023) 12:72\n\ncommunity shares the same sentiments. Those in\nattendance during our demonstration posted many\ncomments about ChatGPT and its application in education and research, primarily echoing concerns with the\nuse of the technology and a large number of questions\nabout its capabilities, limitations, internal processes,\nand output. Comments reflecting the uncertainty and\nhesitancy to use LLMs were also common, alongside\nthe risks with non-expert use, as it was apparent that\nthere was a requirement for content expertise in the\nvarious tasks. Many attendees posted links to resources\nand other tools to help perform the systematic review\ntasks we explored. There were also some comments on\npotential applications and areas for developing LLMs\nin the field of evidence syntheses and general positive\nand negative reactions from people about the utility of\nAI systems and LLMs in science. It is clear that discussion of the potential applications, challenges, and risks\nwith integrating these technologies into the systematic\nreview process need to happen and should take place\nin large, public forums. One group that is working\ntowards addressing"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p3_c2",
+   "page": 3,
+   "text": "challenges, and risks\nwith integrating these technologies into the systematic\nreview process need to happen and should take place\nin large, public forums. One group that is working\ntowards addressing some of the questions and methodological issues such integration brings is the International Collaboration for the Automation of Systematic\nReviews (ICASR) [19].\nDespite the challenges with its use in systematic\nreview tasks, ChatGPT was able to contextualize our\nquestions and formulate responses that fit what we\nrequested, which is encouraging for future development. In particular, we believe more attention should\nbe given to accurately creating search strategies, as\nthese utilize logic and rules (e.g., Boolean operators)\nand structured language in a way that should be more\neasily trainable than conversational language. Likewise, strengthening the ability of LLMs to take sections\nof text and identify relevant information for summary\npurposes could provide starting points for researchers\nor high-level summaries of results when time is limited\n(e.g., in a pandemic with hundreds of articles published\ndaily that could contain relevant information to inform\nguidelines). Additionally, as"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p3_c3",
+   "page": 3,
+   "text": "or high-level summaries of results when time is limited\n(e.g., in a pandemic with hundreds of articles published\ndaily that could contain relevant information to inform\nguidelines). Additionally, as the text writing and editing\ncapabilities improve, the potential utility increases for\nthese systems in polishing drafts of systematic reviews\nfor authors who need help revising their writing [20].\nIn conclusion, we believe ChatGPT and other LLMs\nhold promise in being integrated into systematic\nreviews, but they are not yet able to be used with confidence in any way. We encourage others to attempt similar exploration and testing to understand the current\nlimitations and capacity of ChatGPT and LLMs in the\ncontext of evidence synthesis.\nSupplementary Information\nThe online version contains supplementary material available at https://​doi.​\norg/​10.​1186/​s13643-​023-​02243-z.\nAdditional file 1: SUPPLEMENT. Detailed description of our experience\nand a link to the webinar recording.\nAcknowledgements\nWe would like to thank the webinar attendees for their feedback and discussion of ChatGPT’s responses to our prompts.\nAuthors’ contributions\nRQ and EA conceptualized the commentary and led the"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p3_c4",
+   "page": 3,
+   "text": "We would like to thank the webinar attendees for their feedback and discussion of ChatGPT’s responses to our prompts.\nAuthors’ contributions\nRQ and EA conceptualized the commentary and led the webinar discussed\nwithin. RQ drafted the manuscript. RQ, DS, and KG read the chat transcripts to\nidentify themes. All authors critically revised the manuscript for content and\napproved the final version for publication.\nFunding\nNot applicable.\nAvailability of data and materials\nData sharing is not applicable to this article as no datasets were generated or\nanalyzed during the current study.\nDeclarations\nEthics approval and consent to participate\nNot applicable.\nConsent for publication\nNot applicable.\nCompeting interests\nRQ, KG, TL, and KR provide consultative services to PICO Portal. EA is the\nfounder and owner of PICO Portal. PICO Portal itself has no affiliation with\nChatGPT. DS has no relevant interests.\nReceived: 21 March 2023 Accepted: 20 April 2023\nReferences\n1.\nOpenAI. ChatGPT: optimizing language models for dialogue. OpenAI.\nPublished 2023. Accessed 6 Feb 2023. https://​openai.​com/​blog/​chatg​pt/.\n2.\nRay S. A quick review of machine learning algorithms. In: Proceedings of\nthe"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p3_c5",
+   "page": 3,
+   "text": "language models for dialogue. OpenAI.\nPublished 2023. Accessed 6 Feb 2023. https://​openai.​com/​blog/​chatg​pt/.\n2.\nRay S. A quick review of machine learning algorithms. In: Proceedings of\nthe International Conference on Machine Learning, Big Data, Cloud and\nParallel Computing: Trends, Prespectives and Prospects, COMITCon 2019.\nIEEE; 2019:35–39.\n3.\nMahesh B. Machine learning algorithms - a review. Int J Sci Res.\n2018;18(8):381–6. https://​doi.​org/​10.​21275/​ART20​203995.\n4.\nDrenik G. Large language models will define artificial intelligence. Forbes.\nPublished online 2023. https://​www.​forbes.​com/​sites/​garyd​renik/​2023/​\n01/​11/​large-​langu​age-​models-​will-​define-​artif​icial-​intel​ligen​ce/?​sh=​\n69833​7a9b6​0f.\n5.\nWiggers K. The emerging types of language models and why they matter.\nTechCrunch. Published online 2022. https://​techc​runch.​com/​2022/​04/​28/​\nthe-​emerg​ing-​types-​of-​langu​age-​models-​and-​why-​they-​matter/.\n6.\nShen Y, Heacock L, Elias J, Hentel K, Reig B, Shih G, Moy L. ChatGPT and\nother large language models are double-edged swords. Radiology.\n2023;1. https://​doi.​org/​10.​1148/​radiol.​230163.\n7.\nMichelson M, Reuter K. The significant cost of"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p3_c6",
+   "page": 3,
+   "text": "B, Shih G, Moy L. ChatGPT and\nother large language models are double-edged swords. Radiology.\n2023;1. https://​doi.​org/​10.​1148/​radiol.​230163.\n7.\nMichelson M, Reuter K. The significant cost of systematic reviews and\nmeta-analyses: a call for greater involvement of machine learning\nto assess the promise of clinical trials. Contemp Clin Trials Commun.\n2019;16:100443. https://​doi.​org/​10.​1016/j.​conctc.​2019.​100443.\n8.\nBorah R, Brown AW, Capers PL, Kaiser KA. Analysis of the time and workers\nneeded to conduct systematic reviews of medical interventions using"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p4_c1",
+   "page": 4,
+   "text": "Page 4 of 4\nQureshi et al. Systematic Reviews (2023) 12:72\n•\n\nfast, convenient online submission\n\n•\n\nthorough peer review by experienced researchers in your field\n•\n\nrapid publication on acceptance\n•\n\nsupport for research data, including large and complex data types\n•\n\ngold Open Access which fosters wider collaboration and increased citations\n\nmaximum visibility for your research: over 100M website views per year\n•\n\nAt BMC, research is always in progress.\nLearn more biomedcentral.com/submissions\nReady to submit your research\nReady to submit your research ? Choose BMC and benefit from:\n? Choose BMC and benefit from:\ndata from the PROSPERO registry. BMJ Open. 2017;7(2):e012545. https://​\ndoi.​org/​10.​1136/​bmjop​en-​2016-​012545.\n9.\nBullers K, Howard AM, Hanson A, Kearns WD, Orriola JJ, Polo RL, Sakmar\nKA. It takes longer than you think: librarian time spent on systematic\nreview tasks. J Med Libr Assoc. 2018;106(2):198–207. https://​doi.​org/​10.​\n5195/​jmla.​2018.​323.\n10. PICO Portal. Introducing PICO Portal. Published 2023. Accessed 10 Feb\n2023. https://​picop​ortal.​org.\n11. DistillerSR. DistillerSR smarter reviews: trusted evidence. DistillerSR. Published 2023. Accessed 10 Feb"
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p4_c2",
+   "page": 4,
+   "text": "Introducing PICO Portal. Published 2023. Accessed 10 Feb\n2023. https://​picop​ortal.​org.\n11. DistillerSR. DistillerSR smarter reviews: trusted evidence. DistillerSR. Published 2023. Accessed 10 Feb 2023. www.​disti​llersr.​com.\n12. Covidence. Covidence - better systematic review management. Covidence. Published 2023. Accessed 10 Feb 2023. https://​www.​covid​ence.​\norg/.\n13. Rayyan. Rayyan - Intelligent Systematic Review. Faster Systematic\nReviews. Published 2023. www.​rayyan.​ai.\n14. RobotReviewer. RobotReviewer - automating evidence synthesis.\nRobotReviewer. Published 2023. www.​robot​revie​wer.​net.\n15. Kung TH, Cheatham M, Medenilla A, Sillos C, De Leon L, Elepaño C,\nMadriaga M, Aggabao R, Diaz-Candido G, Maningo J, Tseng V. Performance of ChatGPT on USMLE: potential for AI-assisted medical education\nusing large language models. PLoS Digit Heal. 2023;2(2):e0000198.\nhttps://​doi.​org/​10.​1371/​journ​al.​pdig.​00001​98.\n16. Lewis P, Ott M, Du J, Stoyanov V. Pretrained language models for biomedical and clinical tasks: understanding and extending the state-of-the-art.\nIn: Proceedings Of the 3rd Clinical Natural Language Processing Workshop. 2020. p. 146–57."
+  },
+  {
+   "paper_id": "W4367368990",
+   "chunk_id": "W4367368990_p4_c3",
+   "page": 4,
+   "text": "language models for biomedical and clinical tasks: understanding and extending the state-of-the-art.\nIn: Proceedings Of the 3rd Clinical Natural Language Processing Workshop. 2020. p. 146–57. https://​doi.​org/​10.​18653/​v1/​2020.​clini​calnlp-​1.​17.\n17. Smerdon D. @dsmerdon. Twitter. Published 2023. Accessed 10 Feb 2023.\nhttps://​twitt​er.​com/​dsmer​don/​status/​16188​16703​92391​2704?​lang=​en.\n18. Chen R. GPT-4. OpenAI. Published 2023. Accessed 4 Mar 2023. https://​\nopenai.​com/​resea​rch/​gpt-4.\n19. ICASR. International Collaboration for the Automation of Systematic\nReviews. 2023. Accessed 4 Mar 2023. https://​icasr.​github.​io/.\n20. Staiman A. Guest Post — Academic Publishers Are Missing the Point on\nChatGPT ChatGPT as Author. The Scholarly Kitchen. Published online\nMarch 2023. https://​schol​arlyk​itchen.​sspnet.​org/​2023/​03/​31/​guest-​post-​\nacade​mic-​publi​shers-​are-​missi​ng-​the-​point-​on-​chatg​pt/.\nPublisher’s Note\nSpringer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations."
+  }
+ ]
+}

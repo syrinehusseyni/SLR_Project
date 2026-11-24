@@ -1,0 +1,57 @@
+{
+ "paper_id": "W7131100690",
+ "fingerprint": "4ad7211a1339c659",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "expérience comparative sur 100 résumés synthétiques, réalisée en triplicate.",
+   "chunk_id": "W7131100690_p22_c2",
+   "page": 22,
+   "quote": "We ran the experiment on the 100 synthetic abstracts in triplicate.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "rejected",
+   "value": "100 abstracts synthétiques, ratio 1:1",
+   "chunk_id": "W7131100690_p15_c1",
+   "page": null,
+   "quote": "This yielded 100 synthetic abstracts with a 1:1 eligible:ineligible ratio (Supplementary File 1).",
+   "note": "citation absente du chunk cité : recopie-la exactement"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "rejected",
+   "value": "Modèles utilisés : Llama3.3:70b, gpt-4.1-mini, o3-mini-high.",
+   "chunk_id": "W7131100690_p46_c2",
+   "page": null,
+   "quote": "Fs-NR-L(os): Llama3.3:70b with a few-shot prompt and no reasoning in the output; Fs-M: gpt-4.1-mini with a few-shot prompt; Zs-Ag-NR-L: o3-mini-high with a zero-shot prompt, agentic search enabled, and no reasoning in the output.",
+   "note": "citation absente du chunk cité : recopie-la exactement"
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "87.0 % de sensibilité à R6",
+   "chunk_id": "W7131100690_p41_c1",
+   "page": null,
+   "quote": "gpt-4.1 achieved only 87.0% sensitivity at R6",
+   "note": "citation absente du chunk cité : recopie-la exactement"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "rejected",
+   "value": "Limite : R6 privilégie le rappel au détriment de la spécificité, entraînant plus de faux positifs.",
+   "chunk_id": "W7131100690_p57_c2",
+   "page": null,
+   "quote": "Finally, the sensitive decision rule R6 prioritised recall at the expense of specificity, resulting in more false positives.",
+   "note": "citation absente du chunk cité : recopie-la exactement"
+  }
+ ]
+}

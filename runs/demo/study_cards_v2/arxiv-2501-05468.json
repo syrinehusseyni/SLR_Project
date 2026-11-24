@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2501-05468",
+ "fingerprint": "184e5c64cf1ad458",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude d'évaluation d'un outil de revue systématique",
+   "chunk_id": "arxiv-2501-05468_p12_c2",
+   "page": 12,
+   "quote": "we aim to demonstrate LatteReview's practical utility in systematic review applications through two distinct evaluation approaches.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "dataset créé en interrogeant PubMed pour des articles de rapport de cas sur les complications des vaccins COVID-19",
+   "chunk_id": "arxiv-2501-05468_p8_c1",
+   "page": 8,
+   "quote": "Figure 3. (A) A review workflow for screening titles and abstracts from a dataset created by querying PubMed for case report articles on complications of COVID-19 vaccines.",
+   "note": ""
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Un agent de revue senior utilisant GPT-4O intervient uniquement en cas de désaccord entre les réviseurs juniors pour prendre les décisions finales d'inclusion.",
+   "chunk_id": "arxiv-2501-05468_p12_c3",
+   "page": 12,
+   "quote": "A senior reviewer agent, utilizing OpenAI's GPT-4O, intervenes only in cases of disagreement between the junior reviewers to make final inclusion decisions.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "rejected",
+   "value": "Exactitude=0.63, Rappel=1.0, Précision=0.05",
+   "chunk_id": "arxiv-2501-05468_p13_c1",
+   "page": null,
+   "quote": "Accuracy=0.63, Recall=1.0, Precision=0.05",
+   "note": "termes de la valeur absents de la citation : ['Rappel=1.0', 'Précision=0.05']"
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "Les systèmes d'IA présentent des limites, notamment l'ambiguïté, le manque de contexte ou d'instructions insuffisantes.",
+   "chunk_id": "arxiv-2501-05468_p20_c2",
+   "page": 20,
+   "quote": "While LatteReview offers powerful automation capabilities, it's essential to recognize the limitations inherent in any AI-based system. Even the most advanced LLMs can struggle with certain review items due to factors like ambiguity, lack of context, or insufficient instructions.",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "paper_id": "doi-10-64898-2026-09-25-26364021",
+ "fingerprint": "f3ca690c37108236",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "étude comparative d'évaluation de Jev par rapport à deux LLMs",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c1",
+   "page": 5,
+   "quote": "We evaluated Jev on two datasets from our previous study of title and abstract screening10 and compared Jev with two generative LLMs using the same prompts.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "verified",
+   "value": "1381 records de la revue systématique de la thérapie lumineuse pour le trouble bipolaire et 3146 de la revue systématique de la pharmacothérapie adjuvante pour la dépression bipolaire",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p5_c1",
+   "page": 5,
+   "quote": "We analyzed two datasets previously used to evaluate GPT-3.5 and GPT-410: 1381 records from a systematic review of bright light therapy for bipolar disorder (hereafter, light therapy)24 and 3146 from a systematic review of adjunctive pharmacotherapy for bipolar depression.25 Eligibility criteria",
+   "note": "chunk_id corrigé : le LLM citait 'doi-10-64898-2026-09-25-26364021_p15_c1', la citation est dans doi-10-64898-2026-09-25-26364021_p5_c1"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Jev",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p14_c1",
+   "page": 14,
+   "quote": "Jev achieved high screening sensitivity at the prespecified cutoff, retained all reports included after full-text assessment, and cost less than the tested LLM configurations.",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "Cutoff 22 %, spécificité 99,2 %, réduction volume 97,3 %",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p10_c1",
+   "page": 10,
+   "quote": "highest cutoff retaining all human-retained light-therapy records in every run was 22%, with specificity of 99.2% and a reduction in review volume of 97.3%.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "rejected",
+   "value": "Limitation de généralisation à d’autres domaines cliniques, données limitées.",
+   "chunk_id": "doi-10-64898-2026-09-25-26364021_p13_c3",
+   "page": null,
+   "quote": "Several limitations affect the interpretation of these findings. First, both reviews concerned bipolar disorder, limiting generalizability to other clinical areas. The datasets also contained few.",
+   "note": "citation absente du chunk cité (et des autres extraits) : recopie-la exactement"
+  }
+ ]
+}

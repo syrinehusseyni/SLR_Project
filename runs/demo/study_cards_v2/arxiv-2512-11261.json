@@ -1,0 +1,57 @@
+{
+ "paper_id": "arxiv-2512-11261",
+ "fingerprint": "6cacd467c0b1cca1",
+ "model": "openai/gpt-oss-20b",
+ "fields": [
+  {
+   "field_id": "design",
+   "label": "Type d'étude",
+   "status": "verified",
+   "value": "Étude méthodologique évaluant une approche de screening à deux étapes, utilisant un LLM à faible coût pour le premier filtrage et un LLM haute performance pour la réévaluation des cas à faible confiance.",
+   "chunk_id": "arxiv-2512-11261_p4_c2",
+   "page": 4,
+   "quote": "first stage performs initial screening using a low-cost LLM guided by dynamically constructed few-shot prompts and provides confidence scores; the second stage re-evaluates low-confidence instances using a high-performance LLM.",
+   "note": ""
+  },
+  {
+   "field_id": "data",
+   "label": "Données",
+   "status": "invalid_format",
+   "value": "",
+   "chunk_id": "",
+   "page": null,
+   "quote": "",
+   "note": "JSON invalide : Expecting ',' delimiter: line 1 column 309 (char 308)"
+  },
+  {
+   "field_id": "models",
+   "label": "Modèles",
+   "status": "verified",
+   "value": "Pour fournir une analyse comparative plus complète, nous avons évalué davantage plusieurs LLM généraux et spécifiques à la médecine à poids ouverts sous le cadre zéro-shot, notamment Phi-3.5-mini [33], MediPhi [34], Gemma3-4B [35], Med-Gemma-4B [36] et Med-Gemma-27B [36].",
+   "chunk_id": "arxiv-2512-11261_p10_c1",
+   "page": 10,
+   "quote": "To provide a more comprehensive comparative analysis, we further evaluated several representative open-weight general and medical-specific LLMs under the zero-shot setting, including Phi-3.5-mini [33], MediPhi [34], Gemma3-4B [35], Med-Gemma-4B [36], and Med-Gemma-27B [36].",
+   "note": ""
+  },
+  {
+   "field_id": "findings",
+   "label": "Résultats",
+   "status": "verified",
+   "value": "DFS a obtenu les meilleurs scores F1 pour le tri des titres et résumés dans les dix revues systématiques, surpassant ZS, CoT et FS.",
+   "chunk_id": "arxiv-2512-11261_p10_c1",
+   "page": 10,
+   "quote": "Figure 2 F1 score performance comparison of different prompting strategies (Zero- Shot (ZS), Chain-of-Thought (CoT), Few-Shot (FS), Dynamic Few-Shot (DFS)) across ten systematic reviews. DFS achieved higher F1 scores in the title and abstract screening task across all ten systematic reviews compared to Zero-Shot, Chain-of-Thought, and Few-Shot methods.",
+   "note": ""
+  },
+  {
+   "field_id": "limitations",
+   "label": "Limites",
+   "status": "verified",
+   "value": "L'étude a été limitée par la taille des données et des coûts de calcul, et des faux négatifs subsistent.",
+   "chunk_id": "arxiv-2512-11261_p13_c2",
+   "page": 13,
+   "quote": "First, due to data access constraints and computational costs, the scale of this study was relatively limited; evaluating the approach on larger-scale datasets would help further validate its robustness.",
+   "note": ""
+  }
+ ]
+}
