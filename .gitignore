@@ -1,0 +1,34 @@
+
+# Secrets : never version API keys
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest-tmp-final-step7/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Generated execution data
+runs/demo/
+
+# PDF and temporary files
+*.pdf
+*.part
+*.tmp
+*.bak
+*.log
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

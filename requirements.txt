@@ -1,0 +1,10 @@
+pydantic>=2
+python-dotenv
+pyyaml
+httpx
+pypdf
+pymupdf
+pytest
+streamlit
+langchain-ollama
+langchain-groq
