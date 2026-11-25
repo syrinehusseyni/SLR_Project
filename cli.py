@@ -40,6 +40,7 @@ from slrresearch.core.schemas.screening import ScreeningOutcome
 from slrresearch.core.schemas.search import SearchOutcome
 from slrresearch.core.schemas.study_card import StudyCardsOutcome
 from slrresearch.core.schemas.fidelity import FidelityOutcome
+from slrresearch.core.schemas.quality import QualityOutcome
 from slrresearch.core.store import RunStore
 from slrresearch.download.agent import DownloadSettings
 from slrresearch.download.stage import G3_DECISIONS, MISSING_POLICIES, POLICY_RESOLVER, DownloadStage, manual_pdf_problem
@@ -50,6 +51,7 @@ from slrresearch.evidence.facet_plan import FacetPlanStage
 from slrresearch.evidence.facet_evidence import FacetEvidenceStage
 from slrresearch.core.schemas.facet_evidence import FacetEvidenceOutcome
 from slrresearch.evidence.facet_matrix import FacetMatrixStage
+from slrresearch.quality.stage import QualityStage
 from slrresearch.core.schemas.facet_matrix import FacetMatrixOutcome
 from slrresearch.protocol.questions_stage import QuestionsStage
 from slrresearch.protocol.stage import ProtocolStage
@@ -159,6 +161,17 @@ def _parser() -> argparse.ArgumentParser:
 
     fm = sub.add_parser("facet-matrix", help="étape 7 : matrice étude × facette et revue G5 des manques bloquants")
     fm.add_argument("--run-id", required=True)
+
+    qa = sub.add_parser("quality", help="étape 8 : évaluation qualité des études avec citations + porte G4")
+    qa.add_argument("--run-id", required=True)
+    qa.add_argument("--max-calls", type=int, default=20, help="budget d'appels LLM (défaut 20 ; un appel par article à évaluer)")
+    qa.add_argument("--max-tokens", type=int, default=None)
+    qa.add_argument("--max-seconds", type=float, default=None)
+    qa.add_argument("--max-papers", type=int, default=None)
+    qa.add_argument("--pause", type=float, default=2.1, help="secondes entre les articles (défaut 2.1)")
+    qa.add_argument("--review-confidence", type=float, default=0.75,
+                    help="sous ce seuil, envoyer l'évaluation en revue G4 (défaut 0.75)")
+    qa.add_argument("--force", action="store_true", help="ignorer le cache et refaire les évaluations")
 
     g = sub.add_parser("gates", help="lister les points de revue ouverts")
     g.add_argument("--run-id", required=True)
@@ -279,6 +292,16 @@ def _print_facet_matrix_summary(store) -> None:
     s = store.read_artifact("facet_matrix", FacetMatrixOutcome).summary
     print(f"Papiers : {s.papers} ; cellules : {s.cells} ; trouvées : {s.found} ; non rapportées : {s.not_reported}")
     print(f"Manquantes : {s.missing} (bloquantes : {s.blocking_missing}) ; contradictoires : {s.contradictory}")
+
+
+def _print_quality_summary(store) -> None:
+    outcome = store.read_artifact("quality", QualityOutcome)
+    s = outcome.summary
+    print(f"Articles : {s.papers} ; terminés : {s.complete} ; revue G4 : {s.waiting_human} ; "
+          f"incomplets : {s.incomplete} ; rejetés : {s.rejected}")
+    print(f"Évaluations : {s.assessments} ; ratings : {s.ratings} ; "
+          f"acceptées : {s.accepted} ; à revoir : {s.human_review} ; erreurs : {s.llm_errors}")
+    print(f"Coût de ce lancement : {s.llm_calls} appels, {s.tokens} tokens ; juge : {outcome.judge_model}")
 
 
 def main(argv=None, make_model=build_model, transport=None, env=None, stage_options=None) -> int:
@@ -410,6 +433,27 @@ def main(argv=None, make_model=build_model, transport=None, env=None, stage_opti
             if store.exists("facet_matrix"):
                 _print_facet_matrix_summary(store)
             return code
+        if args.command == "quality":
+            if not settings.judge_is_independent:
+                print(f"ERREUR : le juge ({settings.model_for('judge')}) doit différer de l'extracteur ({settings.model_for('extraction')}). Configurez le modèle juge dans .env.")
+                return 1
+            def show_quality(index, total, paper_id, status):
+                print(f"[{index}/{total}] {paper_id} : {status}", flush=True)
+            try:
+                stage = QualityStage(max_papers=args.max_papers, pause=args.pause, force=args.force,
+                                     review_confidence=args.review_confidence,
+                                     progress=show_quality)
+            except ValueError as exc:
+                print(f"ERREUR : {exc}")
+                return 1
+            try:
+                code = _report(stage.run(ctx))
+            except KeyboardInterrupt:
+                print("INTERROMPU : les évaluations déjà écrites sont conservées, relancez la même commande pour reprendre.")
+                return 130
+            if store.exists("quality"):
+                _print_quality_summary(store)
+            return code
         if args.command == "gates":
             found = False
             for gate in GATES:
@@ -445,6 +489,11 @@ def main(argv=None, make_model=build_model, transport=None, env=None, stage_opti
                 decision = decision.strip().lower()
                 if decision not in ("approved", "rejected"):
                     print(f"ERREUR : pour la porte G5, la décision doit être « approved » ou « rejected » (reçu : {args.decision!r}).")
+                    return 1
+            if args.item.startswith("G4:"):
+                decision = decision.strip().lower()
+                if decision not in ("approved", "rejected"):
+                    print(f"ERREUR : pour la porte G4, la décision doit être « approved » ou « rejected » (reçu : {args.decision!r}).")
                     return 1
             item = ctx.queue.close_item(args.item, decision, args.by, args.why)
             print(f"Fermé : {item.id} -> {item.decision} par {item.decided_by}.")
