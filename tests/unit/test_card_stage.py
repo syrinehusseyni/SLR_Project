@@ -212,10 +212,10 @@ def test_ctrl_c_keeps_finished_cards(store, monkeypatch):
     prepare_run(store, tags=("A", "B", "C"))
     real = stage_module.fill_field
 
-    def interrupt_on_c(client, spec, chunks, template, top_k):
+    def interrupt_on_c(client, spec, chunks, template, top_k, retriever=None):
         if chunks[0].paper_id == "C":
             raise KeyboardInterrupt
-        return real(client, spec, chunks, template, top_k)
+        return real(client, spec, chunks, template, top_k, retriever=retriever)
 
     monkeypatch.setattr(stage_module, "fill_field", interrupt_on_c)
     with pytest.raises(KeyboardInterrupt):
