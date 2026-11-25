@@ -246,11 +246,14 @@ def verify_answer(answer: Answer, spec: FieldSpec, shown: list[Chunk]) -> CardFi
     return CardField(**base, status="verified", page=chunk.page, note=note, **detail)  # la page vient du chunk, jamais du LLM
 
 
-def fill_field(llm, spec: FieldSpec, chunks: list[Chunk], template: str, top_k: int) -> CardField:
+def fill_field(llm, spec: FieldSpec, chunks: list[Chunk], template: str, top_k: int,
+               retriever=None) -> CardField:
     """Un champ de la fiche : au plus 2 appels (essai + une réparation, que l'erreur soit un JSON invalide ou un contrôle raté).
     Ne lève que `BudgetExceeded` (ou une erreur de programmation)."""
     base = {"field_id": spec.id, "label": spec.label}
-    shown = [chunk for chunk, _ in lexical_retrieve(chunks, spec.query, top_k)]
+    selected = (retriever.retrieve(chunks, spec.query, top_k) if retriever is not None
+                else lexical_retrieve(chunks, spec.query, top_k))
+    shown = [chunk for chunk, _ in selected]
     if not shown:
         return CardField(**base, status="no_context", note="aucun extrait ne ressemble à la requête de recherche")
     prompt = build_prompt(template, spec, shown)
@@ -282,9 +285,11 @@ def chunks_digest(chunks: list[Chunk]) -> str:
     return hashlib.sha256("\n".join(f"{c.chunk_id}\n{c.text}" for c in chunks).encode("utf-8")).hexdigest()
 
 
-def fingerprint(template: str, top_k: int, model: str, chunks: list[Chunk]) -> str:
+def fingerprint(template: str, top_k: int, model: str, chunks: list[Chunk],
+                retrieval_mode: str = "lexical", embedding_model: str = "") -> str:
     """Ce qui détermine la fiche : si l'un de ces éléments change, la fiche n'est plus valable."""
-    material = "\n".join([template, str(top_k), model, VERIFY_VERSION, chunks_digest(chunks),
+    material = "\n".join([template, str(top_k), model, retrieval_mode, embedding_model,
+                          VERIFY_VERSION, chunks_digest(chunks),
                           json.dumps([(f.id, f.label, f.instruction, f.query) for f in FIELDS])])
     return hashlib.sha256(material.encode("utf-8")).hexdigest()[:16]
 

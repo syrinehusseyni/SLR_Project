@@ -1,4 +1,7 @@
 """Step 7: build the study-by-protocol-facet coverage matrix from verified evidence."""
+import hashlib
+import json
+
 from slrresearch.core.contract import StageResult
 from slrresearch.core.errors import ArtifactNotFound
 from slrresearch.core.schemas.facet_evidence import FacetEvidenceOutcome
@@ -65,10 +68,27 @@ class FacetMatrixStage:
             for cell in paper.cells:
                 if cell.status != "missing" or not cell.blocking:
                     continue
+                base_target = f"{cell.paper_id}:{cell.facet_id}"
+                base_id = f"G5:facet_matrix:{base_target}"
+                existing = ctx.queue.get(base_id)
+                if existing is not None and existing.status == "open":
+                    # Preserve an already-open review, avoiding duplicate gates during a rerun.
+                    target_id = base_target
+                else:
+                    # A closed decision belongs to the cell evidence reviewed then. If that
+                    # evidence changes and the cell becomes missing again, create a fresh gate.
+                    material = json.dumps(cell.model_dump(mode="json"), sort_keys=True, ensure_ascii=False)
+                    version = hashlib.sha256(material.encode("utf-8")).hexdigest()[:12]
+                    target_id = f"{base_target}:{version}"
+                if cell.evidence_status == "rejected":
+                    reason = (f"La preuve proposée pour {cell.facet_id} ({cell.category}) a été rejetée pour "
+                              f"{cell.paper_id}. Vérifier une citation mieux étayée, confirmer après revue que "
+                              "l'information n'est pas rapportée, ou exclure l'étude de cette synthèse.")
+                else:
+                    reason = (f"Facette bloquante {cell.facet_id} ({cell.category}) manquante pour {cell.paper_id}. "
+                              "Confirmer l'absence, lancer une recherche complémentaire ou exclure l'étude de cette synthèse.")
                 item = ctx.queue.open_item(
-                    "G5", "facet_matrix", f"{cell.paper_id}:{cell.facet_id}",
-                    f"Facette bloquante {cell.facet_id} ({cell.category}) manquante pour {cell.paper_id}. "
-                    "Confirmer l'absence, lancer une recherche complémentaire ou exclure l'étude de cette synthèse.",
+                    "G5", "facet_matrix", target_id, reason,
                 )
                 if item.status == "open":
                     review_items.append(item)

@@ -20,6 +20,7 @@ class Settings:
     llm_provider: str = "ollama"
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.1:8b"
+    ollama_embedding_model: str = "nomic-embed-text"
     groq_api_key: str = ""
     groq_model: str = "llama-3.3-70b-versatile"  # a verifier sur la liste des modeles Groq
     role_models: dict = field(default_factory=dict)  # surcharges pour le fournisseur actif
@@ -54,6 +55,7 @@ class Settings:
             llm_provider=provider,
             ollama_base_url=get("OLLAMA_BASE_URL", "http://localhost:11434"),
             ollama_model=get("OLLAMA_MODEL", "llama3.1:8b"),
+            ollama_embedding_model=get("OLLAMA_EMBEDDING_MODEL", "nomic-embed-text"),
             groq_api_key=get("GROQ_API_KEY"),
             groq_model=get("GROQ_MODEL", "llama-3.3-70b-versatile"),
             role_models=role_models,

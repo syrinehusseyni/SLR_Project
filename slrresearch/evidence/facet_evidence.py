@@ -18,9 +18,10 @@ from slrresearch.core.schemas.study_card import StudyCardsOutcome, StudyCard
 from slrresearch.evidence.fidelity import _apply_human_decision, _report, PROMPT_NAME as FIDELITY_PROMPT_NAME
 from slrresearch.extraction.reader import load_paper_text
 from slrresearch.extraction.study_card import FieldSpec, fill_field, load_prompt
+from slrresearch.extraction.retrieval import HybridRetriever, OllamaEmbeddingClient
 
 ARTIFACT = "facet_evidence"
-VERSION = "facet-evidence-v2"
+VERSION = "facet-evidence-v3"
 
 _SUPPLEMENTAL_FIELDS = {
     "parameters": FieldSpec(
@@ -61,9 +62,11 @@ class _PacedClient:
 
 
 def _fingerprint(plan: FacetPlanOutcome, paper_text, extraction_model: str, judge_model: str,
-                 extraction_template: str, judge_template: str, facet, spec: FieldSpec, top_k: int) -> str:
+                 extraction_template: str, judge_template: str, facet, spec: FieldSpec, top_k: int,
+                 retrieval_mode: str, embedding_model: str) -> str:
     material = json.dumps([VERSION, plan.protocol_sha256, paper_text.source_sha256,
                            extraction_model, judge_model, extraction_template, judge_template, facet.id, top_k,
+                           retrieval_mode, embedding_model,
                            spec.instruction, spec.query],
                           ensure_ascii=False)
     return hashlib.sha256(material.encode("utf-8")).hexdigest()
@@ -138,7 +141,14 @@ def _record_from_new(paper_id, facet, field, judge_model, judge_client, judge_te
         target_id = f"{paper_id}:{facet.id}" + (f":{review_suffix}" if review_suffix else "")
         item = queue.open_item("G5", "evidence", target_id,
                               f"Revue humaine de la facette {facet.label} : {report.reason}")
-        if item.status != "open":
+        if item.status == "closed":
+            report = _apply_human_decision(report, queue, item_id=item.id)
+            status = {
+                "verified": "found", "human_review": "human_review", "rejected": "rejected",
+                "llm_error": "llm_error", "skipped": "missing",
+            }[report.status]
+            item = None
+        elif item.status != "open":
             item = None
     return FacetEvidenceRecord(**common, status=status, note=report.reason, fidelity=report), item
 
@@ -154,15 +164,19 @@ class FacetEvidenceStage:
     name = ARTIFACT
 
     def __init__(self, top_k: int = 3, max_papers: int | None = None, pause: float = 2.1,
-                 force: bool = False, repair_missing: bool = False, sleep=time.sleep, clock=time.monotonic):
+                 force: bool = False, repair_missing: bool = False, retrieval_mode: str = "lexical",
+                 sleep=time.sleep, clock=time.monotonic):
         if top_k <= 0:
             raise ValueError("top_k doit être > 0")
         if max_papers is not None and max_papers <= 0:
             raise ValueError("max_papers doit être > 0")
         if pause < 0:
             raise ValueError("pause doit être >= 0")
+        if retrieval_mode not in HybridRetriever.MODES:
+            raise ValueError(f"retrieval_mode doit être parmi {HybridRetriever.MODES}")
         self.top_k, self.max_papers, self.pause, self.force = top_k, max_papers, pause, force
         self.repair_missing = repair_missing
+        self.retrieval_mode = retrieval_mode
         self._sleep, self._clock = sleep, clock
 
     def run(self, ctx) -> StageResult:
@@ -191,16 +205,24 @@ class FacetEvidenceStage:
         card_entries = {p.paper_id: p for p in cards_index.papers}
         fidelity_by_key = {(r.paper_id, r.field_id): r for p in fidelity.papers for r in p.reports}
         previous = {}
+        previous_outcome = None
         if not self.force and ctx.store.exists(ARTIFACT):
             try:
                 old = ctx.store.read_artifact(ARTIFACT, FacetEvidenceOutcome)
                 if old.plan_hash == plan.protocol_sha256 and old.extraction_model == ctx.settings.model_for("extraction") and old.judge_model == ctx.settings.model_for("judge"):
+                    previous_outcome = old
                     previous = {(r.paper_id, r.facet_id): r for p in old.papers for r in p.evidence}
             except Exception:
                 previous = {}
 
         extraction_model = ctx.settings.model_for("extraction")
         judge_model = ctx.settings.model_for("judge")
+        embedding_model = ctx.settings.ollama_embedding_model if self.retrieval_mode != "lexical" else ""
+        retriever = None
+        if self.retrieval_mode != "lexical":
+            retriever = HybridRetriever(OllamaEmbeddingClient(
+                base_url=ctx.settings.ollama_base_url, model=embedding_model,
+                timeout=ctx.settings.timeout_seconds), mode=self.retrieval_mode)
         extraction_template = load_prompt()
         judge_template = load_fidelity_prompt()
         pacer = _CallPacer(self.pause, self._sleep, self._clock)
@@ -227,10 +249,48 @@ class FacetEvidenceStage:
                 spec = _SUPPLEMENTAL_FIELDS.get(facet.id) or FieldSpec(
                     facet.id, facet.label, facet.description, facet.query_en)
                 fingerprint = _fingerprint(plan, text, extraction_model, judge_model,
-                                           extraction_template, judge_template, facet, spec, self.top_k)
+                                           extraction_template, judge_template, facet, spec, self.top_k,
+                                           self.retrieval_mode, embedding_model)
                 cached = previous.get((entry.paper_id, facet.id))
 
                 if facet.reuse_field:
+                    source = card_fields.get(facet.reuse_field)
+                    source_unchanged = (
+                        cached is not None and cached.reused and source is not None
+                        and cached.source_field == facet.reuse_field
+                        and cached.value == source.value and cached.quote == source.quote
+                        and cached.chunk_id == source.chunk_id and cached.page == source.page
+                        and cached.note == (f"Champ source : {source.status}" if source.status != "verified"
+                                            else (cached.note if cached.fidelity is not None else ""))
+                    )
+                    # A retrieval-mode change does not invalidate evidence copied from 6a.
+                    # Reuse it only if the underlying study-card field still matches.
+                    # Keep prior manual corrections unless repair was explicitly requested.
+                    keep_cached = source_unchanged and not self.force and (
+                        not self.repair_missing or cached.status in ("found", "not_reported")
+                    )
+                    if keep_cached:
+                        record = cached
+                        if cached.fidelity is not None:
+                            item_id = (f"G5:evidence:{entry.paper_id}:{facet.id}:repair"
+                                       if cached.repair_attempted else None)
+                            report = _apply_human_decision(cached.fidelity, ctx.queue, item_id=item_id)
+                            status = {"verified": "found", "human_review": "human_review",
+                                      "rejected": "rejected", "llm_error": "llm_error",
+                                      "skipped": "missing"}[report.status]
+                            record = cached.model_copy(update={"fidelity": report, "status": status,
+                                                               "note": report.reason})
+                        records.append(record)
+                        if record.status == "human_review":
+                            item_id = f"G5:evidence:{entry.paper_id}:{facet.id}"
+                            if cached.repair_attempted:
+                                item_id += ":repair"
+                            item = ctx.queue.open_item("G5", "evidence", item_id,
+                                f"Revue humaine de la facette {facet.label} : {record.note}")
+                            if item.status == "open":
+                                review_items.append(item)
+                        continue
+
                     # A previously repaired result is resumable and retains its separate G5 item.
                     if (self.repair_missing and cached is not None and cached.repair_attempted
                             and cached.input_fingerprint == fingerprint):
@@ -248,7 +308,6 @@ class FacetEvidenceStage:
                             if item.status == "open": review_items.append(item)
                         continue
 
-                    source = card_fields.get(facet.reuse_field)
                     if source is None:
                         record = FacetEvidenceRecord(paper_id=entry.paper_id, facet_id=facet.id,
                             source_facet_ids=facet.source_facet_ids, rq_ids=facet.rq_ids, status="missing",
@@ -263,7 +322,8 @@ class FacetEvidenceStage:
                             records.append(record)
                             continue
                         try:
-                            field = fill_field(extraction_client, spec, chunks, extraction_template, self.top_k)
+                            field = fill_field(extraction_client, spec, chunks, extraction_template, self.top_k,
+                                               retriever=retriever)
                             record, item = _record_from_new(entry.paper_id, facet, field, judge_model, judge_client,
                                 judge_template, chunks, fingerprint, ctx.queue, review_suffix="repair")
                             record = record.model_copy(update={"repair_attempted": True})
@@ -315,7 +375,8 @@ class FacetEvidenceStage:
                     continue
 
                 try:
-                    field = fill_field(extraction_client, spec, chunks, extraction_template, self.top_k)
+                    field = fill_field(extraction_client, spec, chunks, extraction_template, self.top_k,
+                                       retriever=retriever)
                     record, item = _record_from_new(entry.paper_id, facet, field, judge_model, judge_client,
                                                     judge_template, chunks, fingerprint, ctx.queue,
                                                     review_suffix="repair" if self.repair_missing else "")
@@ -353,12 +414,21 @@ class FacetEvidenceStage:
                               facet=facet.id, status=record.status, reused=False)
 
             result_papers.append(FacetEvidencePaper(paper_id=entry.paper_id, evidence=records))
-            outcome = self._outcome(plan, extraction_model, judge_model, result_papers, extraction_client, judge_client)
+            outcome = self._outcome(plan, extraction_model, judge_model, result_papers, extraction_client,
+                                    judge_client, self.retrieval_mode, embedding_model)
             ctx.store.write_artifact(ARTIFACT, FacetEvidenceOutcome, outcome)
 
         if not result_papers:
             return StageResult(status="failed", message="Aucun papier extrait n'est disponible pour les facettes.")
-        outcome = self._outcome(plan, extraction_model, judge_model, result_papers, extraction_client, judge_client)
+        outcome = self._outcome(plan, extraction_model, judge_model, result_papers, extraction_client,
+                                judge_client, self.retrieval_mode, embedding_model)
+        if outcome.summary.llm_error and previous_outcome is not None and not self.force and not self.repair_missing:
+            ctx.store.write_artifact(ARTIFACT, FacetEvidenceOutcome, previous_outcome)
+            ctx.trace.log("facet_evidence", "previous_artifact_restored_after_errors",
+                          errors=outcome.summary.llm_error, retrieval_mode=self.retrieval_mode)
+            return StageResult(status="failed", artifact=ARTIFACT,
+                               message=(f"{outcome.summary.llm_error} appels sans réponse fiable; "
+                                        "l'artefact précédent a été conservé; relance possible."))
         ctx.store.write_artifact(ARTIFACT, FacetEvidenceOutcome, outcome)
         ctx.trace.log("facet_evidence", "written", **outcome.summary.model_dump())
         if repair_errors:
@@ -374,12 +444,14 @@ class FacetEvidenceStage:
                            message=f"Éléments réutilisés depuis 6a : {outcome.summary.reused}; appels déjà en cache : {cached_calls}.")
 
     @staticmethod
-    def _outcome(plan, extraction_model, judge_model, papers, extraction_client, judge_client):
+    def _outcome(plan, extraction_model, judge_model, papers, extraction_client, judge_client,
+                 retrieval_mode="lexical", embedding_model=""):
         rows = [r for p in papers for r in p.evidence]
         counts = {status: sum(r.status == status for r in rows)
                   for status in ("found", "not_reported", "missing", "human_review", "rejected", "llm_error")}
         return FacetEvidenceOutcome(version=VERSION, plan_hash=plan.protocol_sha256,
             judge_model=judge_model, extraction_model=extraction_model, papers=papers,
+            retrieval_mode=retrieval_mode, embedding_model=embedding_model,
             summary=FacetEvidenceSummary(papers=len(papers), **counts,
                 reused=sum(r.reused for r in rows), llm_calls=extraction_client.client.calls + judge_client.client.calls,
                 tokens=extraction_client.client.total_tokens + judge_client.client.total_tokens))

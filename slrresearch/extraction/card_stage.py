@@ -21,6 +21,7 @@ from slrresearch.extraction.reader import load_paper_text
 from slrresearch.extraction.study_card import (
     FIELDS, PROMPT_NAME, card_file, fill_field, fingerprint, load_card, load_prompt, save_card,
 )
+from slrresearch.extraction.retrieval import HybridRetriever, OllamaEmbeddingClient
 
 ARTIFACT = "study_cards"
 ROLE = "extraction"
@@ -44,11 +45,14 @@ class StudyCardStage:
     name = "study_cards"
 
     def __init__(self, top_k: int = DEFAULT_TOP_K, max_papers: int | None = None, pause: float = 0.0, force: bool = False,
-                 progress=None, sleep=time.sleep, prompt_dir: Path | None = None):
+                 progress=None, sleep=time.sleep, prompt_dir: Path | None = None,
+                 retrieval_mode: str = "lexical"):
         if top_k <= 0:
             raise ValueError("top_k doit être > 0")
         if pause < 0:
             raise ValueError("pause doit être >= 0")
+        if retrieval_mode not in HybridRetriever.MODES:
+            raise ValueError(f"retrieval_mode doit être parmi {HybridRetriever.MODES}")
         self.top_k = top_k
         self.max_papers = max_papers  # refuse de démarrer si plus de N papiers doivent passer par le LLM
         self.pause = pause            # secondes entre deux appels LLM (ex. 3 pour Groq)
@@ -56,6 +60,7 @@ class StudyCardStage:
         self.progress = progress      # fonction (index, total, paper_id, statut) ; None = silencieux
         self._sleep = sleep
         self.prompt_dir = prompt_dir
+        self.retrieval_mode = retrieval_mode
 
     def run(self, ctx) -> StageResult:
         try:
@@ -68,6 +73,12 @@ class StudyCardStage:
             return StageResult(status="failed", message="aucun papier extrait : rien à résumer.")
         template = load_prompt(directory=self.prompt_dir)
         model = ctx.settings.model_for(ROLE)
+        embedding_model = ctx.settings.ollama_embedding_model if self.retrieval_mode != "lexical" else ""
+        retriever = None
+        if self.retrieval_mode != "lexical":
+            retriever = HybridRetriever(OllamaEmbeddingClient(
+                base_url=ctx.settings.ollama_base_url, model=embedding_model,
+                timeout=ctx.settings.timeout_seconds), mode=self.retrieval_mode)
         run_dir = ctx.store.run_dir
 
         entries: dict[str, CardEntry] = {}
@@ -79,7 +90,8 @@ class StudyCardStage:
                 entries[paper.paper_id] = CardEntry(paper_id=paper.paper_id, status="failed",
                                                     reason="fichier d'extraction illisible : relancez l'étape extraction")
                 continue
-            fp = fingerprint(template, self.top_k, model, text.chunks)
+            fp = fingerprint(template, self.top_k, model, text.chunks,
+                             self.retrieval_mode, embedding_model)
             kept: dict[str, CardField] = {}
             old = None if self.force else load_card(card_file(run_dir, paper.paper_id))
             if old is not None and old.fingerprint == fp:
@@ -91,7 +103,8 @@ class StudyCardStage:
                 entries[paper.paper_id] = entry_from_card(old, run_dir, card_file(run_dir, paper.paper_id))
                 reused += 1
 
-        ctx.trace.log("study_card", "started", extracted=len(papers), reused=reused, to_process=len(work), model=model)
+        ctx.trace.log("study_card", "started", extracted=len(papers), reused=reused, to_process=len(work),
+                      model=model, retrieval_mode=self.retrieval_mode, embedding_model=embedding_model)
         if self.max_papers is not None and len(work) > self.max_papers:
             ctx.trace.log("study_card", "refused_too_many", to_process=len(work), max_papers=self.max_papers)
             return StageResult(status="failed", message=(
@@ -112,7 +125,7 @@ class StudyCardStage:
                         if calls_made and self.pause:
                             self._sleep(self.pause)
                         calls_made += 1
-                        field = fill_field(client, spec, chunks, template, self.top_k)
+                        field = fill_field(client, spec, chunks, template, self.top_k, retriever=retriever)
                         fields[spec.id] = field
                         ctx.trace.log("study_card", "field_done", paper_id=paper.paper_id, field=spec.id, status=field.status)
                 except BudgetExceeded as exc:
@@ -136,13 +149,14 @@ class StudyCardStage:
             return StageResult(status="failed", message=(
                 f"arrêt : {budget_stop}. {done} fiches sur {len(papers)} sont faites et conservées ; relancez la même commande "
                 "avec un --max-calls plus grand pour reprendre."))
-        return self._finalize(ctx, model, papers, entries, skipped, client)
+        return self._finalize(ctx, model, papers, entries, skipped, client, embedding_model)
 
     def _tell(self, index: int, total: int, paper_id: str, status: str) -> None:
         if self.progress is not None:
             self.progress(index, total, paper_id, status)
 
-    def _finalize(self, ctx, model: str, papers: list[ExtractedPaperEntry], entries: dict[str, CardEntry], skipped: int, client) -> StageResult:
+    def _finalize(self, ctx, model: str, papers: list[ExtractedPaperEntry], entries: dict[str, CardEntry],
+                  skipped: int, client, embedding_model: str) -> StageResult:
         ordered = [entries[p.paper_id] for p in papers]
         fields_total: dict[str, int] = {}
         for entry in ordered:
@@ -153,7 +167,8 @@ class StudyCardStage:
             incomplete=sum(e.status == "incomplete" for e in ordered), failed=sum(e.status == "failed" for e in ordered),
             skipped_not_extracted=skipped, llm_calls=client.calls if client else 0,
             tokens=client.total_tokens if client else 0, fields=fields_total)
-        limits = StudyCardsLimits(model=model, prompt=PROMPT_NAME, top_k=self.top_k, pause=self.pause,
+        limits = StudyCardsLimits(model=model, prompt=PROMPT_NAME, top_k=self.top_k,
+                                  retrieval_mode=self.retrieval_mode, embedding_model=embedding_model, pause=self.pause,
                                   max_papers=self.max_papers, fields=[f.id for f in FIELDS])
         ctx.store.write_artifact(ARTIFACT, StudyCardsOutcome, StudyCardsOutcome(limits=limits, papers=ordered, summary=summary).model_dump())
         ctx.trace.log("study_card", "written", **summary.model_dump(exclude={"fields"}))

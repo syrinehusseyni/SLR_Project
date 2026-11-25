@@ -126,6 +126,8 @@ def _parser() -> argparse.ArgumentParser:
     st.add_argument("--max-papers", type=int, default=None,
                     help="refuser de démarrer si plus de N papiers doivent passer par le LLM (aucun appel n'est fait)")
     st.add_argument("--top-k", type=int, default=DEFAULT_TOP_K, help=f"nombre de chunks montrés au LLM par champ (défaut {DEFAULT_TOP_K})")
+    st.add_argument("--retrieval-mode", choices=("hybrid", "lexical", "semantic"), default="hybrid",
+                    help="classement des extraits (défaut hybrid : lexical + embeddings Ollama)")
     st.add_argument("--pause", type=float, default=0.0, help="secondes d'attente entre deux appels LLM (ex. 3 pour Groq)")
     st.add_argument("--force", action="store_true", help="refaire toutes les fiches (sinon seuls les champs manquants ou en panne sont refaits)")
 
@@ -148,6 +150,8 @@ def _parser() -> argparse.ArgumentParser:
     fe.add_argument("--max-seconds", type=float, default=None)
     fe.add_argument("--max-papers", type=int, default=None)
     fe.add_argument("--top-k", type=int, default=3)
+    fe.add_argument("--retrieval-mode", choices=("hybrid", "lexical", "semantic"), default="hybrid",
+                    help="classement des extraits (défaut hybrid : lexical + embeddings Ollama)")
     fe.add_argument("--pause", type=float, default=2.1)
     fe.add_argument("--force", action="store_true", help="ignorer les résultats supplémentaires en cache")
     fe.add_argument("--repair-missing", action="store_true",
@@ -242,7 +246,9 @@ def _print_cards_summary(store) -> None:
     print(f"Papiers : {s.total} ; fiches complètes : {s.complete} ; incomplètes : {s.incomplete} ; en échec : {s.failed} ; "
           f"non extraits (5a) : {s.skipped_not_extracted}")
     print(f"Champs par statut : {dict(sorted(s.fields.items()))}")
-    print(f"Coût de ce lancement : {s.llm_calls} appels LLM, {s.tokens} tokens ; modèle : {lim.model} ; top-k : {lim.top_k}")
+    retrieval = (f"{lim.retrieval_mode} ({lim.embedding_model})" if lim.embedding_model else lim.retrieval_mode)
+    print(f"Coût de ce lancement : {s.llm_calls} appels LLM, {s.tokens} tokens ; modèle : {lim.model} ; "
+          f"top-k : {lim.top_k} ; recherche : {retrieval}")
     for p in outcome.papers:
         if p.status == "incomplete":
             print(f"  ~ {p.paper_id} : champs en panne LLM, relancez la même commande pour les refaire")
@@ -264,7 +270,9 @@ def _print_facet_evidence_summary(store) -> None:
     s = outcome.summary
     print(f"Papiers : {s.papers} ; preuves : {s.found} ; absentes : {s.not_reported} ; à chercher : {s.missing} ; "
           f"revue G5 : {s.human_review} ; rejetées : {s.rejected} ; erreurs : {s.llm_error}")
-    print(f"Réutilisées depuis l'étape 5b/6a : {s.reused} ; coût de ce lancement : {s.llm_calls} appels, {s.tokens} tokens")
+    print(f"Recherche : {outcome.retrieval_mode}" +
+          (f" ({outcome.embedding_model})" if outcome.embedding_model else "") +
+          f" ; réutilisées depuis l'étape 5b/6a : {s.reused} ; coût de ce lancement : {s.llm_calls} appels, {s.tokens} tokens")
 
 
 def _print_facet_matrix_summary(store) -> None:
@@ -355,6 +363,7 @@ def main(argv=None, make_model=build_model, transport=None, env=None, stage_opti
 
             try:
                 stage = StudyCardStage(top_k=args.top_k, max_papers=args.max_papers, pause=args.pause, force=args.force,
+                                       retrieval_mode=args.retrieval_mode,
                                        progress=show_card)
             except ValueError as exc:
                 print(f"ERREUR : {exc}")
@@ -387,7 +396,8 @@ def main(argv=None, make_model=build_model, transport=None, env=None, stage_opti
         if args.command == "facet-evidence":
             try:
                 stage = FacetEvidenceStage(top_k=args.top_k, max_papers=args.max_papers, pause=args.pause,
-                                           force=args.force, repair_missing=args.repair_missing)
+                                           force=args.force, repair_missing=args.repair_missing,
+                                           retrieval_mode=args.retrieval_mode)
             except ValueError as exc:
                 print(f"ERREUR : {exc}")
                 return 1

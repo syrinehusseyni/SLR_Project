@@ -34,6 +34,15 @@ def _extract_tokens(raw: Any) -> int:
     return 0
 
 
+def _is_rate_limit_error(exc: Exception) -> bool:
+    """Rate limits often include a provider-specified cooldown; short generic retries ignore it."""
+    response = getattr(exc, "response", None)
+    status = getattr(exc, "status_code", None) or getattr(response, "status_code", None)
+    code = getattr(exc, "code", None)
+    message = str(exc).casefold()
+    return status == 429 or code == "rate_limit_exceeded" or "error code: 429" in message
+
+
 class LLMClient:
     def __init__(
         self,
@@ -74,7 +83,14 @@ class LLMClient:
             except SLRError:
                 raise
             except Exception as exc:  # erreur reseau, 429, timeout...
-                self._log("llm_error", attempt=attempt, error=f"{type(exc).__name__}: {exc}")
+                rate_limited = _is_rate_limit_error(exc)
+                self._log("llm_error", attempt=attempt, error=f"{type(exc).__name__}: {exc}",
+                          retry_suppressed=rate_limited)
+                if rate_limited:
+                    raise LLMError(
+                        f"Limite de débit atteinte pour {self.model_name}; nouvel essai automatique arrêté. "
+                        f"Attendez le délai indiqué par le fournisseur puis relancez : {exc}"
+                    ) from exc
                 if attempt == attempts_allowed:
                     raise LLMError(
                         f"appel LLM ({self.model_name}) echoue apres {attempts_allowed} essai(s) : {exc}"

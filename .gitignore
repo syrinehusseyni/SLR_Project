@@ -17,8 +17,7 @@ __pycache__/
 build/
 dist/
 
-# Generated execution data
-runs/demo/
+
 
 # PDF and temporary files
 *.pdf

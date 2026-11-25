@@ -52,6 +52,8 @@ class FacetEvidenceOutcome(BaseModel):
     extraction_model: str = Field(min_length=1)
     papers: list[FacetEvidencePaper] = Field(min_length=1)
     summary: FacetEvidenceSummary
+    retrieval_mode: Literal["hybrid", "lexical", "semantic"] = "lexical"
+    embedding_model: str = ""
 
     @model_validator(mode="after")
     def _consistent(self):

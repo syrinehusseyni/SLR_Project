@@ -74,6 +74,8 @@ class StudyCardsLimits(BaseModel):
     model: str = Field(min_length=1)
     prompt: str = Field(min_length=1)
     top_k: int = Field(gt=0)
+    retrieval_mode: Literal["hybrid", "lexical", "semantic"] = "lexical"
+    embedding_model: str = ""
     pause: float = Field(ge=0)
     max_papers: int | None = Field(default=None, gt=0)
     fields: list[str] = Field(min_length=1)
